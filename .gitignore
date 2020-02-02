@@ -1,0 +1,9 @@
+# User-specific stuff:
+*.iml
+.idea
+.allure
+build/
+allure-results/
+
+# mvn target folder
+target/
