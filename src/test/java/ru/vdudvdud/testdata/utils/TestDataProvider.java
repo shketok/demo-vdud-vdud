@@ -22,6 +22,11 @@ public class TestDataProvider {
         return RandomStringUtils.randomAlphabetic(length).toLowerCase();
     }
 
+    public static String generateRandomString() {
+        final int randomPartLength = 9;
+        return generateRandomString(randomPartLength);
+    }
+
     public static String generateTimeStamp() {
         return new java.text.SimpleDateFormat(DateTimePatterns.TIMESTAMP_PATTERN).format(new java.util.Date());
     }

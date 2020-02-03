@@ -1,0 +1,44 @@
+{
+  "userIncorrectName": {
+    "firstName": "123456789",
+    "surname": "surname",
+    "password": "maxC0rrectPass@",
+    "email": "vdud%s@yopmail.com",
+    "phone": "+79012345678"
+  },
+  "userIncorrectSurname": {
+    "firstName": "name",
+    "surname": "123123123",
+    "password": "maxC0rrectPass@",
+    "email": "vdud%s@yopmail.com",
+    "phone": "+79012345678"
+  },
+  "userIncorrectEmail": {
+    "firstName": "name",
+    "surname": "surname",
+    "password": "maxC0rrectPass@",
+    "email": "wrong@@email.com",
+    "phone": "+79012345678"
+  },
+  "userSoLongEmail": {
+    "firstName": "name",
+    "surname": "surname",
+    "password": "maxC0rrectPass@",
+    "email": "qwertyuiopasdfghjklzxcvbnm123456789qwertyuioasdfghjklxcvbnm123456789sdgfsgf@email.com",
+    "phone": "+79012345678"
+  },
+  "userShortPassword": {
+    "firstName": "name",
+    "surname": "surname",
+    "password": "1",
+    "email": "vdud%s@yopmail.com",
+    "phone": "+79012345678"
+  },
+  "userEmptyPassword": {
+    "firstName": "name",
+    "surname": "surname",
+    "password": " ",
+    "email": "vdud%s@yopmail.com",
+    "phone": "+79012345678"
+  }
+}

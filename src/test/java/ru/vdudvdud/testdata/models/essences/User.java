@@ -23,4 +23,8 @@ public class User {
     @Getter
     @Setter
     private String phone;
+
+    public void fillUserEmailTemplate(String emailAppendablePart) {
+        setEmail(String.format(getEmail(), emailAppendablePart));
+    }
 }

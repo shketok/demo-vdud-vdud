@@ -30,4 +30,9 @@ public class RegistrationSteps {
     public void waitUntilSignUpBtnInvisible() {
         signUpPage.waitUntilSignUpBtnInvisible();
     }
+
+    @Step("Ожидание, присутсвия кнопки регистрации на странице")
+    public void waitUntilSignUpBtnVisible() {
+        signUpPage.waitUntilSignUpBtnVisible();
+    }
 }

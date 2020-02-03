@@ -52,4 +52,7 @@ public class SignUpPage extends BasePage {
     public void waitUntilSignUpBtnInvisible() {
         SIGN_UP_BUTTON.shouldNotBe(Condition.visible);
     }
+    public void waitUntilSignUpBtnVisible() {
+        SIGN_UP_BUTTON.shouldBe(Condition.visible);
+    }
 }
