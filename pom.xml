@@ -17,11 +17,13 @@
         <suite>TestSuite</suite>
     </properties>
 
+    <!-- все версии вынести в проперти -->
+         
     <dependencies>
         <dependency>
             <groupId>com.codeborne</groupId>
             <artifactId>selenide</artifactId>
-            <version>5.6.1</version>
+            <version>5.6.1</version> 
         </dependency>
 
         <dependency>

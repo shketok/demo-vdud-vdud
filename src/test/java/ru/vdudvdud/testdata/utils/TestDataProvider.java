@@ -14,7 +14,7 @@ public class TestDataProvider {
     }
 
     private static String generateRandomEmailInternal(String emailTemplate) {
-        final int randomPartLength = 9;
+        final int randomPartLength = 9; // константы
         return format(emailTemplate, generateRandomString(randomPartLength));
     }
 
@@ -27,7 +27,7 @@ public class TestDataProvider {
         return generateRandomString(randomPartLength);
     }
 
-    public static String generateTimeStamp() {
+    public static String generateTimeStamp() { // current timestamp
         return new java.text.SimpleDateFormat(DateTimePatterns.TIMESTAMP_PATTERN).format(new java.util.Date());
     }
 
