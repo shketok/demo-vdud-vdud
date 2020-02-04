@@ -25,6 +25,11 @@ public class HeaderSteps {
     public void checkLogoutVisible() {
         headerPage.hoverPersonalArea();
         personalAreaDropdownForm.checkThatLogoutBtnVisible();
+    }
 
+    @Step("Проверка, что не видна кнопка выхода из аккаунта")
+    public void checkLogoutInvisible() {
+        headerPage.hoverPersonalArea();
+        personalAreaDropdownForm.checkThatLogoutBtnInvisible();
     }
 }

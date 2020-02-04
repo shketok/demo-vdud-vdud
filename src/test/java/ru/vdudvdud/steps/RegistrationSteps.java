@@ -1,6 +1,7 @@
 package ru.vdudvdud.steps;
 
 import io.qameta.allure.Step;
+import org.testng.Assert;
 import ru.vdudvdud.testdata.models.essences.User;
 import ru.vdudvdud.testdata.objects.vdudvdud.pages.SignUpPage;
 
@@ -21,6 +22,11 @@ public class RegistrationSteps {
         signUpPage.fillEmail(user.getEmail());
     }
 
+    @Step("Заполнение поля повтора пароля")
+    public void fillRepeatPassword(String userPassword) {
+        signUpPage.fillRepeatPassword(userPassword);
+    }
+
     @Step("Подтверждения введенных данных в форму регистрации")
     public void sendRegistrationData() {
         signUpPage.confirmSignUp();
@@ -28,6 +34,11 @@ public class RegistrationSteps {
 
     @Step("Ожидание, пока кнопка регистрации не пропадет с экрана")
     public void waitUntilSignUpBtnInvisible() {
-        signUpPage.waitUntilSignUpBtnInvisible();
+        Assert.assertTrue(signUpPage.isSignUpBtnInvisible(), "Кнопка регистрации видна");
+    }
+
+    @Step("Ожидание, присутсвия кнопки регистрации на странице")
+    public void waitUntilSignUpBtnVisible() {
+        Assert.assertTrue(signUpPage.isSignUpBtnVisible(), "Кнопка регистрации не видна");
     }
 }

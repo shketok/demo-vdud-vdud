@@ -1,7 +1,9 @@
 package ru.vdudvdud.steps;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Step;
+import org.testng.Assert;
 import ru.vdudvdud.testdata.enums.Urls;
 import ru.vdudvdud.testdata.objects.vdudvdud.pages.VdudMainPage;
 
@@ -20,7 +22,13 @@ public class MainPageSteps {
 
     @Step("Проверка корректного открытия главной страницы")
     public void waitUntilMainPageOpen() {
-        vdudMainPage.waitUntilPageMainElementsLoad();
+        Assert.assertTrue(vdudMainPage.isMainElement(Condition.visible), "Проверка корректного открытия главной страницы");
+
+    }
+
+    @Step("Проверка, что главная страница не была открыта")
+    public void waitUntilMainPageNotPresent() {
+        vdudMainPage.shouldNotBe(Condition.visible);
     }
 
 

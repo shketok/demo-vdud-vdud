@@ -1,14 +1,12 @@
 package ru.vdudvdud.testdata.enums;
 
-import ru.vdudvdud.testdata.utils.TestDataProvider;
-
-public enum Phones {
+public enum PhoneTemplates {
     RUSSIAN("+7", 10);
 
-    private String code;
-    private Integer phoneLength;
+    private final String code;
+    private final Integer phoneLength;
 
-    Phones(String code, Integer phoneLength) {
+    PhoneTemplates(String code, Integer phoneLength) {
         this.code = code;
         this.phoneLength = phoneLength;
     }

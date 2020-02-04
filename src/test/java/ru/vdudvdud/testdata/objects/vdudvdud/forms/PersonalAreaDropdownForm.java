@@ -32,4 +32,7 @@ public class PersonalAreaDropdownForm extends BasePage {
     public void checkThatLogoutBtnVisible() {
         LOGOUT.shouldBe(Condition.visible);
     }
+    public void checkThatLogoutBtnInvisible() {
+        LOGOUT.shouldNotBe(Condition.visible);
+    }
 }
