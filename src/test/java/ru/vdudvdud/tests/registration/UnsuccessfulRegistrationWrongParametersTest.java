@@ -7,7 +7,7 @@ import ru.vdudvdud.adaptors.selenide.base.BaseTest;
 import ru.vdudvdud.steps.HeaderSteps;
 import ru.vdudvdud.steps.MainPageSteps;
 import ru.vdudvdud.steps.RegistrationSteps;
-import ru.vdudvdud.testdata.builders.UsersFactory;
+import ru.vdudvdud.testdata.builders.UsersCreator;
 import ru.vdudvdud.testdata.enums.UserAliases;
 import ru.vdudvdud.testdata.models.essences.User;
 import ru.vdudvdud.testdata.utils.TestDataProvider;
@@ -19,7 +19,7 @@ public class UnsuccessfulRegistrationWrongParametersTest extends BaseTest {
     @BeforeMethod
     @Parameters("userName")
     public void readParams(UserAliases userName) {
-        user = UsersFactory.getUser(userName);
+        user = UsersCreator.createUser(userName);
         user.setEmail(String.format(user.getEmail(), TestDataProvider.generateTimeStamp()));
     }
 
