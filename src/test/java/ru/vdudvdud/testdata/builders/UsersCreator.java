@@ -8,7 +8,7 @@ import ru.vdudvdud.testdata.enums.UserAliases;
 import ru.vdudvdud.testdata.models.essences.User;
 import ru.vdudvdud.testdata.utils.TestDataProvider;
 
-public class UsersFactory {
+public class UsersCreator {
 
     private static final String USERS_JSON = "users.json";
 
@@ -21,7 +21,7 @@ public class UsersFactory {
         return user;
     }
 
-    public static User getUser(UserAliases userName) {
+    public static User createUser(UserAliases userName) {
         return JSONUtils.mapToObject(Configuration.getInstance().getTestDataPath(USERS_JSON), userName.getValue(), User.class);
     }
 
