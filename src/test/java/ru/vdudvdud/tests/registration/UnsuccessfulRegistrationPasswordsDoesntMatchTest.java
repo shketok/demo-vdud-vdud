@@ -12,15 +12,13 @@ import ru.vdudvdud.testdata.enums.UserAliases;
 import ru.vdudvdud.testdata.models.essences.User;
 import ru.vdudvdud.testdata.utils.TestDataProvider;
 
-public class UnsuccessfulRegistrationWrongParametersTest extends BaseTest {
+public class UnsuccessfulRegistrationPasswordsDoesntMatchTest extends BaseTest {
 
     private User user;
 
     @BeforeMethod
-    @Parameters("userName")
-    public void readParams(UserAliases userName) {
-        user = UsersFactory.getUser(userName);
-        user.setEmail(String.format(user.getEmail(), TestDataProvider.generateTimeStamp()));
+    public void readParams() {
+        user = UsersFactory.getRandomUser(new User());
     }
 
     @Test
@@ -35,6 +33,7 @@ public class UnsuccessfulRegistrationWrongParametersTest extends BaseTest {
 
         LOG.info("2. Заполнение формы регистрации");
         registrationSteps.fillRegistrationData(user);
+        registrationSteps.fillRepeatPassword(user.getPassword().concat(TestDataProvider.generateRandomString()));
         registrationSteps.sendRegistrationData();
 
         LOG.info("3. Проверка не успешности регистрации");

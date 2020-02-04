@@ -3,6 +3,7 @@ package ru.vdudvdud.testdata.objects.vdudvdud.pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import ru.vdudvdud.adaptors.selenide.base.BasePage;
+import ru.vdudvdud.adaptors.selenide.utils.SmartWait;
 import ru.vdudvdud.testdata.objects.vdudvdud.forms.PersonalAreaDropdownForm;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -49,10 +50,10 @@ public class SignUpPage extends BasePage {
         SIGN_UP_BUTTON.click();
     }
 
-    public void waitUntilSignUpBtnInvisible() {
-        SIGN_UP_BUTTON.shouldNotBe(Condition.visible);
+    public boolean isSignUpBtnInvisible() {
+        return SmartWait.isNotElement(SIGN_UP_BUTTON, Condition.visible);
     }
-    public void waitUntilSignUpBtnVisible() {
-        SIGN_UP_BUTTON.shouldBe(Condition.visible);
+    public boolean isSignUpBtnVisible() {
+        return SmartWait.isElement(SIGN_UP_BUTTON, Condition.visible);
     }
 }

@@ -2,6 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="debug" verbose="1">
 
-
+    <test name="Test unsuccessful registration passwords doesn't match">
+        <classes>
+            <class name="ru.vdudvdud.tests.registration.UnsuccessfulRegistrationPasswordsDoesntMatchTest"/>
+        </classes>
+    </test>
 
 </suite>

@@ -43,5 +43,10 @@
             <class name="ru.vdudvdud.tests.registration.UnsuccessfulRegistrationWrongParametersTest"/>
         </classes>
     </test>
+    <test name="Test unsuccessful registration passwords doesn't match">
+        <classes>
+            <class name="ru.vdudvdud.tests.registration.UnsuccessfulRegistrationPasswordsDoesntMatchTest"/>
+        </classes>
+    </test>
 
 </suite>

@@ -28,7 +28,7 @@ public class MainPageSteps {
 
     @Step("Проверка, что главная страница не была открыта")
     public void waitUntilMainPageNotPresent() {
-        Assert.assertTrue(vdudMainPage.isMainElement(Condition.not(Condition.visible)), "Проверка, что главная страница не была открыта");
+        vdudMainPage.shouldNotBe(Condition.visible);
     }
 
 

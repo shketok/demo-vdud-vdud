@@ -24,9 +24,6 @@ public abstract class PageObject {
         return getMainElement().shouldNotBe(condition);
     }
 
-    /**
-     * Данный метод Deprecated.
-     */
     public boolean isMainElement(Condition condition) {
         return getMainElement().is(condition);
     }
