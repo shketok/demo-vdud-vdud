@@ -6,6 +6,8 @@ import com.codeborne.selenide.ex.ElementNotFound;
 import com.codeborne.selenide.ex.ElementShould;
 import com.codeborne.selenide.ex.ElementShouldNot;
 
+import static java.lang.String.format;
+
 /**
  * Класс с умными ожиданиями, которые ждут элемента столько же, сколько shouldBe функции, но при этом обрабатывает ошибки.
  * Класс имеет смысл использовать только в случае негативных проверок, когда мы знаем, что чего-то не должно появиться,
@@ -23,7 +25,9 @@ public class SmartWait {
     public static boolean isNotElement(SelenideElement selenideElement, Condition condition) {
         try {
             selenideElement.shouldBe(condition);
-        } catch (ElementShould | ElementNotFound ignored) {}
+        } catch (ElementShould | ElementNotFound ex) {
+            Logger.getInstance().info(String.format("Element %s did not %s", selenideElement.toString(), condition.toString()));
+        }
         return !selenideElement.is(condition);
     }
 
@@ -36,7 +40,9 @@ public class SmartWait {
     public static boolean isElement(SelenideElement selenideElement, Condition condition) {
         try {
             selenideElement.shouldNotBe(condition);
-        } catch (ElementShouldNot ignored) {}
+        } catch (ElementShouldNot ex) {
+            Logger.getInstance().info(String.format("Element %s is %s", selenideElement.toString(), condition.toString()));
+        }
         return selenideElement.is(condition);
     }
 }
