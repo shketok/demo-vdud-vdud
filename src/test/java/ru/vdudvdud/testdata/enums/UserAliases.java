@@ -10,7 +10,7 @@ public enum UserAliases {
 
     private final String value;
 
-    UserAliases(String value) {
+    private UserAliases(String value) {
         this.value = value;
     }
 
