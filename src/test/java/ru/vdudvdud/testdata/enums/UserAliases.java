@@ -8,7 +8,7 @@ public enum UserAliases {
     USER_SHORT_PASSWORD("userShortPassword"),
     USER_EMPTY_PASSWORD("userEmptyPassword");
 
-    private String value;
+    private final String value;
 
     UserAliases(String value) {
         this.value = value;

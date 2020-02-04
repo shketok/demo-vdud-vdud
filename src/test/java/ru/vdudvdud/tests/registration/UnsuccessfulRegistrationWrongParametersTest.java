@@ -20,7 +20,7 @@ public class UnsuccessfulRegistrationWrongParametersTest extends BaseTest {
     @Parameters("userName")
     public void readParams(UserAliases userName) {
         user = UsersCreator.createUser(userName);
-        user.setEmail(String.format(user.getEmail(), TestDataProvider.generateTimeStamp()));
+        user.setEmail(String.format(user.getEmail(), TestDataProvider.generateCurrentTimeStamp()));
     }
 
     @Test

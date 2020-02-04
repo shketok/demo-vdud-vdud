@@ -26,7 +26,7 @@ public class TestDataProvider {
         return generateRandomString(StringConstants.BASE_RANDOM_STRING_LENGTH);
     }
 
-    public static String generateTimeStamp() { // current timestamp
+    public static String generateCurrentTimeStamp() {
         return new java.text.SimpleDateFormat(DateTimePatterns.TIMESTAMP_PATTERN).format(new java.util.Date());
     }
 
