@@ -1,6 +1,6 @@
 package ru.vdudvdud.testdata.enums;
 
-public enum Users {
+public enum UserAliases {
     USER_INCORRECT_NAME("userIncorrectName"),
     USER_INCORRECT_SURNAME("userIncorrectSurname"),
     USER_INCORRECT_EMAIL("userIncorrectEmail"),
@@ -10,7 +10,7 @@ public enum Users {
 
     private String value;
 
-    Users(String value) {
+    UserAliases(String value) {
         this.value = value;
     }
 

@@ -6,7 +6,7 @@ import ru.vdudvdud.adaptors.selenide.base.BaseTest;
 import ru.vdudvdud.steps.HeaderSteps;
 import ru.vdudvdud.steps.MainPageSteps;
 import ru.vdudvdud.steps.RegistrationSteps;
-import ru.vdudvdud.testdata.builders.UsersBuilder;
+import ru.vdudvdud.testdata.builders.UsersFactory;
 import ru.vdudvdud.testdata.models.essences.User;
 
 public class SuccessfulRegistrationTest extends BaseTest {
@@ -15,7 +15,7 @@ public class SuccessfulRegistrationTest extends BaseTest {
 
     @BeforeMethod
     public void readParams() {
-        user = UsersBuilder.getRandomUser(new User());
+        user = UsersFactory.getRandomUser(new User());
     }
 
     @Test

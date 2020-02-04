@@ -3,7 +3,8 @@ package ru.vdudvdud.testdata.utils;
 import org.apache.commons.lang3.RandomStringUtils;
 import ru.vdudvdud.adaptors.selenide.Configuration;
 import ru.vdudvdud.testdata.constants.DateTimePatterns;
-import ru.vdudvdud.testdata.enums.Phones;
+import ru.vdudvdud.testdata.constants.StringConstants;
+import ru.vdudvdud.testdata.enums.PhoneTemplates;
 
 import static java.lang.String.format;
 
@@ -14,8 +15,7 @@ public class TestDataProvider {
     }
 
     private static String generateRandomEmailInternal(String emailTemplate) {
-        final int randomPartLength = 9; // константы
-        return format(emailTemplate, generateRandomString(randomPartLength));
+        return format(emailTemplate, generateRandomString(StringConstants.BASE_RANDOM_STRING_LENGTH));
     }
 
     public static String generateRandomString(int length) {
@@ -23,15 +23,14 @@ public class TestDataProvider {
     }
 
     public static String generateRandomString() {
-        final int randomPartLength = 9;
-        return generateRandomString(randomPartLength);
+        return generateRandomString(StringConstants.BASE_RANDOM_STRING_LENGTH);
     }
 
     public static String generateTimeStamp() { // current timestamp
         return new java.text.SimpleDateFormat(DateTimePatterns.TIMESTAMP_PATTERN).format(new java.util.Date());
     }
 
-    public static String generateRandomPhone(Phones phone) {
+    public static String generateRandomPhone(PhoneTemplates phone) {
         return phone.getCode() + TestDataProvider.generateRandomString(phone.getPhoneLength());
     }
 }
