@@ -12,7 +12,7 @@ public class UsersCreator {
 
     private static final String USERS_JSON = "users.json";
 
-    public static User getRandomUser() {
+    public static User createRandomUser() {
         User user = new User();
         user.setFirstName(TestDataProvider.generateRandomString(StringConstants.BASE_RANDOM_STRING_LENGTH));
         user.setSurname(TestDataProvider.generateRandomString(StringConstants.BASE_RANDOM_STRING_LENGTH));
