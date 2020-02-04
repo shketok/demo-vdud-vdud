@@ -15,7 +15,7 @@ public class SuccessfulRegistrationTest extends BaseTest {
 
     @BeforeMethod
     public void readParams() {
-        user = UsersCreator.getRandomUser(new User());
+        user = UsersCreator.getRandomUser();
     }
 
     @Test
