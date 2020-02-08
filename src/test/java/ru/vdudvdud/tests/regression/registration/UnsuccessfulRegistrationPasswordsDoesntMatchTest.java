@@ -1,26 +1,22 @@
-package ru.vdudvdud.tests.registration;
+package ru.vdudvdud.tests.regression.registration;
 
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import ru.vdudvdud.adaptors.selenide.base.BaseTest;
 import ru.vdudvdud.steps.HeaderSteps;
 import ru.vdudvdud.steps.MainPageSteps;
 import ru.vdudvdud.steps.RegistrationSteps;
 import ru.vdudvdud.testdata.builders.UsersCreator;
-import ru.vdudvdud.testdata.enums.UserAliases;
 import ru.vdudvdud.testdata.models.essences.User;
 import ru.vdudvdud.testdata.utils.TestDataProvider;
 
-public class UnsuccessfulRegistrationWrongParametersTest extends BaseTest {
+public class UnsuccessfulRegistrationPasswordsDoesntMatchTest extends BaseTest {
 
     private User user;
 
     @BeforeMethod
-    @Parameters("userName")
-    public void readParams(UserAliases userName) {
-        user = UsersCreator.createUser(userName);
-        user.setEmail(String.format(user.getEmail(), TestDataProvider.generateCurrentTimeStamp()));
+    public void readParams() {
+        user = UsersCreator.createRandomUser();
     }
 
     @Test
@@ -35,6 +31,7 @@ public class UnsuccessfulRegistrationWrongParametersTest extends BaseTest {
 
         LOG.info("2. Заполнение формы регистрации");
         registrationSteps.fillRegistrationData(user);
+        registrationSteps.fillRepeatPassword(user.getPassword().concat(TestDataProvider.generateRandomString()));
         registrationSteps.sendRegistrationData();
 
         LOG.info("3. Проверка не успешности регистрации");

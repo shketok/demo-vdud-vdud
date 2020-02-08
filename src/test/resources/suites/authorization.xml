@@ -5,7 +5,7 @@
     <test name="Test successful authorization">
         <!--        <parameter name="" value=""/>-->
         <classes>
-            <class name="ru.vdudvdud.tests.authorization.SuccessfulAuthorizationTest"/>
+            <class name="ru.vdudvdud.tests.regression.authorization.SuccessfulAuthorizationTest"/>
         </classes>
     </test>
 

@@ -4,48 +4,48 @@
 
     <test name="Test successful registration">
         <classes>
-            <class name="ru.vdudvdud.tests.registration.SuccessfulRegistrationTest"/>
+            <class name="ru.vdudvdud.tests.regression.registration.SuccessfulRegistrationTest"/>
         </classes>
     </test>
     <test name="Test unsuccessful registration incorrect name parameter">
         <parameter name="userName" value="USER_INCORRECT_NAME"/>
         <classes>
-            <class name="ru.vdudvdud.tests.registration.UnsuccessfulRegistrationWrongParametersTest"/>
+            <class name="ru.vdudvdud.tests.regression.registration.UnsuccessfulRegistrationWrongParametersTest"/>
         </classes>
     </test>
     <test name="Test unsuccessful registration incorrect surname parameter">
         <parameter name="userName" value="USER_INCORRECT_SURNAME"/>
         <classes>
-            <class name="ru.vdudvdud.tests.registration.UnsuccessfulRegistrationWrongParametersTest"/>
+            <class name="ru.vdudvdud.tests.regression.registration.UnsuccessfulRegistrationWrongParametersTest"/>
         </classes>
     </test>
     <test name="Test unsuccessful registration incorrect email parameter">
         <parameter name="userName" value="USER_INCORRECT_EMAIL"/>
         <classes>
-            <class name="ru.vdudvdud.tests.registration.UnsuccessfulRegistrationWrongParametersTest"/>
+            <class name="ru.vdudvdud.tests.regression.registration.UnsuccessfulRegistrationWrongParametersTest"/>
         </classes>
     </test>
     <test name="Test unsuccessful registration so long email parameter">
         <parameter name="userName" value="USER_SO_LONG_EMAIL"/>
         <classes>
-            <class name="ru.vdudvdud.tests.registration.UnsuccessfulRegistrationWrongParametersTest"/>
+            <class name="ru.vdudvdud.tests.regression.registration.UnsuccessfulRegistrationWrongParametersTest"/>
         </classes>
     </test>
     <test name="Test unsuccessful registration short password parameter">
         <parameter name="userName" value="USER_SHORT_PASSWORD"/>
         <classes>
-            <class name="ru.vdudvdud.tests.registration.UnsuccessfulRegistrationWrongParametersTest"/>
+            <class name="ru.vdudvdud.tests.regression.registration.UnsuccessfulRegistrationWrongParametersTest"/>
         </classes>
     </test>
     <test name="Test unsuccessful registration empty password parameter">
         <parameter name="userName" value="USER_EMPTY_PASSWORD"/>
         <classes>
-            <class name="ru.vdudvdud.tests.registration.UnsuccessfulRegistrationWrongParametersTest"/>
+            <class name="ru.vdudvdud.tests.regression.registration.UnsuccessfulRegistrationWrongParametersTest"/>
         </classes>
     </test>
     <test name="Test unsuccessful registration passwords doesn't match">
         <classes>
-            <class name="ru.vdudvdud.tests.registration.UnsuccessfulRegistrationPasswordsDoesntMatchTest"/>
+            <class name="ru.vdudvdud.tests.regression.registration.UnsuccessfulRegistrationPasswordsDoesntMatchTest"/>
         </classes>
     </test>
 
