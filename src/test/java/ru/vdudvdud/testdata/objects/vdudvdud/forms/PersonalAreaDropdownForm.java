@@ -29,10 +29,15 @@ public class PersonalAreaDropdownForm extends BasePage {
         SIGN_UP.click();
     }
 
-    public void checkThatLogoutBtnVisible() {
-        LOGOUT.shouldBe(Condition.visible);
+    public void checkThatLogoutBtnInState(Condition condition) {
+        LOGOUT.shouldBe(condition);
     }
-    public void checkThatLogoutBtnInvisible() {
-        LOGOUT.shouldNotBe(Condition.visible);
+
+    public void checkThatSignInBtnInState(Condition condition) {
+        SIGN_IN.shouldBe(condition);
+    }
+
+    public void clickLogout() {
+        LOGOUT.click();
     }
 }

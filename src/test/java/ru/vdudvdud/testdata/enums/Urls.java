@@ -6,7 +6,11 @@ public enum Urls {
     BASE("/"),
     SIGN_IN("login/"),
     SIGN_UP("signup/"),
-    LOGOUT("?logout");
+    LOGOUT("?logout"),
+    FORGOT_PASSWORD("forgotpassword/"),
+    MY_ORDERS("my/orders/"),
+    MY_PROFILE("my/profile/"),
+    ORDER("order/");
 
     private static final Configuration CONFIG = Configuration.getInstance();
 

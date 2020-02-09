@@ -40,6 +40,7 @@ public class DriverContainer {
         Logger.getInstance().info("Browser size is " + driver.manage().window().getSize().toString());
         drivers.get().put(instanceKey, driver);
     }
+
     /**
      * Получение драйвера и помещение его в контейнер.
      */

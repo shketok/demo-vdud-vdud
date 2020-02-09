@@ -3,7 +3,6 @@
 <suite name="debug" verbose="1">
 
     <test name="Test successful authorization">
-        <!--        <parameter name="" value=""/>-->
         <classes>
             <class name="ru.vdudvdud.tests.regression.authorization.SuccessfulAuthorizationTest"/>
         </classes>

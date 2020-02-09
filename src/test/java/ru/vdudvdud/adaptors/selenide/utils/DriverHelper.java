@@ -5,7 +5,11 @@ import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.ex.ElementNotFound;
 import io.qameta.allure.Attachment;
-import org.openqa.selenium.*;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Wait;
@@ -64,7 +68,7 @@ public class DriverHelper {
     /**
      * сделать скроиншот и добавить его в Allure
      *
-     * @return
+     * @return Возвращает скриншот в байтовом представлении
      */
     @Attachment(type = "image/png")
     public static byte[] makeScreenshot() {

@@ -4,16 +4,17 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import ru.vdudvdud.adaptors.selenide.base.BasePage;
 import ru.vdudvdud.adaptors.selenide.utils.SmartWait;
-import ru.vdudvdud.testdata.objects.vdudvdud.forms.PersonalAreaDropdownForm;
 
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
+/**
+ * Класс по работе со страницей регистрации нового пользователя
+ */
 public class SignUpPage extends BasePage {
     private static final SelenideElement MAIN_ELEMENT = $x("//div[@class='wa-form']");
 
-    private static final SelenideElement FIRSTNAME = $x("//div[contains(@class, 'field-firstname')]//input");
-    private static final SelenideElement LASTNAME = $x("//div[contains(@class, 'field-lastname')]//input");
+    private static final SelenideElement FIRST_NAME = $x("//div[contains(@class, 'field-firstname')]//input");
+    private static final SelenideElement LAST_NAME = $x("//div[contains(@class, 'field-lastname')]//input");
     private static final SelenideElement PASSWORD = $x("//div[contains(@class, 'field-password') and not(contains(@class, 'confirm'))]//input");
     private static final SelenideElement CONFIRM_PASSWORD = $x("//div[contains(@class, 'field-password_confirm')]//input");
     private static final SelenideElement EMAIL = $x("//div[contains(@class, 'field-email')]//input");
@@ -27,11 +28,11 @@ public class SignUpPage extends BasePage {
 
 
     public void fillName(String value) {
-        FIRSTNAME.setValue(value);
+        FIRST_NAME.setValue(value);
     }
 
     public void fillSurname(String value) {
-        LASTNAME.setValue(value);
+        LAST_NAME.setValue(value);
     }
 
     public void fillPassword(String value) {
@@ -50,10 +51,31 @@ public class SignUpPage extends BasePage {
         SIGN_UP_BUTTON.click();
     }
 
-    public boolean isSignUpBtnInvisible() {
-        return SmartWait.isNotElement(SIGN_UP_BUTTON, Condition.visible);
-    }
     public boolean isSignUpBtnVisible() {
         return SmartWait.isElement(SIGN_UP_BUTTON, Condition.visible);
+    }
+
+    public void checkThatFirstNameInState(Condition condition) {
+        FIRST_NAME.shouldBe(condition);
+    }
+
+    public void checkThatLastNameInState(Condition condition) {
+        LAST_NAME.shouldBe(condition);
+    }
+
+    public void checkThatPasswordInState(Condition condition) {
+        PASSWORD.shouldBe(condition);
+    }
+
+    public void checkThatConfirmPasswordInState(Condition condition) {
+        CONFIRM_PASSWORD.shouldBe(condition);
+    }
+
+    public void checkThatEmailInState(Condition condition) {
+        EMAIL.shouldBe(condition);
+    }
+
+    public void checkThatSignUpButtonInState(Condition condition) {
+        SIGN_UP_BUTTON.shouldBe(condition);
     }
 }

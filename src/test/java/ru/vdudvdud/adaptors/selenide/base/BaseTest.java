@@ -1,6 +1,5 @@
 package ru.vdudvdud.adaptors.selenide.base;
 
-import com.codeborne.selenide.WebDriverRunner;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.testng.ITestContext;
@@ -14,7 +13,6 @@ import ru.vdudvdud.adaptors.selenide.driver.DriverContainer;
 import ru.vdudvdud.adaptors.selenide.utils.DriverHelper;
 import ru.vdudvdud.adaptors.selenide.utils.Logger;
 import ru.vdudvdud.adaptors.selenide.utils.Store;
-import ru.vdudvdud.testdata.enums.Urls;
 
 import static java.lang.String.format;
 
