@@ -1,4 +1,4 @@
-package ru.vdudvdud.testdata.objects.vdudvdud.forms;
+package ru.vdudvdud.objects.vdudvdud.forms;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;

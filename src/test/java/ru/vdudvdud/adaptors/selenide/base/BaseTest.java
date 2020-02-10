@@ -23,6 +23,11 @@ public abstract class BaseTest {
 
     protected static final Logger LOG = Logger.getInstance();
 
+    /**
+     * Класс для хранения и запуска автоматизированного сценария.
+     */
+    public abstract void runTest();
+
 
     /**
      * Метод, выполняющийся один раз перед всеми тестами в сьюте.

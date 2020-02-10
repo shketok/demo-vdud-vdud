@@ -1,4 +1,4 @@
-package ru.vdudvdud.testdata.objects.vdudvdud.pages;
+package ru.vdudvdud.objects.vdudvdud.pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;

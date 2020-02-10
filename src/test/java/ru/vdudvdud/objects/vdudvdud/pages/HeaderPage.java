@@ -1,10 +1,12 @@
-package ru.vdudvdud.testdata.objects.vdudvdud.pages;
+package ru.vdudvdud.objects.vdudvdud.pages;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import ru.vdudvdud.adaptors.selenide.base.BasePage;
+import ru.vdudvdud.testdata.enums.RegexPatterns;
 import ru.vdudvdud.testdata.enums.Urls;
-import ru.vdudvdud.testdata.objects.vdudvdud.forms.PersonalAreaDropdownForm;
+import ru.vdudvdud.objects.vdudvdud.forms.PersonalAreaDropdownForm;
+import ru.vdudvdud.testdata.utils.RegexMatcher;
 
 import static com.codeborne.selenide.Selenide.$;
 
@@ -21,6 +23,9 @@ public class HeaderPage extends BasePage {
     private static final SelenideElement MAIN_CONTACTS_LABEL = $("div.main-contacts");
     private static final SelenideElement LOGO = $(String.format("a.logo[href='%s']", Urls.BASE.getUrlPart()));
     private static final SelenideElement BASKET = $(String.format("div[class*='store-actions'] a[href*='%s'][class*='store']", Urls.ORDER.getUrlPart()));
+
+    private static final String CART_AMOUNT_LOC = "span[class*='cart-amount']";
+    private static final String PRODUCTS_PRICE_LOC = "div[class*='cart-content-text']";
 
     @Override
     protected SelenideElement getMainElement() {
@@ -58,5 +63,18 @@ public class HeaderPage extends BasePage {
 
     public void checkThatBasketInState(Condition condition) {
         BASKET.shouldBe(condition);
+    }
+
+
+    public String getCartAmountText() {
+        return BASKET.$(CART_AMOUNT_LOC).getText();
+    }
+
+    public String getProductCostText() {
+        return RegexMatcher.regexGetFirstMatchGroup(BASKET.$(PRODUCTS_PRICE_LOC).getText(), RegexPatterns.DIGITS.toString());
+    }
+
+    public String getProductCurrencyText() {
+        return RegexMatcher.regexGetFirstMatchGroup(BASKET.$(PRODUCTS_PRICE_LOC).getText(), RegexPatterns.NON_DIGITS.toString().trim());
     }
 }

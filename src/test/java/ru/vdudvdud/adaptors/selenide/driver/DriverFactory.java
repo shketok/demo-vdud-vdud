@@ -26,6 +26,7 @@ public class DriverFactory implements IDriverFactory {
     private static final Logger LOG = Logger.getInstance();
     private static final Browser BROWSER = Browser.getValue(Configuration.getInstance().getProperty("browser"));
     public static final Long ELEMENT_TIMEOUT = Configuration.getInstance().getTimeout("timeout.element.wait");
+    public static final Long ELEMENT_POLLING_TIMEOUT = Configuration.getInstance().getTimeout("timeout.element.polling");
     public static final Long PAGE_CLOSE_TIMEOUT = Configuration.getInstance().getTimeout("timeout.page.close");
     private static final Boolean REMOTE_WD = Boolean.valueOf(System.getenv("REMOTE_WD"));
     private static final String REMOTE_WD_URL = Configuration.getInstance().getProperty("browser.remote_wd.url");

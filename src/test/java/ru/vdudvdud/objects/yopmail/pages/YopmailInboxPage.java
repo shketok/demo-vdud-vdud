@@ -1,4 +1,4 @@
-package ru.vdudvdud.testdata.objects.yopmail.pages;
+package ru.vdudvdud.objects.yopmail.pages;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;

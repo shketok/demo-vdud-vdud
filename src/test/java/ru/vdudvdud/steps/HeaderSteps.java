@@ -2,8 +2,12 @@ package ru.vdudvdud.steps;
 
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
-import ru.vdudvdud.testdata.objects.vdudvdud.forms.PersonalAreaDropdownForm;
-import ru.vdudvdud.testdata.objects.vdudvdud.pages.HeaderPage;
+import org.testng.Assert;
+import org.testng.asserts.SoftAssert;
+import ru.vdudvdud.objects.vdudvdud.forms.PersonalAreaDropdownForm;
+import ru.vdudvdud.objects.vdudvdud.pages.HeaderPage;
+import ru.vdudvdud.testdata.enums.RegexPatterns;
+import ru.vdudvdud.testdata.models.essences.Product;
 
 public class HeaderSteps extends BaseSteps {
     private HeaderPage headerPage = new HeaderPage();
@@ -50,5 +54,24 @@ public class HeaderSteps extends BaseSteps {
         headerPage.hoverPersonalArea();
         personalAreaDropdownForm.checkThatSignInBtnInState(Condition.visible);
         personalAreaDropdownForm.clickSignIn();
+    }
+
+    @Step("Проверка параметров мини корзины на соотвествие количеству продуктов, их цене и валюте")
+    public void checkMiniCart(String currency, Product... products) {
+        Integer countOfProducts = 0;
+        Integer cost = 0;
+
+        for (Product product : products) {
+            countOfProducts += product.getCount();
+            cost += product.getCost();
+        }
+
+        softAssert.assertEquals(headerPage.getCartAmountText(), countOfProducts.toString(),
+                "Проверка совпадения количества товара на странице с ожидаемым значением");
+        softAssert.assertEquals(headerPage.getProductCostText().replaceAll(RegexPatterns.SPACES.toString(), ""), cost.toString(),
+                "Проверка совпадения общей цены товара на странице с ожидаемым значением");
+        softAssert.assertEquals(headerPage.getProductCurrencyText(), currency,
+                "Проверка совпадения валюты товара на странице с ожидаемым значением");
+        softAssert.assertAll();
     }
 }
