@@ -20,12 +20,6 @@ public class RegexMatcher {
         return pattern.matcher(text);
     }
 
-    public static Matcher getRegexMatcher(String pat, String text) {
-        Matcher matcher = getMatcher(pat, text);
-        matcher.find();
-        return matcher;
-    }
-
     public static List<String> getStringList(String pat, String text) {
         Matcher matcher = getMatcher(pat, text);
         List<String> listMatches = new ArrayList<>();
@@ -34,18 +28,6 @@ public class RegexMatcher {
             logger.info(String.format("Matcher : %s", matcher.group()));
         }
         return listMatches;
-    }
-
-    public static boolean isTextInteger(String text) {
-        return RegexMatcher.regexIsMatch(text, "[-+]?\\d+");
-    }
-
-    public static String regexGetMatch(String text, String regex) {
-        return regexGetMatchGroup(text, regex, 0, false);
-    }
-
-    public static String regexGetMatchGroup(String text, String regex, int groupIndex) {
-        return regexGetMatchGroup(text, regex, groupIndex, false);
     }
 
     public static String regexGetMatchGroup(String text, String regex, int groupIndex, boolean matchCase) {
@@ -65,10 +47,6 @@ public class RegexMatcher {
     private static Pattern regexGetPattern(String regex, boolean matchCase) {
         int flags = matchCase ? 0 : Pattern.CASE_INSENSITIVE | Pattern.UNICODE_CASE;
         return Pattern.compile(regex, flags);
-    }
-
-    public static boolean regexIsMatch(String text, String regex) {
-        return regexIsMatch(text, regex, false);
     }
 
     private static boolean regexIsMatch(String text, String regex, boolean matchCase) {
