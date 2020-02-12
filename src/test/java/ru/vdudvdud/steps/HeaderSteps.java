@@ -74,4 +74,9 @@ public class HeaderSteps extends BaseSteps {
                 "Проверка совпадения валюты товара на странице с ожидаемым значением");
         softAssert.assertAll();
     }
+
+    @Step("Переход на страницу корзины")
+    public void goToTheCartPage() {
+        headerPage.clickBasket();
+    }
 }

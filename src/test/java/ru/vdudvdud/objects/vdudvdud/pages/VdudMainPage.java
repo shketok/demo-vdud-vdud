@@ -44,7 +44,7 @@ public class VdudMainPage extends BasePage {
      */
     public Product getRandomProduct() {
         ElementsCollection products = getProductsFromTheCatalog();
-        SelenideElement productElement = products.get(new Random().nextInt(products.size()));
+        SelenideElement productElement = products.get(new Random().nextInt(products.size())).scrollIntoView(true);
         return createProductFromProductCard(productElement);
     }
 

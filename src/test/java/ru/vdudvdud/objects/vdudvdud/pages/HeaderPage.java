@@ -77,4 +77,8 @@ public class HeaderPage extends BasePage {
     public String getProductCurrencyText() {
         return RegexMatcher.regexGetFirstMatchGroup(BASKET.$(PRODUCTS_PRICE_LOC).getText(), RegexPatterns.NON_DIGITS.toString().trim());
     }
+
+    public void clickBasket() {
+        BASKET.click();
+    }
 }
