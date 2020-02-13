@@ -3,7 +3,6 @@ package ru.vdudvdud.adaptors.selenide.utils;
 import com.codeborne.selenide.WebDriverRunner;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import ru.vdudvdud.adaptors.selenide.Configuration;
 import ru.vdudvdud.adaptors.selenide.driver.DriverContainer;

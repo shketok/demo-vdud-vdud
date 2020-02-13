@@ -1,10 +1,9 @@
-package ru.vdudvdud.objects.vdudvdud.forms.cart;
+package ru.vdudvdud.objects.vdudvdud.forms.cart.products.product;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import ru.vdudvdud.adaptors.selenide.base.BasePage;
 
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
 
@@ -12,8 +11,6 @@ import static com.codeborne.selenide.Selenide.$x;
  * Класс по работе с продуктами в корзине
  */
 public class ProductForm extends BasePage {
-    private static final SelenideElement MAIN_ELEMENT = $("div.wa-products");
-
     /**
      * Локаторы для обращения к элементам конкретного продукта
      */
@@ -30,9 +27,13 @@ public class ProductForm extends BasePage {
     private static final String PRODUCT_FULL_PRICE_LOC = "div.wa-price-total";
     private static final String PRODUCT_DELETE_LOC = "span.js-delete-product";
 
-    public ProductForm() {
-    }
-
+    /**
+     * Создает табу с конкретным продуктом.
+     * Обязательна передача имени и размера, так как продукты разных размеров передаются в разные табы
+     *
+     * @param name Наименование продукта.
+     * @param size Размер продукта.
+     */
     public ProductForm(String name, String size) {
         PRODUCT = $x(String.format("//div[contains(@class, 'wa-product') and @data-id  " +
                 "and .//a[@class='wa-name' and contains(text(), '%s')] " +
@@ -41,7 +42,7 @@ public class ProductForm extends BasePage {
 
     @Override
     protected SelenideElement getMainElement() {
-        return MAIN_ELEMENT;
+        return PRODUCT;
     }
 
     public void checkThatProductImageLocInState(Condition condition) {

@@ -3,8 +3,8 @@ package ru.vdudvdud.objects.vdudvdud.pages;
 import com.codeborne.selenide.SelenideElement;
 import ru.vdudvdud.adaptors.selenide.base.BasePage;
 import ru.vdudvdud.objects.vdudvdud.forms.cart.CheckoutForm;
-import ru.vdudvdud.objects.vdudvdud.forms.cart.ProductForm;
 import ru.vdudvdud.objects.vdudvdud.forms.cart.TotalForm;
+import ru.vdudvdud.objects.vdudvdud.forms.cart.products.ProductsForm;
 
 import static com.codeborne.selenide.Selenide.$;
 
@@ -19,11 +19,8 @@ public class CartPage extends BasePage {
         return MAIN_ELEMENT;
     }
 
-    public ProductForm getProductForm() {
-        return new ProductForm();
-    }
-    public ProductForm getProductForm(String name, String size) {
-        return new ProductForm(name, size);
+    public ProductsForm getProductsForm() {
+        return new ProductsForm();
     }
 
     public TotalForm getTotalForm() {

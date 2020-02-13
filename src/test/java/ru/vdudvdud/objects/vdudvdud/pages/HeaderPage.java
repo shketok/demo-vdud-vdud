@@ -3,9 +3,9 @@ package ru.vdudvdud.objects.vdudvdud.pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import ru.vdudvdud.adaptors.selenide.base.BasePage;
+import ru.vdudvdud.objects.vdudvdud.forms.PersonalAreaDropdownForm;
 import ru.vdudvdud.testdata.enums.RegexPatterns;
 import ru.vdudvdud.testdata.enums.Urls;
-import ru.vdudvdud.objects.vdudvdud.forms.PersonalAreaDropdownForm;
 import ru.vdudvdud.testdata.utils.RegexMatcher;
 
 import static com.codeborne.selenide.Selenide.$;

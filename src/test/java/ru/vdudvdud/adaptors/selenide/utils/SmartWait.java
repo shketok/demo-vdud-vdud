@@ -1,24 +1,17 @@
 package ru.vdudvdud.adaptors.selenide.utils;
 
-import com.codeborne.selenide.CollectionCondition;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.ex.ElementNotFound;
-import com.codeborne.selenide.ex.ElementShould;
 import com.codeborne.selenide.ex.ElementShouldNot;
-import com.codeborne.selenide.impl.WebElementsCollection;
-import org.checkerframework.checker.nullness.compatqual.NullableDecl;
-import org.openqa.selenium.WebElement;
-import ru.vdudvdud.adaptors.selenide.driver.DriverFactory;
 
 /**
  * Класс с умными ожиданиями.
  * Класс имеет смысл использовать в случае негативных проверок, когда мы знаем, что чего-то не должно появиться,
  * так как классическое ожидание в случае, если элемент не видим в данный момент, сразу вернет истину, хотя он может появиться
  * спустя некоторое время.
- *
+ * <p>
  * Класс также имеет место быть для остальных сложных ожиданий, например ожидание прогрузки всех элементов одного типа на странице.
- *
+ * <p>
  * Использование подобных ожиданий уместно только в случае негативных проверок, когда мы ожидаем, что следующая страница не открыта.
  * В случае позитивной проверки следует дожидаться как раз элементов со следующей страницы.
  */

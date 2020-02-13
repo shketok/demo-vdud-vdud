@@ -6,8 +6,6 @@ import ru.vdudvdud.adaptors.selenide.base.BaseTest;
 import ru.vdudvdud.adaptors.selenide.utils.BrowserUtils;
 import ru.vdudvdud.steps.CartSteps;
 import ru.vdudvdud.steps.HeaderSteps;
-import ru.vdudvdud.steps.MainPageSteps;
-import ru.vdudvdud.steps.SignInSteps;
 import ru.vdudvdud.steps.scenarios.AuthorizationScenarios;
 import ru.vdudvdud.steps.scenarios.ProductScenarios;
 import ru.vdudvdud.testdata.builders.UsersCreator;

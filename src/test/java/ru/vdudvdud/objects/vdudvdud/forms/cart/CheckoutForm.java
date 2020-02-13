@@ -9,10 +9,10 @@ import static com.codeborne.selenide.Selenide.$;
  * Класс описывающий форму оформления заказов конечного с доставкой, покупателем, типом доставки.
  */
 public class CheckoutForm extends BasePage {
-    private static final SelenideElement MAIN_ELEMENT = $("div#js-order-form");
+    private static final String MAIN_ELEMENT = "div#js-order-form";
 
     @Override
     protected SelenideElement getMainElement() {
-        return MAIN_ELEMENT;
+        return $(MAIN_ELEMENT);
     }
 }

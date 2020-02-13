@@ -2,8 +2,8 @@ package ru.vdudvdud.steps;
 
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
-import ru.vdudvdud.testdata.models.essences.User;
 import ru.vdudvdud.objects.vdudvdud.pages.SignInPage;
+import ru.vdudvdud.testdata.models.essences.User;
 
 public class SignInSteps extends BaseSteps {
     private SignInPage signInPage = new SignInPage();

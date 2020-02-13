@@ -8,7 +8,7 @@ import ru.vdudvdud.testdata.enums.Urls;
 import static com.codeborne.selenide.Selenide.$;
 
 public class PersonalAreaDropdownForm extends BasePage {
-    private static final SelenideElement MAIN_ELEMENT = $(".account-submenu ul");
+    private static final String MAIN_ELEMENT = ".account-submenu ul";
 
     private static final String DROPDOWN_PERSONAL_AREA_LINK_LOC = ".account-submenu a[href*='%s']";
 
@@ -18,7 +18,7 @@ public class PersonalAreaDropdownForm extends BasePage {
 
     @Override
     protected SelenideElement getMainElement() {
-        return MAIN_ELEMENT;
+        return $(MAIN_ELEMENT);
     }
 
     public void clickSignIn() {

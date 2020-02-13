@@ -2,7 +2,7 @@ package ru.vdudvdud.steps;
 
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
-import ru.vdudvdud.objects.vdudvdud.forms.cart.ProductForm;
+import ru.vdudvdud.objects.vdudvdud.forms.cart.products.product.ProductForm;
 import ru.vdudvdud.objects.vdudvdud.pages.CartPage;
 import ru.vdudvdud.testdata.models.essences.Product;
 
@@ -13,7 +13,7 @@ public class CartSteps extends BaseSteps {
     @Step("Проверка видимости основных элементов на странице")
     public void checkThatMainElementsOfThePageAreVisible() {
         cartPage.getCheckoutForm().shouldBe(Condition.visible);
-        cartPage.getProductForm().shouldBe(Condition.visible);
+        cartPage.getProductsForm().shouldBe(Condition.visible);
         cartPage.getTotalForm().shouldBe(Condition.visible);
 
     }
@@ -21,7 +21,7 @@ public class CartSteps extends BaseSteps {
     @Step("Проверка добавления товара в корзину. " +
             "Изображение, название, размер, вес, количество, кнопки и цена отображаются корректно")
     public void checkThatProductWasAddedToTheCart(Product product) {
-        ProductForm productForm = cartPage.getProductForm(product.getName(), product.getSize());
+        ProductForm productForm = cartPage.getProductsForm().getProductForm(product.getName(), product.getSize());
 
         productForm.checkThatProductImageLocInState(Condition.visible);
         productForm.checkThatProductNameLocInState(Condition.visible);

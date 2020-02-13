@@ -17,7 +17,7 @@ import static com.codeborne.selenide.Selenide.$x;
 /**
  * Класс описывающий основную страницу при переходе по базовому урлу до сайта. Страница отображающая товары и табы для переключения по категориям.
  */
-public class VdudMainPage extends BasePage {
+public class VdudMainPage extends BasePage { // TODO: Разделить логику на форму с карточками и с карточкой. Вынести из класса логику
     private static final SelenideElement MAIN_ELEMENT = $x("//div[contains(@class, 'nc-items') and .//div[@class='nc-item']]");
 
     private static final String PRODUCTS_FROM_THE_CATALOG_LOC = "//div[contains(@class, 'home-items__tab-content')]//div[@class='nc-item']";

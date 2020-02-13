@@ -6,8 +6,8 @@ import io.qameta.allure.Step;
 import org.testng.Assert;
 import ru.vdudvdud.objects.vdudvdud.modals.AddProductToTheCartPopup;
 import ru.vdudvdud.objects.vdudvdud.modals.ProductAddedToTheCartPopup;
-import ru.vdudvdud.testdata.enums.Urls;
 import ru.vdudvdud.objects.vdudvdud.pages.VdudMainPage;
+import ru.vdudvdud.testdata.enums.Urls;
 import ru.vdudvdud.testdata.models.essences.Product;
 
 public class MainPageSteps extends BaseSteps {
