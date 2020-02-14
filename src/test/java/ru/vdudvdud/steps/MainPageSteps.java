@@ -23,7 +23,7 @@ public class MainPageSteps extends BaseSteps {
 
     @Step("Открытие главной страницы сайта и проверка корректного открытия страницы")
     public void openMainPage() {
-        WebDriverRunner.getWebDriver().navigate().to(Urls.BASE.getHomeUrl());
+        Urls.BASE.navigate();
         checkThatMainPageIsOpen();
     }
 

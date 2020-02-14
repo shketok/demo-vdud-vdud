@@ -37,7 +37,7 @@ public class DriverContainer {
     private static void createDriver(Instance instanceKey) {
         IDriverFactory driverFactory = new DriverFactory();
         RemoteWebDriver driver = driverFactory.getDriver();
-        Logger.getInstance().info("Browser size is " + driver.manage().window().getSize().toString());
+        Logger.getInstance().info("Browser dimension is " + driver.manage().window().getSize().toString());
         drivers.get().put(instanceKey, driver);
     }
 

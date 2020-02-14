@@ -1,5 +1,6 @@
 package ru.vdudvdud.testdata.enums;
 
+import com.codeborne.selenide.WebDriverRunner;
 import ru.vdudvdud.adaptors.selenide.Configuration;
 
 public enum Urls {
@@ -26,6 +27,10 @@ public enum Urls {
 
     public String getUrlPart() {
         return urlPart;
+    }
+
+    public void navigate() {
+        WebDriverRunner.getWebDriver().navigate().to(getHomeUrl());
     }
 
 }
