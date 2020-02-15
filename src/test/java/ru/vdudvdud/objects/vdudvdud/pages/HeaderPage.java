@@ -5,7 +5,7 @@ import com.codeborne.selenide.SelenideElement;
 import ru.vdudvdud.adaptors.selenide.base.BasePage;
 import ru.vdudvdud.objects.vdudvdud.forms.PersonalAreaDropdownForm;
 import ru.vdudvdud.testdata.enums.RegexPatterns;
-import ru.vdudvdud.testdata.enums.Urls;
+import ru.vdudvdud.testdata.enums.urls.BaseUrls;
 import ru.vdudvdud.testdata.utils.RegexMatcher;
 
 import static com.codeborne.selenide.Selenide.$;
@@ -21,8 +21,8 @@ public class HeaderPage extends BasePage {
     private static final SelenideElement PERSONAL_AREA = $("[class*='top-bar'] .info-settings div > .icon-user");
     private static final SelenideElement CURRENCY_TAB = $("div.info-settings div[class*='currency']");
     private static final SelenideElement MAIN_CONTACTS_LABEL = $("div.main-contacts");
-    private static final SelenideElement LOGO = $(String.format("a.logo[href='%s']", Urls.BASE.getUrlPart()));
-    private static final SelenideElement BASKET = $(String.format("div[class*='store-actions'] a[href*='%s'][class*='store']", Urls.ORDER.getUrlPart()));
+    private static final SelenideElement LOGO = $(String.format("a.logo[href='%s']", BaseUrls.BASE.getUrlPart()));
+    private static final SelenideElement BASKET = $(String.format("div[class*='store-actions'] a[href*='%s'][class*='store']", BaseUrls.ORDER.getUrlPart()));
 
     private static final String CART_AMOUNT_LOC = "span[class*='cart-amount']";
     private static final String PRODUCTS_PRICE_LOC = "div[class*='cart-content-text']";

@@ -3,7 +3,7 @@ package ru.vdudvdud.objects.vdudvdud.pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import ru.vdudvdud.adaptors.selenide.base.BasePage;
-import ru.vdudvdud.testdata.enums.Urls;
+import ru.vdudvdud.testdata.enums.urls.BaseUrls;
 
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -19,8 +19,8 @@ public class SignInPage extends BasePage {
     private static final SelenideElement PASSWORD = $x("//input[@name='password']");
     private static final SelenideElement TITLE = $x("//*[@class='signing__title']");
     private static final SelenideElement CONFIRM = $x("//input[@type='submit']");
-    private static final SelenideElement FORGOT_PASSWORD = $x(String.format(AUTH_LINKS_PATTERN, Urls.FORGOT_PASSWORD.getUrlPart()));
-    private static final SelenideElement REGISTRATION = $x(String.format(AUTH_LINKS_PATTERN, Urls.SIGN_UP.getUrlPart()));
+    private static final SelenideElement FORGOT_PASSWORD = $x(String.format(AUTH_LINKS_PATTERN, BaseUrls.FORGOT_PASSWORD.getUrlPart()));
+    private static final SelenideElement REGISTRATION = $x(String.format(AUTH_LINKS_PATTERN, BaseUrls.SIGN_UP.getUrlPart()));
 
     @Override
     protected SelenideElement getMainElement() {

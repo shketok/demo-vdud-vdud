@@ -1,13 +1,12 @@
 package ru.vdudvdud.steps;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.Step;
 import org.testng.Assert;
 import ru.vdudvdud.objects.vdudvdud.modals.AddProductToTheCartPopup;
 import ru.vdudvdud.objects.vdudvdud.modals.ProductAddedToTheCartPopup;
 import ru.vdudvdud.objects.vdudvdud.pages.VdudMainPage;
-import ru.vdudvdud.testdata.enums.Urls;
+import ru.vdudvdud.testdata.enums.urls.BaseUrls;
 import ru.vdudvdud.testdata.models.essences.Product;
 
 public class MainPageSteps extends BaseSteps {
@@ -23,7 +22,7 @@ public class MainPageSteps extends BaseSteps {
 
     @Step("Открытие главной страницы сайта и проверка корректного открытия страницы")
     public void openMainPage() {
-        Urls.BASE.navigate();
+        BaseUrls.BASE.navigate();
         checkThatMainPageIsOpen();
     }
 

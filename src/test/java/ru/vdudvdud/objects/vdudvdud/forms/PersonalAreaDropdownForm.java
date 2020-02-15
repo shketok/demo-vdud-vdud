@@ -3,7 +3,7 @@ package ru.vdudvdud.objects.vdudvdud.forms;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import ru.vdudvdud.adaptors.selenide.base.BasePage;
-import ru.vdudvdud.testdata.enums.Urls;
+import ru.vdudvdud.testdata.enums.urls.BaseUrls;
 
 import static com.codeborne.selenide.Selenide.$;
 
@@ -12,9 +12,9 @@ public class PersonalAreaDropdownForm extends BasePage {
 
     private static final String DROPDOWN_PERSONAL_AREA_LINK_LOC = ".account-submenu a[href*='%s']";
 
-    private static final SelenideElement SIGN_IN = $(String.format(DROPDOWN_PERSONAL_AREA_LINK_LOC, Urls.SIGN_IN.getUrlPart()));
-    private static final SelenideElement SIGN_UP = $(String.format(DROPDOWN_PERSONAL_AREA_LINK_LOC, Urls.SIGN_UP.getUrlPart()));
-    private static final SelenideElement LOGOUT = $(String.format(DROPDOWN_PERSONAL_AREA_LINK_LOC, Urls.LOGOUT.getUrlPart()));
+    private static final SelenideElement SIGN_IN = $(String.format(DROPDOWN_PERSONAL_AREA_LINK_LOC, BaseUrls.SIGN_IN.getUrlPart()));
+    private static final SelenideElement SIGN_UP = $(String.format(DROPDOWN_PERSONAL_AREA_LINK_LOC, BaseUrls.SIGN_UP.getUrlPart()));
+    private static final SelenideElement LOGOUT = $(String.format(DROPDOWN_PERSONAL_AREA_LINK_LOC, BaseUrls.LOGOUT.getUrlPart()));
 
     @Override
     protected SelenideElement getMainElement() {
