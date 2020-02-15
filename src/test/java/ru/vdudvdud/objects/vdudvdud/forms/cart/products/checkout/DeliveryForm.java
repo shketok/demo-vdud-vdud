@@ -126,4 +126,12 @@ public class DeliveryForm extends BasePage {
     public void selectOptionRegionByValue(RegionSelect regionSelect) {
         SELECT_REGION.selectOptionByValue(regionSelect.getAlias());
     }
+
+    public String getSectionHeaderTitleText() {
+        return SECTION_HEADER_TITLE.getText();
+    }
+
+    public String getLegendStarRequiredLocText() {
+        return LEGEND_STAR_REQUIRED_LOC.getText();
+    }
 }
