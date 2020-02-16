@@ -3,7 +3,8 @@ package ru.vdudvdud.objects.vdudvdud.pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import ru.vdudvdud.adaptors.selenide.base.BasePage;
-import ru.vdudvdud.testdata.enums.Urls;
+import ru.vdudvdud.testdata.enums.urls.BaseUrls;
+import ru.vdudvdud.testdata.enums.urls.MyUrls;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
@@ -20,9 +21,9 @@ public class PersonalRoomPage extends BasePage {
     private static final SelenideElement USER_GREETING_SECTION = $("div.account__user-section");
     private static final SelenideElement ACCOUNT_ORDERS_HISTORY = $("div.account__history");
     private static final SelenideElement TITLE = $("*.account__title");
-    private static final SelenideElement ORDERS_TAB = $x(String.format(PERSONAL_ROOM_MENU_PATTERN, Urls.MY_ORDERS.getUrlPart()));
-    private static final SelenideElement PROFILE_TAB = $x(String.format(PERSONAL_ROOM_MENU_PATTERN, Urls.MY_PROFILE.getUrlPart()));
-    private static final SelenideElement LOGOUT_TAB = $x(String.format(PERSONAL_ROOM_MENU_PATTERN, Urls.LOGOUT.getUrlPart()));
+    private static final SelenideElement ORDERS_TAB = $x(String.format(PERSONAL_ROOM_MENU_PATTERN, MyUrls.MY_ORDERS.getUrlPart()));
+    private static final SelenideElement PROFILE_TAB = $x(String.format(PERSONAL_ROOM_MENU_PATTERN, MyUrls.MY_PROFILE.getUrlPart()));
+    private static final SelenideElement LOGOUT_TAB = $x(String.format(PERSONAL_ROOM_MENU_PATTERN, BaseUrls.LOGOUT.getUrlPart()));
 
     @Override
     protected SelenideElement getMainElement() {

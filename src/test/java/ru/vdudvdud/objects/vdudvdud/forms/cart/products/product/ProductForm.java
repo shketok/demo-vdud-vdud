@@ -14,7 +14,7 @@ public class ProductForm extends BasePage {
     /**
      * Локаторы для обращения к элементам конкретного продукта
      */
-    private static SelenideElement PRODUCT;
+    private SelenideElement PRODUCT;
 
     private static final String PRODUCT_IMAGE_LOC = "div.wa-column-image img";
     private static final String PRODUCT_NAME_LOC = "a.wa-name";
