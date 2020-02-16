@@ -22,7 +22,6 @@ public class FileManager {
     private static final Logger LOG = Logger.getInstance();
 
     private FileManager() {
-        throw new IllegalStateException("File manager class. All methods are static, don't create instance of this class");
     }
 
     /**

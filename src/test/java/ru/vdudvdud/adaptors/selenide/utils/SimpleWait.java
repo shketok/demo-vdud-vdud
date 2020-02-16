@@ -8,7 +8,6 @@ public class SimpleWait {
     private static final Logger LOG = Logger.getInstance();
 
     private SimpleWait() {
-        throw new IllegalStateException("Utility class");
     }
 
     /**

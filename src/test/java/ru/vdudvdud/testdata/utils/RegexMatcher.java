@@ -12,7 +12,6 @@ public class RegexMatcher {
     private static final Logger logger = Logger.getInstance();
 
     private RegexMatcher() {
-        throw new IllegalStateException("Regex matcher class. All methods are static, don't create instance of this class");
     }
 
     private static Matcher getMatcher(String pat, String text) {
