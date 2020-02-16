@@ -1,4 +1,4 @@
-package ru.vdudvdud.testdata.objects.vdudvdud.forms;
+package ru.vdudvdud.objects.vdudvdud.forms;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
@@ -8,7 +8,7 @@ import ru.vdudvdud.testdata.enums.Urls;
 import static com.codeborne.selenide.Selenide.$;
 
 public class PersonalAreaDropdownForm extends BasePage {
-    private static final SelenideElement MAIN_ELEMENT = $(".account-submenu ul");
+    private static final String MAIN_ELEMENT = ".account-submenu ul";
 
     private static final String DROPDOWN_PERSONAL_AREA_LINK_LOC = ".account-submenu a[href*='%s']";
 
@@ -18,7 +18,7 @@ public class PersonalAreaDropdownForm extends BasePage {
 
     @Override
     protected SelenideElement getMainElement() {
-        return MAIN_ELEMENT;
+        return $(MAIN_ELEMENT);
     }
 
     public void clickSignIn() {
@@ -29,10 +29,15 @@ public class PersonalAreaDropdownForm extends BasePage {
         SIGN_UP.click();
     }
 
-    public void checkThatLogoutBtnVisible() {
-        LOGOUT.shouldBe(Condition.visible);
+    public void checkThatLogoutBtnInState(Condition condition) {
+        LOGOUT.shouldBe(condition);
     }
-    public void checkThatLogoutBtnInvisible() {
-        LOGOUT.shouldNotBe(Condition.visible);
+
+    public void checkThatSignInBtnInState(Condition condition) {
+        SIGN_IN.shouldBe(condition);
+    }
+
+    public void clickLogout() {
+        LOGOUT.click();
     }
 }

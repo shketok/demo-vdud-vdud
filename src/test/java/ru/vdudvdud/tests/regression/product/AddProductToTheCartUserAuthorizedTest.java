@@ -1,4 +1,4 @@
-package ru.vdudvdud.tests.regression.registration;
+package ru.vdudvdud.tests.regression.product;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -7,9 +7,10 @@ import ru.vdudvdud.steps.HeaderSteps;
 import ru.vdudvdud.steps.MainPageSteps;
 import ru.vdudvdud.steps.RegistrationSteps;
 import ru.vdudvdud.testdata.builders.UsersCreator;
+import ru.vdudvdud.testdata.models.essences.Product;
 import ru.vdudvdud.testdata.models.essences.User;
 
-public class SuccessfulRegistrationTest extends BaseTest {
+public class AddProductToTheCartUserAuthorizedTest extends BaseTest {
     private MainPageSteps mainPageSteps = new MainPageSteps();
     private HeaderSteps headerSteps = new HeaderSteps();
     private RegistrationSteps registrationSteps = new RegistrationSteps();
@@ -20,16 +21,11 @@ public class SuccessfulRegistrationTest extends BaseTest {
     public void readParams() {
         user = UsersCreator.createRandomUser();
 
-    }
-
-    @Test
-    public void runTest() {
         LOG.info("1. Открытие главной страницы и формы регистрации");
         mainPageSteps.openMainPage();
         headerSteps.openSignUp();
 
         LOG.info("2. Заполнение формы регистрации");
-        registrationSteps.checkThatMainElementsOfThePageAreVisible();
         registrationSteps.fillRegistrationData(user);
         registrationSteps.sendRegistrationData();
 
@@ -37,5 +33,21 @@ public class SuccessfulRegistrationTest extends BaseTest {
         mainPageSteps.checkThatMainElementsOfThePageAreVisible();
         mainPageSteps.checkThatMainPageIsOpen();
         headerSteps.checkLogoutVisible();
+    }
+
+    @Test
+    public void runTest() {
+        LOG.info("1. Нажатие кнопки В корзину на случайном товаре с главной страницы");
+        Product product = mainPageSteps.clickRandomProductAddToTheCartBtn();
+
+        LOG.info("2. Подтверждение добавления товара в корзину");
+        mainPageSteps.updateProductFromTheAddToTheCartPopup(product);
+        mainPageSteps.confirmAddProductToTheCart();
+
+        LOG.info("3. Закрытие формы подтверждения того, что товар был добавлен в корзину");
+        mainPageSteps.closeProductAddedPopup();
+
+        LOG.info("4. Проверка, что в мини корзине появилось указанное количество товара");
+        headerSteps.checkMiniCart(product.getCurrency(), product);
     }
 }

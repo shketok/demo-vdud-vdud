@@ -13,6 +13,9 @@ import ru.vdudvdud.testdata.models.essences.User;
 import ru.vdudvdud.testdata.utils.TestDataProvider;
 
 public class UnsuccessfulRegistrationWrongParametersTest extends BaseTest {
+    private MainPageSteps mainPageSteps = new MainPageSteps();
+    private HeaderSteps headerSteps = new HeaderSteps();
+    private RegistrationSteps registrationSteps = new RegistrationSteps();
 
     private User user;
 
@@ -25,15 +28,12 @@ public class UnsuccessfulRegistrationWrongParametersTest extends BaseTest {
 
     @Test
     public void runTest() {
-        MainPageSteps mainPageSteps = new MainPageSteps();
-        HeaderSteps headerSteps = new HeaderSteps();
-        RegistrationSteps registrationSteps = new RegistrationSteps();
-
         LOG.info("1. Открытие главной страницы и формы регистрации");
         mainPageSteps.openMainPage();
         headerSteps.openSignUp();
 
         LOG.info("2. Заполнение формы регистрации");
+        registrationSteps.checkThatMainElementsOfThePageAreVisible();
         registrationSteps.fillRegistrationData(user);
         registrationSteps.sendRegistrationData();
 

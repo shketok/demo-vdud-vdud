@@ -1,16 +1,23 @@
 package ru.vdudvdud.steps;
 
+import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 import org.testng.Assert;
+import ru.vdudvdud.objects.vdudvdud.pages.SignUpPage;
 import ru.vdudvdud.testdata.models.essences.User;
-import ru.vdudvdud.testdata.objects.vdudvdud.pages.SignUpPage;
 
-public class RegistrationSteps {
-    private SignUpPage signUpPage;
+public class RegistrationSteps extends BaseSteps {
+    private SignUpPage signUpPage = new SignUpPage();
 
-
-    public RegistrationSteps() {
-        signUpPage = new SignUpPage();
+    @Override
+    @Step("Проверка видимости основных элементов на странице")
+    public void checkThatMainElementsOfThePageAreVisible() {
+        signUpPage.checkThatFirstNameInState(Condition.visible);
+        signUpPage.checkThatLastNameInState(Condition.visible);
+        signUpPage.checkThatPasswordInState(Condition.visible);
+        signUpPage.checkThatConfirmPasswordInState(Condition.visible);
+        signUpPage.checkThatEmailInState(Condition.visible);
+        signUpPage.checkThatSignUpButtonInState(Condition.visible);
     }
 
     @Step("Заполнение данных о пользователе на странице регистрации")
@@ -30,11 +37,6 @@ public class RegistrationSteps {
     @Step("Подтверждения введенных данных в форму регистрации")
     public void sendRegistrationData() {
         signUpPage.confirmSignUp();
-    }
-
-    @Step("Ожидание, пока кнопка регистрации не пропадет с экрана")
-    public void waitUntilSignUpBtnInvisible() {
-        Assert.assertTrue(signUpPage.isSignUpBtnInvisible(), "Кнопка регистрации видна");
     }
 
     @Step("Ожидание, присутсвия кнопки регистрации на странице")

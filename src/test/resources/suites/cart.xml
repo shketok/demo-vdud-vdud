@@ -4,7 +4,7 @@
 
     <test name="Test successful authorization">
         <classes>
-            <class name="ru.vdudvdud.tests.regression.authorization.SuccessfulAuthorizationTest"/>
+            <class name="ru.vdudvdud.tests.regression.cart.ProductDataInCartTest"/>
         </classes>
     </test>
 

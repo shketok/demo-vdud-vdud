@@ -3,7 +3,11 @@ package ru.vdudvdud.adaptors.selenide.utils;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
-import java.io.*;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.Reader;
+import java.io.Writer;
 import java.nio.file.Paths;
 
 import static java.lang.String.format;
