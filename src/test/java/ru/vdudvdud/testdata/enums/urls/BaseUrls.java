@@ -11,7 +11,7 @@ public enum BaseUrls implements IUrls {
     FORGOT_PASSWORD("forgotpassword/"),
     ORDER("order/"),
     DELIVERY("dostavka/"),
-    PAYMENT("oplata/"),,
+    PAYMENT("oplata/"),
     CONTACTS("contacts/");
 
     private final IUrls implementation;
