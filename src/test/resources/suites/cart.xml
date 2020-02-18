@@ -2,9 +2,15 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="debug" verbose="1">
 
-    <test name="Test successful authorization">
+    <test name="Test product data in cart">
         <classes>
             <class name="ru.vdudvdud.tests.regression.cart.ProductDataInCartTest"/>
+        </classes>
+    </test>
+
+    <test name="Test empty cart">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.EmptyCartTest"/>
         </classes>
     </test>
 

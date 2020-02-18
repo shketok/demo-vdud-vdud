@@ -34,4 +34,11 @@ public class CartSteps extends BaseSteps {
         productForm.checkThatProductFullPriceLocInState(Condition.visible);
         productForm.checkThatProductDeleteLocInState(Condition.visible);
     }
+
+
+    @Step("Проверка того, что корзина пустая")
+    public void checkThatCartIsEmpty() {
+        cartPage.getEmptyForm().checkCartIsEmpty();
+
+    }
 }
