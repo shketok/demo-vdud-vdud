@@ -24,7 +24,7 @@ public abstract class BaseTest {
     protected static final Logger LOG = Logger.getInstance();
 
     /**
-     * Класс для хранения и запуска автоматизированного сценария.
+     * Метод для хранения и запуска автоматизированного сценария.
      */
     public abstract void runTest();
 
