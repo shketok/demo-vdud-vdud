@@ -2,6 +2,7 @@ package ru.vdudvdud.steps;
 
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
+import ru.vdudvdud.objects.vdudvdud.forms.cart.EmptyCartForm;
 import ru.vdudvdud.objects.vdudvdud.forms.cart.products.product.ProductForm;
 import ru.vdudvdud.objects.vdudvdud.pages.CartPage;
 import ru.vdudvdud.testdata.models.essences.Product;
@@ -38,7 +39,11 @@ public class CartSteps extends BaseSteps {
 
     @Step("Проверка того, что корзина пустая")
     public void checkThatCartIsEmpty() {
-        cartPage.getEmptyForm().checkCartIsEmpty();
+        EmptyCartForm emptyCartForm = cartPage.getEmptyCartForm();
+
+        emptyCartForm.checkThatEmptyCartTextInState(Condition.visible);
+        emptyCartForm.checkThatEmptyCartSloganInState(Condition.visible);
+        emptyCartForm.checkThatEmptyCartIllustrationInState(Condition.visible);
 
     }
 }
