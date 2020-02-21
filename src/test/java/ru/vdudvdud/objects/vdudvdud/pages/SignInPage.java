@@ -1,11 +1,11 @@
 package ru.vdudvdud.objects.vdudvdud.pages;
 
+import static com.codeborne.selenide.Selenide.$x;
+
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import ru.vdudvdud.adaptors.selenide.base.BasePage;
 import ru.vdudvdud.testdata.enums.urls.BaseUrls;
-
-import static com.codeborne.selenide.Selenide.$x;
 
 /**
  * Класс описывающий страницу входа на сайт. Авторизация.
@@ -14,13 +14,17 @@ public class SignInPage extends BasePage {
     private static final SelenideElement MAIN_ELEMENT = $x("//div[contains(@class, 'signing__sign-in')]");
 
     private static final String AUTH_LINKS_PATTERN = "//div[@class='auth-links']//a[contains(@href, '%s')]";
+    private static final String ERROR_MSG_PATTERN = "//em[@class='wa-error-msg' and @data-name='%s']";
 
     private static final SelenideElement LOGIN = $x("//input[@name='login']");
+    private static final SelenideElement LOGIN_IS_MANDATORY_MSG = $x(String.format(ERROR_MSG_PATTERN, "login"));
     private static final SelenideElement PASSWORD = $x("//input[@name='password']");
+    private static final SelenideElement PASSWORD_IS_MANDATORY_MSG = $x(String.format(ERROR_MSG_PATTERN, "password"));
     private static final SelenideElement TITLE = $x("//*[@class='signing__title']");
     private static final SelenideElement CONFIRM = $x("//input[@type='submit']");
     private static final SelenideElement FORGOT_PASSWORD = $x(String.format(AUTH_LINKS_PATTERN, BaseUrls.FORGOT_PASSWORD.getUrlPart()));
     private static final SelenideElement REGISTRATION = $x(String.format(AUTH_LINKS_PATTERN, BaseUrls.SIGN_UP.getUrlPart()));
+    private static final SelenideElement EITHER_PASSWORD_OR_EMAIL_INCORRECT_MSG = $x(String.format(ERROR_MSG_PATTERN, "auth"));
 
     @Override
     protected SelenideElement getMainElement() {
@@ -69,6 +73,18 @@ public class SignInPage extends BasePage {
 
     public void checkThatRegistrationInState(Condition condition) {
         REGISTRATION.shouldBe(condition);
+    }
+
+    public void checkThatMandatoryLoginErrorMsgInState(Condition condition){
+        LOGIN_IS_MANDATORY_MSG.shouldBe(condition);
+    }
+
+    public void checkThatMandatoryPasswordErrorMsgInState(Condition condition){
+        PASSWORD_IS_MANDATORY_MSG.shouldBe(condition);
+    }
+
+    public void checkThatEitherPasswordOrEmailIncorrectMessageInState(Condition condition){
+        EITHER_PASSWORD_OR_EMAIL_INCORRECT_MSG.shouldBe(condition);
     }
 
     public String getLoginText() {

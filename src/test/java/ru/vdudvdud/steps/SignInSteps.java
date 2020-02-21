@@ -24,4 +24,20 @@ public class SignInSteps extends BaseSteps {
         signInPage.fillPassword(user.getPassword());
         signInPage.clickConfirm();
     }
+
+
+    @Step("Проверка видимости поля с ошибкой, когда логин остутствует")
+    public void checkThatMandatoryLoginErrorMessageIsVisible(){
+        signInPage.checkThatMandatoryLoginErrorMsgInState(Condition.visible);
+    }
+
+    @Step("Проверка видимости поля с ошибкой, когда пароль остутствует")
+    public void checkThatMandatoryPasswordErrorMessageIsVisible(){
+        signInPage.checkThatMandatoryPasswordErrorMsgInState(Condition.visible);
+    }
+
+    @Step("Проверка видимости поля с ошибкой с некорретным паролем или почтой")
+    public void checkThatEitherPasswordOrEmailIncorrectMessageIsVisible(){
+        signInPage.checkThatEitherPasswordOrEmailIncorrectMessageInState(Condition.visible);
+    }
 }

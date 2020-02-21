@@ -33,4 +33,25 @@ public class RegistrationScenarios {
         mainPageSteps.checkThatMainPageIsOpen();
         headerSteps.checkLogoutVisible();
     }
+
+    @Step("Сценарий регистрации пользователя на сайте и выхода из зарегистрированного аккаунта")
+    public void registrationAndLogout(User user) {
+        LOG.info("Открытие главной страницы и формы регистрации");
+        mainPageSteps.openMainPage();
+        headerSteps.openSignUp();
+
+        LOG.info("Заполнение формы регистрации");
+        registrationSteps.fillRegistrationData(user);
+        registrationSteps.sendRegistrationData();
+
+        LOG.info("Проверка успешности регистрации");
+        mainPageSteps.checkThatMainElementsOfThePageAreVisible();
+        mainPageSteps.checkThatMainPageIsOpen();
+        headerSteps.checkLogoutVisible();
+
+        LOG.info("Выход из аккаунта и проверка, что мы вышли из аккаунта");
+        headerSteps.logout();
+        headerSteps.checkLogoutInvisible();
+    }
+
 }

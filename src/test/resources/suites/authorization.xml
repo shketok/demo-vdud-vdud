@@ -8,4 +8,25 @@
         </classes>
     </test>
 
+
+    <test name="Test unsuccessful authorization with empty email and password">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.authorization.UnsuccessfulAuthorizationWithoutEmailAndPasswordTest"/>
+        </classes>
+    </test>
+
+
+    <test name="Test unsuccessful authorization with incorrect email after successful login">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.authorization.UnsuccessfulAuthorizationWithIncorrectEmailTest"/>
+        </classes>
+    </test>
+
+
+    <test name="Test unsuccessful authorization with incorrect password after successful login">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.authorization.UnsuccessfulAuthorizationWithIncorrectPasswordTest"/>
+        </classes>
+    </test>
+
 </suite>
