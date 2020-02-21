@@ -1,5 +1,6 @@
 package ru.vdudvdud.objects.vdudvdud.forms.cart.products.checkout;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import ru.vdudvdud.adaptors.selenide.base.BasePage;
 import ru.vdudvdud.testdata.enums.urls.BaseUrls;
@@ -39,10 +40,15 @@ public class BuyerForm extends BasePage {
      * Локаторы и элементы для работы с заголовками полей ввода данных о пользователе
      */
     private static final String INPUT_LABEL_TEXT_LOC = "//preceding-sibling::div[@class='wa-label']";
+    private static final String INPUT_LABEL_TEXT_REQUIRED_LOC = "span.wa-required";
     private final SelenideElement FIRST_NAME_INPUT_TITLE = FIRST_NAME_INPUT.$x(INPUT_LABEL_TEXT_LOC);
     private final SelenideElement LAST_NAME_INPUT_TITLE = LAST_NAME_INPUT.$x(INPUT_LABEL_TEXT_LOC);
     private final SelenideElement PHONE_INPUT_TITLE = PHONE_INPUT.$x(INPUT_LABEL_TEXT_LOC);
     private final SelenideElement EMAIL_INPUT_TITLE = EMAIL_INPUT.$x(INPUT_LABEL_TEXT_LOC);
+    private final SelenideElement FIRST_NAME_INPUT_TITLE_REQUIRED = FIRST_NAME_INPUT_TITLE.$(INPUT_LABEL_TEXT_REQUIRED_LOC);
+    private final SelenideElement LAST_NAME_INPUT_TITLE_REQUIRED = LAST_NAME_INPUT_TITLE.$(INPUT_LABEL_TEXT_REQUIRED_LOC);
+    private final SelenideElement PHONE_INPUT_TITLE_REQUIRED = PHONE_INPUT_TITLE.$(INPUT_LABEL_TEXT_REQUIRED_LOC);
+    private final SelenideElement EMAIL_INPUT_TITLE_REQUIRED = EMAIL_INPUT_TITLE.$(INPUT_LABEL_TEXT_REQUIRED_LOC);
 
     /**
      * Локаторы и элементы для получения информации о обработки персональных данных
@@ -143,5 +149,73 @@ public class BuyerForm extends BasePage {
 
     public void clickAgreementTextLink() {
         AGREEMENT_TEXT_LINK.click();
+    }
+
+    public void checkThatSectionHeaderTitleInState(Condition condition) {
+        SECTION_HEADER_TITLE.shouldBe(condition);
+    }
+
+    public void checkThatSectionHeaderFullNameInState(Condition condition) {
+        SECTION_HEADER_FULL_NAME.shouldBe(condition);
+    }
+
+    public void checkThatSectionHeaderLogoutInState(Condition condition) {
+        SECTION_HEADER_LOGOUT.shouldBe(condition);
+    }
+
+    public void checkThatFirstNameInputInState(Condition condition) {
+        FIRST_NAME_INPUT.shouldBe(condition);
+    }
+
+    public void checkThatLastNameInputInState(Condition condition) {
+        LAST_NAME_INPUT.shouldBe(condition);
+    }
+
+    public void checkThatPhoneInputInState(Condition condition) {
+        PHONE_INPUT.shouldBe(condition);
+    }
+
+    public void checkThatEmailInputInState(Condition condition) {
+        EMAIL_INPUT.shouldBe(condition);
+    }
+
+    public void checkThatFirstNameInputTitleRequiredInState(Condition condition) {
+        FIRST_NAME_INPUT_TITLE_REQUIRED.shouldBe(condition);
+    }
+
+    public void checkThatLastNameInputTitleRequiredInState(Condition condition) {
+        LAST_NAME_INPUT_TITLE_REQUIRED.shouldBe(condition);
+    }
+
+    public void checkThatPhoneInputTitleRequiredInState(Condition condition) {
+        PHONE_INPUT_TITLE_REQUIRED.shouldBe(condition);
+    }
+
+    public void checkThatEmailInputTitleRequiredInState(Condition condition) {
+        EMAIL_INPUT_TITLE_REQUIRED.shouldBe(condition);
+    }
+
+    public void checkThatAgreementTextInState(Condition condition) {
+        AGREEMENT_TEXT.shouldBe(condition);
+    }
+
+    public void checkThatAgreementTextLinkInState(Condition condition) {
+        AGREEMENT_TEXT_LINK.shouldBe(condition);
+    }
+
+    public void checkThatFirstNameInputTitleInState(Condition condition) {
+        FIRST_NAME_INPUT_TITLE.shouldBe(condition);
+    }
+
+    public void checkThatLastNameInputTitleInState(Condition condition) {
+        LAST_NAME_INPUT_TITLE.shouldBe(condition);
+    }
+
+    public void checkThatPhoneInputTitleInState(Condition condition) {
+        PHONE_INPUT_TITLE.shouldBe(condition);
+    }
+
+    public void checkThatEmailInputTitleInState(Condition condition) {
+        EMAIL_INPUT_TITLE.shouldBe(condition);
     }
 }
