@@ -5,6 +5,7 @@ import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import ru.vdudvdud.adaptors.selenide.base.BasePage;
 import ru.vdudvdud.adaptors.selenide.conditions.CustomCollectionCondition;
+import ru.vdudvdud.testdata.constants.Delimiters;
 import ru.vdudvdud.testdata.enums.RegexPatterns;
 import ru.vdudvdud.testdata.models.essences.Product;
 import ru.vdudvdud.testdata.utils.RegexMatcher;
@@ -64,9 +65,10 @@ public class VdudMainPage extends BasePage { // TODO: Разделить лог�
         }
         product.setImgLink(productElement.$x(PRODUCT_IMAGE_LOC).getAttribute("src"));
         product.setName(productElement.$x(PRODUCT_NAME_LOC).getText());
-        product.setCost(Integer.parseInt(RegexMatcher.regexGetFirstMatchGroup(productFullPrice,
-                RegexPatterns.DIGITS.toString()).replaceAll(RegexPatterns.SPACES.toString(), "")));
-        product.setCurrency(RegexMatcher.regexGetFirstMatchGroup(productFullPrice, RegexPatterns.NON_DIGITS.toString().trim()));
+        product.setCost(Integer.parseInt(RegexMatcher.regexGetFirstMatchGroupFromTextWithoutSpaces(productFullPrice,
+                RegexPatterns.DIGITS.toString())));
+        product.setCurrency(RegexMatcher.regexGetFirstMatchGroupFromTextWithoutSpaces(productFullPrice,
+                RegexPatterns.NON_DIGITS.toString().trim()));
         product.setExistence(productElement.$x(PRODUCT_EXISTENCE_LOC).getText());
 
 

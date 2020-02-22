@@ -8,7 +8,7 @@ import ru.vdudvdud.steps.CartSteps;
 import ru.vdudvdud.steps.HeaderSteps;
 import ru.vdudvdud.steps.scenarios.AuthorizationScenarios;
 import ru.vdudvdud.steps.scenarios.ProductScenarios;
-import ru.vdudvdud.testdata.builders.UsersCreator;
+import ru.vdudvdud.testdata.creators.UsersCreator;
 import ru.vdudvdud.testdata.models.essences.Product;
 import ru.vdudvdud.testdata.models.essences.User;
 

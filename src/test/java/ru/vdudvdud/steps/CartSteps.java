@@ -21,7 +21,7 @@ public class CartSteps extends BaseSteps {
     @Step("Проверка добавления товара в корзину. " +
             "Изображение, название, размер, вес, количество, кнопки и цена отображаются корректно")
     public void checkThatProductWasAddedToTheCart(Product product) {
-        ProductForm productForm = cartPage.getProductsForm().getProductForm(product.getName(), product.getSize());
+        ProductForm productForm = cartPage.getProductsForm().getProductForm(product.getName(), product.getModel());
 
         productForm.checkThatProductImageLocInState(Condition.visible);
         productForm.checkThatProductNameLocInState(Condition.visible);
@@ -33,5 +33,17 @@ public class CartSteps extends BaseSteps {
         productForm.checkThatProductQuantityInputLocInState(Condition.visible);
         productForm.checkThatProductFullPriceLocInState(Condition.visible);
         productForm.checkThatProductDeleteLocInState(Condition.visible);
+    }
+
+    @Step("Проверка общей стоимости товара и его количества в корзине")
+    public void checkThatCartProductTabContainsCorrectData(Product product, Integer expectedCount) {
+        ProductForm productForm = cartPage.getProductsForm().getProductForm(product.getName(), product.getModel());
+
+        softAssert.assertEquals(productForm.getProductFullPriceText().intValue(), product.getCost() * expectedCount,
+                "Ожидаемая стоимость товара не соответствует реальной");
+        softAssert.assertEquals(productForm.getProductQuantityInputValue(), expectedCount,
+                "Ожидаемое количество товара не соответствует реальному");
+        softAssert.assertAll();
+
     }
 }

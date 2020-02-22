@@ -52,7 +52,7 @@ public class SignUpPage extends BasePage {
     }
 
     public boolean isSignUpBtnVisible() {
-        return SmartWait.isElement(SIGN_UP_BUTTON, Condition.visible);
+        return !SmartWait.isElementNotInState(SIGN_UP_BUTTON, Condition.visible);
     }
 
     public void checkThatFirstNameInState(Condition condition) {

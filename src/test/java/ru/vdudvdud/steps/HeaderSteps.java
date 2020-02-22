@@ -66,7 +66,7 @@ public class HeaderSteps extends BaseSteps {
 
         softAssert.assertEquals(headerPage.getCartAmountText(), countOfProducts.toString(),
                 "Проверка совпадения количества товара на странице с ожидаемым значением");
-        softAssert.assertEquals(headerPage.getProductCostText().replaceAll(RegexPatterns.SPACES.toString(), ""), cost.toString(),
+        softAssert.assertEquals(headerPage.getProductCostText(), cost.toString(),
                 "Проверка совпадения общей цены товара на странице с ожидаемым значением");
         softAssert.assertEquals(headerPage.getProductCurrencyText(), currency,
                 "Проверка совпадения валюты товара на странице с ожидаемым значением");
@@ -76,5 +76,10 @@ public class HeaderSteps extends BaseSteps {
     @Step("Переход на страницу корзины")
     public void goToTheCartPage() {
         headerPage.clickBasket();
+    }
+
+    @Step("Переход на главную страницу")
+    public void goToTheMainPage() {
+        headerPage.clickMainLogo();
     }
 }

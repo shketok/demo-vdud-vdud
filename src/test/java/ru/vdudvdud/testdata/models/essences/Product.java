@@ -41,7 +41,7 @@ public class Product {
     /**
      * Размер указанного товара при наличии.
      */
-    private String size;
+    private String model;
 
     /**
      * Количество указанного товара.

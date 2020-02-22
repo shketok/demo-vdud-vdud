@@ -40,21 +40,33 @@ public class MainPageSteps extends BaseSteps {
     @Step("Нажатие кнопки В корзину у случайного продукта")
     public Product clickRandomProductAddToTheCartBtn() {
         Product product = vdudMainPage.getRandomProduct();
+        return clickConcreteProductAddToTheCartBtn(product);
+    }
+
+    @Step("Нажатие кнопки В корзину у конкретного выбранного продукта")
+    public Product clickConcreteProductAddToTheCartBtn(Product product) {
         vdudMainPage.addProductToTheCartByName(product.getName());
         return product;
     }
 
     @Step("Обновление объекта продукта согласно полученной информации из всплывающего окна подтверждения добавления в корзину")
     public void updateProductFromTheAddToTheCartPopup(Product product) {
-        addProductToTheCartPopup.shouldBe(Condition.visible);
-        if (addProductToTheCartPopup.isProductSelectedSizeInState(Condition.visible)) {
-            product.setSize(addProductToTheCartPopup.getProductSelectedSizeText());
-        }
-        if (addProductToTheCartPopup.isCountOfTheGoodInState(Condition.visible)) {
-            product.setCount(Integer.parseInt(addProductToTheCartPopup.getCountOfTheGoodText()));
+        if (addProductToTheCartPopup.isElementInState(Condition.visible)) {
+            if (addProductToTheCartPopup.isProductSelectedSizeInState(Condition.visible)) {
+                product.setModel(addProductToTheCartPopup.getProductSelectedSizeText());
+            } else if (addProductToTheCartPopup.isProductSelectedModelInState(Condition.visible)) {
+                product.setModel(addProductToTheCartPopup.getProductSelectedModelText());
+            }
+
+            if (addProductToTheCartPopup.isCountOfTheGoodInState(Condition.visible)) {
+                product.setCount(Integer.parseInt(addProductToTheCartPopup.getCountOfTheGoodText()));
+            } else {
+                product.setCount(product.getCount() + 1);
+            }
         } else {
             product.setCount(product.getCount() + 1);
         }
+
     }
 
     @Step("Подтверждение добавления товара в корзину")
@@ -65,6 +77,11 @@ public class MainPageSteps extends BaseSteps {
     @Step("Закрытие всплывающего окна уведомляющего о добавлении товара в корзину")
     public void closeProductAddedPopup() {
         productAddedToTheCartPopup.clickClose();
+    }
+
+    @Step("Переход в корзину через всплывающее окно добавление товара в корзину")
+    public void goToTheCartProductAddedPopup() {
+        productAddedToTheCartPopup.clickToCart();
     }
 
 

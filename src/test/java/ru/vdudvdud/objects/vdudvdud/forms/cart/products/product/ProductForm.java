@@ -3,6 +3,9 @@ package ru.vdudvdud.objects.vdudvdud.forms.cart.products.product;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import ru.vdudvdud.adaptors.selenide.base.BasePage;
+import ru.vdudvdud.testdata.constants.Delimiters;
+import ru.vdudvdud.testdata.enums.RegexPatterns;
+import ru.vdudvdud.testdata.utils.RegexMatcher;
 
 import static com.codeborne.selenide.Selenide.$x;
 
@@ -38,6 +41,17 @@ public class ProductForm extends BasePage {
         PRODUCT = $x(String.format("//div[contains(@class, 'wa-product') and @data-id  " +
                 "and .//a[@class='wa-name' and contains(text(), '%s')] " +
                 "and .//span[@class='wa-sku' and contains(text(), '%s')]]", name, size));
+    }
+
+    /**
+     * Создает табу с конкретным продуктом.
+     * Обязательна передача имени, продукт может не иметь размера, например кошелек
+     *
+     * @param name Наименование продукта.
+     */
+    public ProductForm(String name) {
+        PRODUCT = $x(String.format("//div[contains(@class, 'wa-product') and @data-id  " +
+                "and .//a[@class='wa-name' and contains(text(), '%s')]]", name));
     }
 
     @Override
@@ -83,5 +97,19 @@ public class ProductForm extends BasePage {
 
     public void checkThatProductDeleteLocInState(Condition condition) {
         PRODUCT.$(PRODUCT_DELETE_LOC).shouldBe(condition);
+    }
+
+    public String getProductWeightText() {
+        return PRODUCT.$(PRODUCT_WEIGHT_LOC).getText();
+    }
+
+    public Integer getProductQuantityInputValue() {
+        return Integer.parseInt(PRODUCT.$(PRODUCT_QUANTITY_INPUT_LOC).getValue());
+    }
+
+    public Integer getProductFullPriceText() {
+        String fullPriceText = RegexMatcher.regexGetFirstMatchGroupFromTextWithoutSpaces(
+                PRODUCT.$(PRODUCT_FULL_PRICE_LOC).getText(), RegexPatterns.DIGITS.toString());
+        return Integer.parseInt(fullPriceText);
     }
 }

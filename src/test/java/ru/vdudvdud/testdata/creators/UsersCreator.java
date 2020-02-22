@@ -1,4 +1,4 @@
-package ru.vdudvdud.testdata.builders;
+package ru.vdudvdud.testdata.creators;
 
 import ru.vdudvdud.adaptors.selenide.Configuration;
 import ru.vdudvdud.adaptors.selenide.utils.JSONUtils;

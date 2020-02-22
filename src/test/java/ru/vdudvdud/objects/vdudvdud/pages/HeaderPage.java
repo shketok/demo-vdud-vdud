@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import ru.vdudvdud.adaptors.selenide.base.BasePage;
 import ru.vdudvdud.objects.vdudvdud.forms.PersonalAreaDropdownForm;
+import ru.vdudvdud.testdata.constants.Delimiters;
 import ru.vdudvdud.testdata.enums.RegexPatterns;
 import ru.vdudvdud.testdata.enums.urls.BaseUrls;
 import ru.vdudvdud.testdata.utils.RegexMatcher;
@@ -30,6 +31,10 @@ public class HeaderPage extends BasePage {
     @Override
     protected SelenideElement getMainElement() {
         return MAIN_ELEMENT;
+    }
+
+    public void clickMainLogo() {
+        getMainElement().click();
     }
 
     public PersonalAreaDropdownForm getPersonalAreaDropDownForm() {
@@ -71,11 +76,13 @@ public class HeaderPage extends BasePage {
     }
 
     public String getProductCostText() {
-        return RegexMatcher.regexGetFirstMatchGroup(BASKET.$(PRODUCTS_PRICE_LOC).getText(), RegexPatterns.DIGITS.toString());
+        return RegexMatcher.regexGetFirstMatchGroupFromTextWithoutSpaces( BASKET.$(PRODUCTS_PRICE_LOC).getText(),
+                RegexPatterns.DIGITS.toString());
     }
 
     public String getProductCurrencyText() {
-        return RegexMatcher.regexGetFirstMatchGroup(BASKET.$(PRODUCTS_PRICE_LOC).getText(), RegexPatterns.NON_DIGITS.toString().trim());
+        return RegexMatcher.regexGetFirstMatchGroupFromTextWithoutSpaces(BASKET.$(PRODUCTS_PRICE_LOC).getText(),
+                RegexPatterns.NON_DIGITS.toString());
     }
 
     public void clickBasket() {

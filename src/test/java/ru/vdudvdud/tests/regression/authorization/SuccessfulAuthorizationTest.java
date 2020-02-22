@@ -8,7 +8,7 @@ import ru.vdudvdud.steps.MainPageSteps;
 import ru.vdudvdud.steps.PersonalRoomSteps;
 import ru.vdudvdud.steps.RegistrationSteps;
 import ru.vdudvdud.steps.SignInSteps;
-import ru.vdudvdud.testdata.builders.UsersCreator;
+import ru.vdudvdud.testdata.creators.UsersCreator;
 import ru.vdudvdud.testdata.models.essences.User;
 
 public class SuccessfulAuthorizationTest extends BaseTest {

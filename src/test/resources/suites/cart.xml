@@ -8,4 +8,11 @@
         </classes>
     </test>
 
+    <test name="Test add the same product to the non empty cart">
+        <parameter name="expectedCount" value="2"/>
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.AddTheSameProductToTheNonEmptyCartTest"/>
+        </classes>
+    </test>
+
 </suite>

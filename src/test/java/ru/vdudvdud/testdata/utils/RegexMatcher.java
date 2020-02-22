@@ -2,6 +2,8 @@ package ru.vdudvdud.testdata.utils;
 
 
 import ru.vdudvdud.adaptors.selenide.utils.Logger;
+import ru.vdudvdud.testdata.constants.Delimiters;
+import ru.vdudvdud.testdata.enums.RegexPatterns;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -63,5 +65,10 @@ public class RegexMatcher {
      */
     public static String regexGetFirstMatchGroup(String text, String regex) {
         return regexGetMatchGroup(text, regex, 0, false);
+    }
+
+    public static String regexGetFirstMatchGroupFromTextWithoutSpaces(String text, String regex) {
+        text = text.replaceAll(RegexPatterns.SPACES.toString(), Delimiters.EMPTY_DELIMITER);
+        return RegexMatcher.regexGetFirstMatchGroup(text, regex);
     }
 }
