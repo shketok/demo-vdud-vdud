@@ -8,4 +8,10 @@
         </classes>
     </test>
 
+    <test name="Test successful unauthorization">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.unauthorization.SuccessfulUnauthorizationTest"/>
+        </classes>
+    </test>
+
 </suite>
