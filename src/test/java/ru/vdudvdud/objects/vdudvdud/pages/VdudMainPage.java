@@ -10,7 +10,10 @@ import ru.vdudvdud.testdata.enums.RegexPatterns;
 import ru.vdudvdud.testdata.models.essences.Product;
 import ru.vdudvdud.testdata.utils.RegexMatcher;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
@@ -21,7 +24,8 @@ import static com.codeborne.selenide.Selenide.$x;
 public class VdudMainPage extends BasePage { // TODO: Разделить логику на форму с карточками и с карточкой. Вынести из класса логику
     private static final SelenideElement MAIN_ELEMENT = $x("//div[contains(@class, 'nc-items') and .//div[@class='nc-item']]");
 
-    private static final String PRODUCTS_FROM_THE_CATALOG_LOC = "//div[contains(@class, 'home-items__tab-content')]//div[@class='nc-item']";
+    private static final String PRODUCTS_LIST_LOC = "//div[contains(@class, 'home-items__tab-content')]";
+    private static final String PRODUCTS_FROM_THE_CATALOG_LOC = PRODUCTS_LIST_LOC + "//div[@class='nc-item']";
 
     private static final String PRODUCT_STATUS_LOC = ".//span//div[contains(@class, 'badge')]//span";
     private static final String PRODUCT_IMAGE_LOC = ".//div[@class='item__actions']//following-sibling::a[contains(@class, 'item__image')]//img[@class='item__img']";
@@ -31,7 +35,7 @@ public class VdudMainPage extends BasePage { // TODO: Разделить лог�
     private static final String PRODUCT_TO_THE_PRODUCT_PAGE_LOC = ".//div[@class='item__main']//button[@type='submit']";
     private static final String PRODUCT_TO_THE_CART_BOTTOM_BTN_LOC = ".//div[@class='item__bottom']//button[@type='submit']";
 
-    private static final String PRODUCT_BY_NAME_PATTERN = "//div[contains(@class, 'home-items__tab-content')]//div[@class='nc-item' and .//span[@itemprop='name' and contains(text(), '%s')]]";
+    private static final String PRODUCT_BY_NAME_PATTERN = PRODUCTS_LIST_LOC + "//div[@class='nc-item' and .//span[@itemprop='name' and contains(text(), '%s')]]";
 
     @Override
     protected SelenideElement getMainElement() {
@@ -45,6 +49,18 @@ public class VdudMainPage extends BasePage { // TODO: Разделить лог�
      */
     public Product getRandomProduct() {
         ElementsCollection products = getProductsFromTheCatalog();
+        SelenideElement productElement = products.get(new Random().nextInt(products.size())).scrollIntoView(true);
+        return createProductFromProductCard(productElement);
+    }
+
+    /**
+     * Получение случайного продукта со страницы за исключением продуктов с указанными именами;
+     *
+     * @param names - имена исключающие продукты со страницы.
+     * @return Случайный продукт со страницы с товарами.
+     */
+    public Product getRandomProductInsteadSpecifics(String... names) {
+        List<SelenideElement> products = getProductsFromTheCatalogNotContainsSpecificNames(names);
         SelenideElement productElement = products.get(new Random().nextInt(products.size())).scrollIntoView(true);
         return createProductFromProductCard(productElement);
     }
@@ -99,6 +115,20 @@ public class VdudMainPage extends BasePage { // TODO: Разделить лог�
      * @return Карточки продуктов со страницы.
      */
     private ElementsCollection getProductsFromTheCatalog() {
-        return $$x(PRODUCTS_FROM_THE_CATALOG_LOC).shouldHave(CustomCollectionCondition.stopAppearNew()).filter(Condition.visible);
+        return $$x(PRODUCTS_FROM_THE_CATALOG_LOC).shouldHave(CustomCollectionCondition.stopAppearNew()).filter(Condition.exist);
+    }
+
+    /**
+     * Получение карточек продуктов с главной страницы. Ищем карточки до тех пор, пока они не перестанут появляться на странице.
+     * Исключаются из поиска карточки, которые в имени содержат указанные имена.
+     *
+     * @return Карточки продуктов со страницы.
+     */
+    private List<SelenideElement> getProductsFromTheCatalogNotContainsSpecificNames(String... names) {
+        return $$x(PRODUCTS_FROM_THE_CATALOG_LOC).shouldHave(CustomCollectionCondition.stopAppearNew())
+                .filter(Condition.exist)
+                .stream()
+                .filter(el ->  Arrays.asList(names).contains(el.$x(PRODUCT_NAME_LOC).getText()))
+                .collect(Collectors.toList());
     }
 }

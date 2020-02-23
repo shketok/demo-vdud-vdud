@@ -9,6 +9,9 @@ import ru.vdudvdud.objects.vdudvdud.pages.VdudMainPage;
 import ru.vdudvdud.testdata.enums.urls.BaseUrls;
 import ru.vdudvdud.testdata.models.essences.Product;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 public class MainPageSteps extends BaseSteps {
     private VdudMainPage vdudMainPage = new VdudMainPage();
     private AddProductToTheCartPopup addProductToTheCartPopup = new AddProductToTheCartPopup();
@@ -40,13 +43,19 @@ public class MainPageSteps extends BaseSteps {
     @Step("Нажатие кнопки В корзину у случайного продукта")
     public Product clickRandomProductAddToTheCartBtn() {
         Product product = vdudMainPage.getRandomProduct();
-        return clickConcreteProductAddToTheCartBtn(product);
+        return clickSpecificProductAddToTheCartBtn(product);
     }
 
     @Step("Нажатие кнопки В корзину у конкретного выбранного продукта")
-    public Product clickConcreteProductAddToTheCartBtn(Product product) {
+    public Product clickSpecificProductAddToTheCartBtn(Product product) {
         vdudMainPage.addProductToTheCartByName(product.getName());
         return product;
+    }
+
+    @Step("Нажатие кнопки В корзину у случайного продукта кроме указанных")
+    public Product clickRandomProductAddToTheCartInsteadSpecifics(Product... products) {
+        Product product = vdudMainPage.getRandomProductInsteadSpecifics(Arrays.stream(products).map(Product::getName).toArray(String[]::new));
+        return clickSpecificProductAddToTheCartBtn(product);
     }
 
     @Step("Обновление объекта продукта согласно полученной информации из всплывающего окна подтверждения добавления в корзину")

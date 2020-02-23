@@ -43,14 +43,12 @@ public class HeaderSteps extends BaseSteps {
     @Step("Выход из авторизованного аккаунта")
     public void logout() {
         headerPage.hoverPersonalArea();
-        personalAreaDropdownForm.checkThatLogoutBtnInState(Condition.visible);
         personalAreaDropdownForm.clickLogout();
     }
 
     @Step("Переход к форме входа в аккаунт")
     public void goToLoginPage() {
         headerPage.hoverPersonalArea();
-        personalAreaDropdownForm.checkThatSignInBtnInState(Condition.visible);
         personalAreaDropdownForm.clickSignIn();
     }
 

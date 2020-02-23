@@ -2,10 +2,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="debug" verbose="1">
 
-    <test name="Test unsuccessful registration incorrect name parameter">
-        <parameter name="userName" value="USER_INCORRECT_NAME"/>
+    <test name="Test successful authorization">
         <classes>
-            <class name="ru.vdudvdud.tests.regression.registration.UnsuccessfulRegistrationWrongParametersTest"/>
+            <class name="ru.vdudvdud.tests.regression.authorization.SuccessfulAuthorizationTest"/>
         </classes>
     </test>
 

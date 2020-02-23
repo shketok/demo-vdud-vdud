@@ -45,7 +45,7 @@ public class AddTwoProductsFromBasketAgainTest extends BaseTest {
         headerSteps.checkThatMainElementsOfThePageAreVisible();
 
         LOG.info("Добавить товар в корзину, который там уже присутствует");
-        mainPageSteps.clickConcreteProductAddToTheCartBtn(product);
+        mainPageSteps.clickSpecificProductAddToTheCartBtn(product);
 
         LOG.info("Подтверждение добавления товара в корзину");
         mainPageSteps.updateProductFromTheAddToTheCartPopup(product);

@@ -23,7 +23,6 @@ public class SuccessfulAuthorizationTest extends BaseTest {
     @BeforeMethod
     public void readParams() {
         user = UsersCreator.createRandomUser();
-
     }
 
     @Test
@@ -54,4 +53,6 @@ public class SuccessfulAuthorizationTest extends BaseTest {
         personalRoomSteps.checkThatMainElementsOfThePageAreVisible();
 
     }
+
+
 }

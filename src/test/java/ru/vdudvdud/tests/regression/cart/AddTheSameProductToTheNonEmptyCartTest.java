@@ -23,18 +23,44 @@ public class AddTheSameProductToTheNonEmptyCartTest extends BaseTest {
     private AuthorizationScenarios authorizationScenarios = new AuthorizationScenarios();
 
     private User user;
-    private Product product;
+    private Product firstProduct;
+    private Product secondProduct;
 
     private Integer expectedCount;
 
     @BeforeMethod
     @Parameters("expectedCount")
     public void readParams(Integer expectedCount) {
+        user = UsersCreator.createRandomUser();
+        firstProduct = productScenarios.addProductToCartAfterRegistration(user);
+        secondProduct = mainPageSteps.clickRandomProductAddToTheCartInsteadSpecifics(firstProduct);
+        BrowserUtils.restartBrowser();
 
+        this.expectedCount = expectedCount;
     }
 
     @Test
     public void runTest() {
+        LOG.info("Произвести авторизацию пользователем");
+        authorizationScenarios.authorize(user);
+        headerSteps.goToTheMainPage();
+        headerSteps.checkThatMainElementsOfThePageAreVisible();
 
+        LOG.info("Добавить товар в корзину, который там уже присутствует");
+        mainPageSteps.clickSpecificProductAddToTheCartBtn(firstProduct);
+
+        LOG.info("Подтверждение добавления товара в корзину");
+        mainPageSteps.updateProductFromTheAddToTheCartPopup(firstProduct);
+        mainPageSteps.confirmAddProductToTheCart();
+        mainPageSteps.goToTheCartProductAddedPopup();
+
+        LOG.info("Открытие корзины и проверка корректности отображения основных блоков корзины");
+        cartSteps.checkThatMainElementsOfThePageAreVisible();
+
+        LOG.info("Проверка корректного отображения элементов товара в блоке добавленного товара");
+        cartSteps.checkThatProductWasAddedToTheCart(firstProduct);
+
+        LOG.info("Проверка, что товар добавлен на страницу и в табе товара корректно изменились параметры товара");
+        cartSteps.checkThatCartProductTabContainsCorrectData(firstProduct, expectedCount);
     }
 }
