@@ -1,5 +1,6 @@
 package ru.vdudvdud.tests.regression.registration;
 
+import io.qameta.allure.Link;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.vdudvdud.adaptors.selenide.base.BaseTest;
@@ -23,6 +24,7 @@ public class SuccessfulRegistrationTest extends BaseTest {
     }
 
     @Test
+    @Link("https://outsourceofthebrain.myjetbrains.com/youtrack/issue/VDUDUD-2")
     public void runTest() {
         LOG.info("1. Открытие главной страницы и формы регистрации");
         mainPageSteps.openMainPage();

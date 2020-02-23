@@ -2,10 +2,6 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="debug" verbose="1">
 
-    <test name="Test add product to the cart user authorized">
-        <classes>
-            <class name="ru.vdudvdud.tests.regression.product.AddProductToTheCartUserAuthorizedTest"/>
-        </classes>
-    </test>
+
 
 </suite>
