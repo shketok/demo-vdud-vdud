@@ -1,32 +1,28 @@
-package ru.vdudvdud.tests.regression.authorization;
+package ru.vdudvdud.tests.regression.cart.mini;
 
+import io.qameta.allure.Link;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.vdudvdud.adaptors.selenide.base.BaseTest;
 import ru.vdudvdud.steps.HeaderSteps;
 import ru.vdudvdud.steps.MainPageSteps;
-import ru.vdudvdud.steps.PersonalRoomSteps;
 import ru.vdudvdud.steps.RegistrationSteps;
-import ru.vdudvdud.steps.SignInSteps;
 import ru.vdudvdud.testdata.creators.UsersCreator;
+import ru.vdudvdud.testdata.models.essences.Product;
 import ru.vdudvdud.testdata.models.essences.User;
 
-public class SuccessfulAuthorizationTest extends BaseTest {
+public class AddProductToTheCartUserAuthorizedTest extends BaseTest {
     private MainPageSteps mainPageSteps = new MainPageSteps();
     private HeaderSteps headerSteps = new HeaderSteps();
     private RegistrationSteps registrationSteps = new RegistrationSteps();
-    private SignInSteps signInSteps = new SignInSteps();
-    private PersonalRoomSteps personalRoomSteps = new PersonalRoomSteps();
 
     private User user;
 
     @BeforeMethod
+    @Link("https://outsourceofthebrain.myjetbrains.com/youtrack/issue/VDUDUD-44")
     public void readParams() {
         user = UsersCreator.createRandomUser();
-    }
 
-    @Test
-    public void runTest() {
         LOG.info("1. Открытие главной страницы и формы регистрации");
         mainPageSteps.openMainPage();
         headerSteps.openSignUp();
@@ -39,20 +35,22 @@ public class SuccessfulAuthorizationTest extends BaseTest {
         mainPageSteps.checkThatMainElementsOfThePageAreVisible();
         mainPageSteps.checkThatMainPageIsOpen();
         headerSteps.checkLogoutVisible();
-
-        LOG.info("4. Выход из аккаунта и проверка, что мы вышли из аккаунта");
-        headerSteps.logout();
-        headerSteps.checkLogoutInvisible();
-
-        LOG.info("5. Вход в аккаунт через форму входа");
-        headerSteps.goToLoginPage();
-        signInSteps.checkThatMainElementsOfThePageAreVisible();
-        signInSteps.signIn(user);
-
-        LOG.info("6. Проверка, что вход в аккаунт был произведен успешно");
-        personalRoomSteps.checkThatMainElementsOfThePageAreVisible();
-
     }
 
+    @Test
+    @Link("https://outsourceofthebrain.myjetbrains.com/youtrack/issue/VDUDUD-44")
+    public void runTest() {
+        LOG.info("1. Нажатие кнопки В корзину на случайном товаре с главной страницы");
+        Product product = mainPageSteps.clickRandomProductAddToTheCartBtn();
 
+        LOG.info("2. Подтверждение добавления товара в корзину");
+        mainPageSteps.updateProductFromTheAddToTheCartPopup(product);
+        mainPageSteps.confirmAddProductToTheCart();
+
+        LOG.info("3. Закрытие формы подтверждения того, что товар был добавлен в корзину");
+        mainPageSteps.closeProductAddedPopup();
+
+        LOG.info("4. Проверка, что в мини корзине появилось указанное количество товара");
+        headerSteps.checkMiniCart(product.getCurrency(), product);
+    }
 }

@@ -24,4 +24,9 @@ public class SignInSteps extends BaseSteps {
         signInPage.fillPassword(user.getPassword());
         signInPage.clickConfirm();
     }
+
+    @Step("Переход на страницу восстановления пароля")
+    public void clickToForgotPassword() {
+        signInPage.clickForgotPassword();
+    }
 }

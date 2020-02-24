@@ -2,9 +2,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="debug" verbose="1">
 
-    <test name="Test successful authorization">
+    <test name="Test unsuccessful registration passwords doesn't match">
         <classes>
-            <class name="ru.vdudvdud.tests.regression.authorization.SuccessfulAuthorizationTest"/>
+            <class name="ru.vdudvdud.tests.regression.account.registration.UnsuccessfulRegistrationPasswordsDoesntMatchTest"/>
         </classes>
     </test>
 
