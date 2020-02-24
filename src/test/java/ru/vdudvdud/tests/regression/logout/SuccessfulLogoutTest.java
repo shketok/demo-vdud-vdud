@@ -1,4 +1,4 @@
-package ru.vdudvdud.tests.regression.unauthorization;
+package ru.vdudvdud.tests.regression.logout;
 
 import io.qameta.allure.Link;
 import org.testng.annotations.BeforeMethod;
@@ -10,7 +10,7 @@ import ru.vdudvdud.steps.RegistrationSteps;
 import ru.vdudvdud.testdata.builders.UsersCreator;
 import ru.vdudvdud.testdata.models.essences.User;
 
-public class SuccessfulUnauthorizationTest extends BaseTest {
+public class SuccessfulLogoutTest extends BaseTest {
 
     private MainPageSteps mainPageSteps = new MainPageSteps();
     private HeaderSteps headerSteps = new HeaderSteps();

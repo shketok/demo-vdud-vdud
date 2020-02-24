@@ -8,9 +8,9 @@
         </classes>
     </test>
 
-    <test name="Test successful unauthorization">
+    <test name="Test successful logout">
         <classes>
-            <class name="ru.vdudvdud.tests.regression.unauthorization.SuccessfulUnauthorizationTest"/>
+            <class name="ru.vdudvdud.tests.regression.logout.SuccessfulLogoutTest"/>
         </classes>
     </test>
 
