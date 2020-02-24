@@ -4,7 +4,9 @@ import io.qameta.allure.Link;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.vdudvdud.adaptors.selenide.base.BaseTest;
-import ru.vdudvdud.steps.*;
+import ru.vdudvdud.steps.HeaderSteps;
+import ru.vdudvdud.steps.MainPageSteps;
+import ru.vdudvdud.steps.RegistrationSteps;
 import ru.vdudvdud.testdata.builders.UsersCreator;
 import ru.vdudvdud.testdata.models.essences.User;
 
