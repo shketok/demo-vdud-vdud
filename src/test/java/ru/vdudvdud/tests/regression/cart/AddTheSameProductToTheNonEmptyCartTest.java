@@ -1,5 +1,6 @@
 package ru.vdudvdud.tests.regression.cart;
 
+import io.qameta.allure.Link;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -40,6 +41,7 @@ public class AddTheSameProductToTheNonEmptyCartTest extends BaseTest {
     }
 
     @Test
+    @Link("https://outsourceofthebrain.myjetbrains.com/youtrack/issue/VDUDUD-23")
     public void runTest() {
         LOG.info("Произвести авторизацию пользователем");
         authorizationScenarios.authorize(user);
