@@ -24,8 +24,7 @@ public class AddTheSameProductToTheNonEmptyCartTest extends BaseTest {
     private AuthorizationScenarios authorizationScenarios = new AuthorizationScenarios();
 
     private User user;
-    private Product firstProduct;
-    private Product secondProduct;
+    private Product product;
 
     private Integer expectedCount;
 
@@ -33,8 +32,7 @@ public class AddTheSameProductToTheNonEmptyCartTest extends BaseTest {
     @Parameters("expectedCount")
     public void readParams(Integer expectedCount) {
         user = UsersCreator.createRandomUser();
-        firstProduct = productScenarios.addProductToCartAfterRegistration(user);
-        secondProduct = mainPageSteps.clickRandomProductAddToTheCartInsteadSpecifics(firstProduct);
+        product = productScenarios.addProductToCartAfterRegistration(user);
         BrowserUtils.restartBrowser();
 
         this.expectedCount = expectedCount;
@@ -49,10 +47,10 @@ public class AddTheSameProductToTheNonEmptyCartTest extends BaseTest {
         headerSteps.checkThatMainElementsOfThePageAreVisible();
 
         LOG.info("Добавить товар в корзину, который там уже присутствует");
-        mainPageSteps.clickSpecificProductAddToTheCartBtn(firstProduct);
+        mainPageSteps.clickSpecificProductAddToTheCartBtn(product);
 
         LOG.info("Подтверждение добавления товара в корзину");
-        mainPageSteps.updateProductFromTheAddToTheCartPopup(firstProduct);
+        mainPageSteps.updateProductFromTheAddToTheCartPopup(product);
         mainPageSteps.confirmAddProductToTheCart();
         mainPageSteps.goToTheCartProductAddedPopup();
 
@@ -60,9 +58,11 @@ public class AddTheSameProductToTheNonEmptyCartTest extends BaseTest {
         cartSteps.checkThatMainElementsOfThePageAreVisible();
 
         LOG.info("Проверка корректного отображения элементов товара в блоке добавленного товара");
-        cartSteps.checkThatProductWasAddedToTheCart(firstProduct);
+        cartSteps.checkThatProductWasAddedToTheCart(product);
 
         LOG.info("Проверка, что товар добавлен на страницу и в табе товара корректно изменились параметры товара");
-        cartSteps.checkThatCartProductTabContainsCorrectData(firstProduct, expectedCount);
+        cartSteps.checkThatCartProductTabContainsCorrectData(product, expectedCount);
     }
+
+
 }
