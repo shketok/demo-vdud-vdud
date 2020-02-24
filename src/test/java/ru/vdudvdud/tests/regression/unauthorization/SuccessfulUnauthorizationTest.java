@@ -36,7 +36,7 @@ public class SuccessfulUnauthorizationTest extends BaseTest {
     @Test
     @Link("https://outsourceofthebrain.myjetbrains.com/youtrack/issue/VDUDUD-17")
     public void runTest() {
-        LOG.info("4. Выход из аккаунта и проверка, что мы вышли из аккаунта");
+        LOG.info("1. Выход из аккаунта и проверка, что мы вышли из аккаунта");
         headerSteps.logout();
         headerSteps.checkLogoutInvisible();
     }
