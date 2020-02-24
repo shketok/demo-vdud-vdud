@@ -40,12 +40,13 @@ public class RestorePasswordPage extends BasePage {
     }
 
     public void clickConfirm() {
-        actions().moveToElement(CONFIRM.toWebElement()).click().build().perform();
+        actions().click(CONFIRM.toWebElement()).build().perform();
     }
 
     public void checkIncorrectEmailMessageIsVisible() {
-        Assert.assertTrue(RestorePasswordLocalization.INCORRECT_EMAIL_MESSAGE.getValue()
-            .equals(INCORRECT_EMAIL_MESSAGE.getText()));
+        Assert.assertEquals(RestorePasswordLocalization.INCORRECT_EMAIL_MESSAGE.getValue(),
+            INCORRECT_EMAIL_MESSAGE.getText(),
+            "Ожидаемое сообщение о некорректно введеном email не соответвует фактическому");
     }
 
     @Override
