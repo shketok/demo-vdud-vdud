@@ -1,4 +1,4 @@
-package ru.vdudvdud.tests.regression.accoutrestore;
+package ru.vdudvdud.tests.regression.account.restore;
 
 import io.qameta.allure.Link;
 import org.testng.annotations.BeforeMethod;
@@ -11,7 +11,7 @@ import ru.vdudvdud.steps.SignInSteps;
 import ru.vdudvdud.testdata.builders.UsersCreator;
 import ru.vdudvdud.testdata.models.essences.User;
 
-public class UnsuccessAccoutRestore extends BaseTest {
+public class UnsuccessfulAccountRestoreTest extends BaseTest {
 
     private MainPageSteps mainPageSteps = new MainPageSteps();
     private HeaderSteps headerSteps = new HeaderSteps();

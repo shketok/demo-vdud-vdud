@@ -1,4 +1,4 @@
-package ru.vdudvdud.tests.regression.registration;
+package ru.vdudvdud.tests.regression.account.registration;
 
 import io.qameta.allure.Link;
 import org.testng.annotations.BeforeMethod;
@@ -9,8 +9,9 @@ import ru.vdudvdud.steps.MainPageSteps;
 import ru.vdudvdud.steps.RegistrationSteps;
 import ru.vdudvdud.testdata.builders.UsersCreator;
 import ru.vdudvdud.testdata.models.essences.User;
+import ru.vdudvdud.testdata.utils.TestDataProvider;
 
-public class SuccessfulRegistrationTest extends BaseTest {
+public class UnsuccessfulRegistrationPasswordsDoesntMatchTest extends BaseTest {
     private MainPageSteps mainPageSteps = new MainPageSteps();
     private HeaderSteps headerSteps = new HeaderSteps();
     private RegistrationSteps registrationSteps = new RegistrationSteps();
@@ -20,11 +21,10 @@ public class SuccessfulRegistrationTest extends BaseTest {
     @BeforeMethod
     public void readParams() {
         user = UsersCreator.createRandomUser();
-
     }
 
     @Test
-    @Link("https://outsourceofthebrain.myjetbrains.com/youtrack/issue/VDUDUD-2")
+    @Link("https://outsourceofthebrain.myjetbrains.com/youtrack/issue/VDUDUD-3")
     public void runTest() {
         LOG.info("1. Открытие главной страницы и формы регистрации");
         mainPageSteps.openMainPage();
@@ -33,11 +33,13 @@ public class SuccessfulRegistrationTest extends BaseTest {
         LOG.info("2. Заполнение формы регистрации");
         registrationSteps.checkThatMainElementsOfThePageAreVisible();
         registrationSteps.fillRegistrationData(user);
+        registrationSteps.fillRepeatPassword(user.getPassword().concat(TestDataProvider.generateRandomString()));
         registrationSteps.sendRegistrationData();
 
-        LOG.info("3. Проверка успешности регистрации");
-        mainPageSteps.checkThatMainElementsOfThePageAreVisible();
-        mainPageSteps.checkThatMainPageIsOpen();
-        headerSteps.checkLogoutVisible();
+        LOG.info("3. Проверка не успешности регистрации");
+        // TODO: для большей полноты теста не хватает проверки всплывающих подсказок. Их нет, так как сайт их не предсматирвает
+        registrationSteps.waitUntilSignUpBtnVisible();
+        mainPageSteps.waitUntilMainPageNotPresent();
+        headerSteps.checkLogoutInvisible();
     }
 }

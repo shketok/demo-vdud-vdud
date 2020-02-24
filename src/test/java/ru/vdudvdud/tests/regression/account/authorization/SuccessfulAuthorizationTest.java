@@ -1,4 +1,4 @@
-package ru.vdudvdud.tests.regression.authorization;
+package ru.vdudvdud.tests.regression.account.authorization;
 
 import io.qameta.allure.Link;
 import org.testng.annotations.BeforeMethod;
