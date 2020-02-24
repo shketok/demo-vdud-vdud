@@ -1,4 +1,4 @@
-package ru.vdudvdud.tests.regression.registration;
+package ru.vdudvdud.tests.regression.account.registration;
 
 import io.qameta.allure.Link;
 import org.testng.annotations.BeforeMethod;

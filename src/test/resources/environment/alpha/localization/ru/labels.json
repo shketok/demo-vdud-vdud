@@ -1,5 +1,6 @@
 {
   "cart.confirmation_form.products_cost": "Стоимость товаров",
   "cart.confirmation_form.delivery_cost": "Стоимость доставки",
-  "cart.confirmation_form.total_exclude_delivery": "Итого без учета доставки"
+  "cart.confirmation_form.total_exclude_delivery": "Итого без учета доставки",
+  "restore_password.restore_form.invalid_email_message": "Пользователь с этим именем для входа не найден."
 }
