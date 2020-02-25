@@ -15,6 +15,6 @@ public enum CartLocalization implements ILocalizedValue {
 
     @Override
     public String getValue() {
-        return Localization.getInstance().getValue(this.propKey);
+        return Localization.getInstance().getLocalizedLabel(this.propKey);
     }
 }

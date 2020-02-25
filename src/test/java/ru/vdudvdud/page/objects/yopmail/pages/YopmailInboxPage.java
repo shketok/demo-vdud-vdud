@@ -87,12 +87,12 @@ public class YopmailInboxPage extends BasePage {
         Selenide.switchTo().defaultContent();
     }
 
-    public void checkThatInOpenedMailLinkVisible() {
+    public void checkThatInOpenedMailLinkForRestorePasswordVisible() {
         Selenide.switchTo().frame($x(CURRENT_MESSAGE_FRAME_LOC));
         RESTORE_PASSWORD_MSG_LINK.shouldBe(visible);
     }
 
-    public String getRestoredLink() {
+    public String getLinkForRestorePassword() {
         return RESTORE_PASSWORD_MSG_LINK.getText();
     }
 }

@@ -72,8 +72,8 @@ public class SuccessfulPasswordRestore extends BaseTest {
 
         LOG.info("3. Открытие yopmail, вход и открытие ссылки восстановления пароля");
         yopmailSteps.openYopmail();
-        yopmailSteps.enter(user);
-        String restorePasswordUrl = yopmailSteps.getRestoredLink();
+        yopmailSteps.login(user);
+        String restorePasswordUrl = yopmailSteps.getLinkForRestorePassword();
 
         DriverContainer.switchToFirst();
         DriverContainer.getDriver().navigate().to(restorePasswordUrl);
