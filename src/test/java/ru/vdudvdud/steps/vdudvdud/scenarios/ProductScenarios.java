@@ -1,9 +1,9 @@
-package ru.vdudvdud.steps.scenarios;
+package ru.vdudvdud.steps.vdudvdud.scenarios;
 
 import io.qameta.allure.Step;
 import ru.vdudvdud.adaptors.selenide.utils.Logger;
-import ru.vdudvdud.steps.HeaderSteps;
-import ru.vdudvdud.steps.MainPageSteps;
+import ru.vdudvdud.steps.vdudvdud.HeaderSteps;
+import ru.vdudvdud.steps.vdudvdud.MainPageSteps;
 import ru.vdudvdud.testdata.models.essences.Product;
 import ru.vdudvdud.testdata.models.essences.User;
 
