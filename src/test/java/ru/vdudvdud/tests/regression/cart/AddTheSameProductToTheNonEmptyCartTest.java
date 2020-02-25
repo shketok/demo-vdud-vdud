@@ -14,6 +14,7 @@ import ru.vdudvdud.steps.scenarios.ProductScenarios;
 import ru.vdudvdud.testdata.creators.UsersCreator;
 import ru.vdudvdud.testdata.models.essences.Product;
 import ru.vdudvdud.testdata.models.essences.User;
+import ru.vdudvdud.testdata.objects.Cart;
 
 public class AddTheSameProductToTheNonEmptyCartTest extends BaseTest {
     private CartSteps cartSteps = new CartSteps();
@@ -26,16 +27,12 @@ public class AddTheSameProductToTheNonEmptyCartTest extends BaseTest {
     private User user;
     private Product product;
 
-    private Integer expectedCount;
 
     @BeforeMethod
-    @Parameters("expectedCount")
-    public void readParams(Integer expectedCount) {
+    public void readParams() {
         user = UsersCreator.createRandomUser();
         product = productScenarios.addProductToCartAfterRegistration(user);
         BrowserUtils.restartBrowser();
-
-        this.expectedCount = expectedCount;
     }
 
     @Test
@@ -50,18 +47,18 @@ public class AddTheSameProductToTheNonEmptyCartTest extends BaseTest {
         mainPageSteps.clickSpecificProductAddToTheCartBtn(product);
 
         LOG.info("Подтверждение добавления товара в корзину");
-        mainPageSteps.updateProductFromTheAddToTheCartPopup(product);
+        mainPageSteps.updateProduct(product);
         mainPageSteps.confirmAddProductToTheCart();
-        mainPageSteps.goToTheCartProductAddedPopup();
+        mainPageSteps.goToTheCartProductAddedPopup(product);
 
         LOG.info("Открытие корзины и проверка корректности отображения основных блоков корзины");
         cartSteps.checkThatMainElementsOfThePageAreVisible();
 
         LOG.info("Проверка корректного отображения элементов товара в блоке добавленного товара");
-        cartSteps.checkThatProductWasAddedToTheCart(product);
+        Cart.getInstance().getProducts().values().forEach(product -> cartSteps.checkThatProductWasAddedToTheCart(product));
 
         LOG.info("Проверка, что товар добавлен на страницу и в табе товара корректно изменились параметры товара");
-        cartSteps.checkThatCartProductTabContainsCorrectData(product, expectedCount);
+        cartSteps.checkThatCartProductTabContainsCorrectData();
     }
 
 

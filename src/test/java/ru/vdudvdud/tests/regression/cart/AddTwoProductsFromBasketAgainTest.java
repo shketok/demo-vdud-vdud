@@ -14,6 +14,9 @@ import ru.vdudvdud.steps.scenarios.ProductScenarios;
 import ru.vdudvdud.testdata.creators.UsersCreator;
 import ru.vdudvdud.testdata.models.essences.Product;
 import ru.vdudvdud.testdata.models.essences.User;
+import ru.vdudvdud.testdata.objects.Cart;
+
+import java.util.stream.Stream;
 
 public class AddTwoProductsFromBasketAgainTest extends BaseTest {
     private CartSteps cartSteps = new CartSteps();
@@ -27,17 +30,12 @@ public class AddTwoProductsFromBasketAgainTest extends BaseTest {
     private Product firstProduct;
     private Product secondProduct;
 
-    private Integer expectedCount;
-
     @BeforeMethod
-    @Parameters("expectedCount")
-    public void readParams(Integer expectedCount) {
+    public void readParams() {
         user = UsersCreator.createRandomUser();
         firstProduct = productScenarios.addProductToCartAfterRegistration(user);
-        secondProduct = mainPageSteps.clickRandomProductAddToTheCartInsteadSpecifics(firstProduct);
+        secondProduct = productScenarios.addProductToTheCart(() -> mainPageSteps.clickRandomProductAddToTheCartInsteadSpecifics(firstProduct));
         BrowserUtils.restartBrowser();
-
-        this.expectedCount = expectedCount;
     }
 
     @Test
@@ -48,21 +46,21 @@ public class AddTwoProductsFromBasketAgainTest extends BaseTest {
         headerSteps.goToTheMainPage();
         headerSteps.checkThatMainElementsOfThePageAreVisible();
 
-        LOG.info("Добавить товар в корзину, который там уже присутствует");
-        mainPageSteps.clickSpecificProductAddToTheCartBtn(firstProduct);
+        LOG.info("Добавить товары в корзину, которые уже там присутствуют");
+        Stream.of(firstProduct, secondProduct).forEach(product ->
+                productScenarios.addProductToTheCart(() -> mainPageSteps.clickSpecificProductAddToTheCartBtn(product))
+        );
 
         LOG.info("Подтверждение добавления товара в корзину");
-        mainPageSteps.updateProductFromTheAddToTheCartPopup(firstProduct);
-        mainPageSteps.confirmAddProductToTheCart();
-        mainPageSteps.goToTheCartProductAddedPopup();
+        headerSteps.goToTheCartPage();
 
         LOG.info("Открытие корзины и проверка корректности отображения основных блоков корзины");
         cartSteps.checkThatMainElementsOfThePageAreVisible();
 
         LOG.info("Проверка корректного отображения элементов товара в блоке добавленного товара");
-        cartSteps.checkThatProductWasAddedToTheCart(firstProduct);
+        Cart.getInstance().getProducts().values().forEach(product -> cartSteps.checkThatProductWasAddedToTheCart(product));
 
         LOG.info("Проверка, что товар добавлен на страницу и в табе товара корректно изменились параметры товара");
-        cartSteps.checkThatCartProductTabContainsCorrectData(firstProduct, expectedCount);
+        cartSteps.checkThatCartProductTabContainsCorrectData();
     }
 }

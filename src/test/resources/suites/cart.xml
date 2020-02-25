@@ -2,16 +2,21 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="debug" verbose="1">
 
-    <test name="Test successful authorization">
+    <test name="Test product data in cart test">
         <classes>
             <class name="ru.vdudvdud.tests.regression.cart.ProductDataInCartTest"/>
         </classes>
     </test>
 
     <test name="Test add the same product to the non empty cart">
-        <parameter name="expectedCount" value="2"/>
         <classes>
             <class name="ru.vdudvdud.tests.regression.cart.AddTheSameProductToTheNonEmptyCartTest"/>
+        </classes>
+    </test>
+
+    <test name="Test add two products from basket again test">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.AddTwoProductsFromBasketAgainTest"/>
         </classes>
     </test>
 

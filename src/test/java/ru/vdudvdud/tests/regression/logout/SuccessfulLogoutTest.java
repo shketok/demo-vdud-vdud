@@ -7,7 +7,7 @@ import ru.vdudvdud.adaptors.selenide.base.BaseTest;
 import ru.vdudvdud.steps.HeaderSteps;
 import ru.vdudvdud.steps.MainPageSteps;
 import ru.vdudvdud.steps.RegistrationSteps;
-import ru.vdudvdud.testdata.builders.UsersCreator;
+import ru.vdudvdud.testdata.creators.UsersCreator;
 import ru.vdudvdud.testdata.models.essences.User;
 
 public class SuccessfulLogoutTest extends BaseTest {
