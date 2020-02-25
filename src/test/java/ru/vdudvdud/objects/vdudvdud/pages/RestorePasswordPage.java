@@ -12,7 +12,7 @@ import ru.vdudvdud.testdata.enums.localization.RestorePasswordLocalization;
 import ru.vdudvdud.testdata.models.essences.User;
 
 /**
- * Класс, описывающий страницу восстановления пароля
+ * Класс, описывающий страницу восстановления пароля по данным пользователя
  */
 public class RestorePasswordPage extends BasePage {
 
