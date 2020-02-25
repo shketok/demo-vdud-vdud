@@ -10,11 +10,13 @@ import static java.lang.String.format;
 /**
  * Класс-синглтон, отвечающий за получение данных из ресурсных файлов конфигурации в зависимости от локали.
  */
+//TODO abstract class for all localizations //refactor
 public class Localization {
 
     private static Localization instance = null;
 
     private JSONObject localizedLabels;
+    private JSONObject localizedYopmail;
     private Locale locale;
 
     private Localization() {
@@ -39,8 +41,12 @@ public class Localization {
      */
     public void setLocale(Locale locale) {
         this.locale = locale;
-        String filePath = Configuration.getInstance().getLocalizationFilePath(this.locale.getLocale(), "labels.json");
-        localizedLabels = JSONUtils.readFromFile(filePath);
+        String labelsLocalizationFilepath = Configuration.getInstance()
+            .getLocalizationFilePath(this.locale.getLocale(), "labels.json");
+        String yopmailLocalizationFilepath = Configuration.getInstance()
+            .getLocalizationFilePath(this.locale.getLocale(), "yopmail.json");
+        localizedLabels = JSONUtils.readFromFile(labelsLocalizationFilepath);
+        localizedYopmail = JSONUtils.readFromFile(yopmailLocalizationFilepath);
     }
 
     public String getLocale() {
@@ -53,11 +59,28 @@ public class Localization {
      * @param token ключ, по которому необходимо искать значение.
      * @return локализованное значение лэйбла. Если значение не найдено, возвращается null.
      */
-    public String getValue(String token) {
+    public String getLocalizedLabel(String token) {
         String value = (String) localizedLabels.get(token);
         if (value != null) {
             return value;
         } else {
+            Logger.getInstance().error(format("Token '%s' was not found for locale '%s'", token, locale.getLocale()));
+            return null;
+        }
+    }
+
+    /**
+     * Получение локализованного строкового значения элемента почты yopmail по ключу.
+     *
+     * @param token ключ, по которому необходимо искать значение.
+     * @return локализованное значение лэйбла. Если значение не найдено, возвращается null.
+     */
+    public String getLocalizedYopmailElement(String token) {
+        String value = (String) localizedYopmail.get(token);
+        if (value != null) {
+            return value;
+        } else {
+            // TODO other locale;
             Logger.getInstance().error(format("Token '%s' was not found for locale '%s'", token, locale.getLocale()));
             return null;
         }

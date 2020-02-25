@@ -2,6 +2,7 @@ package ru.vdudvdud.steps.yopmail;
 
 import ru.vdudvdud.objects.yopmail.pages.YopmailInboxPage;
 import ru.vdudvdud.objects.yopmail.pages.YopmailMainPage;
+import ru.vdudvdud.testdata.enums.localization.YopmailLocalization;
 import ru.vdudvdud.testdata.models.essences.User;
 
 public class YopmailSteps {
@@ -13,15 +14,14 @@ public class YopmailSteps {
         yopmailMainPage.open();
     }
 
-    public void enter(User user) {
+    public void login(User user) {
         yopmailMainPage.openYopmailAndNagivateToInboxByEmail(user.getEmail());
     }
 
-    public String getRestoredLink() {
-        yopmailInboxPage.waitForMailNumber(2);
-        yopmailInboxPage.clickMessageWithSubjectReceived("Восстановление_пароля_для_входа");
-        yopmailInboxPage.checkThatInOpenedMailLinkVisible();
-        return yopmailInboxPage.getRestoredLink();
+    public String getLinkForRestorePassword() {
+        yopmailInboxPage.clickMessageWithSubjectReceived(YopmailLocalization.EMAIL_SUBJECT_PASSWORD_RESTORE.getValue());
+        yopmailInboxPage.checkThatInOpenedMailLinkForRestorePasswordVisible();
+        return yopmailInboxPage.getLinkForRestorePassword();
     }
 
 }
