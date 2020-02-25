@@ -13,6 +13,7 @@ import ru.vdudvdud.adaptors.selenide.driver.DriverContainer;
 import ru.vdudvdud.adaptors.selenide.utils.DriverHelper;
 import ru.vdudvdud.adaptors.selenide.utils.Logger;
 import ru.vdudvdud.adaptors.selenide.utils.Store;
+import ru.vdudvdud.testdata.objects.Cart;
 
 import static java.lang.String.format;
 
@@ -66,6 +67,8 @@ public abstract class BaseTest {
 
         DriverContainer.quit();
         LOG.info(format("Test '%s' finished", testContext.getName()));
+
+        Cart.getInstance().clean();
     }
 
     /**

@@ -20,6 +20,10 @@ public class Cart {
         products = new HashMap<>();
     }
 
+    public void clean() {
+        products = new HashMap<>();
+    }
+
     public static Cart getInstance() {
         if (instance.get() == null) {
             instance.set(new Cart());

@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import com.codeborne.selenide.ex.ElementShould;
 import com.codeborne.selenide.ex.ElementShouldNot;
+import org.openqa.selenium.NoSuchElementException;
 
 /**
  * Класс с умными ожиданиями.
@@ -40,7 +41,7 @@ public class SmartWait {
     public static boolean isElementInState(SelenideElement selenideElement, Condition condition) {
         try {
             selenideElement.shouldBe(condition);
-        } catch (ElementShould ex) {
+        } catch (ElementShould | NoSuchElementException ex) {
             logger.info(String.format("Element %s is %s", selenideElement.toString(), condition.toString()));
         }
         return selenideElement.is(condition);
