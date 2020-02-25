@@ -5,6 +5,7 @@ import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 import static java.lang.String.format;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import ru.vdudvdud.adaptors.selenide.Configuration;
@@ -82,16 +83,18 @@ public class YopmailInboxPage extends BasePage {
      */
     public void clickMessageWithSubjectReceived(String subject) {
         Selenide.switchTo().frame($x(INBOX_FRAME_LOC));
-        $x(format(EMAIL_SUBJECT_LOC, subject)).click();
+        SelenideElement emailWithSubject = $x(format(EMAIL_SUBJECT_LOC, subject));
+        emailWithSubject.shouldBe(visible);
+        emailWithSubject.click();
         Selenide.switchTo().defaultContent();
     }
 
-    public void checkThatInOpenedMailLinkVisible() {
+    public void checkThatInOpenedMailLinkForRestorePasswordVisible() {
         Selenide.switchTo().frame($x(CURRENT_MESSAGE_FRAME_LOC));
         RESTORE_PASSWORD_MSG_LINK.shouldBe(visible);
     }
 
-    public String getRestoredLink() {
+    public String getLinkForRestorePassword() {
         return RESTORE_PASSWORD_MSG_LINK.getText();
     }
 }
