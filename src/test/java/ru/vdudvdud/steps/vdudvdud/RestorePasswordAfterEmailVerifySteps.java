@@ -41,8 +41,5 @@ public class RestorePasswordAfterEmailVerifySteps extends BaseSteps {
         restorePasswordConfirmationPage.clickConfirm();
     }
 
-    public void checkThatRepeatPasswordErrorMsgIsVisible() {
-        restorePasswordConfirmationPage.checkThatRepeatPasswordErrorMsgIsVisible();
-    }
 
 }

@@ -91,6 +91,5 @@ public class UnsuccessfulPasswordRestoreWithDifferentPasswordsTest extends BaseT
 
         LOG.info("5. Проверка того, что вывелось сообщение об ошибке");
         restorePasswordAfterEmailVerifySteps.checkThatDifferentPasswordsErrorMsgIsVisible();
-
     }
 }

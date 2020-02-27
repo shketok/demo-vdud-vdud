@@ -58,7 +58,6 @@ public class RestorePasswordConfirmationPage extends BasePage {
             .shouldHave(Condition.exactText(RestorePasswordLocalization.EMPTY_PASSWORDS_MESSAGE.getValue()));
     }
 
-
     public void fillPassword(String password) {
         actions().sendKeys(PASSWORD.toWebElement(), password).build().perform();
     }
