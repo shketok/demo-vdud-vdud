@@ -1,6 +1,5 @@
 package ru.vdudvdud.tests.regression.account.restore;
 
-import com.codeborne.selenide.Condition;
 import io.qameta.allure.Link;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -8,18 +7,17 @@ import ru.vdudvdud.adaptors.selenide.base.BaseTest;
 import ru.vdudvdud.adaptors.selenide.driver.DriverContainer;
 import ru.vdudvdud.steps.vdudvdud.HeaderSteps;
 import ru.vdudvdud.steps.vdudvdud.MainPageSteps;
-import ru.vdudvdud.steps.vdudvdud.PersonalRoomSteps;
 import ru.vdudvdud.steps.vdudvdud.RegistrationSteps;
 import ru.vdudvdud.steps.vdudvdud.RestorePasswordAfterEmailVerifySteps;
 import ru.vdudvdud.steps.vdudvdud.RestorePasswordSteps;
 import ru.vdudvdud.steps.vdudvdud.SignInSteps;
 import ru.vdudvdud.steps.yopmail.YopmailSteps;
-import ru.vdudvdud.testdata.builders.UsersCreator;
 import ru.vdudvdud.testdata.constants.StringConstants;
+import ru.vdudvdud.testdata.creators.UsersCreator;
 import ru.vdudvdud.testdata.models.essences.User;
 import ru.vdudvdud.testdata.utils.TestDataProvider;
 
-public class UnsuccessfulPasswordRestoreWithDifferentPasswords extends BaseTest {
+public class UnsuccessfulPasswordRestoreWithDifferentPasswordsTest extends BaseTest {
 
     /**
      * Строка, добавляющаяся к новому паролю, чтобы гарантировано создать другой пароль
@@ -33,7 +31,6 @@ public class UnsuccessfulPasswordRestoreWithDifferentPasswords extends BaseTest 
     private YopmailSteps yopmailSteps = new YopmailSteps();
     private RestorePasswordAfterEmailVerifySteps restorePasswordAfterEmailVerifySteps = new RestorePasswordAfterEmailVerifySteps();
     private RegistrationSteps registrationSteps = new RegistrationSteps();
-    private PersonalRoomSteps personalRoomSteps = new PersonalRoomSteps();
     private User user;
 
     @BeforeMethod
@@ -78,7 +75,7 @@ public class UnsuccessfulPasswordRestoreWithDifferentPasswords extends BaseTest 
 
         LOG.info("3. Открытие yopmail, вход и открытие ссылки восстановления пароля");
         yopmailSteps.openYopmail();
-        yopmailSteps.login(user);
+        yopmailSteps.navigateToUserInbox(user);
         String restorePasswordUrl = yopmailSteps.getLinkForRestorePassword();
 
         DriverContainer.switchToFirst();
