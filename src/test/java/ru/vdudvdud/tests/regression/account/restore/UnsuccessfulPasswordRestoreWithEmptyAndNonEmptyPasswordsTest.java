@@ -1,6 +1,7 @@
 package ru.vdudvdud.tests.regression.account.restore;
 
 import io.qameta.allure.Link;
+import org.apache.commons.lang3.StringUtils;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.vdudvdud.adaptors.selenide.base.BaseTest;
@@ -17,8 +18,7 @@ import ru.vdudvdud.testdata.creators.UsersCreator;
 import ru.vdudvdud.testdata.models.essences.User;
 import ru.vdudvdud.testdata.utils.TestDataProvider;
 
-public class UnsuccessfulPasswordRestoreWithDifferentPasswordsTest extends BaseTest {
-
+public class UnsuccessfulPasswordRestoreWithEmptyAndNonEmptyPasswordsTest extends BaseTest {
 
     private MainPageSteps mainPageSteps = new MainPageSteps();
     private HeaderSteps headerSteps = new HeaderSteps();
@@ -56,7 +56,7 @@ public class UnsuccessfulPasswordRestoreWithDifferentPasswordsTest extends BaseT
 
     @Override
     @Test
-    @Link("https://outsourceofthebrain.myjetbrains.com/youtrack/issue/VDUDUD-53")
+    @Link("https://outsourceofthebrain.myjetbrains.com/youtrack/issue/VDUDUD-56")
     public void runTest() {
 
         LOG.info("1. Переход на страницу восстановления пароля");
@@ -77,18 +77,17 @@ public class UnsuccessfulPasswordRestoreWithDifferentPasswordsTest extends BaseT
         DriverContainer.switchToFirst();
         DriverContainer.getDriver().navigate().to(restorePasswordUrl);
 
-        String newPassword = TestDataProvider.generateRandomString(StringConstants.BASE_RANDOM_STRING_LENGTH);
-        String incorrectPasswordRepeat = TestDataProvider
-            .generateRandomString(StringConstants.BASE_RANDOM_STRING_LENGTH);
-
         LOG.info("4. Ввод и подтверждение нового пароля");
         restorePasswordAfterEmailVerifySteps.checkThatMainElementsOfThePageAreVisible();
-        restorePasswordAfterEmailVerifySteps.fillPassword(newPassword);
-        restorePasswordAfterEmailVerifySteps.fillRepeatPassword(incorrectPasswordRepeat);
-
+        restorePasswordAfterEmailVerifySteps.fillPassword(StringUtils.EMPTY);
+        restorePasswordAfterEmailVerifySteps
+            .fillRepeatPassword(TestDataProvider.generateRandomString(StringConstants.BASE_RANDOM_STRING_LENGTH));
         restorePasswordAfterEmailVerifySteps.clickConfirm();
 
-        LOG.info("5. Проверка того, что вывелось сообщение об ошибке");
+        LOG.info("5. Проверка того, что вывелось сообщение о том что введен пустой пароль");
+        restorePasswordAfterEmailVerifySteps.checkThatEmptyPasswordsErrorMsgIsVisible();
+
+        LOG.info("6. Проверка того, что вывелось сообщение о том что введены не совпадающие пароли");
         restorePasswordAfterEmailVerifySteps.checkThatDifferentPasswordsErrorMsgIsVisible();
     }
 }

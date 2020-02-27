@@ -16,12 +16,12 @@ public class RestorePasswordAfterEmailVerifySteps extends BaseSteps {
         restorePasswordConfirmationPage.checkThatConfirmInState(Condition.visible);
     }
 
-    @Step("Проверка того что вывелось сообщение о несовпадении паролей")
+    @Step("Проверка того, что вывелось сообщение о несовпадении паролей")
     public void checkThatDifferentPasswordsErrorMsgIsVisible() {
         restorePasswordConfirmationPage.checkThatDifferentPasswordsErrorMsgIsVisible();
     }
 
-    @Step("Проверка того что вывелось сообщение о вводе пустого пароля")
+    @Step("Проверка того, что вывелось сообщение о вводе пустого пароля")
     public void checkThatEmptyPasswordsErrorMsgIsVisible() {
         restorePasswordConfirmationPage.checkThatEmptyPasswordsErrorMsgIsVisible();
     }
