@@ -71,6 +71,7 @@ public class UnsuccessfulPasswordRestoreWithDifferentPasswordsTest extends BaseT
 
         LOG.info("3. Открытие yopmail, вход и открытие ссылки восстановления пароля");
         yopmailSteps.openYopmail();
+
         yopmailSteps.navigateToUserInbox(user);
         String restorePasswordUrl = yopmailSteps.getLinkForRestorePassword();
 
@@ -90,5 +91,6 @@ public class UnsuccessfulPasswordRestoreWithDifferentPasswordsTest extends BaseT
 
         LOG.info("5. Проверка того, что вывелось сообщение об ошибке");
         restorePasswordAfterEmailVerifySteps.checkThatDifferentPasswordsErrorMsgIsVisible();
+
     }
 }
