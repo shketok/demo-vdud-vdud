@@ -85,6 +85,7 @@ public class UnsuccessfulPasswordRestoreWithDifferentPasswordsTest extends BaseT
         restorePasswordAfterEmailVerifySteps.checkThatMainElementsOfThePageAreVisible();
         restorePasswordAfterEmailVerifySteps.fillPassword(newPassword);
         restorePasswordAfterEmailVerifySteps.fillRepeatPassword(incorrectPasswordRepeat);
+
         restorePasswordAfterEmailVerifySteps.clickConfirm();
 
         LOG.info("5. Проверка того, что вывелось сообщение об ошибке");
