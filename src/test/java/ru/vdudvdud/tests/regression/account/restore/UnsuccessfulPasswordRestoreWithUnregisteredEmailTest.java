@@ -11,7 +11,7 @@ import ru.vdudvdud.steps.vdudvdud.RestorePasswordSteps;
 import ru.vdudvdud.steps.vdudvdud.SignInSteps;
 import ru.vdudvdud.testdata.models.essences.User;
 
-public class UnsuccessfulAccountRestoreWithUnregisteredEmailTest extends BaseTest {
+public class UnsuccessfulPasswordRestoreWithUnregisteredEmailTest extends BaseTest {
 
     private MainPageSteps mainPageSteps = new MainPageSteps();
     private HeaderSteps headerSteps = new HeaderSteps();
@@ -43,7 +43,7 @@ public class UnsuccessfulAccountRestoreWithUnregisteredEmailTest extends BaseTes
         restorePasswordSteps.restorePassword(user);
 
         LOG.info("2. Проверка что вывелось сообщение о том что нет пользователя с таким email");
-        restorePasswordSteps.checkIncorrentEmailMessageIsVisible();
+        restorePasswordSteps.checkIncorrectEmailMessageIsVisible();
     }
 
 }
