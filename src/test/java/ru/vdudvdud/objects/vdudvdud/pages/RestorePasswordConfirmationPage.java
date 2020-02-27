@@ -25,7 +25,6 @@ public class RestorePasswordConfirmationPage extends BasePage {
 
     private final SelenideElement CONFIRM = getMainElement().$x(".//input[@type='submit']");
 
-
     public RestorePasswordConfirmationPage() {
         super($x(MAIN_ELEMENT));
     }
@@ -58,6 +57,7 @@ public class RestorePasswordConfirmationPage extends BasePage {
         ERROR_MSG_UNDER_PASSWORD
             .shouldHave(Condition.exactText(RestorePasswordLocalization.EMPTY_PASSWORDS_MESSAGE.getValue()));
     }
+
 
     public void fillPassword(String password) {
         actions().sendKeys(PASSWORD.toWebElement(), password).build().perform();

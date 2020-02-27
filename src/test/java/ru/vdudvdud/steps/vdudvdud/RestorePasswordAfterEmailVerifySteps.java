@@ -27,7 +27,6 @@ public class RestorePasswordAfterEmailVerifySteps extends BaseSteps {
     }
 
     @Step("Заполнение нового пароля")
-
     public void fillPassword(String password) {
         restorePasswordConfirmationPage.fillPassword(password);
     }
@@ -42,5 +41,8 @@ public class RestorePasswordAfterEmailVerifySteps extends BaseSteps {
         restorePasswordConfirmationPage.clickConfirm();
     }
 
+    public void checkThatRepeatPasswordErrorMsgIsVisible() {
+        restorePasswordConfirmationPage.checkThatRepeatPasswordErrorMsgIsVisible();
+    }
 
 }
