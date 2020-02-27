@@ -1,13 +1,11 @@
 package ru.vdudvdud.objects.vdudvdud.pages;
 
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 import static com.codeborne.selenide.Selenide.actions;
 import static ru.vdudvdud.testdata.enums.urls.BaseUrls.FORGOT_PASSWORD;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import org.testng.Assert;
 import ru.vdudvdud.adaptors.selenide.base.BasePage;
 import ru.vdudvdud.testdata.enums.localization.RestorePasswordLocalization;
 
@@ -26,6 +24,7 @@ public class RestorePasswordConfirmationPage extends BasePage {
         .$x(".//*[@class='wa-error-msg' and @data-name='password_confirm']");
 
     private final SelenideElement CONFIRM = getMainElement().$x(".//input[@type='submit']");
+
 
     public RestorePasswordConfirmationPage() {
         super($x(MAIN_ELEMENT));

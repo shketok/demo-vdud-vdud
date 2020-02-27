@@ -32,6 +32,7 @@ public class RestorePasswordAfterEmailVerifySteps extends BaseSteps {
         restorePasswordConfirmationPage.clickConfirm();
     }
 
+    @Step("Проверка того что вывелось сообщение о несовпадении паролей")
     public void checkThatRepeatPasswordErrorMsgIsVisible() {
         restorePasswordConfirmationPage.checkThatRepeatPasswordErrorMsgIsVisible();
     }
