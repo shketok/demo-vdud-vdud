@@ -6,6 +6,7 @@ import static ru.vdudvdud.testdata.enums.urls.BaseUrls.FORGOT_PASSWORD;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import org.testng.Assert;
 import ru.vdudvdud.adaptors.selenide.base.BasePage;
 import ru.vdudvdud.testdata.enums.localization.RestorePasswordLocalization;
 
@@ -49,6 +50,17 @@ public class RestorePasswordConfirmationPage extends BasePage {
             .shouldHave(Condition.exactText(RestorePasswordLocalization.DIFFERENT_PASSWORDS_MESSAGE.getValue()));
     }
 
+    public void checkThatDifferentPasswordsErrorMsgIsVisible() {
+        Assert.assertEquals(RestorePasswordLocalization.DIFFERENT_PASSWORDS_MESSAGE.getValue(),
+            ERROR_MSG_UNDER_REPEAT_PASSWORD.getText(),
+            "Ожидаемое сообщение о несовпадение паролей не соответвует фактическому");
+    }
+
+    public void checkThatEmptyPasswordsErrorMsgIsVisible() {
+        Assert.assertEquals(RestorePasswordLocalization.EMPTY_PASSWORDS_MESSAGE.getValue(),
+            ERROR_MSG_UNDER_PASSWORD.getText(),
+            "Ожидаемое сообщение о пустых паролях не соответвует фактическому");
+    }
 
     public void fillPassword(String password) {
         actions().sendKeys(PASSWORD.toWebElement(), password).build().perform();
