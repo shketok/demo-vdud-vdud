@@ -8,9 +8,15 @@
         </classes>
     </test>
 
-    <test name="Test empty cart">
+    <test name="Test empty cart unauthorized user">
         <classes>
-            <class name="ru.vdudvdud.tests.regression.cart.EmptyCartTest"/>
+            <class name="ru.vdudvdud.tests.regression.cart.EmptyCartTestUserUnauthorized"/>
+        </classes>
+    </test>
+
+    <test name="Test empty cart authorized user">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.EmptyCartTestUserAuthorized"/>
         </classes>
     </test>
 
