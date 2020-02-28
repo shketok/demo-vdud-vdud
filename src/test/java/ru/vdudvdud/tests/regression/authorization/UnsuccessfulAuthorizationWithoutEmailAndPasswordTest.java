@@ -1,6 +1,8 @@
 package ru.vdudvdud.tests.regression.authorization;
 
+import io.qameta.allure.Link;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import ru.vdudvdud.adaptors.selenide.base.BaseTest;
 import ru.vdudvdud.steps.HeaderSteps;
@@ -17,11 +19,14 @@ public class UnsuccessfulAuthorizationWithoutEmailAndPasswordTest extends BaseTe
 
     private User user;
 
+
+    @Parameters("userName")
     @BeforeMethod
-    public void readParams() {
-        user = UsersCreator.createUser(UserAliases.USER_EMPTY_PASSWORD_AND_EMAIL);
+    public void readParams(UserAliases userName) {
+        user = UsersCreator.createUser(userName);
     }
 
+    @Link("https://outsourceofthebrain.myjetbrains.com/youtrack/issue/VDUDUD-11")
     @Test
     public void runTest() {
         LOG.info("1. Открытие главной страницы и формы логина");
