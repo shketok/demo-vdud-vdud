@@ -4,7 +4,13 @@
 
     <test name="Test successful authorization">
         <classes>
-            <class name="ru.vdudvdud.tests.regression.authorization.SuccessfulAuthorizationTest"/>
+            <class name="ru.vdudvdud.tests.regression.account.authorization.SuccessfulAuthorizationTest"/>
+        </classes>
+    </test>
+
+    <test name="Test successful logout">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.logout.SuccessfulLogoutTest"/>
         </classes>
     </test>
 

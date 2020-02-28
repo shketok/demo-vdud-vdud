@@ -1,5 +1,6 @@
-package ru.vdudvdud.tests.regression.authorization;
+package ru.vdudvdud.tests.regression.account.authorization;
 
+import io.qameta.allure.Link;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.vdudvdud.adaptors.selenide.base.BaseTest;
@@ -27,6 +28,7 @@ public class SuccessfulAuthorizationTest extends BaseTest {
     }
 
     @Test
+    @Link("https://outsourceofthebrain.myjetbrains.com/youtrack/issue/VDUDUD-10")
     public void runTest() {
         LOG.info("1. Открытие главной страницы и формы регистрации");
         mainPageSteps.openMainPage();

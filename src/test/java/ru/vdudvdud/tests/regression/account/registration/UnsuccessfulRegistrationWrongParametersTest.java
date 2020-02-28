@@ -1,5 +1,6 @@
-package ru.vdudvdud.tests.regression.registration;
+package ru.vdudvdud.tests.regression.account.registration;
 
+import io.qameta.allure.Link;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
@@ -27,6 +28,12 @@ public class UnsuccessfulRegistrationWrongParametersTest extends BaseTest {
     }
 
     @Test
+    @Link("https://outsourceofthebrain.myjetbrains.com/youtrack/issue/VDUDUD-4")
+    @Link("https://outsourceofthebrain.myjetbrains.com/youtrack/issue/VDUDUD-5")
+    @Link("https://outsourceofthebrain.myjetbrains.com/youtrack/issue/VDUDUD-6")
+    @Link("https://outsourceofthebrain.myjetbrains.com/youtrack/issue/VDUDUD-7")
+    @Link("https://outsourceofthebrain.myjetbrains.com/youtrack/issue/VDUDUD-8")
+    @Link("https://outsourceofthebrain.myjetbrains.com/youtrack/issue/VDUDUD-9")
     public void runTest() {
         LOG.info("1. Открытие главной страницы и формы регистрации");
         mainPageSteps.openMainPage();

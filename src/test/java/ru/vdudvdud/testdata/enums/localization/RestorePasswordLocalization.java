@@ -2,12 +2,12 @@ package ru.vdudvdud.testdata.enums.localization;
 
 import ru.vdudvdud.adaptors.selenide.Localization;
 
-public enum Example implements ILocalizedValue {
-    VALUE("page.space.constant_name");
+public enum RestorePasswordLocalization implements ILocalizedValue {
+    INCORRECT_EMAIL_MESSAGE("restore_password.restore_form.invalid_email_message");
 
     private String propKey;
 
-    Example(String propKey) {
+    RestorePasswordLocalization(String propKey) {
         this.propKey = propKey;
     }
 

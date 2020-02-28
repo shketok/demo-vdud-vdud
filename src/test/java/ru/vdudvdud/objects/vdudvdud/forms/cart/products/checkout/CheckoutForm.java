@@ -23,4 +23,8 @@ public class CheckoutForm extends BasePage {
     public DeliveryForm getDeliveryForm() {
         return new DeliveryForm(MAIN_ELEMENT);
     }
+
+    public ConfirmationForm getConfirmationForm() {
+        return new ConfirmationForm(MAIN_ELEMENT);
+    }
 }

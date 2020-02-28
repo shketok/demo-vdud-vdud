@@ -1,5 +1,6 @@
-package ru.vdudvdud.tests.regression.product;
+package ru.vdudvdud.tests.regression.cart.mini;
 
+import io.qameta.allure.Link;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.vdudvdud.adaptors.selenide.base.BaseTest;
@@ -18,6 +19,7 @@ public class AddProductToTheCartUserAuthorizedTest extends BaseTest {
     private User user;
 
     @BeforeMethod
+    @Link("https://outsourceofthebrain.myjetbrains.com/youtrack/issue/VDUDUD-44")
     public void readParams() {
         user = UsersCreator.createRandomUser();
 
@@ -36,6 +38,7 @@ public class AddProductToTheCartUserAuthorizedTest extends BaseTest {
     }
 
     @Test
+    @Link("https://outsourceofthebrain.myjetbrains.com/youtrack/issue/VDUDUD-44")
     public void runTest() {
         LOG.info("1. Нажатие кнопки В корзину на случайном товаре с главной страницы");
         Product product = mainPageSteps.clickRandomProductAddToTheCartBtn();

@@ -25,6 +25,11 @@ public class SignInSteps extends BaseSteps {
         signInPage.clickConfirm();
     }
 
+    @Step("Переход на страницу восстановления пароля")
+    public void clickToForgotPassword() {
+        signInPage.clickForgotPassword();
+    }
+
 
     @Step("Проверка видимости поля с ошибкой, когда логин остутствует")
     public void checkThatMandatoryLoginErrorMessageIsVisible(){
