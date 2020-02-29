@@ -23,11 +23,7 @@ public class ProductsForm extends BasePage {
      * @param size Размер продукта.
      */
     public ProductForm getProductForm(String name, String size) {
-        if (size == null) {
-            return new ProductForm(name);
-        } else {
-            return new ProductForm(name, size);
-        }
+        return size == null ? new ProductForm(name) : new ProductForm(name, size);
     }
 
     public int getProductsCount() {

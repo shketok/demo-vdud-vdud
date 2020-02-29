@@ -75,7 +75,7 @@ public class YopmailInboxPage extends BasePage {
      */
     public void clickMessageWithSubjectReceived(String subject) {
         Selenide.switchTo().frame($x(INBOX_FRAME_LOC));
-        $x(format(EMAIL_SUBJECT_LOC, subject)).click();
+        $x(String.format(EMAIL_SUBJECT_LOC, subject)).click();
         Selenide.switchTo().defaultContent();
     }
 

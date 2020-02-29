@@ -22,7 +22,12 @@ public class AddProductToTheCartPopup extends BasePage {
         return MAIN_ELEMENT;
     }
 
-    public void clickConfirmBtn() {
+    /**
+     * Клик по кнопке подтверждения параметров и количества продукта.
+     * Так как форма может не появляться для некоторых групп товаров, то происходит проверка,
+     * появилась ли форма на страницы, и кликает только тогда, когда форма появляется.
+     */
+    public void clickConfirmBtnIfAppeared() {
         SelenideElement confirmBtn = MAIN_ELEMENT.$(CONFIRM_BTN_LOC);
         if (SmartWait.isElementInState(confirmBtn, Condition.visible)) {
             MAIN_ELEMENT.$(CONFIRM_BTN_LOC).click();

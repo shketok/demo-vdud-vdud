@@ -14,12 +14,13 @@ import static ru.vdudvdud.adaptors.selenide.driver.DriverFactory.PAGE_CLOSE_TIME
 public abstract class BasePage extends PageObject {
 
     /**
-     * Проверка по элементу, открылась ли страница.
+     * Проверка по элементу, что выполняются переданное условие.
      *
+     * @param condition ожидаемое состояние элемента.
      * @return true - если найден элемент, false - в противном случае.
      */
-    public boolean isOpened() {
-        return getMainElement().is(Condition.visible);
+    public boolean isPageInState(Condition condition) {
+        return getMainElement().is(condition);
     }
 
     /**
@@ -55,7 +56,7 @@ public abstract class BasePage extends PageObject {
      * Метод ожидания пока страница закроется.
      * (необходимо в случае ожадания какой-либо загрузки или процесса на странице, а затем ее автоматического закрытия).
      */
-    public void waitForNotPresent() {
+    public void getPageCloseTimeout() {
         getMainElement().waitUntil(Condition.not(Condition.exist), notExistTimeOut());
     }
 

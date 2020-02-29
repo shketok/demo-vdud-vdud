@@ -2,7 +2,7 @@ package ru.vdudvdud.testdata.models.essences;
 
 import lombok.Data;
 import org.apache.commons.lang3.SerializationUtils;
-import ru.vdudvdud.testdata.constants.Delimiters;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serializable;
 
@@ -61,6 +61,6 @@ public class Product implements Serializable {
      * @return Полное имя продукта
      */
     public String getFullName() {
-        return String.join(Delimiters.SPACE_DELIMITER, name, model);
+        return String.join(StringUtils.SPACE, name, model);
     }
 }

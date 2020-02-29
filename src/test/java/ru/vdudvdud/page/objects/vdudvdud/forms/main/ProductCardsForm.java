@@ -13,7 +13,8 @@ import java.util.stream.Collectors;
 
 public class ProductCardsForm extends BaseForm {
 
-    private static final String PRODUCTS_LIST_LOC = ".//div[contains(@class, 'home-items__tab-content') and contains(@class, 'active')]";
+    private static final String PRODUCTS_LIST_LOC = ".//div[contains(@class, 'home-items__tab-content') " +
+            "and contains(@class, 'active')]";
 
     private ElementsCollection productCards = mainElement.$$x(".//div[@class='nc-item']");
 
@@ -31,7 +32,7 @@ public class ProductCardsForm extends BaseForm {
      * @return Форма продукта.
      */
     public ProductCardForm getProductCardFormWithFirstFoundProduct() {
-        return new ProductCardForm(productCards.shouldHave(CustomCollectionCondition.stopAppearNew()).get(0));
+        return new ProductCardForm(productCards.shouldHave(CustomCollectionCondition.stopAppearNew()).first());
     }
 
     /**
@@ -98,10 +99,14 @@ public class ProductCardsForm extends BaseForm {
      * @return Карточки продуктов со страницы.
      */
     private List<SelenideElement> getProductsFromTheCatalogNotContainsSpecificNames(String... names) {
+        List<String> listOfNames = Arrays.asList(names);
         return productCards.shouldHave(CustomCollectionCondition.stopAppearNew())
-                .filter(Condition.visible)
                 .stream()
-                .filter(el -> !Arrays.asList(names).contains(getProductCardForm(el).getProductNameText()))
+                .filter(el -> el.is(Condition.visible) && !isProductContainSpecificNames(el, listOfNames))
                 .collect(Collectors.toList());
+    }
+
+    private boolean isProductContainSpecificNames(SelenideElement product, List<String> names) {
+        return names.contains(getProductCardForm(product).getProductNameText());
     }
 }

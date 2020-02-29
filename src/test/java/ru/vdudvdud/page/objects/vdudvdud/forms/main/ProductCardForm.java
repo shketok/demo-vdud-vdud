@@ -3,8 +3,11 @@ package ru.vdudvdud.page.objects.vdudvdud.forms.main;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import ru.vdudvdud.adaptors.selenide.base.BaseForm;
+import ru.vdudvdud.testdata.constants.CssAttributes;
 
 public class ProductCardForm extends BaseForm {
+
+    private static final String PRODUCT_BY_NAME_PATTERN = ".//div[@class='nc-item' and .//span[@itemprop='name' and contains(text(), '%s')]]";
 
     private SelenideElement productStatus  = mainElement.$x(".//span//div[contains(@class, 'badge')]//span");
     private SelenideElement productImage  = mainElement.$x(".//div[@class='item__actions']//following-sibling::a[contains(@class, 'item__image')]//img[@class='item__img']");
@@ -14,7 +17,6 @@ public class ProductCardForm extends BaseForm {
     private SelenideElement productToTheProductPage  = mainElement.$x(".//div[@class='item__main']//button[@type='submit']");
     private SelenideElement productToTheCartBottomBtn  = mainElement.$x(".//div[@class='item__bottom']//button[@type='submit']");
 
-    private static final String PRODUCT_BY_NAME_PATTERN = ".//div[@class='nc-item' and .//span[@itemprop='name' and contains(text(), '%s')]]";
 
     public ProductCardForm(SelenideElement parentMainElement) {
         super(parentMainElement);
@@ -66,7 +68,7 @@ public class ProductCardForm extends BaseForm {
     }
 
     public String getProductImageSource() {
-        return productImage.getAttribute("src");
+        return productImage.getAttribute(CssAttributes.SRC);
     }
 
     public String getProductNameText() {

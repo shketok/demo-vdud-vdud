@@ -37,7 +37,7 @@ public class Cart {
      * @return True - Корзина пуста. False - в корзине есть товары.
      */
     public boolean isCartEmpty() {
-        return products.size() == 0;
+        return products.isEmpty();
     }
 
     /**
@@ -60,7 +60,7 @@ public class Cart {
      * @return True - товар присутствует в корзине. False - товар отсутствует в корзине.
      */
     public boolean isProductInCart(Product product) {
-        return products.get(product.getFullName()) != null;
+        return products.containsKey(product.getFullName());
     }
 
     /**

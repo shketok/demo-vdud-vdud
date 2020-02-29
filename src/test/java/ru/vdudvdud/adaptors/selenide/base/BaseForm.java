@@ -2,9 +2,6 @@ package ru.vdudvdud.adaptors.selenide.base;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import com.codeborne.selenide.WebDriverRunner;
-import org.apache.commons.lang3.NotImplementedException;
-import ru.vdudvdud.adaptors.selenide.Configuration;
 
 import static ru.vdudvdud.adaptors.selenide.driver.DriverFactory.PAGE_CLOSE_TIMEOUT;
 
@@ -20,12 +17,13 @@ public abstract class BaseForm extends PageObject {
     }
 
     /**
-     * Проверка по элементу, открылась ли страница.
+     * Проверка по элементу, что выполняются переданное условие.
      *
+     * @param condition ожидаемое состояние элемента.
      * @return true - если найден элемент, false - в противном случае.
      */
-    public boolean isOpened() {
-        return getMainElement().is(Condition.visible);
+    public boolean isPageInState(Condition condition) {
+        return getMainElement().is(condition);
     }
 
     /**
@@ -35,7 +33,7 @@ public abstract class BaseForm extends PageObject {
      *
      * @return Вызвращает время ожидания
      */
-    protected Long notExistTimeOut() {
+    protected Long getPageCloseTimeout() {
         return PAGE_CLOSE_TIMEOUT;
     }
 
@@ -44,7 +42,7 @@ public abstract class BaseForm extends PageObject {
      * (необходимо в случае ожадания какой-либо загрузки или процесса на странице, а затем ее автоматического закрытия).
      */
     public void waitForNotPresent() {
-        getMainElement().waitUntil(Condition.not(Condition.exist), notExistTimeOut());
+        getMainElement().waitUntil(Condition.not(Condition.exist), getPageCloseTimeout());
     }
 
 }

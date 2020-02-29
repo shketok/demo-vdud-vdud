@@ -58,7 +58,7 @@ public class Localization {
         if (value != null) {
             return value;
         } else {
-            Logger.getInstance().error(format("Token '%s' was not found for locale '%s'", token, locale.getLocale()));
+            Logger.getInstance().error(String.format("Token '%s' was not found for locale '%s'", token, locale.getLocale()));
             return null;
         }
     }

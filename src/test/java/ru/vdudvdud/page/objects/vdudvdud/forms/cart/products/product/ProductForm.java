@@ -3,7 +3,6 @@ package ru.vdudvdud.page.objects.vdudvdud.forms.cart.products.product;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import ru.vdudvdud.adaptors.selenide.base.BasePage;
-import ru.vdudvdud.testdata.constants.Delimiters;
 import ru.vdudvdud.testdata.enums.RegexPatterns;
 import ru.vdudvdud.testdata.utils.RegexMatcher;
 

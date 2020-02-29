@@ -1,8 +1,8 @@
 package ru.vdudvdud.testdata.utils;
 
 
+import org.apache.commons.lang3.StringUtils;
 import ru.vdudvdud.adaptors.selenide.utils.Logger;
-import ru.vdudvdud.testdata.constants.Delimiters;
 import ru.vdudvdud.testdata.enums.RegexPatterns;
 
 import java.util.ArrayList;
@@ -68,7 +68,7 @@ public class RegexMatcher {
     }
 
     public static String regexGetFirstMatchGroupFromTextWithoutSpaces(String text, String regex) {
-        text = text.replaceAll(RegexPatterns.SPACES.toString(), Delimiters.EMPTY_DELIMITER);
+        text = text.replaceAll(RegexPatterns.SPACES.toString(), StringUtils.EMPTY);
         return RegexMatcher.regexGetFirstMatchGroup(text, regex);
     }
 }

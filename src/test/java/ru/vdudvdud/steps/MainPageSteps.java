@@ -85,7 +85,7 @@ public class MainPageSteps extends BaseSteps {
     }
 
     @Step("Нажатие кнопки В корзину у случайного продукта кроме указанных")
-    public Product clickRandomProductAddToTheCartInsteadSpecifics(Product... products) {
+    public Product clickRandomProductAddToTheCartExceptSpecifics(Product... products) {
         ProductCardForm productCardForm = vdudMainPage.getProductCardsForm().getRandomProductInsteadSpecifics(
                 Arrays.stream(products).map(Product::getName).toArray(String[]::new));
 
@@ -94,7 +94,7 @@ public class MainPageSteps extends BaseSteps {
         return product;
     }
 
-    @Step("Получение модели продукта из табы с добавлением товара в корзину")
+    @Step("Обновление модели продукта из табы с добавлением товара в корзину")
     public void updateProduct(Product product) {
         if (addProductToTheCartPopup.isElementInState(Condition.visible)) {
             if (addProductToTheCartPopup.isProductSelectedSizeInState(Condition.visible)) {
@@ -120,7 +120,7 @@ public class MainPageSteps extends BaseSteps {
 
     @Step("Подтверждение добавления товара в корзину")
     public void confirmAddProductToTheCart() {
-        addProductToTheCartPopup.clickConfirmBtn();
+        addProductToTheCartPopup.clickConfirmBtnIfAppeared();
     }
 
     @Step("Закрытие всплывающего окна уведомляющего о добавлении товара в корзину")

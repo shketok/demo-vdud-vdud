@@ -48,7 +48,7 @@ public final class PropertiesResourceManager {
             if (inStream != null) {
                 properties.load(new InputStreamReader(inStream, StandardCharsets.UTF_8));
             } else {
-                LOG.error(format("Resource \"%1$s\" could not be found", resourceName));
+                LOG.error(String.format("Resource \"%1$s\" could not be found", resourceName));
             }
         } catch (IOException e) {
             LOG.fatal("Error occurred during appending resource file", e);

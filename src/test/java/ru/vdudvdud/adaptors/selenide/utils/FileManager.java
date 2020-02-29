@@ -33,14 +33,14 @@ public class FileManager {
      */
     public static boolean copyFile(String source, String destination) {
         if (!fileExists(source)) {
-            LOG.warn(format("File %s not found", source));
+            LOG.warn(String.format("File %s not found", source));
             return false;
         }
         try {
             Files.copy(Paths.get(source), Paths.get(destination), StandardCopyOption.REPLACE_EXISTING);
             return true;
         } catch (IOException exception) {
-            LOG.fatal(format("File %s not copied", source), exception);
+            LOG.fatal(String.format("File %s not copied", source), exception);
             return false;
         }
     }
@@ -52,7 +52,7 @@ public class FileManager {
      * @return true - в случае успешного выполнения, иначе - false.
      */
     public static boolean deleteFolderWithFiles(String directoryPath) {
-        LOG.info(format("Delete folder with files: %s", directoryPath));
+        LOG.info(String.format("Delete folder with files: %s", directoryPath));
         return deleteAllFilesInFolder(directoryPath) && deleteFile(directoryPath);
     }
 
@@ -62,7 +62,7 @@ public class FileManager {
      * @param directoryPath путь к директорию с файлами.
      */
     public static void deleteAllSubdirectiories(String directoryPath) {
-        LOG.info(format("Delete folder with files: %s", directoryPath));
+        LOG.info(String.format("Delete folder with files: %s", directoryPath));
         File[] listOfFiles = new File(directoryPath).listFiles();
         if (listOfFiles != null) {
             for (File file : listOfFiles) {
@@ -91,7 +91,7 @@ public class FileManager {
                 }
             }
         } else {
-            LOG.warn(format("Folder not found: %s", directoryPath));
+            LOG.warn(String.format("Folder not found: %s", directoryPath));
             return false;
         }
         return true;
@@ -106,7 +106,7 @@ public class FileManager {
     public static boolean deleteFile(String path) {
         try {
             Files.delete(Paths.get(path));
-            LOG.info(format("Deleted file: %s", path));
+            LOG.info(String.format("Deleted file: %s", path));
             return true;
         } catch (IOException e) {
             LOG.fatal("Error occurred during file deletion", e);
@@ -121,9 +121,9 @@ public class FileManager {
      * @return true - в случае успешного выполнения, иначе - false.
      */
     public static boolean createDirectory(String path) {
-        LOG.info(format("Create directory: %s", path));
+        LOG.info(String.format("Create directory: %s", path));
         if (fileExists(path)) {
-            LOG.info(format("The following directory already exists: %s", path));
+            LOG.info(String.format("The following directory already exists: %s", path));
             return false;
         } else {
             return new File(path).mkdirs();
@@ -155,7 +155,7 @@ public class FileManager {
      * @return последний модифицированный файл.
      */
     public static String getLastModifiedFilePath(String directoryPath, String fileExtension) {
-        LOG.info(format("Get last modified file in folder: %s", directoryPath));
+        LOG.info(String.format("Get last modified file in folder: %s", directoryPath));
         File lastModifiedFile = null;
 
         File[] files = new File(directoryPath).listFiles();
@@ -262,7 +262,7 @@ public class FileManager {
         try {
             return new String(Files.readAllBytes(Paths.get(filename)));
         } catch (IOException e) {
-            LOG.error(format("Error occurred during file reading: %s", filename));
+            LOG.error(String.format("Error occurred during file reading: %s", filename));
             return null;
         }
     }
