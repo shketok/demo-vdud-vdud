@@ -13,6 +13,13 @@ public class YopmailMainPage extends BasePage {
     private static final String ENTER_EMAIL_TXB = "//input[@id='login']";
     private static final String MAIL_CHECK_BTN = "//input[@class='sbut']";
 
+    /**
+     * Конструктор основного элемента.
+     */
+    public YopmailMainPage() {
+        super($x(ENTER_EMAIL_TXB));
+    }
+
     @Override
     protected SelenideElement getMainElement() {
         return null;

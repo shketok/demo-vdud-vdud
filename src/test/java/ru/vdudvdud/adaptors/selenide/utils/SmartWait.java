@@ -2,6 +2,7 @@ package ru.vdudvdud.adaptors.selenide.utils;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.ex.ElementNotFound;
 import com.codeborne.selenide.ex.ElementShould;
 import com.codeborne.selenide.ex.ElementShouldNot;
 import org.openqa.selenium.NoSuchElementException;
@@ -41,7 +42,7 @@ public class SmartWait {
     public static boolean isElementInState(SelenideElement selenideElement, Condition condition) {
         try {
             selenideElement.shouldBe(condition);
-        } catch (ElementShould | NoSuchElementException ex) {
+        } catch (ElementShould | NoSuchElementException | ElementNotFound ex) {
             logger.info(String.format("Element %s is %s", selenideElement.toString(), condition.toString()));
         }
         return selenideElement.is(condition);

@@ -2,24 +2,24 @@ package ru.vdudvdud.page.objects.vdudvdud.modals;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import ru.vdudvdud.adaptors.selenide.base.BasePage;
+import ru.vdudvdud.adaptors.selenide.base.PageObject;
 import ru.vdudvdud.adaptors.selenide.utils.SmartWait;
 
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
 
-public class AddProductToTheCartPopup extends BasePage {
+public class AddProductToTheCartPopup extends PageObject {
+    private static final String MAIN_ELEMENT_LOC = "div.cart-popup";
 
-    private static final SelenideElement MAIN_ELEMENT = $("div.cart-popup");
+    private SelenideElement confirmBtn = getMainElement().$("button[type='submit']");
+    private SelenideElement countOfTheGood = getMainElement().$("input[name='quantity']");
+    private SelenideElement productSelectedSize = getMainElement().$("input[name='sku_id'][checked] ~ span[itemprop='name']");
+    private SelenideElement productSelectedModel = getMainElement().$("div.options__content ul");
 
-    private static final String CONFIRM_BTN_LOC = "button[type='submit']";
-    private static final String COUNT_OF_THE_GOOD_LOC = "input[name='quantity']";
-    private static final String PRODUCT_SELECTED_SIZE_LOC = "input[name='sku_id'][checked] ~ span[itemprop='name']";
-    private static final String PRODUCT_SELECTED_MODEL_LOC = "div.options__content ul";
-
-    @Override
-    protected SelenideElement getMainElement() {
-        return MAIN_ELEMENT;
+    /**
+     * Конструктор основного элемента.
+     */
+    public AddProductToTheCartPopup() {
+        super($(MAIN_ELEMENT_LOC));
     }
 
     /**
@@ -28,38 +28,37 @@ public class AddProductToTheCartPopup extends BasePage {
      * появилась ли форма на страницы, и кликает только тогда, когда форма появляется.
      */
     public void clickConfirmBtnIfAppeared() {
-        SelenideElement confirmBtn = MAIN_ELEMENT.$(CONFIRM_BTN_LOC);
         if (SmartWait.isElementInState(confirmBtn, Condition.visible)) {
-            MAIN_ELEMENT.$(CONFIRM_BTN_LOC).click();
+            confirmBtn.click();
         }
 
     }
 
     public void fillCountOfTheGood(String value) {
-        MAIN_ELEMENT.$(COUNT_OF_THE_GOOD_LOC).setValue(value);
+        countOfTheGood.setValue(value);
     }
 
     public String getProductSelectedSizeText() {
-        return MAIN_ELEMENT.$(PRODUCT_SELECTED_SIZE_LOC).getText();
+        return productSelectedSize.getText();
     }
 
     public boolean isProductSelectedSizeInState(Condition condition) {
-        return MAIN_ELEMENT.$(PRODUCT_SELECTED_SIZE_LOC).is(condition);
+        return productSelectedSize.is(condition);
     }
 
     public String getProductSelectedModelText() {
-        return MAIN_ELEMENT.$(PRODUCT_SELECTED_MODEL_LOC).getText();
+        return productSelectedModel.getText();
     }
 
     public boolean isProductSelectedModelInState(Condition condition) {
-        return MAIN_ELEMENT.$(PRODUCT_SELECTED_MODEL_LOC).is(condition);
+        return productSelectedModel.is(condition);
     }
 
     public String getCountOfTheGoodText() {
-        return MAIN_ELEMENT.$(COUNT_OF_THE_GOOD_LOC).getValue();
+        return countOfTheGood.getValue();
     }
 
     public boolean isCountOfTheGoodInState(Condition condition) {
-        return MAIN_ELEMENT.$(COUNT_OF_THE_GOOD_LOC).is(condition);
+        return countOfTheGood.is(condition);
     }
 }

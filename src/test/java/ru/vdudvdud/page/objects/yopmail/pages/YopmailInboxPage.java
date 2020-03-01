@@ -7,6 +7,7 @@ import ru.vdudvdud.adaptors.selenide.base.BasePage;
 import ru.vdudvdud.adaptors.selenide.utils.SimpleWait;
 
 import static com.codeborne.selenide.Condition.visible;
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$x;
 import static com.codeborne.selenide.Selenide.$x;
 import static java.lang.String.format;
@@ -22,9 +23,11 @@ public class YopmailInboxPage extends BasePage {
 
     private static final long EMAIL_WAITER_TIME = 15000;
 
-    @Override
-    protected SelenideElement getMainElement() {
-        return null;
+    /**
+     * Конструктор основного элемента.
+     */
+    public YopmailInboxPage() {
+        super($x(MSG_LOC));
     }
 
     /**

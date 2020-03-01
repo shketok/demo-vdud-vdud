@@ -16,41 +16,43 @@ import ru.vdudvdud.testdata.models.essences.User;
  */
 public class RestorePasswordPage extends BasePage {
 
-    private static final SelenideElement MAIN_ELEMENT = $x(
-        String.format("//form[contains(@action, '%s')]", FORGOT_PASSWORD.getUrlPart()));
-    private static final SelenideElement EMAIL = MAIN_ELEMENT.$x(".//input[@name='login']");
-    private static final SelenideElement CONFIRM = MAIN_ELEMENT.$x(".//input[@type='submit']");
-    private static final SelenideElement INCORRECT_EMAIL_MESSAGE = MAIN_ELEMENT
-        .$x(".//*[@class='wa-error-msg']");
+    private static final String MAIN_ELEMENT_LOC = String.format("//form[contains(@action, '%s')]",
+            FORGOT_PASSWORD.getUrlPart());
+
+    private SelenideElement email = getMainElement().$x(".//input[@name='login']");
+    private SelenideElement confirm = getMainElement().$x(".//input[@type='submit']");
+    private SelenideElement incorrectEmailMessage = getMainElement().$x(".//*[@class='wa-error-msg']");
+
+    /**
+     * Конструктор основного элемента.
+     */
+    public RestorePasswordPage() {
+        super($x(MAIN_ELEMENT_LOC));
+    }
 
     public void checkThatLoginInState(Condition condition) {
-        EMAIL.shouldBe(condition);
+        email.shouldBe(condition);
     }
 
     public void checkThatConfirmInState(Condition condition) {
-        CONFIRM.shouldBe(condition);
+        confirm.shouldBe(condition);
     }
 
     public void checkThatEmailFieldFilledWithUserEmail(User user) {
-        EMAIL.shouldBe(Condition.exactValue(user.getEmail())).shouldBe(Condition.visible);
+        email.shouldBe(Condition.exactValue(user.getEmail())).shouldBe(Condition.visible);
     }
 
     public void fillLogin(String value) {
-        actions().sendKeys(EMAIL.toWebElement(), value).build().perform();
+        actions().sendKeys(email.shouldBe(Condition.visible).toWebElement(), value).build().perform();
     }
 
     public void clickConfirm() {
-        actions().click(CONFIRM.toWebElement()).build().perform();
+        actions().click(confirm.shouldBe(Condition.visible).toWebElement()).build().perform();
     }
 
     public void checkIncorrectEmailMessageIsVisible() {
         Assert.assertEquals(RestorePasswordLocalization.INCORRECT_EMAIL_MESSAGE.getValue(),
-            INCORRECT_EMAIL_MESSAGE.getText(),
+            incorrectEmailMessage.getText(),
             "Ожидаемое сообщение о некорректно введеном email не соответвует фактическому");
-    }
-
-    @Override
-    protected SelenideElement getMainElement() {
-        return MAIN_ELEMENT;
     }
 }

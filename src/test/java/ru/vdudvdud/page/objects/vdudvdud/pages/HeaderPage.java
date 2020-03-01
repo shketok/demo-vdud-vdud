@@ -15,21 +15,23 @@ import static com.codeborne.selenide.Selenide.$;
  * Класс описывающий шапку, которая присутствует везде, где бы мы не находились на сайте.
  */
 public class HeaderPage extends BasePage {
-    private static final SelenideElement MAIN_ELEMENT = $("a.logo");
+    private static final String MAIN_ELEMENT_LOC = ".page-header";
 
-    private static final SelenideElement TOP_MENU = $("div.top-menu");
-    private static final SelenideElement PERSONAL_AREA = $("[class*='top-bar'] .info-settings div > .icon-user");
-    private static final SelenideElement CURRENCY_TAB = $("div.info-settings div[class*='currency']");
-    private static final SelenideElement MAIN_CONTACTS_LABEL = $("div.main-contacts");
-    private static final SelenideElement LOGO = $(String.format("a.logo[href='%s']", BaseUrls.BASE.getUrlPart()));
-    private static final SelenideElement BASKET = $(String.format("div[class*='store-actions'] a[href*='%s'][class*='store']", BaseUrls.ORDER.getUrlPart()));
+    private SelenideElement topMenu = getMainElement().$("div.top-menu");
+    private SelenideElement personalArea = getMainElement().$("[class*='top-bar'] .info-settings div > .icon-user");
+    private SelenideElement currencyTab = getMainElement().$("div.info-settings div[class*='currency']");
+    private SelenideElement mainContactsLabel = getMainElement().$("div.main-contacts");
+    private SelenideElement logo = getMainElement().$(String.format("a.logo[href='%s']", BaseUrls.BASE.getUrlPart()));
+    private SelenideElement basket = getMainElement().$(String.format("div[class*='store-actions'] a[href*='%s'][class*='store']", BaseUrls.ORDER.getUrlPart()));
 
-    private static final String CART_AMOUNT_LOC = "span[class*='cart-amount']";
-    private static final String PRODUCTS_PRICE_LOC = "div[class*='cart-content-text']";
+    private SelenideElement cartAmount = basket.$("span[class*='cart-amount']");
+    private SelenideElement productsPrice = basket.$("div[class*='cart-content-text']");
 
-    @Override
-    protected SelenideElement getMainElement() {
-        return MAIN_ELEMENT;
+    /**
+     * Конструктор основного элемента.
+     */
+    public HeaderPage() {
+        super($(MAIN_ELEMENT_LOC));
     }
 
     public void clickMainLogo() {
@@ -42,49 +44,49 @@ public class HeaderPage extends BasePage {
 
 
     public void hoverPersonalArea() {
-        PERSONAL_AREA.shouldBe(Condition.visible).hover();
+        personalArea.shouldBe(Condition.visible).hover();
     }
 
     public void checkThatTopMenuInState(Condition condition) {
-        TOP_MENU.shouldBe(condition);
+        topMenu.shouldBe(condition);
     }
 
     public void checkThatPersonalAreaInState(Condition condition) {
-        PERSONAL_AREA.shouldBe(condition);
+        personalArea.shouldBe(condition);
     }
 
     public void checkThatCurrencyTabInState(Condition condition) {
-        CURRENCY_TAB.shouldBe(condition);
+        currencyTab.shouldBe(condition);
     }
 
     public void checkThatMainContactsLabelInState(Condition condition) {
-        MAIN_CONTACTS_LABEL.shouldBe(condition);
+        mainContactsLabel.shouldBe(condition);
     }
 
     public void checkThatLogoInState(Condition condition) {
-        LOGO.shouldBe(condition);
+        logo.shouldBe(condition);
     }
 
     public void checkThatBasketInState(Condition condition) {
-        BASKET.shouldBe(condition);
+        basket.shouldBe(condition);
     }
 
 
     public String getCartAmountText() {
-        return BASKET.$(CART_AMOUNT_LOC).getText();
+        return cartAmount.getText();
     }
 
     public String getProductCostText() {
-        return RegexMatcher.regexGetFirstMatchGroupFromTextWithoutSpaces( BASKET.$(PRODUCTS_PRICE_LOC).getText(),
+        return RegexMatcher.regexGetFirstMatchGroupFromTextWithoutSpaces( productsPrice.getText(),
                 RegexPatterns.DIGITS.toString());
     }
 
     public String getProductCurrencyText() {
-        return RegexMatcher.regexGetFirstMatchGroupFromTextWithoutSpaces(BASKET.$(PRODUCTS_PRICE_LOC).getText(),
+        return RegexMatcher.regexGetFirstMatchGroupFromTextWithoutSpaces(productsPrice.getText(),
                 RegexPatterns.NON_DIGITS.toString());
     }
 
     public void clickBasket() {
-        BASKET.click();
+        basket.click();
     }
 }

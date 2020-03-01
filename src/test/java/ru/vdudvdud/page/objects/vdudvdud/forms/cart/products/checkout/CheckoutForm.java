@@ -1,30 +1,31 @@
 package ru.vdudvdud.page.objects.vdudvdud.forms.cart.products.checkout;
 
-import com.codeborne.selenide.SelenideElement;
-import ru.vdudvdud.adaptors.selenide.base.BasePage;
+import ru.vdudvdud.adaptors.selenide.base.PageObject;
 
 import static com.codeborne.selenide.Selenide.$;
 
 /**
  * Класс описывающий форму оформления заказов конечного с доставкой, покупателем, типом доставки.
  */
-public class CheckoutForm extends BasePage {
-    private static final SelenideElement MAIN_ELEMENT = $("div#js-order-form");
+public class CheckoutForm extends PageObject {
+    private static final String MAIN_ELEMENT_LOC = "div#js-order-form";
 
-    @Override
-    protected SelenideElement getMainElement() {
-        return MAIN_ELEMENT;
+    /**
+     * Конструктор основного элемента.
+     */
+    public CheckoutForm() {
+        super($(MAIN_ELEMENT_LOC));
     }
 
     public BuyerForm getBuyerForm() {
-        return new BuyerForm(MAIN_ELEMENT);
+        return new BuyerForm(getMainElement());
     }
 
     public DeliveryForm getDeliveryForm() {
-        return new DeliveryForm(MAIN_ELEMENT);
+        return new DeliveryForm(getMainElement());
     }
 
     public ConfirmationForm getConfirmationForm() {
-        return new ConfirmationForm(MAIN_ELEMENT);
+        return new ConfirmationForm(getMainElement());
     }
 }

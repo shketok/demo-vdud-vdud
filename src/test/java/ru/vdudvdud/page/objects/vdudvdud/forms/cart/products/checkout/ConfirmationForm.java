@@ -2,26 +2,19 @@ package ru.vdudvdud.page.objects.vdudvdud.forms.cart.products.checkout;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import ru.vdudvdud.adaptors.selenide.base.BasePage;
+import ru.vdudvdud.adaptors.selenide.base.PageObject;
 import ru.vdudvdud.testdata.enums.localization.CartLocalization;
 
-public class ConfirmationForm extends BasePage {
+public class ConfirmationForm extends PageObject {
     /**
      * Локаторы и элементы по работе с основным блоком формы
      */
-    private static SelenideElement MAIN_ELEMENT;
     private static final String CONFIRMATION_FORM_LOC = "*#wa-step-confirm-section";
-
-    /**
-     * Элементы для установки комментария к заказу.
-     */
-    private final SelenideElement COMMENT_TO_ORDER_OPEN_SECTION = MAIN_ELEMENT.$("*.js-open-section");
-    private final SelenideElement COMMENT_TO_ORDER_TEXT_AREA_SECTION = MAIN_ELEMENT.$("*.js-order-comment-field");
 
     /**
      * Элементы и локаторы по работе с информацией о результатах заказа. Об общей цене доставки и товаров.
      */
-    private static final String PRODUCTS_COST_TITLE_PATTERN = "//div[@class='wa-total-section']//div[contains(@class, 'wa-name') and text()='%s']";
+    private static final String PRODUCTS_COST_TITLE_PATTERN = ".//div[@class='wa-total-section']//div[contains(@class, 'wa-name') and text()='%s']";
     private static final String PRODUCTS_COST_TITLE_LOC = String.format(PRODUCTS_COST_TITLE_PATTERN,
             CartLocalization.PRODUCTS_COST.getValue());
     private static final String PRODUCTS_DELIVERY_COST_TITLE_LOC = String.format(PRODUCTS_COST_TITLE_PATTERN,
@@ -29,112 +22,117 @@ public class ConfirmationForm extends BasePage {
     private static final String PRODUCTS_TOTAL_EXCLUDE_DELIVERY_TITLE_LOC = String.format(PRODUCTS_COST_TITLE_PATTERN,
             CartLocalization.TOTAL_EXCLUDE_DELIVERY.getValue());
 
+    /**
+     * Шаблон локатора до цены продукта
+     */
     private static final String PRODUCT_PRICE_LOC = ".//following-sibling::div[@class='wa-value']";
 
-    private final SelenideElement PRODUCTS_COST_TITLE = MAIN_ELEMENT.$x(PRODUCTS_COST_TITLE_LOC);
-    private final SelenideElement PRODUCTS_COST_VALUE = PRODUCTS_COST_TITLE.$x(PRODUCT_PRICE_LOC);
-    private final SelenideElement PRODUCTS_DELIVERY_COST_TITLE = MAIN_ELEMENT.$x(PRODUCTS_DELIVERY_COST_TITLE_LOC);
-    private final SelenideElement PRODUCTS_DELIVERY_COST_VALUE = PRODUCTS_DELIVERY_COST_TITLE.$x(PRODUCT_PRICE_LOC);
-    private final SelenideElement PRODUCTS_TOTAL_EXCLUDE_DELIVERY_TITLE = MAIN_ELEMENT.$x(PRODUCTS_TOTAL_EXCLUDE_DELIVERY_TITLE_LOC);
-    private final SelenideElement PRODUCTS_TOTAL_EXCLUDE_DELIVERY_VALUE = PRODUCTS_TOTAL_EXCLUDE_DELIVERY_TITLE.$x(PRODUCT_PRICE_LOC);
+    /**
+     * Элементы для установки комментария к заказу.
+     */
+    private SelenideElement commentToOrderOpenSection = getMainElement().$("*.js-open-section");
+    private SelenideElement commentToOrderTextAreaSection = getMainElement().$("*.js-order-comment-field");
+
+    private SelenideElement productsCostTitle = getMainElement().$x(PRODUCTS_COST_TITLE_LOC);
+    private SelenideElement productsCostValue = productsCostTitle.$x(PRODUCT_PRICE_LOC);
+    private SelenideElement productsDeliveryCostTitle = getMainElement().$x(PRODUCTS_DELIVERY_COST_TITLE_LOC);
+    private SelenideElement productsDeliveryCostValue = productsDeliveryCostTitle.$x(PRODUCT_PRICE_LOC);
+    private SelenideElement productsTotalExcludeDeliveryTitle = getMainElement().$x(PRODUCTS_TOTAL_EXCLUDE_DELIVERY_TITLE_LOC);
+    private SelenideElement productsTotalExcludeDeliveryValue = productsTotalExcludeDeliveryTitle.$x(PRODUCT_PRICE_LOC);
 
     /**
      * Кнопка подтверждения заказа пользователя.
      */
-    private final SelenideElement SUBMIT_ORDER_BTN = MAIN_ELEMENT.$(".wa-actions-section button.js-submit-order-button");
+    private SelenideElement submitOrderBtn = getMainElement().$(".wa-actions-section button.js-submit-order-button");
 
-
-
+    /**
+     * Конструктор основного элемента.
+     */
     public ConfirmationForm(SelenideElement parentMainElement) {
-        MAIN_ELEMENT = parentMainElement.$(CONFIRMATION_FORM_LOC);
-    }
-
-    @Override
-    protected SelenideElement getMainElement() {
-        return MAIN_ELEMENT;
+        super(parentMainElement.$(CONFIRMATION_FORM_LOC));
     }
 
     public void checkThatCommentToOrderOpenSectionInState(Condition condition) {
-        COMMENT_TO_ORDER_OPEN_SECTION.shouldBe(condition);
+        commentToOrderOpenSection.shouldBe(condition);
     }
 
     public void checkThatCommentToOrderTextAreaSectionInState(Condition condition) {
-        COMMENT_TO_ORDER_TEXT_AREA_SECTION.shouldBe(condition);
+        commentToOrderTextAreaSection.shouldBe(condition);
     }
 
     public void checkThatProductsCostTitleInState(Condition condition) {
-        PRODUCTS_COST_TITLE.shouldBe(condition);
+        productsCostTitle.shouldBe(condition);
     }
 
     public void checkThatProductsCostValueInState(Condition condition) {
-        PRODUCTS_COST_VALUE.shouldBe(condition);
+        productsCostValue.shouldBe(condition);
     }
 
     public void checkThatProductsDeliveryCostTitleInState(Condition condition) {
-        PRODUCTS_DELIVERY_COST_TITLE.shouldBe(condition);
+        productsDeliveryCostTitle.shouldBe(condition);
     }
 
     public void checkThatProductsDeliveryCostValueInState(Condition condition) {
-        PRODUCTS_DELIVERY_COST_VALUE.shouldBe(condition);
+        productsDeliveryCostValue.shouldBe(condition);
     }
 
     public void checkThatProductsTotalExcludeDeliveryTitleInState(Condition condition) {
-        PRODUCTS_TOTAL_EXCLUDE_DELIVERY_TITLE.shouldBe(condition);
+        productsTotalExcludeDeliveryTitle.shouldBe(condition);
     }
 
     public void checkThatProductsTotalExcludeDeliveryValueInState(Condition condition) {
-        PRODUCTS_TOTAL_EXCLUDE_DELIVERY_VALUE.shouldBe(condition);
+        productsTotalExcludeDeliveryValue.shouldBe(condition);
     }
 
     public void checkThatSubmitOrderBtnInState(Condition condition) {
-        SUBMIT_ORDER_BTN.shouldBe(condition);
+        submitOrderBtn.shouldBe(condition);
     }
 
     public void clickCommentToOrderOpenSection() {
-        COMMENT_TO_ORDER_OPEN_SECTION.click();
+        commentToOrderOpenSection.click();
     }
 
     public void clickSubmitOrderBtn() {
-        SUBMIT_ORDER_BTN.click();
+        submitOrderBtn.click();
     }
 
     public String getCommentToOrderOpenSectionText() {
-        return COMMENT_TO_ORDER_OPEN_SECTION.getText();
+        return commentToOrderOpenSection.getText();
     }
 
     public String getCommentToOrderTextAreaSectionText() {
-        return COMMENT_TO_ORDER_TEXT_AREA_SECTION.getText();
+        return commentToOrderTextAreaSection.getText();
     }
 
     public String getProductsCostTitleText() {
-        return PRODUCTS_COST_TITLE.getText();
+        return productsCostTitle.getText();
     }
 
     public String getProductsCostValueText() {
-        return PRODUCTS_COST_VALUE.getText();
+        return productsCostValue.getText();
     }
 
     public String getProductsDeliveryCostTitleText() {
-        return PRODUCTS_DELIVERY_COST_TITLE.getText();
+        return productsDeliveryCostTitle.getText();
     }
 
     public String getProductsDeliveryCostValueText() {
-        return PRODUCTS_DELIVERY_COST_VALUE.getText();
+        return productsDeliveryCostValue.getText();
     }
 
     public String getProductsTotalExcludeDeliveryTitleText() {
-        return PRODUCTS_TOTAL_EXCLUDE_DELIVERY_TITLE.getText();
+        return productsTotalExcludeDeliveryTitle.getText();
     }
 
     public String getProductsTotalExcludeDeliveryValueText() {
-        return PRODUCTS_TOTAL_EXCLUDE_DELIVERY_VALUE.getText();
+        return productsTotalExcludeDeliveryValue.getText();
     }
 
     public String getSubmitOrderBtnText() {
-        return SUBMIT_ORDER_BTN.getText();
+        return submitOrderBtn.getText();
     }
 
     public void fillCommentToOrderTextAreaSection(String value) {
-        COMMENT_TO_ORDER_TEXT_AREA_SECTION.setValue(value);
+        commentToOrderTextAreaSection.setValue(value);
     }
 }
