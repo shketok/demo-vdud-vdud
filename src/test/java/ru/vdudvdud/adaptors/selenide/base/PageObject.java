@@ -3,6 +3,7 @@ package ru.vdudvdud.adaptors.selenide.base;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import ru.vdudvdud.adaptors.selenide.utils.Logger;
+import ru.vdudvdud.adaptors.selenide.utils.SmartWait;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$;
@@ -15,6 +16,10 @@ public abstract class PageObject {
     protected static final Logger LOG = Logger.getInstance();
 
     private static final String BODY_LOC = "body";
+
+    public boolean isElementInState(Condition condition) {
+        return SmartWait.isElementInState(getMainElement(), condition);
+    }
 
     public SelenideElement shouldBe(Condition condition) {
         return getMainElement().shouldBe(condition);

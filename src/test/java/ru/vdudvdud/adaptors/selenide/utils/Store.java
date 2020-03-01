@@ -66,7 +66,7 @@ public class Store {
             Gson gson = new GsonBuilder().create();
             gson.toJson(object, writer);
         } catch (IOException e) {
-            LOG.fatal(format("IO exception during store operation\n%s", e.getMessage()), e);
+            LOG.fatal(String.format("IO exception during store operation\n%s", e.getMessage()), e);
         }
     }
 
@@ -83,7 +83,7 @@ public class Store {
             Gson gson = new GsonBuilder().create();
             return gson.fromJson(reader, tClass);
         } catch (IOException e) {
-            LOG.fatal(format("IO exception during store operation\n%s", e.getMessage()), e);
+            LOG.fatal(String.format("IO exception during store operation\n%s", e.getMessage()), e);
         }
         return null;
     }

@@ -64,7 +64,7 @@ public class DriverFactory implements IDriverFactory {
                 driver = new ChromeDriver(chromeOptions);
                 break;
             default:
-                throw new IllegalArgumentException(format("Browser %s is not supported", BROWSER));
+                throw new IllegalArgumentException(String.format("Browser %s is not supported", BROWSER));
         }
         return driver;
     }
@@ -84,7 +84,7 @@ public class DriverFactory implements IDriverFactory {
                 driver = getRemoteWebDriver(caps);
                 break;
             default:
-                throw new IllegalArgumentException(format("Browser %s is not supported", BROWSER));
+                throw new IllegalArgumentException(String.format("Browser %s is not supported", BROWSER));
         }
         return driver;
     }
@@ -140,7 +140,7 @@ public class DriverFactory implements IDriverFactory {
         } else if (PLATFORM.contains("linux")) {
             platform = "linux";
         } else {
-            throw new IllegalArgumentException(format("Platform %s is not supported", PLATFORM));
+            throw new IllegalArgumentException(String.format("Platform %s is not supported", PLATFORM));
         }
         return platform;
     }

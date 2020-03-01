@@ -7,6 +7,8 @@ import ru.vdudvdud.steps.MainPageSteps;
 import ru.vdudvdud.testdata.models.essences.Product;
 import ru.vdudvdud.testdata.models.essences.User;
 
+import java.util.function.Supplier;
+
 
 /**
  * Сценарии по работе с товарами на сайте
@@ -24,18 +26,23 @@ public class ProductScenarios {
         LOG.info("Выполнение регистрации на сайте пользователем");
         registrationScenarios.registration(user);
 
+        return addProductToTheCart(() -> mainPageSteps.clickRandomProductAddToTheCartBtn());
+    }
+
+    @Step("Добавление товара в корзину")
+    public Product addProductToTheCart(Supplier<Product> productAddFunction) {
         LOG.info("Нажатие кнопки В корзину на случайном товаре с главной страницы");
-        Product product = mainPageSteps.clickRandomProductAddToTheCartBtn();
+        Product product = productAddFunction.get();
 
         LOG.info("Подтверждение добавления товара в корзину");
-        mainPageSteps.updateProductFromTheAddToTheCartPopup(product);
+        mainPageSteps.updateProduct(product);
         mainPageSteps.confirmAddProductToTheCart();
 
         LOG.info("Закрытие формы подтверждения того, что товар был добавлен в корзину");
-        mainPageSteps.closeProductAddedPopup();
+        mainPageSteps.closeProductAddedPopup(product);
 
         LOG.info("Проверка, что в мини корзине появилось указанное количество товара");
-        headerSteps.checkMiniCart(product.getCurrency(), product);
+        headerSteps.checkMiniCart();
 
         return product;
     }

@@ -73,7 +73,7 @@ public class DriverHelper {
     @Attachment(type = "image/png")
     public static byte[] makeScreenshot() {
         File file = ((TakesScreenshot) WebDriverRunner.getWebDriver()).getScreenshotAs(OutputType.FILE);
-        Logger.getInstance().info(format("Screenshot path is: %s", file.getPath()));
+        Logger.getInstance().info(String.format("Screenshot path is: %s", file.getPath()));
         try {
             return Files.readAllBytes(file.toPath());
         } catch (IOException e) {

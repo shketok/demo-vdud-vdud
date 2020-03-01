@@ -1,12 +1,16 @@
 package ru.vdudvdud.testdata.models.essences;
 
 import lombok.Data;
+import org.apache.commons.lang3.SerializationUtils;
+import org.apache.commons.lang3.StringUtils;
+
+import java.io.Serializable;
 
 /**
  * Класс для хранения информации о продукте из магазина
  */
 @Data
-public class Product {
+public class Product implements Serializable {
 
     /**
      * Статус товара указанный на странице. Обычно это "новый" "распродано" или отсутствие статуса
@@ -41,10 +45,22 @@ public class Product {
     /**
      * Размер указанного товара при наличии.
      */
-    private String size;
+    private String model;
 
     /**
      * Количество указанного товара.
      */
     private int count;
+
+    public Product clone() {
+        return SerializationUtils.clone(this);
+    }
+
+    /**
+     * Получение полного наименования продукта, с его размером. Такое же имя, как и в корзине.
+     * @return Полное имя продукта
+     */
+    public String getFullName() {
+        return String.join(StringUtils.SPACE, name, model);
+    }
 }
