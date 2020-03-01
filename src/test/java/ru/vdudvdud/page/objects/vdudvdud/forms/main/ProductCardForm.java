@@ -2,20 +2,20 @@ package ru.vdudvdud.page.objects.vdudvdud.forms.main;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import ru.vdudvdud.adaptors.selenide.base.PageObject;
+import ru.vdudvdud.adaptors.selenide.base.BaseForm;
 import ru.vdudvdud.testdata.constants.CssAttributes;
 
-public class ProductCardForm extends PageObject {
+public class ProductCardForm extends BaseForm {
 
     private static final String PRODUCT_BY_NAME_PATTERN = ".//div[@class='nc-item' and .//span[@itemprop='name' and contains(text(), '%s')]]";
 
-    private SelenideElement productStatus  = getMainElement().$x(".//span//div[contains(@class, 'badge')]//span");
-    private SelenideElement productImage  = getMainElement().$x(".//div[@class='item__actions']//following-sibling::a[contains(@class, 'item__image')]//img[@class='item__img']");
-    private SelenideElement productName  = getMainElement().$x(".//span[@itemprop='name']");
-    private SelenideElement productPriceAndCurrency  = getMainElement().$x(".//div[@class='item__main']//div[@class='prc']");
-    private SelenideElement productExistence  = getMainElement().$x(".//div[@class='item__main']//span[@class='stock-text']");
-    private SelenideElement productToTheProductPage  = getMainElement().$x(".//div[@class='item__main']//button[@type='submit']");
-    private SelenideElement productToTheCartBottomBtn  = getMainElement().$x(".//div[@class='item__bottom']//button[@type='submit']");
+    private SelenideElement productStatus  = mainElement.$x(".//span//div[contains(@class, 'badge')]//span");
+    private SelenideElement productImage  = mainElement.$x(".//div[@class='item__actions']//following-sibling::a[contains(@class, 'item__image')]//img[@class='item__img']");
+    private SelenideElement productName  = mainElement.$x(".//span[@itemprop='name']");
+    private SelenideElement productPriceAndCurrency  = mainElement.$x(".//div[@class='item__main']//div[@class='prc']");
+    private SelenideElement productExistence  = mainElement.$x(".//div[@class='item__main']//span[@class='stock-text']");
+    private SelenideElement productToTheProductPage  = mainElement.$x(".//div[@class='item__main']//button[@type='submit']");
+    private SelenideElement productToTheCartBottomBtn  = mainElement.$x(".//div[@class='item__bottom']//button[@type='submit']");
 
 
     public ProductCardForm(SelenideElement parentMainElement) {
@@ -24,6 +24,11 @@ public class ProductCardForm extends PageObject {
 
     public ProductCardForm(SelenideElement parentMainElement, String productName) {
         super(parentMainElement.$x(String.format(PRODUCT_BY_NAME_PATTERN, productName)));
+    }
+
+    @Override
+    protected SelenideElement getMainElement() {
+        return mainElement;
     }
 
     public void checkThatProductCardInState(Condition condition) {

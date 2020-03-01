@@ -3,7 +3,7 @@ package ru.vdudvdud.page.objects.vdudvdud.forms.main;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
-import ru.vdudvdud.adaptors.selenide.base.PageObject;
+import ru.vdudvdud.adaptors.selenide.base.BaseForm;
 import ru.vdudvdud.adaptors.selenide.conditions.CustomCollectionCondition;
 
 import java.util.Arrays;
@@ -11,7 +11,8 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
-public class ProductCardsForm extends PageObject {
+public class ProductCardsForm extends BaseForm {
+
     private static final String PRODUCTS_LIST_LOC = ".//div[contains(@class, 'home-items__tab-content') " +
             "and contains(@class, 'active')]";
 
@@ -19,6 +20,11 @@ public class ProductCardsForm extends PageObject {
 
     public ProductCardsForm(SelenideElement parentElement) {
         super(parentElement.$x(PRODUCTS_LIST_LOC));
+    }
+
+    @Override
+    protected SelenideElement getMainElement() {
+        return mainElement;
     }
 
     /**

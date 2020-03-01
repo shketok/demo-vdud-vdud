@@ -1,19 +1,18 @@
 package ru.vdudvdud.page.objects.vdudvdud.forms.cart.products;
 
-import ru.vdudvdud.adaptors.selenide.base.PageObject;
+import com.codeborne.selenide.SelenideElement;
+import ru.vdudvdud.adaptors.selenide.base.BasePage;
 import ru.vdudvdud.page.objects.vdudvdud.forms.cart.products.product.ProductForm;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$$;
 
-public class ProductsForm extends PageObject {
-    private static final String MAIN_ELEMENT_LOC = "div.wa-products";
+public class ProductsForm extends BasePage {
+    private static final String MAIN_ELEMENT = "div.wa-products";
 
-    /**
-     * Конструктор основного элемента.
-     */
-    public ProductsForm() {
-        super($(MAIN_ELEMENT_LOC));
+    @Override
+    protected SelenideElement getMainElement() {
+        return $(MAIN_ELEMENT);
     }
 
     /**
@@ -28,6 +27,6 @@ public class ProductsForm extends PageObject {
     }
 
     public int getProductsCount() {
-        return $$(MAIN_ELEMENT_LOC).size();
+        return $$(MAIN_ELEMENT).size();
     }
 }

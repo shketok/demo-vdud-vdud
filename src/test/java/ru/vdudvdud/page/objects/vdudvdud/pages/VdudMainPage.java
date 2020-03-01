@@ -10,13 +10,11 @@ import static com.codeborne.selenide.Selenide.$x;
  * Класс описывающий основную страницу при переходе по базовому урлу до сайта. Страница отображающая товары и табы для переключения по категориям.
  */
 public class VdudMainPage extends BasePage {
-    private static final String MAIN_ELEMENT_LOC = "//*[@class='home-main']";
+    private static final SelenideElement MAIN_ELEMENT = $x("//*[@class='home-main']");
 
-    /**
-     * Конструктор основного элемента.
-     */
-    public VdudMainPage() {
-        super($x(MAIN_ELEMENT_LOC));
+    @Override
+    protected SelenideElement getMainElement() {
+        return MAIN_ELEMENT;
     }
 
     public ProductCardsForm getProductCardsForm() {
