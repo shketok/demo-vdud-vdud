@@ -11,79 +11,84 @@ import static com.codeborne.selenide.Selenide.$x;
  * Класс описывающий страницу входа на сайт. Авторизация.
  */
 public class SignInPage extends BasePage {
-    private static final SelenideElement MAIN_ELEMENT = $x("//div[contains(@class, 'signing__sign-in')]");
+    private static final String MAIN_ELEMENT_LOC = "//div[contains(@class, 'signing__sign-in')]";
 
-    private static final String AUTH_LINKS_PATTERN = "//div[@class='auth-links']//a[contains(@href, '%s')]";
+    private static final String AUTH_LINKS_PATTERN = ".//div[@class='auth-links']//a[contains(@href, '%s')]";
 
-    private static final SelenideElement LOGIN = $x("//input[@name='login']");
-    private static final SelenideElement PASSWORD = $x("//input[@name='password']");
-    private static final SelenideElement TITLE = $x("//*[@class='signing__title']");
-    private static final SelenideElement CONFIRM = $x("//input[@type='submit']");
-    private static final SelenideElement FORGOT_PASSWORD = $x(String.format(AUTH_LINKS_PATTERN, BaseUrls.FORGOT_PASSWORD.getUrlPart()));
-    private static final SelenideElement REGISTRATION = $x(String.format(AUTH_LINKS_PATTERN, BaseUrls.SIGN_UP.getUrlPart()));
+    private SelenideElement login = getMainElement().$x(".//input[@name='login']");
+    private SelenideElement password = getMainElement().$x(".//input[@name='password']");
+    private SelenideElement title = getMainElement().$x(".//*[@class='signing__title']");
+    private SelenideElement confirm = getMainElement().$x(".//input[@type='submit']");
+    private SelenideElement forgotPassword = getMainElement().$x(String.format(AUTH_LINKS_PATTERN,
+            BaseUrls.FORGOT_PASSWORD.getUrlPart()));
+    private SelenideElement registration = getMainElement().$x(String.format(AUTH_LINKS_PATTERN,
+            BaseUrls.SIGN_UP.getUrlPart()));
 
-    @Override
-    protected SelenideElement getMainElement() {
-        return MAIN_ELEMENT;
+    /**
+     * Конструктор основного элемента.
+     */
+    public SignInPage() {
+        super($x(MAIN_ELEMENT_LOC));
     }
 
+
     public void clickLogin() {
-        LOGIN.click();
+        login.click();
     }
 
     public void clickPassword() {
-        PASSWORD.click();
+        password.click();
     }
 
     public void clickConfirm() {
-        CONFIRM.click();
+        confirm.click();
     }
 
     public void clickForgotPassword() {
-        FORGOT_PASSWORD.click();
+        forgotPassword.click();
     }
 
     public void clickRegistration() {
-        REGISTRATION.click();
+        registration.click();
     }
 
     public void checkThatLoginInState(Condition condition) {
-        LOGIN.shouldBe(condition);
+        login.shouldBe(condition);
     }
 
     public void checkThatPasswordInState(Condition condition) {
-        PASSWORD.shouldBe(condition);
+        password.shouldBe(condition);
     }
 
     public void checkThatTitleInState(Condition condition) {
-        TITLE.shouldBe(condition);
+        title.shouldBe(condition);
     }
 
     public void checkThatConfirmInState(Condition condition) {
-        CONFIRM.shouldBe(condition);
+        confirm.shouldBe(condition);
     }
 
     public void checkThatForgotPasswordInState(Condition condition) {
-        FORGOT_PASSWORD.shouldBe(condition);
+        forgotPassword.shouldBe(condition);
     }
 
     public void checkThatRegistrationInState(Condition condition) {
-        REGISTRATION.shouldBe(condition);
+        registration.shouldBe(condition);
     }
 
     public String getLoginText() {
-        return LOGIN.getText();
+        return login.getText();
     }
 
     public String getTitleText() {
-        return TITLE.getText();
+        return title.getText();
     }
 
     public void fillLogin(String value) {
-        LOGIN.setValue(value);
+        login.setValue(value);
     }
 
     public void fillPassword(String value) {
-        PASSWORD.setValue(value);
+        password.setValue(value);
     }
 }

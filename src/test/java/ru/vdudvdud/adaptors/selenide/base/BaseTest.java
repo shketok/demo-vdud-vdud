@@ -15,8 +15,6 @@ import ru.vdudvdud.adaptors.selenide.utils.Logger;
 import ru.vdudvdud.adaptors.selenide.utils.Store;
 import ru.vdudvdud.testdata.objects.Cart;
 
-import static java.lang.String.format;
-
 /**
  * Базовый класс, описывающий любой тест.
  */

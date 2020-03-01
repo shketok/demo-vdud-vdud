@@ -2,136 +2,137 @@ package ru.vdudvdud.page.objects.vdudvdud.forms.cart.products.checkout;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import ru.vdudvdud.adaptors.selenide.base.BasePage;
+import ru.vdudvdud.adaptors.selenide.base.PageObject;
 import ru.vdudvdud.testdata.enums.CountrySelect;
 import ru.vdudvdud.testdata.enums.urls.RegionSelect;
 
-public class DeliveryForm extends BasePage {
+public class DeliveryForm extends PageObject {
     /**
      * Локаторы и элементы по работе с основным блоком формы
      */
-    private static SelenideElement MAIN_ELEMENT;
     private static final String DELIVERY_FORM_LOC = "#wa-step-region-section";
+
+    /**
+     * Паттерны локатора для ввода информации о зоне доставки.
+     */
+    private static final String INPUT_LABEL_TEXT_REQUIRED_LOC = "span.wa-required";
 
     /**
      * Локаторы по получению заголовочных элемнетов до полей ввода. В т.ч. данные аккаунта
      */
-    private final SelenideElement SECTION_HEADER_TITLE = MAIN_ELEMENT.$("*.wa-header");
+    private SelenideElement sectionHeaderTitle = getMainElement().$("*.wa-header");
 
     /**
      * Текст описывающий легенду для обязательных полей
      */
-    private final SelenideElement LEGEND_STAR_REQUIRED_LOC = MAIN_ELEMENT.$("div.wa-required-text");
+    private SelenideElement legendStarRequired = getMainElement().$("div.wa-required-text");
 
     /**
-     * Элементы и паттерны локаторов для ввода информации о зоне доставки.
+     * Элементы для ввода информации о зоне доставки.
      * Регион для России выбирается через select, а для остальных стран вводится вручную
      */
-    private static final String INPUT_LABEL_TEXT_REQUIRED_LOC = "span.wa-required";
-    private final SelenideElement INPUT_CITY = MAIN_ELEMENT.$("input.wa-input.js-city-field");
-    private final SelenideElement INPUT_REGION = MAIN_ELEMENT.$("input.wa-input.js-region-field");
-    private final SelenideElement SELECT_COUNTRY = MAIN_ELEMENT.$("select.wa-select.js-country-field");
-    private final SelenideElement SELECT_REGION = MAIN_ELEMENT.$("select.wa-select.js-region-field");
-    private final SelenideElement INPUT_CITY_REQUIRED = INPUT_CITY.$(INPUT_LABEL_TEXT_REQUIRED_LOC);
-    private final SelenideElement INPUT_REGION_REQUIRED = INPUT_REGION.$(INPUT_LABEL_TEXT_REQUIRED_LOC);
-    private final SelenideElement SELECT_COUNTRY_REQUIRED = SELECT_COUNTRY.$(INPUT_LABEL_TEXT_REQUIRED_LOC);
-    private final SelenideElement SELECT_REGION_REQUIRED = SELECT_REGION.$(INPUT_LABEL_TEXT_REQUIRED_LOC);
+    private SelenideElement inputCity = getMainElement().$("input.wa-input.js-city-field");
+    private SelenideElement inputRegion = getMainElement().$("input.wa-input.js-region-field");
+    private SelenideElement selectCountry = getMainElement().$("select.wa-select.js-country-field");
+    private SelenideElement selectRegion = getMainElement().$("select.wa-select.js-region-field");
+    private SelenideElement inputCityRequired = inputCity.$(INPUT_LABEL_TEXT_REQUIRED_LOC);
+    private SelenideElement inputRegionRequired = inputRegion.$(INPUT_LABEL_TEXT_REQUIRED_LOC);
+    private SelenideElement selectCountryRequired = selectCountry.$(INPUT_LABEL_TEXT_REQUIRED_LOC);
+    private SelenideElement selectRegionRequired = selectRegion.$(INPUT_LABEL_TEXT_REQUIRED_LOC);
 
+    /**
+     * Конструктор основного элемента.
+     */
     public DeliveryForm(SelenideElement parentMainElement) {
-        MAIN_ELEMENT = parentMainElement.$(DELIVERY_FORM_LOC);
-    }
-
-    @Override
-    protected SelenideElement getMainElement() {
-        return MAIN_ELEMENT;
+        super(parentMainElement.$(DELIVERY_FORM_LOC));
     }
 
 
     public void checkThatSectionHeaderTitleInState(Condition condition) {
-        SECTION_HEADER_TITLE.shouldBe(condition);
+        sectionHeaderTitle.shouldBe(condition);
     }
 
     public void checkThatLegendStarRequiredLocInState(Condition condition) {
-        LEGEND_STAR_REQUIRED_LOC.shouldBe(condition);
+        legendStarRequired.shouldBe(condition);
     }
 
     public void checkThatInputCityInState(Condition condition) {
-        INPUT_CITY.shouldBe(condition);
+        inputCity.shouldBe(condition);
     }
 
     public void checkThatInputRegionInState(Condition condition) {
-        INPUT_REGION.shouldBe(condition);
+        inputRegion.shouldBe(condition);
     }
 
     public void checkThatSelectCountryInState(Condition condition) {
-        SELECT_COUNTRY.shouldBe(condition);
+        selectCountry.shouldBe(condition);
     }
 
     public void checkThatSelectRegionInState(Condition condition) {
-        SELECT_REGION.shouldBe(condition);
+        selectRegion.shouldBe(condition);
     }
 
     public void checkThatInputCityRequiredInState(Condition condition) {
-        INPUT_CITY_REQUIRED.shouldBe(condition);
+        inputCityRequired.shouldBe(condition);
     }
 
     public void checkThatInputRegionRequiredInState(Condition condition) {
-        INPUT_REGION_REQUIRED.shouldBe(condition);
+        inputRegionRequired.shouldBe(condition);
     }
 
     public void checkThatSelectCountryRequiredInState(Condition condition) {
-        SELECT_COUNTRY_REQUIRED.shouldBe(condition);
+        selectCountryRequired.shouldBe(condition);
     }
 
     public void checkThatSelectRegionRequiredInState(Condition condition) {
-        SELECT_REGION_REQUIRED.shouldBe(condition);
+        selectRegionRequired.shouldBe(condition);
     }
 
     public void clickSelectCountry() {
-        SELECT_COUNTRY.click();
+        selectCountry.click();
     }
 
     public void clickSelectRegion() {
-        SELECT_REGION.click();
+        selectRegion.click();
     }
 
     public String getInputCityRequiredText() {
-        return INPUT_CITY_REQUIRED.getText();
+        return inputCityRequired.getText();
     }
 
     public String getInputRegionRequiredText() {
-        return INPUT_REGION_REQUIRED.getText();
+        return inputRegionRequired.getText();
     }
 
     public String getSelectCountryRequiredText() {
-        return SELECT_COUNTRY_REQUIRED.getText();
+        return selectCountryRequired.getText();
     }
 
     public String getSelectRegionRequiredText() {
-        return SELECT_REGION_REQUIRED.getText();
+        return selectRegionRequired.getText();
     }
 
     public void fillInputCity(String value) {
-        INPUT_CITY.setValue(value);
+        inputCity.setValue(value);
     }
 
     public void fillInputRegion(String value) {
-        INPUT_REGION.setValue(value);
+        inputRegion.setValue(value);
     }
 
     public void selectOptionCountryByValue(CountrySelect countrySelect) {
-        SELECT_COUNTRY.selectOptionByValue(countrySelect.getAlias());;
+        selectCountry.selectOptionByValue(countrySelect.getAlias());;
     }
 
     public void selectOptionRegionByValue(RegionSelect regionSelect) {
-        SELECT_REGION.selectOptionByValue(regionSelect.getAlias());
+        selectRegion.selectOptionByValue(regionSelect.getAlias());
     }
 
     public String getSectionHeaderTitleText() {
-        return SECTION_HEADER_TITLE.getText();
+        return sectionHeaderTitle.getText();
     }
 
     public String getLegendStarRequiredLocText() {
-        return LEGEND_STAR_REQUIRED_LOC.getText();
+        return legendStarRequired.getText();
     }
 }

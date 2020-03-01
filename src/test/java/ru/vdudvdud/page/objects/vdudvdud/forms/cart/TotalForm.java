@@ -2,84 +2,86 @@ package ru.vdudvdud.page.objects.vdudvdud.forms.cart;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import ru.vdudvdud.adaptors.selenide.base.BasePage;
+import ru.vdudvdud.adaptors.selenide.base.PageObject;
 
 import static com.codeborne.selenide.Selenide.$;
 
 /**
  * Класс описывающий элементы формы с вводом купоном и итогов по товару
  */
-public class TotalForm extends BasePage {
-    private static final SelenideElement MAIN_ELEMENT = $("div.wa-cart-details");
+public class TotalForm extends PageObject {
+    private static final String MAIN_ELEMENT_LOC = "div.wa-cart-details";
 
     /**
      * Элементы для взаимодействия с полем ввода данных о купоне.
      */
-    private final SelenideElement COUPON_CODE_INPUT = MAIN_ELEMENT.$("input.js-coupon-code");
-    private final SelenideElement USE_COUPON_CODE_BTN = MAIN_ELEMENT.$("button.js-use-coupon");
+    private SelenideElement couponCodeInput = getMainElement().$("input.js-coupon-code");
+    private SelenideElement useCouponCodeBtn = getMainElement().$("button.js-use-coupon");
 
     /**
      * Информация о итоговой цене, весе и количестве товара
      */
-    private final SelenideElement TOTAL_PRICE_LBL = MAIN_ELEMENT.$("*#wa-cart-total");
-    private final SelenideElement TOTAL_PRODUCTS_COUNT_AND_WEIGHT_LBL = MAIN_ELEMENT.$("*#wa-cart-weight");
-    private final SelenideElement TOTAL_PRODUCTS_COUNT_LBL = TOTAL_PRODUCTS_COUNT_AND_WEIGHT_LBL.$(".wa-count");
-    private final SelenideElement TOTAL_PRODUCTS_WEIGHT_LBL = TOTAL_PRODUCTS_COUNT_AND_WEIGHT_LBL.$(".wa-weight");
+    private SelenideElement totalPriceLbl = getMainElement().$("*#wa-cart-total");
+    private SelenideElement totalProductCountAndWeight = getMainElement().$("*#wa-cart-weight");
+    private SelenideElement totalProductsCountLbl = totalProductCountAndWeight.$(".wa-count");
+    private SelenideElement totalProductsWeightLbl = totalProductCountAndWeight.$(".wa-weight");
 
-    @Override
-    protected SelenideElement getMainElement() {
-        return MAIN_ELEMENT;
+    /**
+     * Конструктор основного элемента.
+     */
+    public TotalForm() {
+        super($(MAIN_ELEMENT_LOC));
     }
 
     public void checkThatCouponCodeInputInState(Condition condition) {
-        COUPON_CODE_INPUT.shouldBe(condition);
+        couponCodeInput.shouldBe(condition);
     }
 
     public void checkThatUseCouponCodeBtnInState(Condition condition) {
-        USE_COUPON_CODE_BTN.shouldBe(condition);
+        useCouponCodeBtn.shouldBe(condition);
     }
 
     public void checkThatTotalPriceLblInState(Condition condition) {
-        TOTAL_PRICE_LBL.shouldBe(condition);
+        totalPriceLbl.shouldBe(condition);
     }
 
     public void checkThatTotalProductsCountAndWeightLblInState(Condition condition) {
-        TOTAL_PRODUCTS_COUNT_AND_WEIGHT_LBL.shouldBe(condition);
+        totalProductCountAndWeight.shouldBe(condition);
     }
 
     public void checkThatTotalProductsCountLblInState(Condition condition) {
-        TOTAL_PRODUCTS_COUNT_LBL.shouldBe(condition);
+        totalProductsCountLbl.shouldBe(condition);
     }
 
     public void checkThatTotalProductsWeightLblInState(Condition condition) {
-        TOTAL_PRODUCTS_WEIGHT_LBL.shouldBe(condition);
+        totalProductsWeightLbl.shouldBe(condition);
     }
 
     public void clickUseCouponCodeBtn() {
-        USE_COUPON_CODE_BTN.click();
+        useCouponCodeBtn.click();
     }
 
     public String getUseCouponCodeBtnText() {
-        return USE_COUPON_CODE_BTN.getText();
+        return useCouponCodeBtn.getText();
     }
 
     public String getTotalPriceLblText() {
-        return TOTAL_PRICE_LBL.getText();
+        return totalPriceLbl.getText();
     }
 
     public String getTotalProductsCountAndWeightLblText() {
-        return TOTAL_PRODUCTS_COUNT_AND_WEIGHT_LBL.getText();
+        return totalProductCountAndWeight.getText();
     }
 
     public String getTotalProductsCountLblText() {
-        return TOTAL_PRODUCTS_COUNT_LBL.getText();
+        return totalProductsCountLbl.getText();
     }
 
     public String getTotalProductsWeightLblText() {
-        return TOTAL_PRODUCTS_WEIGHT_LBL.getText();
+        return totalProductsWeightLbl.getText();
     }
 
     public void fillCouponCodeInput(String value) {
-        COUPON_CODE_INPUT.setValue(value);
+        couponCodeInput.setValue(value);
     }
 }

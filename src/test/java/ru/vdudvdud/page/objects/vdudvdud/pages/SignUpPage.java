@@ -11,71 +11,72 @@ import static com.codeborne.selenide.Selenide.$x;
  * Класс по работе со страницей регистрации нового пользователя
  */
 public class SignUpPage extends BasePage {
-    private static final SelenideElement MAIN_ELEMENT = $x("//div[@class='wa-form']");
+    private static final String MAIN_ELEMENT_LOC = "//div[@class='wa-form']";
 
-    private static final SelenideElement FIRST_NAME = $x("//div[contains(@class, 'field-firstname')]//input");
-    private static final SelenideElement LAST_NAME = $x("//div[contains(@class, 'field-lastname')]//input");
-    private static final SelenideElement PASSWORD = $x("//div[contains(@class, 'field-password') and not(contains(@class, 'confirm'))]//input");
-    private static final SelenideElement CONFIRM_PASSWORD = $x("//div[contains(@class, 'field-password_confirm')]//input");
-    private static final SelenideElement EMAIL = $x("//div[contains(@class, 'field-email')]//input");
+    private SelenideElement firstName = getMainElement().$x(".//div[contains(@class, 'field-firstname')]//input");
+    private SelenideElement lastName = getMainElement().$x(".//div[contains(@class, 'field-lastname')]//input");
+    private SelenideElement password = getMainElement().$x(".//div[contains(@class, 'field-password') and not(contains(@class, 'confirm'))]//input");
+    private SelenideElement confirmPassword = getMainElement().$x(".//div[contains(@class, 'field-password_confirm')]//input");
+    private SelenideElement email = getMainElement().$x(".//div[contains(@class, 'field-email')]//input");
+    private SelenideElement signUpBtn = getMainElement().$x(".//form//input[@type='submit']");
 
-    private static final SelenideElement SIGN_UP_BUTTON = $x("//div[@class='wa-form']//form//input[@type='submit']");
-
-    @Override
-    protected SelenideElement getMainElement() {
-        return MAIN_ELEMENT;
+    /**
+     * Конструктор основного элемента.
+     */
+    public SignUpPage() {
+        super($x(MAIN_ELEMENT_LOC));
     }
 
 
     public void fillName(String value) {
-        FIRST_NAME.setValue(value);
+        firstName.setValue(value);
     }
 
     public void fillSurname(String value) {
-        LAST_NAME.setValue(value);
+        lastName.setValue(value);
     }
 
     public void fillPassword(String value) {
-        PASSWORD.setValue(value);
+        password.setValue(value);
     }
 
     public void fillRepeatPassword(String value) {
-        CONFIRM_PASSWORD.setValue(value);
+        confirmPassword.setValue(value);
     }
 
     public void fillEmail(String value) {
-        EMAIL.setValue(value);
+        email.setValue(value);
     }
 
     public void confirmSignUp() {
-        SIGN_UP_BUTTON.click();
+        signUpBtn.click();
     }
 
     public boolean isSignUpBtnVisible() {
-        return !SmartWait.isElementNotInState(SIGN_UP_BUTTON, Condition.visible);
+        return !SmartWait.isElementNotInState(signUpBtn, Condition.visible);
     }
 
     public void checkThatFirstNameInState(Condition condition) {
-        FIRST_NAME.shouldBe(condition);
+        firstName.shouldBe(condition);
     }
 
     public void checkThatLastNameInState(Condition condition) {
-        LAST_NAME.shouldBe(condition);
+        lastName.shouldBe(condition);
     }
 
     public void checkThatPasswordInState(Condition condition) {
-        PASSWORD.shouldBe(condition);
+        password.shouldBe(condition);
     }
 
     public void checkThatConfirmPasswordInState(Condition condition) {
-        CONFIRM_PASSWORD.shouldBe(condition);
+        confirmPassword.shouldBe(condition);
     }
 
     public void checkThatEmailInState(Condition condition) {
-        EMAIL.shouldBe(condition);
+        email.shouldBe(condition);
     }
 
     public void checkThatSignUpButtonInState(Condition condition) {
-        SIGN_UP_BUTTON.shouldBe(condition);
+        signUpBtn.shouldBe(condition);
     }
 }

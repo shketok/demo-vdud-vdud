@@ -7,62 +7,62 @@ import ru.vdudvdud.testdata.enums.urls.BaseUrls;
 import ru.vdudvdud.testdata.enums.urls.MyUrls;
 
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.$x;
 
 /**
  * Класс описания страницы личного кабинета. В нем так же описываются заказы, и работа с профилем, так как страницу они включены.
  * По умолчанию страница личного кабинета открыта на заказе.
  */
 public class PersonalRoomPage extends BasePage {
-    private static final SelenideElement MAIN_ELEMENT = $("div.account");
+    private static final String MAIN_ELEMENT_LOC = "div.account";
+    private static final String PERSONAL_ROOM_MENU_PATTERN = ".//div[@class='account__menu-content']//a[contains(@href, '%s')]";
 
-    private static final String PERSONAL_ROOM_MENU_PATTERN = "//div[@class='account__menu-content']//a[contains(@href, '%s')]";
+    private SelenideElement userGreetingSection = getMainElement().$("div.account__user-section");
+    private SelenideElement accountOrdersHistory = getMainElement().$("div.account__history");
+    private SelenideElement title = getMainElement().$("*.account__title");
+    private SelenideElement ordersTab = getMainElement().$x(String.format(PERSONAL_ROOM_MENU_PATTERN, MyUrls.MY_ORDERS.getUrlPart()));
+    private SelenideElement profileTab = getMainElement().$x(String.format(PERSONAL_ROOM_MENU_PATTERN, MyUrls.MY_PROFILE.getUrlPart()));
+    private SelenideElement logoutTab = getMainElement().$x(String.format(PERSONAL_ROOM_MENU_PATTERN, BaseUrls.LOGOUT.getUrlPart()));
 
-    private static final SelenideElement USER_GREETING_SECTION = $("div.account__user-section");
-    private static final SelenideElement ACCOUNT_ORDERS_HISTORY = $("div.account__history");
-    private static final SelenideElement TITLE = $("*.account__title");
-    private static final SelenideElement ORDERS_TAB = $x(String.format(PERSONAL_ROOM_MENU_PATTERN, MyUrls.MY_ORDERS.getUrlPart()));
-    private static final SelenideElement PROFILE_TAB = $x(String.format(PERSONAL_ROOM_MENU_PATTERN, MyUrls.MY_PROFILE.getUrlPart()));
-    private static final SelenideElement LOGOUT_TAB = $x(String.format(PERSONAL_ROOM_MENU_PATTERN, BaseUrls.LOGOUT.getUrlPart()));
-
-    @Override
-    protected SelenideElement getMainElement() {
-        return MAIN_ELEMENT;
+    /**
+     * Конструктор основного элемента.
+     */
+    public PersonalRoomPage() {
+        super($(MAIN_ELEMENT_LOC));
     }
 
     public void checkThatUserGreetingSectionInState(Condition condition) {
-        USER_GREETING_SECTION.shouldBe(condition);
+        userGreetingSection.shouldBe(condition);
     }
 
     public void checkThatAccountOrdersHistoryInState(Condition condition) {
-        ACCOUNT_ORDERS_HISTORY.shouldBe(condition);
+        accountOrdersHistory.shouldBe(condition);
     }
 
     public void checkThatTitleInState(Condition condition) {
-        TITLE.shouldBe(condition);
+        title.shouldBe(condition);
     }
 
     public void checkThatOrdersTabInState(Condition condition) {
-        ORDERS_TAB.shouldBe(condition);
+        ordersTab.shouldBe(condition);
     }
 
     public void checkThatProfileTabInState(Condition condition) {
-        PROFILE_TAB.shouldBe(condition);
+        profileTab.shouldBe(condition);
     }
 
     public void checkThatLogoutTabInState(Condition condition) {
-        LOGOUT_TAB.shouldBe(condition);
+        logoutTab.shouldBe(condition);
     }
 
     public void clickOrdersTab() {
-        ORDERS_TAB.click();
+        ordersTab.click();
     }
 
     public void clickProfileTab() {
-        PROFILE_TAB.click();
+        profileTab.click();
     }
 
     public void clickLogoutTab() {
-        LOGOUT_TAB.click();
+        logoutTab.click();
     }
 }
