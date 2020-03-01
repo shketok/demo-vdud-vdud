@@ -8,10 +8,11 @@ import ru.vdudvdud.steps.HeaderSteps;
 import ru.vdudvdud.steps.MainPageSteps;
 import ru.vdudvdud.steps.RestorePasswordSteps;
 import ru.vdudvdud.steps.SignInSteps;
-import ru.vdudvdud.testdata.creators.UsersCreator;
+import ru.vdudvdud.testdata.builders.UsersCreator;
+import ru.vdudvdud.testdata.enums.UserAliases;
 import ru.vdudvdud.testdata.models.essences.User;
 
-public class UnsuccessfulAccountRestoreTest extends BaseTest {
+public class UnsuccessfulAccountRestoreWithIncorrectEmailTest extends BaseTest {
 
     private MainPageSteps mainPageSteps = new MainPageSteps();
     private HeaderSteps headerSteps = new HeaderSteps();
@@ -22,7 +23,7 @@ public class UnsuccessfulAccountRestoreTest extends BaseTest {
 
     @BeforeMethod
     public void readParams() {
-        user = UsersCreator.createRandomUser();
+        user = UsersCreator.createUser(UserAliases.USER_INCORRECT_EMAIL);
 
         LOG.info("1. Открытие главной страницы");
         mainPageSteps.openMainPage();
@@ -36,7 +37,7 @@ public class UnsuccessfulAccountRestoreTest extends BaseTest {
     }
 
     @Test
-    @Link("https://outsourceofthebrain.myjetbrains.com/youtrack/issue/VDUDUD-15")
+    @Link("https://outsourceofthebrain.myjetbrains.com/youtrack/issue/VDUDUD-16")
     public void runTest() {
         LOG.info("1. Ввод некорректного email");
         restorePasswordSteps.checkThatMainElementsOfThePageAreVisible();
@@ -45,5 +46,4 @@ public class UnsuccessfulAccountRestoreTest extends BaseTest {
         LOG.info("2. Проверка что вывелось сообщение о том что нет пользователя с таким email");
         restorePasswordSteps.checkIncorrentEmailMessageIsVisible();
     }
-
 }
