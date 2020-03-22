@@ -89,6 +89,23 @@ public class Localization {
     }
 
     /**
+     * Получение локализованного строкового значения элемента почты yopmail по ключу.
+     *
+     * @param token ключ, по которому необходимо искать значение.
+     * @return локализованное значение лэйбла. Если значение не найдено, возвращается null.
+     */
+    public String getLocalizedYopmailElement(String token) {
+        String value = (String) localizedYopmail.get(token);
+        if (value != null) {
+            return value;
+        } else {
+            // TODO other locale;
+            Logger.getInstance().error(format("Token '%s' was not found for locale '%s'", token, locale.getLocale()));
+            return null;
+        }
+    }
+
+    /**
      * Перечисление, представляющее возможные значения локали.
      */
     public enum Locale {
