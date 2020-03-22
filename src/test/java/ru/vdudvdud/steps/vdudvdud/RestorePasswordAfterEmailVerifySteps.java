@@ -1,30 +1,34 @@
 package ru.vdudvdud.steps.vdudvdud;
 
 import com.codeborne.selenide.Condition;
-import ru.vdudvdud.objects.vdudvdud.pages.RestorePasswordAfterEmailVerifyPage;
+import io.qameta.allure.Step;
+import ru.vdudvdud.objects.vdudvdud.pages.RestorePasswordConfirmationPage;
 
 public class RestorePasswordAfterEmailVerifySteps extends BaseSteps {
 
-    private RestorePasswordAfterEmailVerifyPage restorePasswordAfterEmailVerifyPage = new RestorePasswordAfterEmailVerifyPage();
+    private RestorePasswordConfirmationPage restorePasswordConfirmationPage = new RestorePasswordConfirmationPage();
 
 
     @Override
     public void checkThatMainElementsOfThePageAreVisible() {
-        restorePasswordAfterEmailVerifyPage.checkThatPasswordInState(Condition.visible);
-        restorePasswordAfterEmailVerifyPage.checkThatRepeatPasswordInState(Condition.visible);
-        restorePasswordAfterEmailVerifyPage.checkThatConfirmInState(Condition.visible);
+        restorePasswordConfirmationPage.checkThatPasswordInState(Condition.visible);
+        restorePasswordConfirmationPage.checkThatRepeatPasswordInState(Condition.visible);
+        restorePasswordConfirmationPage.checkThatConfirmInState(Condition.visible);
     }
 
+    @Step("Заполнение нового пароля")
     public void fillPassword(String password) {
-        restorePasswordAfterEmailVerifyPage.fillPassword(password);
+        restorePasswordConfirmationPage.fillPassword(password);
     }
 
+    @Step("Заполнение подтверждения пароля")
     public void fillRepeatPassword(String repeatPassword) {
-        restorePasswordAfterEmailVerifyPage.fillRepeatPassword(repeatPassword);
+        restorePasswordConfirmationPage.fillRepeatPassword(repeatPassword);
     }
 
+    @Step("Подтверждение нового пароля. Отправка формы")
     public void clickConfirm() {
-        restorePasswordAfterEmailVerifyPage.clickConfirm();
+        restorePasswordConfirmationPage.clickConfirm();
     }
 
 }

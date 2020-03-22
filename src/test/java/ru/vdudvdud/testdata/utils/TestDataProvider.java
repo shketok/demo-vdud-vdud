@@ -22,7 +22,7 @@ public class TestDataProvider {
         return RandomStringUtils.randomAlphabetic(length).toLowerCase();
     }
 
-    public static String generateRandomString() {
+    public static String generateRandomStringWithBaseLength() {
         return generateRandomString(StringConstants.BASE_RANDOM_STRING_LENGTH);
     }
 

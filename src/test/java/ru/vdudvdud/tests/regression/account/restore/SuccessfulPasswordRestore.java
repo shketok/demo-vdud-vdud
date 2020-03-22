@@ -14,7 +14,6 @@ import ru.vdudvdud.steps.vdudvdud.RestorePasswordSteps;
 import ru.vdudvdud.steps.vdudvdud.SignInSteps;
 import ru.vdudvdud.steps.yopmail.YopmailSteps;
 import ru.vdudvdud.testdata.builders.UsersCreator;
-import ru.vdudvdud.testdata.constants.StringConstants;
 import ru.vdudvdud.testdata.models.essences.User;
 import ru.vdudvdud.testdata.utils.TestDataProvider;
 
@@ -50,49 +49,49 @@ public class SuccessfulPasswordRestore extends BaseTest {
         LOG.info("4. Выход из аккаунта и проверка, что мы вышли из аккаунта");
         headerSteps.logout();
         headerSteps.checkLogoutInvisible();
-
-        LOG.info("5. Переход на страницу логина");
-        headerSteps.goToLoginPage();
     }
 
     @Override
     @Test
     @Link("https://outsourceofthebrain.myjetbrains.com/youtrack/issue/VDUDUD-14")
     public void runTest() {
+        LOG.info("1. Открытие главной страницы и переход на страницу логина");
+        mainPageSteps.openMainPage();
+        headerSteps.goToLoginPage();
 
-        LOG.info("1. Переход на страницу восстановления пароля");
+        LOG.info("2. Переход на страницу восстановления пароля");
         signInSteps.checkThatMainElementsOfThePageAreVisible();
         signInSteps.clickToForgotPassword();
 
-        LOG.info("2. Ввостановление пароля");
+        LOG.info("3. Ввостановление пароля");
         restorePasswordSteps.checkThatMainElementsOfThePageAreVisible();
         restorePasswordSteps.restorePassword(user);
 
         DriverContainer.switchToSecond();
 
-        LOG.info("3. Открытие yopmail, вход и открытие ссылки восстановления пароля");
+        LOG.info("4. Открытие yopmail, вход и открытие ссылки восстановления пароля");
         yopmailSteps.openYopmail();
-        yopmailSteps.login(user);
+        yopmailSteps.navigateToUserInbox(user);
         String restorePasswordUrl = yopmailSteps.getLinkForRestorePassword();
 
         DriverContainer.switchToFirst();
         DriverContainer.getDriver().navigate().to(restorePasswordUrl);
 
-        LOG.info("4. Ввод и подтверждение нового пароля");
+        LOG.info("5. Ввод и подтверждение нового пароля");
         restorePasswordAfterEmailVerifySteps.checkThatMainElementsOfThePageAreVisible();
-        String newPassword = TestDataProvider.generateRandomString(StringConstants.BASE_RANDOM_STRING_LENGTH);
+        String newPassword = TestDataProvider.generateRandomStringWithBaseLength();
         user.setPassword(newPassword);
         restorePasswordAfterEmailVerifySteps.fillPassword(newPassword);
         restorePasswordAfterEmailVerifySteps.fillRepeatPassword(newPassword);
         restorePasswordAfterEmailVerifySteps.clickConfirm();
 
-        LOG.info("5. Выход из аккаунта после смены пароля");
+        LOG.info("6. Выход из аккаунта после смены пароля");
         headerSteps.checkThatMainElementsOfThePageAreVisible();
         headerSteps.logout();
         headerSteps.goToLoginPage();
         signInSteps.checkThatMainElementsOfThePageAreVisible();
 
-        LOG.info("6. Вход в аккаунт, используя новый пароль");
+        LOG.info("7. Вход в аккаунт, используя новый пароль");
         signInSteps.signIn(user);
         personalRoomSteps.checkThatMainElementsOfThePageAreVisible();
     }
