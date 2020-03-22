@@ -10,7 +10,7 @@ import ru.vdudvdud.adaptors.selenide.base.BasePage;
 /**
  * Класс, описывающий страницу ввода нового пароля после подтверждения восстановления пароля на почте
  */
-public class RestorePasswordAfterEmailVerifyPage extends BasePage {
+public class RestorePasswordConfirmationPage extends BasePage {
 
     private static final SelenideElement MAIN_ELEMENT = $x(
         String.format("//form[contains(@action, '%s')]", FORGOT_PASSWORD.getUrlPart()));

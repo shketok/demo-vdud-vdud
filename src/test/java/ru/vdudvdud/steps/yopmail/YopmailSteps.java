@@ -14,7 +14,7 @@ public class YopmailSteps {
         yopmailMainPage.open();
     }
 
-    public void login(User user) {
+    public void navigateToUserInbox(User user) {
         yopmailMainPage.openYopmailAndNagivateToInboxByEmail(user.getEmail());
     }
 

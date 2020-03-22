@@ -14,7 +14,7 @@ import ru.vdudvdud.adaptors.selenide.utils.SimpleWait;
 import ru.vdudvdud.testdata.enums.urls.BaseUrls;
 
 public class YopmailInboxPage extends BasePage {
-
+    // TODO отдельная форма для писем
     private static final String MSG_LOC = "//div[@class='m']";
     private static final String MSG_CONTENT = "//div[@id='mailmillieu']";
     private static final SelenideElement RESTORE_PASSWORD_MSG_LINK = $x(
@@ -40,7 +40,7 @@ public class YopmailInboxPage extends BasePage {
      *
      * @param number ожидаемое количество сообщений
      */
-    public void waitForMailNumber(int number) {
+    private void waitForMailNumber(int number) {
         int attempts = 0;
         do {
             //В случае отсутствия подобной задержки почтовый сервис определяет активность подозрительной и требует ввода капчи
@@ -66,13 +66,6 @@ public class YopmailInboxPage extends BasePage {
         Selenide.switchTo().frame($x(INBOX_FRAME_LOC));
         $$x(MSG_LOC).get(index).click();
         Selenide.switchTo().defaultContent();
-    }
-
-    /**
-     * Ожидание появления сообщения о подтверждении почтового адреса для нового аккаунта
-     */
-    public void waitForEmailConfirmEmail() {
-        waitForMailNumber(NEW_USER_MESSAGE_NUMBER);
     }
 
 

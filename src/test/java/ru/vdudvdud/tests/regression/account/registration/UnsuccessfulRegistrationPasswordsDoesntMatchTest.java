@@ -33,7 +33,8 @@ public class UnsuccessfulRegistrationPasswordsDoesntMatchTest extends BaseTest {
         LOG.info("2. Заполнение формы регистрации");
         registrationSteps.checkThatMainElementsOfThePageAreVisible();
         registrationSteps.fillRegistrationData(user);
-        registrationSteps.fillRepeatPassword(user.getPassword().concat(TestDataProvider.generateRandomString()));
+        registrationSteps
+            .fillRepeatPassword(user.getPassword().concat(TestDataProvider.generateRandomStringWithBaseLength()));
         registrationSteps.sendRegistrationData();
 
         LOG.info("3. Проверка не успешности регистрации");

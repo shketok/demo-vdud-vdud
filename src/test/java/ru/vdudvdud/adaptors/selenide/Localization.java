@@ -13,6 +13,8 @@ import static java.lang.String.format;
 //TODO abstract class for all localizations //refactor
 public class Localization {
 
+    private static final String LABELS_LOC_FILE = "labels.json";
+    private static final String YOPMAIL_LOC_FILE = "yopmail.json";
     private static Localization instance = null;
 
     private JSONObject localizedLabels;
@@ -42,9 +44,9 @@ public class Localization {
     public void setLocale(Locale locale) {
         this.locale = locale;
         String labelsLocalizationFilepath = Configuration.getInstance()
-            .getLocalizationFilePath(this.locale.getLocale(), "labels.json");
+            .getLocalizationFilePath(this.locale.getLocale(), LABELS_LOC_FILE);
         String yopmailLocalizationFilepath = Configuration.getInstance()
-            .getLocalizationFilePath(this.locale.getLocale(), "yopmail.json");
+            .getLocalizationFilePath(this.locale.getLocale(), YOPMAIL_LOC_FILE);
         localizedLabels = JSONUtils.readFromFile(labelsLocalizationFilepath);
         localizedYopmail = JSONUtils.readFromFile(yopmailLocalizationFilepath);
     }
