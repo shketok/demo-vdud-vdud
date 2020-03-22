@@ -9,7 +9,7 @@ import ru.vdudvdud.steps.vdudvdud.HeaderSteps;
 import ru.vdudvdud.steps.vdudvdud.MainPageSteps;
 import ru.vdudvdud.steps.vdudvdud.RestorePasswordSteps;
 import ru.vdudvdud.steps.vdudvdud.SignInSteps;
-import ru.vdudvdud.testdata.builders.UsersCreator;
+import ru.vdudvdud.testdata.creators.UsersCreator;
 import ru.vdudvdud.testdata.enums.UserAliases;
 import ru.vdudvdud.testdata.models.essences.User;
 

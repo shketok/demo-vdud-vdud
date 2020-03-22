@@ -1,7 +1,7 @@
 package ru.vdudvdud.steps.yopmail;
 
-import ru.vdudvdud.objects.yopmail.pages.YopmailInboxPage;
-import ru.vdudvdud.objects.yopmail.pages.YopmailMainPage;
+import ru.vdudvdud.page.objects.yopmail.pages.YopmailInboxPage;
+import ru.vdudvdud.page.objects.yopmail.pages.YopmailMainPage;
 import ru.vdudvdud.testdata.enums.localization.YopmailLocalization;
 import ru.vdudvdud.testdata.models.essences.User;
 

@@ -1,5 +1,6 @@
 package ru.vdudvdud.objects.vdudvdud.pages;
 
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 import static ru.vdudvdud.testdata.enums.urls.BaseUrls.FORGOT_PASSWORD;
 
@@ -17,6 +18,10 @@ public class RestorePasswordConfirmationPage extends BasePage {
     private static final SelenideElement PASSWORD = MAIN_ELEMENT.$x(".//input[@name='password']");
     private static final SelenideElement REPEAT_PASSWORD = MAIN_ELEMENT.$x(".//input[@name='password_confirm']");
     private static final SelenideElement CONFIRM = MAIN_ELEMENT.$x(".//input[@type='submit']");
+
+    public RestorePasswordConfirmationPage() {
+        super($(MAIN_ELEMENT));
+    }
 
     @Override
     protected SelenideElement getMainElement() {
