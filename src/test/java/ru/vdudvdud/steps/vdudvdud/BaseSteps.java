@@ -1,4 +1,4 @@
-package ru.vdudvdud.steps;
+package ru.vdudvdud.steps.vdudvdud;
 
 import io.qameta.allure.Step;
 import org.testng.asserts.SoftAssert;

@@ -1,4 +1,4 @@
-package ru.vdudvdud.steps;
+package ru.vdudvdud.steps.vdudvdud;
 
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
@@ -46,9 +46,9 @@ public class MainPageSteps extends BaseSteps {
         product.setImgLink(productElement.getProductImageSource());
         product.setName(productElement.getProductNameText());
         product.setCost(Integer.parseInt(RegexMatcher.regexGetFirstMatchGroupFromTextWithoutSpaces(productFullPrice,
-                RegexPatterns.DIGITS.toString())));
+            RegexPatterns.DIGITS.toString())));
         product.setCurrency(RegexMatcher.regexGetFirstMatchGroupFromTextWithoutSpaces(productFullPrice,
-                RegexPatterns.NON_DIGITS.toString().trim()));
+            RegexPatterns.NON_DIGITS.toString().trim()));
         product.setExistence(productElement.getProductExistenceText());
 
         return product;
@@ -87,7 +87,7 @@ public class MainPageSteps extends BaseSteps {
     @Step("Нажатие кнопки В корзину у случайного продукта кроме указанных")
     public Product clickRandomProductAddToTheCartExceptSpecifics(Product... products) {
         ProductCardForm productCardForm = vdudMainPage.getProductCardsForm().getRandomProductInsteadSpecifics(
-                Arrays.stream(products).map(Product::getName).toArray(String[]::new));
+            Arrays.stream(products).map(Product::getName).toArray(String[]::new));
 
         Product product = createProductFromProductCard(productCardForm);
         clickSpecificProductAddToTheCartBtn(product);
