@@ -16,8 +16,18 @@ public class RestorePasswordAfterEmailVerifySteps extends BaseSteps {
         restorePasswordConfirmationPage.checkThatConfirmInState(Condition.visible);
     }
 
+    @Step("Проверка того что вывелось сообщение о несовпадении паролей")
+    public void checkThatDifferentPasswordsErrorMsgIsVisible() {
+        restorePasswordConfirmationPage.checkThatDifferentPasswordsErrorMsgIsVisible();
+    }
+
+    @Step("Проверка того что вывелось сообщение о вводе пустого пароля")
+    public void checkThatEmptyPasswordsErrorMsgIsVisible() {
+        restorePasswordConfirmationPage.checkThatEmptyPasswordsErrorMsgIsVisible();
+    }
 
     @Step("Заполнение нового пароля")
+
     public void fillPassword(String password) {
         restorePasswordConfirmationPage.fillPassword(password);
     }
@@ -32,7 +42,5 @@ public class RestorePasswordAfterEmailVerifySteps extends BaseSteps {
         restorePasswordConfirmationPage.clickConfirm();
     }
 
-    public void checkThatRepeatPasswordErrorMsgIsVisible() {
-        restorePasswordConfirmationPage.checkThatRepeatPasswordErrorMsgIsVisible();
-    }
+
 }
