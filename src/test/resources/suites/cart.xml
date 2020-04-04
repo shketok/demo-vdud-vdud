@@ -8,6 +8,18 @@
         </classes>
     </test>
 
+    <test name="Test add the same product to the non empty cart">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.AddTheSameProductToTheNonEmptyCartTest"/>
+        </classes>
+    </test>
+
+    <test name="Test add two products from basket again test">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.AddTwoProductsFromBasketAgainTest"/>
+        </classes>
+    </test>
+
     <test name="Test empty cart unauthorized user">
         <classes>
             <class name="ru.vdudvdud.tests.regression.cart.EmptyCartTestUserUnauthorized"/>

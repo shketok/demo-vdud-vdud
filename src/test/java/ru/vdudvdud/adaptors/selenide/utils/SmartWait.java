@@ -2,30 +2,48 @@ package ru.vdudvdud.adaptors.selenide.utils;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import com.codeborne.selenide.ex.ElementNotFound;
+import com.codeborne.selenide.ex.ElementShould;
 import com.codeborne.selenide.ex.ElementShouldNot;
+import org.openqa.selenium.NoSuchElementException;
 
 /**
  * Класс с умными ожиданиями.
- * Класс имеет смысл использовать в случае негативных проверок, когда мы знаем, что чего-то не должно появиться,
- * так как классическое ожидание в случае, если элемент не видим в данный момент, сразу вернет истину, хотя он может появиться
- * спустя некоторое время.
  * <p>
- * Класс также имеет место быть для остальных сложных ожиданий, например ожидание прогрузки всех элементов одного типа на странице.
+ * Класс имеет место быть для остальных сложных ожиданий, например ожидание прогрузки всех элементов одного типа на странице.
  */
 public class SmartWait {
+    private static final Logger logger = Logger.getInstance();
 
     /**
-     * Функция ожидания, что элемент присутствует в течении длительного времени.
+     * Функция ожидания, что элемент не перейдет в указанное состояние.
      *
      * @param selenideElement Элемент для ожидания.
-     * @param condition       Тип ожидания.
-     * @return True - элемент присутствует в течении длительного времени. False - элемент не появился на протяжении времени, хотя ожидали присутствие.
+     * @param condition       Состояние элемента.
+     * @return True - элемент не перешел в указанное состояние. False - элемент перешел в указанное состояние.
      */
-    public static boolean isElement(SelenideElement selenideElement, Condition condition) {
+    public static boolean isElementNotInState(SelenideElement selenideElement, Condition condition) {
         try {
             selenideElement.shouldNotBe(condition);
         } catch (ElementShouldNot ex) {
-            Logger.getInstance().info(String.format("Element %s is %s", selenideElement.toString(), condition.toString()));
+            logger.info(String.format("Element %s is not %s", selenideElement.toString(), condition.toString()));
+        }
+        return !selenideElement.is(condition);
+    }
+
+
+    /**
+     * Функция ожидания, пока элемент перейден в указанное состояние.
+     *
+     * @param selenideElement Элемент для ожидания.
+     * @param condition       Состояние элемента.
+     * @return True - элемента перешел в указанное состояние. False - элемент не перешел в указанное состояние.
+     */
+    public static boolean isElementInState(SelenideElement selenideElement, Condition condition) {
+        try {
+            selenideElement.shouldBe(condition);
+        } catch (ElementShould | NoSuchElementException | ElementNotFound ex) {
+            logger.info(String.format("Element %s is %s", selenideElement.toString(), condition.toString()));
         }
         return selenideElement.is(condition);
     }

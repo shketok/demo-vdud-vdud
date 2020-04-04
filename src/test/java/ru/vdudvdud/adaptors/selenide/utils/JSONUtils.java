@@ -98,7 +98,7 @@ public class JSONUtils {
         try {
             data = (JSONObject) new JSONParser().parse(new FileReader(filePath));
         } catch (IOException | ParseException e) {
-            LOG.fatal(format("Exception occurred during read data from file: %s", filePath), e);
+            LOG.fatal(String.format("Exception occurred during read data from file: %s", filePath), e);
         }
         return data;
     }
@@ -114,7 +114,7 @@ public class JSONUtils {
             Gson gson = new GsonBuilder().create();
             gson.toJson(data, writer);
         } catch (IOException e) {
-            LOG.fatal(format("Exception occurred during write data to file: %s", filePath), e);
+            LOG.fatal(String.format("Exception occurred during write data to file: %s", filePath), e);
         }
     }
 }

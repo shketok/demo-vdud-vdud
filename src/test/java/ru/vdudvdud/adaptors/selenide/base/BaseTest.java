@@ -13,8 +13,7 @@ import ru.vdudvdud.adaptors.selenide.driver.DriverContainer;
 import ru.vdudvdud.adaptors.selenide.utils.DriverHelper;
 import ru.vdudvdud.adaptors.selenide.utils.Logger;
 import ru.vdudvdud.adaptors.selenide.utils.Store;
-
-import static java.lang.String.format;
+import ru.vdudvdud.testdata.objects.Cart;
 
 /**
  * Базовый класс, описывающий любой тест.
@@ -24,7 +23,7 @@ public abstract class BaseTest {
     protected static final Logger LOG = Logger.getInstance();
 
     /**
-     * Класс для хранения и запуска автоматизированного сценария.
+     * Метод для хранения и запуска автоматизированного сценария.
      */
     public abstract void runTest();
 
@@ -49,7 +48,7 @@ public abstract class BaseTest {
     public void beforeMethod(ITestContext testContext) {
         DriverContainer.setDrivers();
         SelenideLogger.addListener("AllureSelenide", new AllureSelenide().screenshots(true).savePageSource(true));
-        LOG.info(format("Test '%s' started", testContext.getName()));
+        LOG.info(String.format("Test '%s' started", testContext.getName()));
     }
 
     /**
@@ -65,7 +64,9 @@ public abstract class BaseTest {
             DriverHelper.makeScreenshot();
 
         DriverContainer.quit();
-        LOG.info(format("Test '%s' finished", testContext.getName()));
+        LOG.info(String.format("Test '%s' finished", testContext.getName()));
+
+        Cart.getInstance().clean();
     }
 
     /**
