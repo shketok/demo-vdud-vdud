@@ -46,9 +46,8 @@ public class RestorePasswordConfirmationPage extends BasePage {
 
 
     public void checkThatRepeatPasswordErrorMsgIsVisible() {
-        Assert.assertEquals(RestorePasswordLocalization.DIFFERENT_PASSWORDS_MESSAGE.getValue(),
-            ERROR_MSG_UNDER_REPEAT_PASSWORD.getText(),
-            "Ожидаемое сообщение о несовпадение паролей не соответвует фактическому");
+        ERROR_MSG_UNDER_REPEAT_PASSWORD
+            .shouldHave(Condition.exactText(RestorePasswordLocalization.DIFFERENT_PASSWORDS_MESSAGE.getValue()));
     }
 
 
