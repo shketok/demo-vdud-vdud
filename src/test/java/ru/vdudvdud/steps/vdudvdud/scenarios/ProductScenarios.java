@@ -29,6 +29,14 @@ public class ProductScenarios {
         return addProductToTheCart(() -> mainPageSteps.clickRandomProductAddToTheCartBtn());
     }
 
+    @Step("Сценарий добавления товара с выбором количества в корзину авторизованным пользователем")
+    public Product addQuantityOfSameProductToCartAfterRegistration(User user, int quantity) {
+        LOG.info("Выполнение регистрации на сайте пользователем");
+        registrationScenarios.registration(user);
+
+        return addProductToTheCart(() -> mainPageSteps.clickRandomProductAddToTheCartWithQuantitySelection(quantity));
+    }
+
     @Step("Добавление товара в корзину")
     public Product addProductToTheCart(Supplier<Product> productAddFunction) {
         LOG.info("Нажатие кнопки В корзину на случайном товаре с главной страницы");
@@ -46,4 +54,6 @@ public class ProductScenarios {
 
         return product;
     }
+
+
 }

@@ -11,7 +11,7 @@ public class AddProductToTheCartPopup extends PageObject {
     private static final String MAIN_ELEMENT_LOC = "div.cart-popup";
 
     private SelenideElement confirmBtn = getMainElement().$("button[type='submit']");
-    private SelenideElement countOfTheGood = getMainElement().$("input[name='quantity']");
+    private SelenideElement productQuantity = getMainElement().$("input[name='quantity']");
     private SelenideElement productSelectedSize = getMainElement().$("input[name='sku_id'][checked] ~ span[itemprop='name']");
     private SelenideElement productSelectedModel = getMainElement().$("div.options__content ul");
 
@@ -34,8 +34,8 @@ public class AddProductToTheCartPopup extends PageObject {
 
     }
 
-    public void fillCountOfTheGood(String value) {
-        countOfTheGood.setValue(value);
+    public void setProductQuantity(String value) {
+        productQuantity.setValue(value);
     }
 
     public String getProductSelectedSizeText() {
@@ -54,11 +54,11 @@ public class AddProductToTheCartPopup extends PageObject {
         return productSelectedModel.is(condition);
     }
 
-    public String getCountOfTheGoodText() {
-        return countOfTheGood.getValue();
+    public String getProductQuantity() {
+        return productQuantity.getValue();
     }
 
     public boolean isCountOfTheGoodInState(Condition condition) {
-        return countOfTheGood.is(condition);
+        return productQuantity.is(condition);
     }
 }

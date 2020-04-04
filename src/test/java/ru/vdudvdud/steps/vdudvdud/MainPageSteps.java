@@ -78,6 +78,18 @@ public class MainPageSteps extends BaseSteps {
         return product;
     }
 
+
+    @Step("Нажатие кнопки В корзину у случайного продукта с выбором числа товаров")
+    public Product clickRandomProductAddToTheCartWithQuantitySelection(int quantity){
+        Product product = createProductFromProductCard(vdudMainPage.getProductCardsForm().getRandomProductForm());
+        clickSpecificProductAddToTheCartBtn(product);
+        setProductQuantity(quantity);
+        updateProduct(product);
+
+        return product;
+    }
+
+
     @Step("Нажатие кнопки В корзину у конкретного выбранного продукта")
     public Product clickSpecificProductAddToTheCartBtn(Product product) {
         vdudMainPage.getProductCardsForm().getProductCardForm(product.getName()).clickProductToTheCartBottomBtn();
@@ -104,7 +116,7 @@ public class MainPageSteps extends BaseSteps {
             }
 
             if (addProductToTheCartPopup.isCountOfTheGoodInState(Condition.visible)) {
-                product.setCount(Integer.parseInt(addProductToTheCartPopup.getCountOfTheGoodText()));
+                product.setCount(Integer.parseInt(addProductToTheCartPopup.getProductQuantity()));
             } else {
                 product.setCount(CartConstants.BASE_PRODUCT_COUNT);
             }
@@ -121,6 +133,13 @@ public class MainPageSteps extends BaseSteps {
     @Step("Подтверждение добавления товара в корзину")
     public void confirmAddProductToTheCart() {
         addProductToTheCartPopup.clickConfirmBtnIfAppeared();
+    }
+
+
+    @Step("Выбор количества текущего товара")
+    public void setProductQuantity(int quantity){
+        addProductToTheCartPopup.setProductQuantity(String.valueOf(quantity));
+
     }
 
     @Step("Закрытие всплывающего окна уведомляющего о добавлении товара в корзину")
