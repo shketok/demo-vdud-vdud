@@ -40,5 +40,12 @@
     "password": " ",
     "email": "vdud%s@yopmail.com",
     "phone": "+79012345678"
+  },
+  "userEmptyEmailAndPassword": {
+    "firstName": "name",
+    "surname": "surname",
+    "password": "",
+    "email": "",
+    "phone": "+79012345678"
   }
 }
