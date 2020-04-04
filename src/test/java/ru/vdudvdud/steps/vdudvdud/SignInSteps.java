@@ -1,4 +1,4 @@
-package ru.vdudvdud.steps;
+package ru.vdudvdud.steps.vdudvdud;
 
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
