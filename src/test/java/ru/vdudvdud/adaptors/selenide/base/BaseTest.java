@@ -29,16 +29,6 @@ public abstract class BaseTest {
 
 
     /**
-     * Метод, выполняющийся один раз перед всеми тестами в сьюте.
-     * Устанавливает локализацию.
-     */
-    @BeforeSuite
-    public void beforeSuite() {
-        Localization.getInstance().setLocale(Localization.Locale.RU);
-    }
-
-
-    /**
      * Метод, выполняюшщийся перед каждый тестом (@Test) в сьюте.
      * Инициализирует веб-драйвер, добавляет слушатель AllureSelenide с целью логирования действий Selenide'а, логирует имя теста.
      *
