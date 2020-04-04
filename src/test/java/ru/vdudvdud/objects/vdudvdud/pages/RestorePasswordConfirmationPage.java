@@ -16,25 +16,21 @@ import ru.vdudvdud.testdata.enums.localization.RestorePasswordLocalization;
  */
 public class RestorePasswordConfirmationPage extends BasePage {
 
-    private static final SelenideElement MAIN_ELEMENT = $x(
-        String.format("//form[contains(@action, '%s')]", FORGOT_PASSWORD.getUrlPart()));
-    private static final SelenideElement PASSWORD = MAIN_ELEMENT.$x(".//input[@name='password']");
-    private static final SelenideElement ERROR_MSG_UNDER_PASSWORD = MAIN_ELEMENT
+    private static final String MAIN_ELEMENT =
+        String.format("//form[contains(@action, '%s')]", FORGOT_PASSWORD.getUrlPart());
+    private final SelenideElement PASSWORD = getMainElement().$x(".//input[@name='password']");
+    private final SelenideElement ERROR_MSG_UNDER_PASSWORD = getMainElement()
         .$x(".//*[@class='wa-error-msg' and @data-name='password']");
-    private static final SelenideElement REPEAT_PASSWORD = MAIN_ELEMENT.$x(".//input[@name='password_confirm']");
-    private static final SelenideElement ERROR_MSG_UNDER_REPEAT_PASSWORD = MAIN_ELEMENT
+    private final SelenideElement REPEAT_PASSWORD = getMainElement().$x(".//input[@name='password_confirm']");
+    private final SelenideElement ERROR_MSG_UNDER_REPEAT_PASSWORD = getMainElement()
         .$x(".//*[@class='wa-error-msg' and @data-name='password_confirm']");
 
-    private static final SelenideElement CONFIRM = MAIN_ELEMENT.$x(".//input[@type='submit']");
+    private final SelenideElement CONFIRM = getMainElement().$x(".//input[@type='submit']");
 
     public RestorePasswordConfirmationPage() {
         super($(MAIN_ELEMENT));
     }
 
-    @Override
-    protected SelenideElement getMainElement() {
-        return MAIN_ELEMENT;
-    }
 
     public void checkThatPasswordInState(Condition condition) {
         PASSWORD.shouldBe(condition);

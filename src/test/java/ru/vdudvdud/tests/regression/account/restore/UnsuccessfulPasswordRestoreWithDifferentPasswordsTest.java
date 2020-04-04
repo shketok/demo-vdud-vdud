@@ -19,10 +19,6 @@ import ru.vdudvdud.testdata.utils.TestDataProvider;
 
 public class UnsuccessfulPasswordRestoreWithDifferentPasswordsTest extends BaseTest {
 
-    /**
-     * Строка, добавляющаяся к новому паролю, чтобы гарантировано создать другой пароль
-     */
-    private static final String OTHER_PASSWORD_ELEMENT = "1";
 
     private MainPageSteps mainPageSteps = new MainPageSteps();
     private HeaderSteps headerSteps = new HeaderSteps();
@@ -82,11 +78,13 @@ public class UnsuccessfulPasswordRestoreWithDifferentPasswordsTest extends BaseT
         DriverContainer.getDriver().navigate().to(restorePasswordUrl);
 
         String newPassword = TestDataProvider.generateRandomString(StringConstants.BASE_RANDOM_STRING_LENGTH);
+        String incorrectPasswordRepeat = TestDataProvider
+            .generateRandomString(StringConstants.BASE_RANDOM_STRING_LENGTH);
 
         LOG.info("4. Ввод и подтверждение нового пароля");
         restorePasswordAfterEmailVerifySteps.checkThatMainElementsOfThePageAreVisible();
         restorePasswordAfterEmailVerifySteps.fillPassword(newPassword);
-        restorePasswordAfterEmailVerifySteps.fillRepeatPassword(newPassword.concat(OTHER_PASSWORD_ELEMENT));
+        restorePasswordAfterEmailVerifySteps.fillRepeatPassword(incorrectPasswordRepeat);
         restorePasswordAfterEmailVerifySteps.clickConfirm();
 
         LOG.info("5. Проверка того, что вывелось сообщение об ошибке");
