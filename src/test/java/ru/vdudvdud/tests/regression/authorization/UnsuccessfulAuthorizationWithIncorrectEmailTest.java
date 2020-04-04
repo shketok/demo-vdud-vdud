@@ -7,8 +7,8 @@ import ru.vdudvdud.adaptors.selenide.base.BaseTest;
 import ru.vdudvdud.steps.HeaderSteps;
 import ru.vdudvdud.steps.SignInSteps;
 import ru.vdudvdud.steps.scenarios.RegistrationScenarios;
-import ru.vdudvdud.testdata.builders.UsersCreator;
 import ru.vdudvdud.testdata.models.essences.User;
+import ru.vdudvdud.testdata.creators.UsersCreator;
 import ru.vdudvdud.testdata.utils.TestDataProvider;
 
 public class UnsuccessfulAuthorizationWithIncorrectEmailTest extends BaseTest {

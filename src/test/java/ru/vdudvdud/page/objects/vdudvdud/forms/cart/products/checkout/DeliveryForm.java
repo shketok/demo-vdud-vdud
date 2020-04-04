@@ -121,7 +121,7 @@ public class DeliveryForm extends PageObject {
     }
 
     public void selectOptionCountryByValue(CountrySelect countrySelect) {
-        selectCountry.selectOptionByValue(countrySelect.getAlias());;
+        selectCountry.selectOptionByValue(countrySelect.getAlias());
     }
 
     public void selectOptionRegionByValue(RegionSelect regionSelect) {
