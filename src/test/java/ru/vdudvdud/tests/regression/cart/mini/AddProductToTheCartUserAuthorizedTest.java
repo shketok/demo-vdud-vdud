@@ -7,7 +7,7 @@ import ru.vdudvdud.adaptors.selenide.base.BaseTest;
 import ru.vdudvdud.steps.HeaderSteps;
 import ru.vdudvdud.steps.MainPageSteps;
 import ru.vdudvdud.steps.RegistrationSteps;
-import ru.vdudvdud.testdata.builders.UsersCreator;
+import ru.vdudvdud.testdata.creators.UsersCreator;
 import ru.vdudvdud.testdata.models.essences.Product;
 import ru.vdudvdud.testdata.models.essences.User;
 
@@ -44,13 +44,13 @@ public class AddProductToTheCartUserAuthorizedTest extends BaseTest {
         Product product = mainPageSteps.clickRandomProductAddToTheCartBtn();
 
         LOG.info("2. Подтверждение добавления товара в корзину");
-        mainPageSteps.updateProductFromTheAddToTheCartPopup(product);
+        mainPageSteps.updateProduct(product);
         mainPageSteps.confirmAddProductToTheCart();
 
         LOG.info("3. Закрытие формы подтверждения того, что товар был добавлен в корзину");
-        mainPageSteps.closeProductAddedPopup();
+        mainPageSteps.closeProductAddedPopup(product);
 
         LOG.info("4. Проверка, что в мини корзине появилось указанное количество товара");
-        headerSteps.checkMiniCart(product.getCurrency(), product);
+        headerSteps.checkMiniCart();
     }
 }

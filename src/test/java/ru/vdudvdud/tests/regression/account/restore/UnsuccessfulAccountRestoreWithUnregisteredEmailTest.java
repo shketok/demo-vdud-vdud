@@ -8,7 +8,7 @@ import ru.vdudvdud.steps.HeaderSteps;
 import ru.vdudvdud.steps.MainPageSteps;
 import ru.vdudvdud.steps.RestorePasswordSteps;
 import ru.vdudvdud.steps.SignInSteps;
-import ru.vdudvdud.testdata.builders.UsersCreator;
+import ru.vdudvdud.testdata.creators.UsersCreator;
 import ru.vdudvdud.testdata.models.essences.User;
 
 public class UnsuccessfulAccountRestoreWithUnregisteredEmailTest extends BaseTest {

@@ -3,7 +3,7 @@ package ru.vdudvdud.steps;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 import org.testng.Assert;
-import ru.vdudvdud.objects.vdudvdud.pages.SignUpPage;
+import ru.vdudvdud.page.objects.vdudvdud.pages.SignUpPage;
 import ru.vdudvdud.testdata.models.essences.User;
 
 public class RegistrationSteps extends BaseSteps {

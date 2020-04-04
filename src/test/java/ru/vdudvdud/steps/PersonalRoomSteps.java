@@ -2,7 +2,7 @@ package ru.vdudvdud.steps;
 
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
-import ru.vdudvdud.objects.vdudvdud.pages.PersonalRoomPage;
+import ru.vdudvdud.page.objects.vdudvdud.pages.PersonalRoomPage;
 
 public class PersonalRoomSteps extends BaseSteps {
     private PersonalRoomPage personalRoomPage = new PersonalRoomPage();
