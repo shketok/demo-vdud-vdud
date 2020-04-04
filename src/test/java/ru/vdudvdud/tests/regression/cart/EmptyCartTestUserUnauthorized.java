@@ -2,9 +2,10 @@ package ru.vdudvdud.tests.regression.cart;
 
 import org.testng.annotations.Test;
 import ru.vdudvdud.adaptors.selenide.base.BaseTest;
-import ru.vdudvdud.steps.CartSteps;
-import ru.vdudvdud.steps.HeaderSteps;
-import ru.vdudvdud.steps.MainPageSteps;
+import ru.vdudvdud.steps.vdudvdud.CartSteps;
+import ru.vdudvdud.steps.vdudvdud.HeaderSteps;
+import ru.vdudvdud.steps.vdudvdud.MainPageSteps;
+
 
 public class EmptyCartTestUserUnauthorized extends BaseTest {
     private MainPageSteps mainPageSteps = new MainPageSteps();

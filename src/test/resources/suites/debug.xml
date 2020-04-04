@@ -4,7 +4,7 @@
 
     <test name="Test add two products from basket again test">
         <classes>
-            <class name="ru.vdudvdud.tests.regression.cart.AddTwoProductsFromBasketAgainTest"/>
+            <class name="ru.vdudvdud.tests.regression.cart.EmptyCartTestUserAuthorized"/>
         </classes>
     </test>
 
