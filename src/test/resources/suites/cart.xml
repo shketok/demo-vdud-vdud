@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="debug" verbose="1">
 
-    <test name="Test product data in cart test">
+    <test name="Test product data in cart">
         <classes>
             <class name="ru.vdudvdud.tests.regression.cart.ProductDataInCartTest"/>
         </classes>
@@ -17,6 +17,18 @@
     <test name="Test add two products from basket again test">
         <classes>
             <class name="ru.vdudvdud.tests.regression.cart.AddTwoProductsFromBasketAgainTest"/>
+        </classes>
+    </test>
+
+    <test name="Test empty cart unauthorized user">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.EmptyCartTestUserUnauthorized"/>
+        </classes>
+    </test>
+
+    <test name="Test empty cart authorized user">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.EmptyCartTestUserAuthorized"/>
         </classes>
     </test>
 

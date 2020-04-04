@@ -1,6 +1,7 @@
 package ru.vdudvdud.page.objects.vdudvdud.pages;
 
 import ru.vdudvdud.adaptors.selenide.base.BasePage;
+import ru.vdudvdud.objects.vdudvdud.forms.cart.EmptyCartForm;
 import ru.vdudvdud.page.objects.vdudvdud.forms.cart.TotalForm;
 import ru.vdudvdud.page.objects.vdudvdud.forms.cart.products.ProductsForm;
 import ru.vdudvdud.page.objects.vdudvdud.forms.cart.products.checkout.CheckoutForm;
@@ -30,6 +31,10 @@ public class CartPage extends BasePage {
 
     public CheckoutForm getCheckoutForm() {
         return new CheckoutForm();
+    }
+
+    public EmptyCartForm getEmptyCartForm() {
+        return new EmptyCartForm();
     }
 
 }
