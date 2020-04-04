@@ -33,16 +33,16 @@ public class SignInSteps extends BaseSteps {
 
     @Step("Проверка видимости поля с ошибкой, когда логин остутствует")
     public void checkThatMandatoryLoginErrorMessageIsVisible(){
-        signInPage.checkThatMandatoryLoginErrorMsgInState();
+        signInPage.checkThatMandatoryLoginErrorMsgIsVisible();
     }
 
     @Step("Проверка видимости поля с ошибкой, когда пароль остутствует")
     public void checkThatMandatoryPasswordErrorMessageIsVisible(){
-        signInPage.checkThatMandatoryPasswordErrorMsgInState();
+        signInPage.checkThatMandatoryPasswordErrorMsgIsVisible();
     }
 
     @Step("Проверка видимости поля с ошибкой с некорретным паролем или почтой")
     public void checkThatEitherPasswordOrEmailIncorrectMessageIsVisible(){
-        signInPage.checkThatEitherPasswordOrEmailIncorrectMessageInState();
+        signInPage.checkThatEitherPasswordOrEmailIncorrectMessageIsVisible();
     }
 }

@@ -75,27 +75,21 @@ public class SignInPage extends BasePage {
         confirm.shouldBe(condition);
     }
 
-    public void checkThatMandatoryLoginErrorMsgInState(){
-        Assert.assertEquals(
-            loginIsMandatoryMsg.getText(),
-            SignInLocalization.MANDATORY_LOGIN_MESSAGE.getValue(),
-            "Сообщение о том, что логин является обязательным полем для ввода не появилось на странице"
+    public void checkThatMandatoryLoginErrorMsgIsVisible(){
+        loginIsMandatoryMsg.shouldHave(
+            Condition.exactText(SignInLocalization.MANDATORY_LOGIN_MESSAGE.getValue())
         );
     }
 
-    public void checkThatMandatoryPasswordErrorMsgInState(){
-        Assert.assertEquals(
-            passwordIsMandatoryMsg.getText(),
-            SignInLocalization.MANDATORY_PASSWORD_MESSAGE.getValue(),
-            "Сообщение о том, что пароль является обязательным полем для ввода не появилось на странице"
+    public void checkThatMandatoryPasswordErrorMsgIsVisible(){
+        passwordIsMandatoryMsg.shouldHave(
+            Condition.exactText(SignInLocalization.MANDATORY_PASSWORD_MESSAGE.getValue())
         );
     }
 
-    public void checkThatEitherPasswordOrEmailIncorrectMessageInState(){
-        Assert.assertEquals(
-            eitherEmailOrPasswordIncorrect.getText(),
-            SignInLocalization.EITHER_LOGIN_OR_PASSWORD_IS_INCORRECT.getValue(),
-            "Сообщение с ошибкой о некорректных данных не появилось на странице"
+    public void checkThatEitherPasswordOrEmailIncorrectMessageIsVisible(){
+        eitherEmailOrPasswordIncorrect.shouldHave(
+            Condition.exactText(SignInLocalization.EITHER_LOGIN_OR_PASSWORD_IS_INCORRECT.getValue())
         );
     }
 
