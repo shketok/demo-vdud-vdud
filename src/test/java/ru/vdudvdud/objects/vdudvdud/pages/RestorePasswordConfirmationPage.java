@@ -25,7 +25,6 @@ public class RestorePasswordConfirmationPage extends BasePage {
 
     private final SelenideElement CONFIRM = getMainElement().$x(".//input[@type='submit']");
 
-
     public RestorePasswordConfirmationPage() {
         super($x(MAIN_ELEMENT));
     }
