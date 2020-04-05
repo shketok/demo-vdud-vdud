@@ -1,4 +1,4 @@
-package ru.vdudvdud.localization;
+package ru.vdudvdud.localization.providers;
 
 import java.util.Locale;
 import lombok.NonNull;

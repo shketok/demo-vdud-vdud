@@ -1,4 +1,4 @@
-package ru.vdudvdud.localization;
+package ru.vdudvdud.localization.providers;
 
 import java.util.Locale;
 import java.util.Map;
@@ -10,15 +10,15 @@ import org.apache.commons.lang3.StringUtils;
 //todo rename
 public abstract class AbstractLocalizationProvider implements LocalizationProvider {
 
-    protected static final Locale DEFAULT_LOCALE = Locale.ENGLISH;
+    protected static final Locale DEFAULT_LOCALE = new Locale("ru", "RU");
     private static final String LOCALIZATION_PATH_PREFIX = "localization";
     private static final String LOCALIZATION_PATH_DELIMETER = ".";
-    //todo rename
+    //todo rename + ПОДУМАТЬ
     private final Map<Locale, ResourceBundle> bundles = new ConcurrentHashMap<>();
     private final String localizationFilename;
 
     //todo path
-    protected AbstractLocalizationProvider(@NonNull String localizationFilename) {
+    public AbstractLocalizationProvider(@NonNull String localizationFilename) {
         this.localizationFilename = localizationFilename;
         bundles.put(DEFAULT_LOCALE, ResourceBundle
             .getBundle(String.join(LOCALIZATION_PATH_DELIMETER, LOCALIZATION_PATH_PREFIX, localizationFilename),
