@@ -73,5 +73,5 @@ public abstract class PageObject {
      */
     protected SelenideElement getMainElement() {
         return mainElement;
-    };
+    }
 }

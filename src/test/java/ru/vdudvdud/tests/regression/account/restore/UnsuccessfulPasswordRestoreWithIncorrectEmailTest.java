@@ -13,7 +13,7 @@ import ru.vdudvdud.testdata.creators.UsersCreator;
 import ru.vdudvdud.testdata.enums.UserAliases;
 import ru.vdudvdud.testdata.models.essences.User;
 
-public class UnsuccessfulAccountRestoreWithIncorrectEmailTest extends BaseTest {
+public class UnsuccessfulPasswordRestoreWithIncorrectEmailTest extends BaseTest {
 
     private MainPageSteps mainPageSteps = new MainPageSteps();
     private HeaderSteps headerSteps = new HeaderSteps();
@@ -45,6 +45,6 @@ public class UnsuccessfulAccountRestoreWithIncorrectEmailTest extends BaseTest {
         restorePasswordSteps.restorePassword(user);
 
         LOG.info("2. Проверка что вывелось сообщение о том что нет пользователя с таким email");
-        restorePasswordSteps.checkIncorrentEmailMessageIsVisible();
+        restorePasswordSteps.checkIncorrectEmailMessageIsVisible();
     }
 }

@@ -24,7 +24,7 @@ public class RestorePasswordSteps extends BaseSteps {
     }
 
     @Step("Ожидание, присутсвия сообщения о некорректно введенном email")
-    public void checkIncorrentEmailMessageIsVisible() {
+    public void checkIncorrectEmailMessageIsVisible() {
         restorePasswordPage.checkIncorrectEmailMessageIsVisible();
     }
 }

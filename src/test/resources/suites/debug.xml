@@ -2,9 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="debug" verbose="1">
 
-    <test name="Test add two products from basket again test">
+    <test name="Test unsuccessful authorization with empty email and password">
+        <parameter name="userName" value="USER_EMPTY_PASSWORD_AND_EMAIL"/>
         <classes>
-            <class name="ru.vdudvdud.tests.regression.cart.AddTwoProductsFromBasketAgainTest"/>
+            <class name="ru.vdudvdud.tests.regression.authorization.UnsuccessfulAuthorizationWithoutEmailAndPasswordTest"/>
         </classes>
     </test>
 
