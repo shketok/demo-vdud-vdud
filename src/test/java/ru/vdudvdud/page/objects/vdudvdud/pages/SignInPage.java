@@ -1,14 +1,13 @@
 package ru.vdudvdud.page.objects.vdudvdud.pages;
 
+import static com.codeborne.selenide.Selenide.$x;
+
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
-import org.testng.Assert;
 import ru.vdudvdud.adaptors.selenide.base.BasePage;
-import ru.vdudvdud.testdata.enums.localization.SignInLocalization;
-import ru.vdudvdud.testdata.enums.urls.BaseUrls;
+import ru.vdudvdud.localization.LabelsLocalizationHolder;
 import ru.vdudvdud.testdata.enums.CommonDataNames;
-
-import static com.codeborne.selenide.Selenide.$x;
+import ru.vdudvdud.testdata.enums.urls.BaseUrls;
 
 /**
  * Класс описывающий страницу входа на сайт. Авторизация.
@@ -77,19 +76,19 @@ public class SignInPage extends BasePage {
 
     public void checkThatMandatoryLoginErrorMsgIsVisible(){
         loginIsMandatoryMsg.shouldHave(
-            Condition.exactText(SignInLocalization.MANDATORY_LOGIN_MESSAGE.getValue())
+            Condition.exactText(LabelsLocalizationHolder.SIGN_IN_LOGIN_IS_MANDATORY_MESSAGE.i18n())
         );
     }
 
     public void checkThatMandatoryPasswordErrorMsgIsVisible(){
         passwordIsMandatoryMsg.shouldHave(
-            Condition.exactText(SignInLocalization.MANDATORY_PASSWORD_MESSAGE.getValue())
+            Condition.exactText(LabelsLocalizationHolder.SIGN_IN_PASSWORD_IS_MANDATORY_MESSAGE.i18n())
         );
     }
 
     public void checkThatEitherPasswordOrEmailIncorrectMessageIsVisible(){
         eitherEmailOrPasswordIncorrect.shouldHave(
-            Condition.exactText(SignInLocalization.EITHER_LOGIN_OR_PASSWORD_IS_INCORRECT.getValue())
+            Condition.exactText(LabelsLocalizationHolder.SIGN_IN_EITHER_LOGIN_OR_PASSWORD_IS_INCORRECT.i18n())
         );
     }
 
