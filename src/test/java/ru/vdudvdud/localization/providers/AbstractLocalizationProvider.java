@@ -22,14 +22,14 @@ public abstract class AbstractLocalizationProvider implements LocalizationProvid
     /**
      * Путь до файла из пакета resources. Возможно следует передавать path
      */
-    private final String localizationFilename;
+    private final String filename;
 
 
     //todo path?
-    public AbstractLocalizationProvider(@NonNull String localizationFilename) {
-        this.localizationFilename = localizationFilename;
+    public AbstractLocalizationProvider(@NonNull String filename) {
+        this.filename = filename;
         bundles.put(DEFAULT_LOCALE, ResourceBundle
-            .getBundle(String.join(LOCALIZATION_PATH_DELIMETER, LOCALIZATION_PATH_PREFIX, localizationFilename),
+            .getBundle(StringUtils.joinWith(LOCALIZATION_PATH_DELIMETER, LOCALIZATION_PATH_PREFIX, filename),
                 DEFAULT_LOCALE));
     }
 
@@ -41,7 +41,7 @@ public abstract class AbstractLocalizationProvider implements LocalizationProvid
     @Override
     public String getLocalization(@NonNull String key, @NonNull Locale locale) {
         return bundles.computeIfAbsent(locale, loc -> ResourceBundle
-            .getBundle(StringUtils.join(LOCALIZATION_PATH_DELIMETER, LOCALIZATION_PATH_PREFIX, localizationFilename),
+            .getBundle(StringUtils.joinWith(LOCALIZATION_PATH_DELIMETER, LOCALIZATION_PATH_PREFIX, filename),
                 loc)).getString(key);
     }
 }
