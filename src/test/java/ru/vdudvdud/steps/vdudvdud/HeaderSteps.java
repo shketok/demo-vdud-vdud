@@ -53,6 +53,7 @@ public class HeaderSteps extends BaseSteps {
 
     @Step("Проверка параметров мини корзины на соотвествие количеству продуктов, их цене и валюте")
     public void checkMiniCart() {
+        headerPage.scrollToMainElement(true);
         softAssert.assertEquals(headerPage.getCartAmountText(), String.valueOf(Cart.getInstance().getTotalProductsCount()),
                 "Проверка совпадения количества товара на странице с ожидаемым значением");
         softAssert.assertEquals(headerPage.getProductCostText(), String.valueOf(Cart.getInstance().getTotalCost()),

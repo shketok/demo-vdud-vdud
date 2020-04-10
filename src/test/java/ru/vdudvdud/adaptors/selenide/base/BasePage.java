@@ -35,4 +35,8 @@ public abstract class BasePage extends PageObject {
     protected String getPageUrl() {
         throw new NotImplementedException("Method doesn't implemented");
     }
+
+    public void scrollToMainElement(boolean alignToTop) {
+        getMainElement().scrollIntoView(alignToTop);
+    }
 }
