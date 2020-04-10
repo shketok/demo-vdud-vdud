@@ -9,7 +9,24 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
+        <!-- Project dependencies -->
+        <selenide.version>5.6.1</selenide.version>
+        <testng.version>6.14.3</testng.version>
+        <gson.version>2.8.5</gson.version>
+        <json-simple.version>1.1.1</json-simple.version>
+        <allure.version>2.13.1</allure.version>
+        <webdrivermanager.version>3.4.0</webdrivermanager.version>
+        <lombok.version>1.18.6</lombok.version>
+        <log4j.version>1.2.17</log4j.version>
+
+        <!-- Build dependencies -->
         <aspectj.version>1.9.2</aspectj.version>
+        <mvn-compiler-plugin.version>3.8.1</mvn-compiler-plugin.version>
+        <allure.maven.version>2.10.0</allure.maven.version>
+        <surefire.version>2.22.1</surefire.version>
+
+        <!-- Other props -->
+        <java.version>11</java.version>
         <repositoryId>central</repositoryId>
         <publicRepositoryName>Maven Central</publicRepositoryName>
         <repositoriesHost>http://repo1.maven.org</repositoriesHost>
@@ -19,64 +36,63 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     </properties>
 
-    <!-- все версии вынести в проперти -->
-         
+    <!-- TODO scopes-->
+    
     <dependencies>
         <dependency>
             <groupId>com.codeborne</groupId>
             <artifactId>selenide</artifactId>
-            <version>5.6.1</version> 
+            <version>${selenide.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>6.14.3</version>
+            <version>${testng.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
-            <version>2.8.5</version>
+            <version>${gson.version}</version>
         </dependency>
 
         <dependency>
             <groupId>com.googlecode.json-simple</groupId>
             <artifactId>json-simple</artifactId>
-            <version>1.1.1</version>
+            <version>${json-simple.version}</version>
         </dependency>
 
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
-            <version>2.10.0</version>
+            <version>${allure.version}</version>
         </dependency>
 
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-selenide</artifactId>
-            <version>2.13.1</version>
+            <version>${allure.version}</version>
         </dependency>
 
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>3.4.0</version>
+            <version>${webdrivermanager.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>1.18.6</version>
+            <version>${lombok.version}</version>
             <scope>provided</scope>
         </dependency>
 
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
+            <version>${log4j.version}</version>
         </dependency>
-
     </dependencies>
 
     <build>
@@ -84,22 +100,22 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>${mvn-compiler-plugin.version}</version>
                 <configuration>
-                    <release>11</release>
+                    <release>${java.version}</release>
                 </configuration>
             </plugin>
 
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
-                <version>2.10.0</version>
+                <version>${allure.maven.version}</version>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.22.1</version>
+                <version>${surefire.version}</version>
                 <configuration>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
