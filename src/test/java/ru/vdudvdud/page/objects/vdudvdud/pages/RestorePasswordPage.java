@@ -8,7 +8,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.testng.Assert;
 import ru.vdudvdud.adaptors.selenide.base.BasePage;
-import ru.vdudvdud.localization.LabelsLocalizationHolder;
+import ru.vdudvdud.localization.PasswordRestoreLocalizationHolder;
 import ru.vdudvdud.testdata.models.essences.User;
 
 /**
@@ -51,7 +51,7 @@ public class RestorePasswordPage extends BasePage {
     }
 
     public void checkIncorrectEmailMessageIsVisible() {
-        Assert.assertEquals(LabelsLocalizationHolder.RESTORE_PASSWORD_RESTORE_FORM_INVALID_EMAIL_MESSAGE.i18n(),
+        Assert.assertEquals(PasswordRestoreLocalizationHolder.RESTORE_PASSWORD_RESTORE_FORM_INVALID_EMAIL_MESSAGE.i18n(),
             incorrectEmailMessage.getText(),
             "Ожидаемое сообщение о некорректно введеном email не соответвует фактическому");
     }
