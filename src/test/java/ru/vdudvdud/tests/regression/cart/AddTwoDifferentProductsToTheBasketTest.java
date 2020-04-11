@@ -47,10 +47,11 @@ public class AddTwoDifferentProductsToTheBasketTest extends BaseTest {
         LOG.info("Добавить два или более товаров разного типа");
         Product firstProduct = productScenarios.addProductToTheCart(
                 () -> mainPageSteps.clickRandomProductAddToTheCartBtn());
-        Product secondProduct = productScenarios.addProductToTheCart(
+        productScenarios.addProductToTheCart(
                 () -> mainPageSteps.clickRandomProductAddToTheCartExceptSpecifics(firstProduct));
 
         LOG.info("Открытие корзины и проверка корректности отображения основных блоков корзины");
+        headerSteps.goToTheCartPage();
         cartSteps.checkThatMainElementsOfThePageAreVisible();
 
         LOG.info("Проверка корректного отображения элементов товара в блоке добавленного товара");
