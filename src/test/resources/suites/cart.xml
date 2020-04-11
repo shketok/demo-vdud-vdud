@@ -32,4 +32,10 @@
         </classes>
     </test>
 
+    <test name="Test add two different products to the basket">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.AddTwoDifferentProductsToTheBasketTest"/>
+        </classes>
+    </test>
+
 </suite>
