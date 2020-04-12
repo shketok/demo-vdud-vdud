@@ -18,7 +18,6 @@ import ru.vdudvdud.testdata.objects.Cart;
 public class CancelProductRemovalInTheCart extends BaseTest {
     private CartSteps cartSteps = new CartSteps();
     private HeaderSteps headerSteps = new HeaderSteps();
-    private MainPageSteps mainPageSteps = new MainPageSteps();
 
     private ProductScenarios productScenarios = new ProductScenarios();
     private AuthorizationScenarios authorizationScenarios = new AuthorizationScenarios();
@@ -47,7 +46,7 @@ public class CancelProductRemovalInTheCart extends BaseTest {
     }
 
     @Test
-    @Link("https://outsourceofthebrain.myjetbrains.com/youtrack/issue/VDUDUD-23")
+    @Link("https://outsourceofthebrain.myjetbrains.com/youtrack/issue/VDUDUD-25")
     public void runTest() {
         LOG.info("Произвести авторизацию пользователем");
         authorizationScenarios.authorize(user);
