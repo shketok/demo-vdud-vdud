@@ -52,6 +52,15 @@ public class CartSteps extends BaseSteps {
         emptyCartForm.checkThatEmptyCartIllustrationInState(Condition.visible);
 
     }
+    @Step("Проверка того, что корзина не пустая")
+    public void checkThatCartIsNotEmpty() {
+        EmptyCartForm emptyCartForm = cartPage.getEmptyCartForm();
+
+        emptyCartForm.checkThatEmptyCartTextInState(Condition.disappear);
+        emptyCartForm.checkThatEmptyCartSloganInState(Condition.disappear);
+        emptyCartForm.checkThatEmptyCartIllustrationInState(Condition.disappear);
+
+    }
 
     @Step("Проверка общей стоимости товара и его количества в корзине")
     public void checkThatCartProductTabContainsCorrectData() {
