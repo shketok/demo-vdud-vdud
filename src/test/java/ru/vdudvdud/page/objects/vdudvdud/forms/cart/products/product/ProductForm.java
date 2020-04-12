@@ -2,6 +2,7 @@ package ru.vdudvdud.page.objects.vdudvdud.forms.cart.products.product;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import ru.vdudvdud.adaptors.selenide.SelenideElementCommandsDecorator;
 import ru.vdudvdud.adaptors.selenide.base.PageObject;
 import ru.vdudvdud.testdata.enums.RegexPatterns;
 import ru.vdudvdud.testdata.utils.RegexMatcher;
@@ -112,5 +113,9 @@ public class ProductForm extends PageObject {
 
     public void clickProductDelete() {
         productDelete.click();
+    }
+
+    public void fillProductQuantityInput(String value) {
+        SelenideElementCommandsDecorator.fastSetValue(productQuantityInput, value);
     }
 }

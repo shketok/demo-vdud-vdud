@@ -84,4 +84,12 @@ public class CartSteps extends BaseSteps {
         cartPage.getProductRemovalPopup().clickConfirmProductRemovalBtn();
         Cart.getInstance().removeProduct(product);
     }
+
+    @Step("Установка значения количества товара в корзине и обновление модели продукта")
+    public void setProductCount(Product product, int quantity) {
+        ProductForm productForm = cartPage.getProductsForm().getProductForm(product.getName(), product.getModel());
+        productForm.fillProductQuantityInput(String.valueOf(quantity));
+        product.setCount(quantity);
+        Cart.getInstance().putProduct(product);
+    }
 }
