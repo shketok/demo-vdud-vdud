@@ -9,6 +9,7 @@ import ru.vdudvdud.page.objects.vdudvdud.pages.CartPage;
 import ru.vdudvdud.testdata.models.essences.Product;
 import ru.vdudvdud.testdata.objects.Cart;
 
+import java.util.Arrays;
 import java.util.Map;
 
 public class CartSteps extends BaseSteps {
@@ -82,6 +83,17 @@ public class CartSteps extends BaseSteps {
         ProductForm productForm = cartPage.getProductsForm().getProductForm(product.getName(), product.getModel());
         productForm.clickProductDelete();
     }
+
+
+    @Step("Удаление указанных товаров из корзины")
+    public void deleteProductsAndConfirmRemoval(Product... products) {
+        for (Product product : products) {
+            deleteProduct(product);
+            confirmProductRemoval(product);
+        }
+    }
+
+
 
     @Step("Отмена удаления продукта в модальном окне из корзины")
     public void cancelProductRemoval() {

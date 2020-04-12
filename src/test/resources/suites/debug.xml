@@ -2,9 +2,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="debug" verbose="1">
 
-    <test name="Test delete one product from many in the cart">
+    <test name="Test delete all products from many in the cart">
         <classes>
-            <class name="ru.vdudvdud.tests.regression.cart.delete.DeleteOneProductFromManyInTheCart"/>
+            <class name="ru.vdudvdud.tests.regression.cart.delete.DeleteAllProductsFromManyInTheCart"/>
         </classes>
     </test>
 

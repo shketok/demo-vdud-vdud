@@ -80,4 +80,10 @@
         </classes>
     </test>
 
+    <test name="Test delete all products from many in the cart">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.delete.DeleteAllProductsFromManyInTheCart"/>
+        </classes>
+    </test>
+
 </suite>
