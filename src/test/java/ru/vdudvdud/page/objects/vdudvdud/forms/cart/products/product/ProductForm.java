@@ -109,4 +109,8 @@ public class ProductForm extends PageObject {
                 productFullPrice.getText(), RegexPatterns.DIGITS.toString());
         return Integer.parseInt(fullPriceText);
     }
+
+    public void clickProductDelete() {
+        productDelete.click();
+    }
 }

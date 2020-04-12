@@ -2,6 +2,7 @@ package ru.vdudvdud.steps.vdudvdud;
 
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
+import org.apache.commons.lang3.StringUtils;
 import ru.vdudvdud.objects.vdudvdud.forms.cart.EmptyCartForm;
 import ru.vdudvdud.page.objects.vdudvdud.forms.cart.products.product.ProductForm;
 import ru.vdudvdud.page.objects.vdudvdud.pages.CartPage;
@@ -29,7 +30,9 @@ public class CartSteps extends BaseSteps {
 
         productForm.checkThatProductImageLocInState(Condition.visible);
         productForm.checkThatProductNameLocInState(Condition.visible);
-        productForm.checkThatProductSizeLocInState(Condition.visible);
+        if (!StringUtils.isEmpty(product.getModel())) {
+            productForm.checkThatProductSizeLocInState(Condition.visible);
+        }
         productForm.checkThatProductWeightLocInState(Condition.visible);
         productForm.checkThatProductQuantitySectionLocInState(Condition.visible);
         productForm.checkThatProductMinusBtnLocInState(Condition.visible);
@@ -62,5 +65,17 @@ public class CartSteps extends BaseSteps {
                     "Ожидаемое количество товара не соответствует реальному");
         }
         softAssert.assertAll();
+    }
+
+
+    @Step("Нажатие кнопки удаления у конкретного товара")
+    public void deleteProduct(Product product) {
+        ProductForm productForm = cartPage.getProductsForm().getProductForm(product.getName(), product.getModel());
+        productForm.clickProductDelete();
+    }
+
+    @Step("Отмена удаления продукта в модальном окне из корзины")
+    public void cancelProductRemoval() {
+        cartPage.getProductRemovalPopup().clickCancelProductRemovalBtn();
     }
 }
