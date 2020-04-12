@@ -18,7 +18,6 @@ import ru.vdudvdud.testdata.objects.Cart;
 public class ConfirmProductRemovalInTheCart extends BaseTest {
     private CartSteps cartSteps = new CartSteps();
     private HeaderSteps headerSteps = new HeaderSteps();
-    private MainPageSteps mainPageSteps = new MainPageSteps();
 
     private ProductScenarios productScenarios = new ProductScenarios();
     private AuthorizationScenarios authorizationScenarios = new AuthorizationScenarios();
@@ -62,8 +61,7 @@ public class ConfirmProductRemovalInTheCart extends BaseTest {
         cartSteps.deleteProduct(product);
         cartSteps.confirmProductRemoval(product);
 
-        LOG.info("Проверка корректного отображения элементов товара в блоке добавленного товара");
-        Cart.getInstance().getProducts().values().forEach(product -> cartSteps.checkThatProductWasAddedToTheCart(product));
-        cartSteps.checkThatCartProductTabContainsCorrectData();
+        LOG.info("Проверка, что после удаления единственного продукта из корзины корзина стала пустой");
+        cartSteps.checkThatCartIsEmpty();
     }
 }
