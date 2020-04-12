@@ -68,4 +68,10 @@
         </classes>
     </test>
 
+    <test name="Test close product removal in the cart">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.delete.CloseProductRemovalInTheCart"/>
+        </classes>
+    </test>
+
 </suite>

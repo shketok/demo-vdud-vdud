@@ -100,4 +100,10 @@ public class CartSteps extends BaseSteps {
         product.setCount(product.getCount() - 1);
         Cart.getInstance().putProduct(product);
     }
+
+
+    @Step("Отмена удаления продукта в модальном окне из корзины путем нажатия кнопки закрыть")
+    public void closeProductRemoval() {
+        cartPage.getProductRemovalPopup().clickCloseProductRemovalPopupBtn();
+    }
 }
