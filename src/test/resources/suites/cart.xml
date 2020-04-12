@@ -4,37 +4,37 @@
 
     <test name="Test product data in cart">
         <classes>
-            <class name="ru.vdudvdud.tests.regression.cart.ProductDataInCartTest"/>
+            <class name="ru.vdudvdud.tests.regression.cart.add.ProductDataInCartTest"/>
         </classes>
     </test>
 
     <test name="Test add the same product to the non empty cart">
         <classes>
-            <class name="ru.vdudvdud.tests.regression.cart.AddTheSameProductToTheNonEmptyCartTest"/>
+            <class name="ru.vdudvdud.tests.regression.cart.add.AddTheSameProductToTheNonEmptyCartTest"/>
         </classes>
     </test>
 
     <test name="Test add two products from basket again test">
         <classes>
-            <class name="ru.vdudvdud.tests.regression.cart.AddTwoProductsFromBasketAgainTest"/>
+            <class name="ru.vdudvdud.tests.regression.cart.add.AddTwoProductsFromBasketAgainTest"/>
         </classes>
     </test>
 
     <test name="Test empty cart unauthorized user">
         <classes>
-            <class name="ru.vdudvdud.tests.regression.cart.EmptyCartTestUserUnauthorized"/>
+            <class name="ru.vdudvdud.tests.regression.cart.empty.EmptyCartTestUserUnauthorized"/>
         </classes>
     </test>
 
     <test name="Test empty cart authorized user">
         <classes>
-            <class name="ru.vdudvdud.tests.regression.cart.EmptyCartTestUserAuthorized"/>
+            <class name="ru.vdudvdud.tests.regression.cart.empty.EmptyCartTestUserAuthorized"/>
         </classes>
     </test>
 
     <test name="Test add two different products to the basket">
         <classes>
-            <class name="ru.vdudvdud.tests.regression.cart.AddTwoDifferentProductsToTheBasketTest"/>
+            <class name="ru.vdudvdud.tests.regression.cart.add.AddTwoDifferentProductsToTheBasketTest"/>
         </classes>
     </test>
 

@@ -1,4 +1,4 @@
-package ru.vdudvdud.tests.regression.cart;
+package ru.vdudvdud.tests.regression.cart.add;
 
 import io.qameta.allure.Link;
 import org.testng.annotations.BeforeMethod;
@@ -10,48 +10,47 @@ import ru.vdudvdud.steps.vdudvdud.HeaderSteps;
 import ru.vdudvdud.steps.vdudvdud.MainPageSteps;
 import ru.vdudvdud.steps.vdudvdud.scenarios.AuthorizationScenarios;
 import ru.vdudvdud.steps.vdudvdud.scenarios.ProductScenarios;
-import ru.vdudvdud.steps.vdudvdud.scenarios.RegistrationScenarios;
 import ru.vdudvdud.testdata.creators.UsersCreator;
 import ru.vdudvdud.testdata.models.essences.Product;
 import ru.vdudvdud.testdata.models.essences.User;
 import ru.vdudvdud.testdata.objects.Cart;
 
-public class AddTwoDifferentProductsToTheBasketTest extends BaseTest {
+public class AddTheSameProductToTheNonEmptyCartTest extends BaseTest {
     private CartSteps cartSteps = new CartSteps();
     private HeaderSteps headerSteps = new HeaderSteps();
     private MainPageSteps mainPageSteps = new MainPageSteps();
 
     private ProductScenarios productScenarios = new ProductScenarios();
     private AuthorizationScenarios authorizationScenarios = new AuthorizationScenarios();
-    private RegistrationScenarios registrationScenarios = new RegistrationScenarios();
 
     private User user;
+    private Product product;
 
 
     @BeforeMethod
     public void readParams() {
         user = UsersCreator.createRandomUser();
-        registrationScenarios.registration(user);
-
+        product = productScenarios.addProductToCartAfterRegistration(user);
         BrowserUtils.restartBrowser();
     }
 
     @Test
-    @Link("https://outsourceofthebrain.myjetbrains.com/youtrack/issue/VDUDUD-20")
+    @Link("https://outsourceofthebrain.myjetbrains.com/youtrack/issue/VDUDUD-23")
     public void runTest() {
         LOG.info("Произвести авторизацию пользователем");
         authorizationScenarios.authorize(user);
         headerSteps.goToTheMainPage();
         headerSteps.checkThatMainElementsOfThePageAreVisible();
 
-        LOG.info("Добавить два или более товаров разного типа");
-        Product firstProduct = productScenarios.addProductToTheCart(
-                () -> mainPageSteps.clickRandomProductAddToTheCartBtn());
-        productScenarios.addProductToTheCart(
-                () -> mainPageSteps.clickRandomProductAddToTheCartExceptSpecifics(firstProduct));
+        LOG.info("Добавить товар в корзину, который там уже присутствует");
+        mainPageSteps.clickSpecificProductAddToTheCartBtn(product);
+
+        LOG.info("Подтверждение добавления товара в корзину");
+        mainPageSteps.updateProduct(product);
+        mainPageSteps.confirmAddProductToTheCart();
+        mainPageSteps.goToTheCartProductAddedPopup(product);
 
         LOG.info("Открытие корзины и проверка корректности отображения основных блоков корзины");
-        headerSteps.goToTheCartPage();
         cartSteps.checkThatMainElementsOfThePageAreVisible();
 
         LOG.info("Проверка корректного отображения элементов товара в блоке добавленного товара");

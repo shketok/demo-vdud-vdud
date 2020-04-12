@@ -1,4 +1,4 @@
-package ru.vdudvdud.tests.regression.cart;
+package ru.vdudvdud.tests.regression.cart.add;
 
 import io.qameta.allure.Link;
 import org.testng.annotations.BeforeMethod;

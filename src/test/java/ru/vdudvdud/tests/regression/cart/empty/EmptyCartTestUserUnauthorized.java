@@ -1,4 +1,4 @@
-package ru.vdudvdud.tests.regression.cart;
+package ru.vdudvdud.tests.regression.cart.empty;
 
 import org.testng.annotations.Test;
 import ru.vdudvdud.adaptors.selenide.base.BaseTest;
