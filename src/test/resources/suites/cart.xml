@@ -62,4 +62,10 @@
         </classes>
     </test>
 
+    <test name="Test remove via input negative value confirm product removal in the cart">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.delete.RemoveViaInputNegativeValueConfirmProductRemovalInTheCart"/>
+        </classes>
+    </test>
+
 </suite>

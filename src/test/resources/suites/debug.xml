@@ -2,9 +2,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="debug" verbose="1">
 
-    <test name="Test remove via click minus confirm product removal in the cart">
+    <test name="Test remove via input negative value confirm product removal in the cart">
         <classes>
-            <class name="ru.vdudvdud.tests.regression.cart.delete.RemoveViaClickMinusConfirmProductRemovalInTheCart"/>
+            <class name="ru.vdudvdud.tests.regression.cart.delete.RemoveViaInputNegativeValueConfirmProductRemovalInTheCart"/>
         </classes>
     </test>
 
