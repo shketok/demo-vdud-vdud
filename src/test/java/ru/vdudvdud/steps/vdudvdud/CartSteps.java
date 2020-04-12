@@ -92,4 +92,12 @@ public class CartSteps extends BaseSteps {
         product.setCount(quantity);
         Cart.getInstance().putProduct(product);
     }
+
+    @Step("Изменение значения количества товара нажатием кнопки минус в корзине и обновление модели продукта")
+    public void clickMinusBtn(Product product) {
+        ProductForm productForm = cartPage.getProductsForm().getProductForm(product.getName(), product.getModel());
+        productForm.clickProductMinusBtn();
+        product.setCount(product.getCount() - 1);
+        Cart.getInstance().putProduct(product);
+    }
 }

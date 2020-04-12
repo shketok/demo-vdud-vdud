@@ -56,4 +56,10 @@
         </classes>
     </test>
 
+    <test name="Test remove via click minus confirm product removal in the cart">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.delete.RemoveViaClickMinusConfirmProductRemovalInTheCart"/>
+        </classes>
+    </test>
+
 </suite>

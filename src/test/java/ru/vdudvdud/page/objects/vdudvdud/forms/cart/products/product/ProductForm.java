@@ -118,4 +118,8 @@ public class ProductForm extends PageObject {
     public void fillProductQuantityInput(String value) {
         SelenideElementCommandsDecorator.fastSetValue(productQuantityInput, value);
     }
+
+    public void clickProductMinusBtn() {
+        productMinusBtn.click();
+    }
 }
