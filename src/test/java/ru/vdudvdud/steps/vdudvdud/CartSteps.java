@@ -78,4 +78,10 @@ public class CartSteps extends BaseSteps {
     public void cancelProductRemoval() {
         cartPage.getProductRemovalPopup().clickCancelProductRemovalBtn();
     }
+
+    @Step("Подтверждение удаления продукта в модальном окне из корзины")
+    public void confirmProductRemoval(Product product) {
+        cartPage.getProductRemovalPopup().clickConfirmProductRemovalBtn();
+        Cart.getInstance().removeProduct(product);
+    }
 }
