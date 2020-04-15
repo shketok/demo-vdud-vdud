@@ -3,7 +3,7 @@ package ru.vdudvdud.page.objects.vdudvdud.forms.cart.products.checkout;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import ru.vdudvdud.adaptors.selenide.base.PageObject;
-import ru.vdudvdud.localization.LabelsLocalizationHolder;
+import ru.vdudvdud.localization.CartLocalizationHolder;
 
 public class ConfirmationForm extends PageObject {
     /**
@@ -16,11 +16,11 @@ public class ConfirmationForm extends PageObject {
      */
     private static final String PRODUCTS_COST_TITLE_PATTERN = ".//div[@class='wa-total-section']//div[contains(@class, 'wa-name') and text()='%s']";
     private static final String PRODUCTS_COST_TITLE_LOC = String
-        .format(PRODUCTS_COST_TITLE_PATTERN, LabelsLocalizationHolder.CART_CONFIRMATION_FORM_PRODUCTS_COST.i18n());
+        .format(PRODUCTS_COST_TITLE_PATTERN, CartLocalizationHolder.CART_CONFIRMATION_FORM_PRODUCTS_COST.i18n());
     private static final String PRODUCTS_DELIVERY_COST_TITLE_LOC = String
-        .format(PRODUCTS_COST_TITLE_PATTERN, LabelsLocalizationHolder.CART_CONFIRMATION_FORM_DELIVERY_COST.i18n());
+        .format(PRODUCTS_COST_TITLE_PATTERN, CartLocalizationHolder.CART_CONFIRMATION_FORM_DELIVERY_COST.i18n());
     private static final String PRODUCTS_TOTAL_EXCLUDE_DELIVERY_TITLE_LOC = String
-        .format(PRODUCTS_COST_TITLE_PATTERN, LabelsLocalizationHolder.CART_CONFIRMATION_FORM_TOTAL_EXCLUDE_DELIVERY.i18n());
+        .format(PRODUCTS_COST_TITLE_PATTERN, CartLocalizationHolder.CART_CONFIRMATION_FORM_TOTAL_EXCLUDE_DELIVERY.i18n());
 
     /**
      * Шаблон локатора до цены продукта

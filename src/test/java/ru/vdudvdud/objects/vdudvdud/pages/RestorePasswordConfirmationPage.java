@@ -7,7 +7,7 @@ import static ru.vdudvdud.testdata.enums.urls.BaseUrls.FORGOT_PASSWORD;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import ru.vdudvdud.adaptors.selenide.base.BasePage;
-import ru.vdudvdud.localization.LabelsLocalizationHolder;
+import ru.vdudvdud.localization.PasswordRestoreLocalizationHolder;
 
 /**
  * Класс, описывающий страницу ввода нового пароля после подтверждения восстановления пароля на почте
@@ -46,13 +46,13 @@ public class RestorePasswordConfirmationPage extends BasePage {
     public void checkThatDifferentPasswordsErrorMsgIsVisible() {
         ERROR_MSG_UNDER_REPEAT_PASSWORD
             .shouldHave(Condition.exactText(
-                LabelsLocalizationHolder.RESTORE_PASSWORD_RESTORE_FORM_DIFFERENT_PASSWORD_MESSAGE.i18n()));
+                PasswordRestoreLocalizationHolder.RESTORE_PASSWORD_RESTORE_FORM_DIFFERENT_PASSWORD_MESSAGE.i18n()));
     }
 
     public void checkThatEmptyPasswordsErrorMsgIsVisible() {
         ERROR_MSG_UNDER_PASSWORD
             .shouldHave(Condition
-                .exactText(LabelsLocalizationHolder.RESTORE_PASSWORD_RESTORE_FORM_EMPTY_PASSWORD_MESSAGE.i18n()));
+                .exactText(PasswordRestoreLocalizationHolder.RESTORE_PASSWORD_RESTORE_FORM_EMPTY_PASSWORD_MESSAGE.i18n()));
     }
 
     public void fillPassword(String password) {
