@@ -2,21 +2,87 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="debug" verbose="1">
 
-    <test name="Test product data in cart test">
+    <test name="Test product data in cart">
         <classes>
-            <class name="ru.vdudvdud.tests.regression.cart.ProductDataInCartTest"/>
+            <class name="ru.vdudvdud.tests.regression.cart.add.ProductDataInCartTest"/>
         </classes>
     </test>
 
     <test name="Test add the same product to the non empty cart">
         <classes>
-            <class name="ru.vdudvdud.tests.regression.cart.AddTheSameProductToTheNonEmptyCartTest"/>
+            <class name="ru.vdudvdud.tests.regression.cart.add.AddTheSameProductToTheNonEmptyCartTest"/>
         </classes>
     </test>
 
     <test name="Test add two products from basket again test">
         <classes>
-            <class name="ru.vdudvdud.tests.regression.cart.AddTwoProductsFromBasketAgainTest"/>
+            <class name="ru.vdudvdud.tests.regression.cart.add.AddTwoProductsFromBasketAgainTest"/>
+        </classes>
+    </test>
+
+    <test name="Test empty cart unauthorized user">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.empty.EmptyCartTestUserUnauthorized"/>
+        </classes>
+    </test>
+
+    <test name="Test empty cart authorized user">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.empty.EmptyCartTestUserAuthorized"/>
+        </classes>
+    </test>
+
+    <test name="Test add two different products to the basket">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.add.AddTwoDifferentProductsToTheBasketTest"/>
+        </classes>
+    </test>
+
+    <test name="Test cancel product removal in the cart">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.delete.CancelProductRemovalInTheCart"/>
+        </classes>
+    </test>
+
+    <test name="Test confirm product removal in the cart">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.delete.ConfirmProductRemovalInTheCart"/>
+        </classes>
+    </test>
+
+    <test name="Test remove via input zero value confirm product removal in the cart">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.delete.RemoveViaInputZeroValueConfirmProductRemovalInTheCart"/>
+        </classes>
+    </test>
+
+    <test name="Test remove via click minus confirm product removal in the cart">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.delete.RemoveViaClickMinusConfirmProductRemovalInTheCart"/>
+        </classes>
+    </test>
+
+    <test name="Test remove via input negative value confirm product removal in the cart">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.delete.RemoveViaInputNegativeValueConfirmProductRemovalInTheCart"/>
+        </classes>
+    </test>
+
+    <test name="Test close product removal in the cart">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.delete.CloseProductRemovalInTheCart"/>
+        </classes>
+    </test>
+
+    <test name="Test delete one product from many in the cart">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.delete.DeleteOneProductFromManyInTheCart"/>
+        </classes>
+    </test>
+
+    <test name="Test delete all products from many in the cart">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.delete.DeleteAllProductsFromManyInTheCart"/>
         </classes>
     </test>
 

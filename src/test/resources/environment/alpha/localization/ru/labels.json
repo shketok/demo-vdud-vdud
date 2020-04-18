@@ -2,5 +2,10 @@
   "cart.confirmation_form.products_cost": "Стоимость товаров",
   "cart.confirmation_form.delivery_cost": "Стоимость доставки",
   "cart.confirmation_form.total_exclude_delivery": "Итого без учета доставки",
-  "restore_password.restore_form.invalid_email_message": "Пользователь с этим именем для входа не найден."
+  "sign_in.login_is_mandatory_message": "Логин обязателен",
+  "sign_in.password_is_mandatory_message": "Пароль обязателен",
+  "sign_in.either_login_or_password_is_incorrect": "Неправильное имя пользователя или пароль.",
+  "restore_password.restore_form.invalid_email_message": "Пользователь с этим именем для входа не найден.",
+  "restore_password.restore_form.different_passwords_message": "Пароли не совпадают",
+  "restore_password.restore_form.empty_passwords_message": "Пароль не может быть пустым"
 }

@@ -1,5 +1,7 @@
 package ru.vdudvdud.page.objects.vdudvdud.pages;
 
+import static com.codeborne.selenide.Selenide.$;
+
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import ru.vdudvdud.adaptors.selenide.base.BasePage;
@@ -7,8 +9,6 @@ import ru.vdudvdud.page.objects.vdudvdud.forms.header.PersonalAreaDropdownForm;
 import ru.vdudvdud.testdata.enums.RegexPatterns;
 import ru.vdudvdud.testdata.enums.urls.BaseUrls;
 import ru.vdudvdud.testdata.utils.RegexMatcher;
-
-import static com.codeborne.selenide.Selenide.$;
 
 
 /**
@@ -22,10 +22,13 @@ public class HeaderPage extends BasePage {
     private SelenideElement currencyTab = getMainElement().$("div.info-settings div[class*='currency']");
     private SelenideElement mainContactsLabel = getMainElement().$("div.main-contacts");
     private SelenideElement logo = getMainElement().$(String.format("a.logo[href='%s']", BaseUrls.BASE.getUrlPart()));
-    private SelenideElement basket = getMainElement().$(String.format("div[class*='store-actions'] a[href*='%s'][class*='store']", BaseUrls.ORDER.getUrlPart()));
+    private SelenideElement basket = getMainElement().$(
+        String.format("div[class*='store-actions'] a[href*='%s'][class*='store'] div[class='store-actions__cart-icon']", // если убрать div[class='store-actions__cart-icon'], то клик будет проходить по элементу меню тк до этого был произведен hover на него
+            BaseUrls.ORDER.getUrlPart())
+    );
 
-    private SelenideElement cartAmount = basket.$("span[class*='cart-amount']");
-    private SelenideElement productsPrice = basket.$("div[class*='cart-content-text']");
+    private SelenideElement cartAmount = basket.$x("./following-sibling::span[contains(@class, 'cart-amount')]");
+    private SelenideElement productsPrice = getMainElement().$("div[class*='cart-content-text']");
 
     /**
      * Конструктор основного элемента.
@@ -88,5 +91,6 @@ public class HeaderPage extends BasePage {
 
     public void clickBasket() {
         basket.click();
+
     }
 }

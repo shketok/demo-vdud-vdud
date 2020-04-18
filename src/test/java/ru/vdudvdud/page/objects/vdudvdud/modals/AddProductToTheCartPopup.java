@@ -11,8 +11,10 @@ public class AddProductToTheCartPopup extends PageObject {
     private static final String MAIN_ELEMENT_LOC = "div.cart-popup";
 
     private SelenideElement confirmBtn = getMainElement().$("button[type='submit']");
-    private SelenideElement productQuantity = getMainElement().$("input[name='quantity']");
-    private SelenideElement productSelectedSize = getMainElement().$("input[name='sku_id'][checked] ~ span[itemprop='name']");
+    private SelenideElement countOfTheGood = getMainElement().$("input[name='quantity']");
+    private SelenideElement productSelectedSize = getMainElement()
+            .$x(".//input[@name='sku_id' and contains(@value, //div[@data-sku-id]/@data-sku-id)]" +
+                    "/following-sibling::span[@itemprop='name']");
     private SelenideElement productSelectedModel = getMainElement().$("div.options__content ul");
 
     /**
