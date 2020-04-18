@@ -11,7 +11,7 @@ public class AddProductToTheCartPopup extends PageObject {
     private static final String MAIN_ELEMENT_LOC = "div.cart-popup";
 
     private SelenideElement confirmBtn = getMainElement().$("button[type='submit']");
-    private SelenideElement countOfTheGood = getMainElement().$("input[name='quantity']");
+    private SelenideElement productQuantity = getMainElement().$("input[name='quantity']");
     private SelenideElement productSelectedSize = getMainElement()
             .$x(".//input[@name='sku_id' and contains(@value, //div[@data-sku-id]/@data-sku-id)]" +
                     "/following-sibling::span[@itemprop='name']");
@@ -56,11 +56,11 @@ public class AddProductToTheCartPopup extends PageObject {
         return productSelectedModel.is(condition);
     }
 
-    public String getProductQuantity() {
+    public String getProductQuantityText() {
         return productQuantity.getValue();
     }
 
-    public boolean isCountOfTheGoodInState(Condition condition) {
+    public boolean isProductQuantityInState(Condition condition) {
         return productQuantity.is(condition);
     }
 }

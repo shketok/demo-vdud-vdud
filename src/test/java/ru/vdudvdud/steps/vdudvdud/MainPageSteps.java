@@ -115,8 +115,8 @@ public class MainPageSteps extends BaseSteps {
                 product.setModel(addProductToTheCartPopup.getProductSelectedModelText());
             }
 
-            if (addProductToTheCartPopup.isCountOfTheGoodInState(Condition.visible)) {
-                product.setCount(Integer.parseInt(addProductToTheCartPopup.getProductQuantity()));
+            if (addProductToTheCartPopup.isProductQuantityInState(Condition.visible)) {
+                product.setCount(Integer.parseInt(addProductToTheCartPopup.getProductQuantityText()));
             } else {
                 product.setCount(CartConstants.BASE_PRODUCT_COUNT);
             }
