@@ -46,9 +46,11 @@ public class Cart {
      * @param product продукт добавленный в корзину
      */
     public void putProduct(Product product) {
-        if (isProductInCart(product)) {
+        if (isProductInCart(product) && product.getCount() > 0) {
             Product productFromTheCart = products.get(product.getFullName());
             productFromTheCart.setCount(productFromTheCart.getCount() + product.getCount());
+        } else if (isProductInCart(product) && product.getCount() <= 0) {
+            removeProduct(product);
         } else {
             products.put(product.getFullName(), product);
         }

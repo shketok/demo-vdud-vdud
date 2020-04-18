@@ -27,8 +27,8 @@ public class HeaderPage extends BasePage {
             BaseUrls.ORDER.getUrlPart())
     );
 
-    private SelenideElement cartAmount = basket.$("span[class*='cart-amount']");
-    private SelenideElement productsPrice = basket.$("div[class*='cart-content-text']");
+    private SelenideElement cartAmount = basket.$x("./following-sibling::span[contains(@class, 'cart-amount')]");
+    private SelenideElement productsPrice = getMainElement().$("div[class*='cart-content-text']");
 
     /**
      * Конструктор основного элемента.

@@ -1,4 +1,4 @@
-package ru.vdudvdud.tests.regression.cart;
+package ru.vdudvdud.tests.regression.cart.delete;
 
 import io.qameta.allure.Link;
 import org.testng.annotations.BeforeMethod;
@@ -15,7 +15,7 @@ import ru.vdudvdud.testdata.models.essences.Product;
 import ru.vdudvdud.testdata.models.essences.User;
 import ru.vdudvdud.testdata.objects.Cart;
 
-public class AddTheSameProductToTheNonEmptyCartTest extends BaseTest {
+public class CancelProductRemovalInTheCart extends BaseTest {
     private CartSteps cartSteps = new CartSteps();
     private HeaderSteps headerSteps = new HeaderSteps();
     private MainPageSteps mainPageSteps = new MainPageSteps();
@@ -30,7 +30,19 @@ public class AddTheSameProductToTheNonEmptyCartTest extends BaseTest {
     @BeforeMethod
     public void readParams() {
         user = UsersCreator.createRandomUser();
+
+        LOG.info("Добавление случайного товара в корзину");
         product = productScenarios.addProductToCartAfterRegistration(user);
+
+        LOG.info("Открытие корзины и проверка корректности отображения основных блоков корзины");
+        headerSteps.goToTheCartPage();
+        cartSteps.checkThatMainElementsOfThePageAreVisible();
+
+        LOG.info("Проверка корректного отображения элементов товара в блоке добавленного товара");
+        Cart.getInstance().getProducts().values().forEach(product -> cartSteps.checkThatProductWasAddedToTheCart(product));
+
+        LOG.info("Проверка, что товар добавлен на страницу и в табе товара корректно изменились параметры товара");
+        cartSteps.checkThatCartProductTabContainsCorrectData();
         BrowserUtils.restartBrowser();
     }
 
@@ -42,23 +54,16 @@ public class AddTheSameProductToTheNonEmptyCartTest extends BaseTest {
         headerSteps.goToTheMainPage();
         headerSteps.checkThatMainElementsOfThePageAreVisible();
 
-        LOG.info("Добавить товар в корзину, который там уже присутствует");
-        mainPageSteps.clickSpecificProductAddToTheCartBtn(product);
-
-        LOG.info("Подтверждение добавления товара в корзину");
-        mainPageSteps.updateProduct(product);
-        mainPageSteps.confirmAddProductToTheCart();
-        mainPageSteps.goToTheCartProductAddedPopup(product);
-
         LOG.info("Открытие корзины и проверка корректности отображения основных блоков корзины");
+        headerSteps.goToTheCartPage();
         cartSteps.checkThatMainElementsOfThePageAreVisible();
+
+        LOG.info("Нажатие кнопки удаления товара из корзины и отмена удаления из корзины");
+        cartSteps.deleteProduct(product);
+        cartSteps.cancelProductRemoval();
 
         LOG.info("Проверка корректного отображения элементов товара в блоке добавленного товара");
         Cart.getInstance().getProducts().values().forEach(product -> cartSteps.checkThatProductWasAddedToTheCart(product));
-
-        LOG.info("Проверка, что товар добавлен на страницу и в табе товара корректно изменились параметры товара");
         cartSteps.checkThatCartProductTabContainsCorrectData();
     }
-
-
 }

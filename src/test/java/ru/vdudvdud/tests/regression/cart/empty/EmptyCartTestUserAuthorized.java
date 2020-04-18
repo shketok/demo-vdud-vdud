@@ -1,4 +1,4 @@
-package ru.vdudvdud.tests.regression.cart;
+package ru.vdudvdud.tests.regression.cart.empty;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
