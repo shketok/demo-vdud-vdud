@@ -44,4 +44,46 @@
         </classes>
     </test>
 
+    <test name="Test confirm product removal in the cart">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.delete.ConfirmProductRemovalInTheCart"/>
+        </classes>
+    </test>
+
+    <test name="Test remove via input zero value confirm product removal in the cart">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.delete.RemoveViaInputZeroValueConfirmProductRemovalInTheCart"/>
+        </classes>
+    </test>
+
+    <test name="Test remove via click minus confirm product removal in the cart">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.delete.RemoveViaClickMinusConfirmProductRemovalInTheCart"/>
+        </classes>
+    </test>
+
+    <test name="Test remove via input negative value confirm product removal in the cart">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.delete.RemoveViaInputNegativeValueConfirmProductRemovalInTheCart"/>
+        </classes>
+    </test>
+
+    <test name="Test close product removal in the cart">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.delete.CloseProductRemovalInTheCart"/>
+        </classes>
+    </test>
+
+    <test name="Test delete one product from many in the cart">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.delete.DeleteOneProductFromManyInTheCart"/>
+        </classes>
+    </test>
+
+    <test name="Test delete all products from many in the cart">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.delete.DeleteAllProductsFromManyInTheCart"/>
+        </classes>
+    </test>
+
 </suite>

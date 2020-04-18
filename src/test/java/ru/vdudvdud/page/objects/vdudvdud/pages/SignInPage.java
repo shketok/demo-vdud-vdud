@@ -5,7 +5,7 @@ import static com.codeborne.selenide.Selenide.$x;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import ru.vdudvdud.adaptors.selenide.base.BasePage;
-import ru.vdudvdud.localization.LabelsLocalizationHolder;
+import ru.vdudvdud.localization.SignInLocalizationHolder;
 import ru.vdudvdud.testdata.enums.CommonDataNames;
 import ru.vdudvdud.testdata.enums.urls.BaseUrls;
 
@@ -76,19 +76,19 @@ public class SignInPage extends BasePage {
 
     public void checkThatMandatoryLoginErrorMsgIsVisible(){
         loginIsMandatoryMsg.shouldHave(
-            Condition.exactText(LabelsLocalizationHolder.SIGN_IN_LOGIN_IS_MANDATORY_MESSAGE.i18n())
+            Condition.exactText(SignInLocalizationHolder.SIGN_IN_LOGIN_IS_MANDATORY_MESSAGE.i18n())
         );
     }
 
     public void checkThatMandatoryPasswordErrorMsgIsVisible(){
         passwordIsMandatoryMsg.shouldHave(
-            Condition.exactText(LabelsLocalizationHolder.SIGN_IN_PASSWORD_IS_MANDATORY_MESSAGE.i18n())
+            Condition.exactText(SignInLocalizationHolder.SIGN_IN_PASSWORD_IS_MANDATORY_MESSAGE.i18n())
         );
     }
 
     public void checkThatEitherPasswordOrEmailIncorrectMessageIsVisible(){
         eitherEmailOrPasswordIncorrect.shouldHave(
-            Condition.exactText(LabelsLocalizationHolder.SIGN_IN_EITHER_LOGIN_OR_PASSWORD_IS_INCORRECT.i18n())
+            Condition.exactText(SignInLocalizationHolder.SIGN_IN_EITHER_LOGIN_OR_PASSWORD_IS_INCORRECT.i18n())
         );
     }
 

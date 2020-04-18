@@ -9,6 +9,7 @@ import ru.vdudvdud.page.objects.vdudvdud.pages.CartPage;
 import ru.vdudvdud.testdata.models.essences.Product;
 import ru.vdudvdud.testdata.objects.Cart;
 
+import java.util.Arrays;
 import java.util.Map;
 
 public class CartSteps extends BaseSteps {
@@ -52,6 +53,15 @@ public class CartSteps extends BaseSteps {
         emptyCartForm.checkThatEmptyCartIllustrationInState(Condition.visible);
 
     }
+    @Step("Проверка того, что корзина не пустая")
+    public void checkThatCartIsNotEmpty() {
+        EmptyCartForm emptyCartForm = cartPage.getEmptyCartForm();
+
+        emptyCartForm.checkThatEmptyCartTextInState(Condition.disappear);
+        emptyCartForm.checkThatEmptyCartSloganInState(Condition.disappear);
+        emptyCartForm.checkThatEmptyCartIllustrationInState(Condition.disappear);
+
+    }
 
     @Step("Проверка общей стоимости товара и его количества в корзине")
     public void checkThatCartProductTabContainsCorrectData() {
@@ -74,8 +84,47 @@ public class CartSteps extends BaseSteps {
         productForm.clickProductDelete();
     }
 
+
+    @Step("Удаление указанных товаров из корзины")
+    public void deleteProductsAndConfirmRemoval(Product... products) {
+        for (Product product : products) {
+            deleteProduct(product);
+            confirmProductRemoval(product);
+        }
+    }
+
+
+
     @Step("Отмена удаления продукта в модальном окне из корзины")
     public void cancelProductRemoval() {
         cartPage.getProductRemovalPopup().clickCancelProductRemovalBtn();
+    }
+
+    @Step("Подтверждение удаления продукта в модальном окне из корзины")
+    public void confirmProductRemoval(Product product) {
+        cartPage.getProductRemovalPopup().clickConfirmProductRemovalBtn();
+        Cart.getInstance().removeProduct(product);
+    }
+
+    @Step("Установка значения количества товара в корзине и обновление модели продукта")
+    public void setProductCount(Product product, int quantity) {
+        ProductForm productForm = cartPage.getProductsForm().getProductForm(product.getName(), product.getModel());
+        productForm.fillProductQuantityInput(String.valueOf(quantity));
+        product.setCount(quantity);
+        Cart.getInstance().putProduct(product);
+    }
+
+    @Step("Изменение значения количества товара нажатием кнопки минус в корзине и обновление модели продукта")
+    public void clickMinusBtn(Product product) {
+        ProductForm productForm = cartPage.getProductsForm().getProductForm(product.getName(), product.getModel());
+        productForm.clickProductMinusBtn();
+        product.setCount(product.getCount() - 1);
+        Cart.getInstance().putProduct(product);
+    }
+
+
+    @Step("Отмена удаления продукта в модальном окне из корзины путем нажатия кнопки закрыть")
+    public void closeProductRemoval() {
+        cartPage.getProductRemovalPopup().clickCloseProductRemovalPopupBtn();
     }
 }
