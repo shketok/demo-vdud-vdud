@@ -1,8 +1,12 @@
 package ru.vdudvdud.steps.vdudvdud;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.ex.ElementNotFound;
 import io.qameta.allure.Step;
+import java.util.stream.IntStream;
+import org.openqa.selenium.NoSuchElementException;
 import org.testng.Assert;
+import ru.vdudvdud.adaptors.selenide.utils.SmartWait;
 import ru.vdudvdud.page.objects.vdudvdud.forms.main.ProductCardForm;
 import ru.vdudvdud.page.objects.vdudvdud.modals.AddProductToTheCartPopup;
 import ru.vdudvdud.page.objects.vdudvdud.modals.ProductAddedToTheCartPopup;
@@ -79,13 +83,33 @@ public class MainPageSteps extends BaseSteps {
     }
 
 
+
     @Step("Нажатие кнопки В корзину у случайного продукта с выбором числа товаров")
     public Product clickRandomProductAddToTheCartWithQuantitySelection(int quantity){
         Product product = createProductFromProductCard(vdudMainPage.getProductCardsForm().getRandomProductForm());
+//        Product product = createProductFromProductCard(vdudMainPage.getProductCardsForm().getProductCardForm("Кошелек"));
+//        Product product = createProductFromProductCard(vdudMainPage.getProductCardsForm().getProductCardForm("Футболка «Мои кореша»"));
+//        Product product = createProductFromProductCard(vdudMainPage.getProductCardsForm().getProductCardForm("Бомбер «Давай дружить»"));
         clickSpecificProductAddToTheCartBtn(product);
-        setProductQuantity(quantity);
-        updateProduct(product);
+        if (addProductToTheCartPopup.isProductQuantityInState(Condition.visible)) {
+            setProductQuantity(quantity);
+            updateProduct(product);
+        }
+        else{
+            clickSpecificProductAddToTheCartQuantityTimes(product, quantity);
+        }
+        confirmAddProductToTheCart();
+        return product;
+    }
 
+    @Step("Нажатие кнопки В корзину у конкретного выбранного товара определенное количество раз")
+    public Product clickSpecificProductAddToTheCartQuantityTimes(Product product, int quantity){
+        updateProduct(product);
+        IntStream.of(quantity).forEach(i -> {
+            productAddedToTheCartPopup.clickContinue();
+            clickSpecificProductAddToTheCartBtn(product);
+            product.setCount(product.getCount() + 1);
+        });
         return product;
     }
 
@@ -121,7 +145,8 @@ public class MainPageSteps extends BaseSteps {
                 product.setCount(CartConstants.BASE_PRODUCT_COUNT);
             }
         } else {
-            product.setCount(CartConstants.BASE_PRODUCT_COUNT);
+            if(product.getCount() == 0)
+                product.setCount(CartConstants.BASE_PRODUCT_COUNT);
         }
     }
 

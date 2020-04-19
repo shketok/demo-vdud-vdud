@@ -61,6 +61,7 @@ public class AddProductToTheCartPopup extends PageObject {
     }
 
     public boolean isProductQuantityInState(Condition condition) {
-        return productQuantity.is(condition);
+        return SmartWait.isElementInState(productQuantity, condition);
     }
+
 }

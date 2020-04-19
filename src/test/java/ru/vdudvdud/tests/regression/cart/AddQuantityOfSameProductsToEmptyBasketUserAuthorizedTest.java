@@ -8,7 +8,6 @@ import ru.vdudvdud.adaptors.selenide.base.BaseTest;
 import ru.vdudvdud.adaptors.selenide.utils.BrowserUtils;
 import ru.vdudvdud.steps.vdudvdud.CartSteps;
 import ru.vdudvdud.steps.vdudvdud.HeaderSteps;
-import ru.vdudvdud.steps.vdudvdud.MainPageSteps;
 import ru.vdudvdud.steps.vdudvdud.scenarios.AuthorizationScenarios;
 import ru.vdudvdud.steps.vdudvdud.scenarios.ProductScenarios;
 import ru.vdudvdud.testdata.creators.UsersCreator;
@@ -36,7 +35,7 @@ public class AddQuantityOfSameProductsToEmptyBasketUserAuthorizedTest extends Ba
 
 
     @Test
-    @Link("https://outsourceofthebrain.myjetbrains.com/youtrack/issue/VDUDUD-24")
+    @Link("https://outsourceofthebrain.myjetbrains.com/youtrack/issue/VDUDUD-21")
     @Override
     public void runTest() {
         LOG.info("1. Произвести авторизацию пользователем");

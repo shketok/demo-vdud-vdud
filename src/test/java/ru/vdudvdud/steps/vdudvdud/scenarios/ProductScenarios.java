@@ -43,7 +43,6 @@ public class ProductScenarios {
         Product product = productAddFunction.get();
 
         LOG.info("Подтверждение добавления товара в корзину");
-        mainPageSteps.updateProduct(product);
         mainPageSteps.confirmAddProductToTheCart();
 
         LOG.info("Закрытие формы подтверждения того, что товар был добавлен в корзину");
