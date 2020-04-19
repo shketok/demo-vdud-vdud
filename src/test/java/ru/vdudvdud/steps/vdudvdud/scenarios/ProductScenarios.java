@@ -37,13 +37,17 @@ public class ProductScenarios {
         return addProductToTheCart(() -> mainPageSteps.clickRandomProductAddToTheCartWithQuantitySelection(quantity));
     }
 
+    @Step("Сценарий добавления товара с выбором количества в корзину без авторизованного пользователя")
+    public Product addQuantityOfSameProductToCart(int quantity) {
+        mainPageSteps.openMainPage();
+        return addProductToTheCart(() -> mainPageSteps.clickRandomProductAddToTheCartWithQuantitySelection(quantity));
+    }
+
     @Step("Добавление товара в корзину")
     public Product addProductToTheCart(Supplier<Product> productAddFunction) {
         LOG.info("Нажатие кнопки В корзину на случайном товаре с главной страницы");
         Product product = productAddFunction.get();
 
-        LOG.info("Подтверждение добавления товара в корзину");
-        mainPageSteps.confirmAddProductToTheCart();
 
         LOG.info("Закрытие формы подтверждения того, что товар был добавлен в корзину");
         mainPageSteps.closeProductAddedPopup(product);

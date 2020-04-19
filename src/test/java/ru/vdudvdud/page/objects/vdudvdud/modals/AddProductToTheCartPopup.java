@@ -12,9 +12,9 @@ public class AddProductToTheCartPopup extends PageObject {
 
     private SelenideElement confirmBtn = getMainElement().$("button[type='submit']");
     private SelenideElement productQuantity = getMainElement().$("input[name='quantity']");
+
     private SelenideElement productSelectedSize = getMainElement()
-            .$x(".//input[@name='sku_id' and contains(@value, //div[@data-sku-id]/@data-sku-id)]" +
-                    "/following-sibling::span[@itemprop='name']");
+            .$x(".//input[@name='sku_id' and not(@disabled) and contains(@value, //div[@data-sku-id]/@data-sku-id)]/following-sibling::span[@itemprop='name']");
     private SelenideElement productSelectedModel = getMainElement().$("div.options__content ul");
 
     /**
@@ -45,7 +45,7 @@ public class AddProductToTheCartPopup extends PageObject {
     }
 
     public boolean isProductSelectedSizeInState(Condition condition) {
-        return productSelectedSize.is(condition);
+        return SmartWait.isElementInState(productSelectedSize, condition);
     }
 
     public String getProductSelectedModelText() {
