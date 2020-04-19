@@ -22,13 +22,11 @@ public class HeaderPage extends BasePage {
     private SelenideElement currencyTab = getMainElement().$("div.info-settings div[class*='currency']");
     private SelenideElement mainContactsLabel = getMainElement().$("div.main-contacts");
     private SelenideElement logo = getMainElement().$(String.format("a.logo[href='%s']", BaseUrls.BASE.getUrlPart()));
-    private SelenideElement basket = getMainElement().$(
-        String.format("div[class*='store-actions'] a[href*='%s'][class*='store'] div[class='store-actions__cart-icon']", // если убрать div[class='store-actions__cart-icon'], то клик будет проходить по элементу меню тк до этого был произведен hover на него
-            BaseUrls.ORDER.getUrlPart())
-    );
-
-    private SelenideElement cartAmount = basket.$x("./following-sibling::span[contains(@class, 'cart-amount')]");
-    private SelenideElement productsPrice = getMainElement().$("div[class*='cart-content-text']");
+    private SelenideElement basket = getMainElement()
+        .$(String.format("div[class*='store-actions'] a[href*='%s'][class*='store']", BaseUrls.ORDER.getUrlPart()));
+    private SelenideElement basketIcon = basket.$("div[class='store-actions__cart-icon']");
+    private SelenideElement cartAmount = basket.$("span[class*='cart-amount']");
+    private SelenideElement productsPrice = basket.$("div[class*='cart-content-text']");
 
     /**
      * Конструктор основного элемента.
@@ -90,7 +88,6 @@ public class HeaderPage extends BasePage {
     }
 
     public void clickBasket() {
-        basket.click();
-
+        basketIcon.click();
     }
 }

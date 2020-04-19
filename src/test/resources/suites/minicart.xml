@@ -8,4 +8,15 @@
         </classes>
     </test>
 
+    <test name="Test add different products to the cart user authorized">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.mini.AddDifferentProductsToTheCartUserAuthorized"/>
+        </classes>
+    </test>
+
+    <test name="Test add different products to the cart user unauthorized">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.mini.AddDifferentProductsToTheCartUserUnauthorized"/>
+        </classes>
+    </test>
 </suite>
