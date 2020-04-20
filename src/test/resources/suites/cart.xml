@@ -86,4 +86,19 @@
         </classes>
     </test>
 
+    <test name="Test add two products from basket again test">
+        <parameter name="quantity" value="2"/>
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.AddQuantityOfSameProductsToEmptyBasketUserUnauthorizedTest"/>
+        </classes>
+    </test>
+
+
+    <test name="Test add two products from basket again test">
+        <parameter name="quantity" value="2"/>
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.AddQuantityOfSameProductsToEmptyBasketUserAuthorizedTest"/>
+        </classes>
+    </test>
+
 </suite>
