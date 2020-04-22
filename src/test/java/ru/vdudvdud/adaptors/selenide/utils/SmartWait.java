@@ -16,6 +16,8 @@ import java.util.Arrays;
  * <p>
  * Класс имеет место быть для остальных сложных ожиданий, например ожидание прогрузки всех элементов одного типа на странице.
  */
+
+// TODO refactor this class according to https://github.com/shketok/demo-vdud-vdud/pull/35 comments
 public class SmartWait {
     private static final Logger logger = Logger.getInstance();
 
