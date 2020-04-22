@@ -2,6 +2,7 @@ package ru.vdudvdud.steps.vdudvdud;
 
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
+import java.util.Arrays;
 import java.util.stream.IntStream;
 import org.testng.Assert;
 import ru.vdudvdud.page.objects.vdudvdud.forms.main.ProductCardForm;
@@ -15,9 +16,8 @@ import ru.vdudvdud.testdata.models.essences.Product;
 import ru.vdudvdud.testdata.objects.Cart;
 import ru.vdudvdud.testdata.utils.RegexMatcher;
 
-import java.util.Arrays;
-
 public class MainPageSteps extends BaseSteps {
+
     private VdudMainPage vdudMainPage = new VdudMainPage();
     private AddProductToTheCartPopup addProductToTheCartPopup = new AddProductToTheCartPopup();
     private ProductAddedToTheCartPopup productAddedToTheCartPopup = new ProductAddedToTheCartPopup();
@@ -31,7 +31,8 @@ public class MainPageSteps extends BaseSteps {
     }
 
     /**
-     * Создание продукта и заполнение его данными со страницы согласно переданной карточке продукта.
+     * Создание продукта и заполнение его данными со страницы согласно переданной карточке
+     * продукта.
      *
      * @param productElement Карточка продукта со страницы
      * @return Сформированный десериализованный объект.
@@ -46,10 +47,12 @@ public class MainPageSteps extends BaseSteps {
         }
         product.setImgLink(productElement.getProductImageSource());
         product.setName(productElement.getProductNameText());
-        product.setCost(Integer.parseInt(RegexMatcher.regexGetFirstMatchGroupFromTextWithoutSpaces(productFullPrice,
-            RegexPatterns.DIGITS.toString())));
-        product.setCurrency(RegexMatcher.regexGetFirstMatchGroupFromTextWithoutSpaces(productFullPrice,
-            RegexPatterns.NON_DIGITS.toString().trim()));
+        product.setCost(Integer
+            .parseInt(RegexMatcher.regexGetFirstMatchGroupFromTextWithoutSpaces(productFullPrice,
+                RegexPatterns.DIGITS.toString())));
+        product
+            .setCurrency(RegexMatcher.regexGetFirstMatchGroupFromTextWithoutSpaces(productFullPrice,
+                RegexPatterns.NON_DIGITS.toString().trim()));
         product.setExistence(productElement.getProductExistenceText());
 
         return product;
@@ -63,7 +66,8 @@ public class MainPageSteps extends BaseSteps {
 
     @Step("Проверка корректного открытия главной страницы")
     public void checkThatMainPageIsOpen() {
-        Assert.assertTrue(vdudMainPage.isMainElement(Condition.visible), "Проверка корректного открытия главной страницы");
+        Assert.assertTrue(vdudMainPage.isMainElement(Condition.visible),
+            "Проверка корректного открытия главной страницы");
 
     }
 
@@ -74,22 +78,22 @@ public class MainPageSteps extends BaseSteps {
 
     @Step("Нажатие кнопки В корзину у случайного продукта")
     public Product clickRandomProductAddToTheCartBtn() {
-        Product product = createProductFromProductCard(vdudMainPage.getProductCardsForm().getRandomProductForm());
+        Product product = createProductFromProductCard(
+            vdudMainPage.getProductCardsForm().getRandomProductForm());
         clickSpecificProductAddToTheCartBtn(product);
         return product;
     }
 
 
-
     @Step("Нажатие кнопки В корзину у случайного продукта с выбором числа товаров")
-    public Product clickRandomProductAddToTheCartWithQuantitySelection(int quantity){
-        Product product = createProductFromProductCard(vdudMainPage.getProductCardsForm().getRandomProductForm());
+    public Product clickRandomProductAddToTheCartWithQuantitySelection(int quantity) {
+        Product product = createProductFromProductCard(
+            vdudMainPage.getProductCardsForm().getRandomProductForm());
         clickSpecificProductAddToTheCartBtn(product);
         if (addProductToTheCartPopup.isProductQuantityInState(Condition.visible)) {
             setProductQuantity(quantity);
             updateProduct(product);
-        }
-        else{
+        } else {
             clickSpecificProductAddToTheCartQuantityTimes(product, quantity);
         }
         confirmAddProductToTheCart();
@@ -97,7 +101,7 @@ public class MainPageSteps extends BaseSteps {
     }
 
     @Step("Нажатие кнопки В корзину у конкретного выбранного товара определенное количество раз")
-    public Product clickSpecificProductAddToTheCartQuantityTimes(Product product, int quantity){
+    public Product clickSpecificProductAddToTheCartQuantityTimes(Product product, int quantity) {
         updateProduct(product);
         IntStream.of(quantity).forEach(i -> {
             productAddedToTheCartPopup.clickContinue();
@@ -110,14 +114,16 @@ public class MainPageSteps extends BaseSteps {
 
     @Step("Нажатие кнопки В корзину у конкретного выбранного продукта")
     public Product clickSpecificProductAddToTheCartBtn(Product product) {
-        vdudMainPage.getProductCardsForm().getProductCardForm(product.getName()).clickProductToTheCartBottomBtn();
+        vdudMainPage.getProductCardsForm().getProductCardForm(product.getName())
+            .clickProductToTheCartBottomBtn();
         return product;
     }
 
     @Step("Нажатие кнопки В корзину у случайного продукта кроме указанных")
     public Product clickRandomProductAddToTheCartExceptSpecifics(Product... products) {
-        ProductCardForm productCardForm = vdudMainPage.getProductCardsForm().getRandomProductInsteadSpecifics(
-            Arrays.stream(products).map(Product::getName).toArray(String[]::new));
+        ProductCardForm productCardForm = vdudMainPage.getProductCardsForm()
+            .getRandomProductInsteadSpecifics(
+                Arrays.stream(products).map(Product::getName).toArray(String[]::new));
 
         Product product = createProductFromProductCard(productCardForm);
         clickSpecificProductAddToTheCartBtn(product);
@@ -134,7 +140,8 @@ public class MainPageSteps extends BaseSteps {
             }
 
             if (addProductToTheCartPopup.isProductQuantityInState(Condition.visible)) {
-                product.setCount(Integer.parseInt(addProductToTheCartPopup.getProductQuantityText()));
+                product
+                    .setCount(Integer.parseInt(addProductToTheCartPopup.getProductQuantityText()));
             } else {
                 product.setCount(CartConstants.BASE_PRODUCT_COUNT);
             }
@@ -155,9 +162,8 @@ public class MainPageSteps extends BaseSteps {
 
 
     @Step("Выбор количества текущего товара")
-    public void setProductQuantity(int quantity){
+    public void setProductQuantity(int quantity) {
         addProductToTheCartPopup.setProductQuantity(String.valueOf(quantity));
-
     }
 
     @Step("Закрытие всплывающего окна уведомляющего о добавлении товара в корзину")
