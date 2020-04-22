@@ -1,6 +1,5 @@
 package ru.vdudvdud.page.objects.vdudvdud.modals;
 
-import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import ru.vdudvdud.adaptors.selenide.base.PageObject;
 
@@ -22,7 +21,7 @@ public class ProductAddedToTheCartPopup extends PageObject {
     }
 
     public void clickClose() {
-        closeBtn.shouldBe(Condition.visible).click();
+        closeBtn.click();
     }
 
     public void clickToCart() {

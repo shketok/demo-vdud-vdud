@@ -41,7 +41,7 @@ public class DeleteOneProductFromManyInTheCart extends BaseTest {
         cartSteps.checkThatMainElementsOfThePageAreVisible();
 
         LOG.info("Проверка корректного отображения элементов товара в блоке добавленного товара");
-        Cart.getInstance().getProducts().values().forEach(product -> cartSteps.checkThatProductWasAddedToTheCart(product));
+        Cart.getInstance().getProducts().values().forEach(cartSteps::checkThatProductWasAddedToTheCart);
 
         LOG.info("Проверка, что товар добавлен на страницу и в табе товара корректно изменились параметры товара");
         cartSteps.checkThatCartProductTabContainsCorrectData();
@@ -66,7 +66,7 @@ public class DeleteOneProductFromManyInTheCart extends BaseTest {
 
         LOG.info("Проверка корректного отображения элементов товара в блоке добавленного товара");
         cartSteps.checkThatCartIsNotEmpty();
-        Cart.getInstance().getProducts().values().forEach(product -> cartSteps.checkThatProductWasAddedToTheCart(product));
+        Cart.getInstance().getProducts().values().forEach(cartSteps::checkThatProductWasAddedToTheCart);
         cartSteps.checkThatCartProductTabContainsCorrectData();
     }
 }

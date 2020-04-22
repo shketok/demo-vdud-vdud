@@ -26,7 +26,7 @@ public class ProductScenarios {
         LOG.info("Выполнение регистрации на сайте пользователем");
         registrationScenarios.registration(user);
 
-        return addProductToTheCart(() -> mainPageSteps.clickRandomProductAddToTheCartBtn());
+        return addProductToTheCart(mainPageSteps::clickRandomProductAddToTheCartBtn);
     }
 
     @Step("Сценарий добавления товара с выбором количества в корзину авторизованным пользователем")

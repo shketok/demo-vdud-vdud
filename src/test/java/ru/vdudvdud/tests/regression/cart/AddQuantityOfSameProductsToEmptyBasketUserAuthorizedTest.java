@@ -48,7 +48,7 @@ public class AddQuantityOfSameProductsToEmptyBasketUserAuthorizedTest extends Ba
         cartSteps.checkThatMainElementsOfThePageAreVisible();
 
         LOG.info("3. Проверка корректного отображения элементов товара в блоке добавленного товара");
-        Cart.getInstance().getProducts().values().forEach(product -> cartSteps.checkThatProductWasAddedToTheCart(product));
+        Cart.getInstance().getProducts().values().forEach(cartSteps::checkThatProductWasAddedToTheCart);
 
         LOG.info("4. Проверка, что товар добавлен на страницу и в табе товара корректно изменились параметры товара");
         cartSteps.checkThatCartProductTabContainsCorrectData();
