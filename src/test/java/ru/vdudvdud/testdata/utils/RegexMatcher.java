@@ -21,6 +21,12 @@ public class RegexMatcher {
         return pattern.matcher(text);
     }
 
+    public static Matcher getRegexMatcher(String pat, String text) {
+        Matcher matcher = getMatcher(pat, text);
+        matcher.find();
+        return matcher;
+    }
+
     public static List<String> getStringList(String pat, String text) {
         Matcher matcher = getMatcher(pat, text);
         List<String> listMatches = new ArrayList<>();

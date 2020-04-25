@@ -74,6 +74,11 @@ public class HeaderSteps extends BaseSteps {
         headerPage.checkThatMiniCartInState(Condition.disappear);
     }
 
+    @Step("Проверка, что мини корзина видна")
+    public void checkMinicartVisible() {
+        headerPage.checkThatMiniCartInState(Condition.visible);
+    }
+
     @Step("Переход на страницу корзины")
     public void goToTheCartPage() {
         headerPage.clickBasket();
