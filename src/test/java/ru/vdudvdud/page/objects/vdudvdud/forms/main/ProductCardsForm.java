@@ -57,6 +57,14 @@ public class ProductCardsForm extends PageObject {
         return new ProductCardForm(getRandomProductFromCollection(products));
     }
 
+    public static List<ProductCardsForm> getProductForms(ElementsCollection elements) {
+        return elements.stream().map(el -> new ProductCardsForm(el)).collect(Collectors.toList());
+    }
+
+    public static  List<ProductCardForm> getProductForms2(ElementsCollection elements) {
+        return elements.stream().map(el -> new ProductCardForm(el)).collect(Collectors.toList());
+    }
+
     /**
      * Получение случайной формы продукта со страницы за исключением продуктов с указанными именами;
      *

@@ -88,6 +88,7 @@ public class HeaderPage extends BasePage {
     }
 
     public void clickBasket() {
-        basketIcon.click();
+       // basketIcon.click();
+        basketIcon.hover();
     }
 }
