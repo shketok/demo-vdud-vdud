@@ -63,6 +63,17 @@ public class HeaderSteps extends BaseSteps {
         softAssert.assertAll();
     }
 
+
+    @Step("Наведение курсора на миникорзину")
+    public void hoverOverMinicart(){
+        headerPage.hoverBasket();
+    }
+
+    @Step("Проверка, что не видна мини корзина при отсутствии товаров")
+    public void checkMinicartInvisible() {
+        headerPage.checkThatMiniCartInState(Condition.disappear);
+    }
+
     @Step("Переход на страницу корзины")
     public void goToTheCartPage() {
         headerPage.clickBasket();
