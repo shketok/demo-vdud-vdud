@@ -1,5 +1,6 @@
 package ru.vdudvdud.tests.regression.cart.mini;
 
+import io.qameta.allure.Link;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.vdudvdud.adaptors.selenide.base.BaseTest;
@@ -31,6 +32,7 @@ public class AddTwoDifferentProductToMinicartUserAuthorized extends BaseTest {
 
     @Override
     @Test
+    @Link("https://outsourceofthebrain.myjetbrains.com/youtrack/issue/VDUDUD-45")
     public void runTest() {
         LOG.info("Произвести авторизацию пользователем и открыть главную страницу");
         authorizationScenarios.authorize(user);
