@@ -1,6 +1,7 @@
 package ru.vdudvdud.page.objects.vdudvdud.pages;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.back;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
@@ -28,6 +29,7 @@ public class HeaderPage extends BasePage {
     );
 
     private SelenideElement cartAmount = basket.$x("./following-sibling::span[contains(@class, 'cart-amount')]");
+    private SelenideElement miniCart = getMainElement().$("div.mini-cart");
     private SelenideElement productsPrice = getMainElement().$("div[class*='cart-content-text']");
 
     /**
@@ -91,6 +93,13 @@ public class HeaderPage extends BasePage {
 
     public void clickBasket() {
         basket.click();
+    }
 
+    public void hoverBasket(){
+        basket.hover();
+    }
+
+    public void checkThatMiniCartInState(Condition condition){
+        miniCart.shouldBe(condition);
     }
 }
