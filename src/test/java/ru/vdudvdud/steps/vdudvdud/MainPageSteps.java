@@ -5,6 +5,7 @@ import io.qameta.allure.Step;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 import org.testng.Assert;
+import ru.vdudvdud.page.objects.vdudvdud.forms.cart.MinicartForm;
 import ru.vdudvdud.page.objects.vdudvdud.forms.main.ProductCardForm;
 import ru.vdudvdud.page.objects.vdudvdud.modals.AddProductToTheCartPopup;
 import ru.vdudvdud.page.objects.vdudvdud.modals.ProductAddedToTheCartPopup;
@@ -21,6 +22,7 @@ public class MainPageSteps extends BaseSteps {
     private VdudMainPage vdudMainPage = new VdudMainPage();
     private AddProductToTheCartPopup addProductToTheCartPopup = new AddProductToTheCartPopup();
     private ProductAddedToTheCartPopup productAddedToTheCartPopup = new ProductAddedToTheCartPopup();
+    private MinicartForm minicartForm = new MinicartForm();
 
     @Override
     @Step("Проверка видимости основных элементов на странице")
@@ -56,6 +58,11 @@ public class MainPageSteps extends BaseSteps {
         product.setExistence(productElement.getProductExistenceText());
 
         return product;
+    }
+
+    @Step("Проверить что мини-корзина соответствует корзине")
+    public void checkThatMinicartDataIsCorrect() {
+        minicartForm.checkThatMinicartDataIsCorrect();
     }
 
     @Step("Открытие главной страницы сайта и проверка корректного открытия страницы")

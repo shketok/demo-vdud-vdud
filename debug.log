@@ -1,0 +1,6 @@
+[0416/002314.061:ERROR:process_memory_win.cc(73)] ReadMemory at 0x1f2bdaf6390 of 6656 bytes failed: «апрос ReadProcessMemory или WriteProcessMemory был выполнен только частично. (0x12B)
+[0416/002314.061:ERROR:process_snapshot_win.cc(322)] failed to read unloaded module data
+[0416/002314.061:ERROR:process_memory_win.cc(73)] ReadMemory at 0x1f2bdd70810 of 72 bytes failed: «апрос ReadProcessMemory или WriteProcessMemory был выполнен только частично. (0x12B)
+[0416/002314.061:WARNING:pe_image_annotations_reader.cc(134)] could not read annotations list object in C:\Program Files (x86)\Google\Chrome\Application\80.0.3987.163\chrome_elf.dll
+[0416/002314.061:ERROR:process_memory_win.cc(73)] ReadMemory at 0x1f2bdda5150 of 72 bytes failed: «апрос ReadProcessMemory или WriteProcessMemory был выполнен только частично. (0x12B)
+[0416/002314.061:WARNING:pe_image_annotations_reader.cc(134)] could not read annotations list object in C:\Program Files (x86)\Google\Chrome\Application\80.0.3987.163\chrome.dll

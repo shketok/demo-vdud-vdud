@@ -1,6 +1,7 @@
 package ru.vdudvdud.testdata.objects;
 
 import lombok.Getter;
+import ru.vdudvdud.testdata.models.essences.MinicartProduct;
 import ru.vdudvdud.testdata.models.essences.Product;
 
 import java.util.HashMap;
@@ -156,5 +157,14 @@ public class Cart {
      */
     public String getCartCurrentCurrency() {
         return products.entrySet().iterator().next().getValue().getCurrency();
+    }
+
+    /**
+     * Содержится ли продукт из мини-корзины в корзине
+     *
+     */
+    public boolean hasMinicartProduct(MinicartProduct minicartProduct) {
+        return getProducts().values().stream()
+            .anyMatch(product -> minicartProduct.getName().contains(product.getName()));
     }
 }
