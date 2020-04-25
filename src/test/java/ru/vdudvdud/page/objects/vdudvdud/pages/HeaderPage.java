@@ -24,9 +24,10 @@ public class HeaderPage extends BasePage {
     private SelenideElement logo = getMainElement().$(String.format("a.logo[href='%s']", BaseUrls.BASE.getUrlPart()));
     private SelenideElement basket = getMainElement()
         .$(String.format("div[class*='store-actions'] a[href*='%s'][class*='store']", BaseUrls.ORDER.getUrlPart()));
-    private SelenideElement basketIcon = basket.$("div[class='store-actions__cart-icon']");
     private SelenideElement cartAmount = basket.$("span[class*='cart-amount']");
+    private SelenideElement basketIcon = basket.$("div[class='store-actions__cart-icon']");
     private SelenideElement productsPrice = basket.$("div[class*='cart-content-text']");
+    private SelenideElement miniCart = getMainElement().$("div.mini-cart");
 
     /**
      * Конструктор основного элемента.
@@ -88,7 +89,15 @@ public class HeaderPage extends BasePage {
     }
 
     public void clickBasket() {
-       // basketIcon.click();
-        basketIcon.hover();
+        basketIcon.click();
+
+    }
+
+    public void hoverBasket(){
+        basket.hover();
+    }
+
+    public void checkThatMiniCartInState(Condition condition){
+        miniCart.shouldBe(condition);
     }
 }

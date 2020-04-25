@@ -2,9 +2,10 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
 <suite name="debug" verbose="1">
 
-    <test name="Test delete all products from many in the cart">
+    <test name="Test add two products from basket again test">
+        <parameter name="quantity" value="2"/>
         <classes>
-            <class name="ru.vdudvdud.tests.regression.cart.delete.DeleteAllProductsFromManyInTheCart"/>
+            <class name="ru.vdudvdud.tests.regression.cart.AddQuantityOfSameProductsToEmptyBasketUserAuthorizedTest"/>
         </classes>
     </test>
 

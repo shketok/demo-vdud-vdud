@@ -86,4 +86,31 @@
         </classes>
     </test>
 
+    <test name="Test add two products from basket again test user unauthorized">
+        <parameter name="quantity" value="2"/>
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.AddQuantityOfSameProductsToEmptyBasketUserUnauthorizedTest"/>
+        </classes>
+    </test>
+
+
+    <test name="Test add two products from basket again test user authorized">
+        <parameter name="quantity" value="2"/>
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.AddQuantityOfSameProductsToEmptyBasketUserAuthorizedTest"/>
+        </classes>
+    </test>
+
+    <test name="Test check empty minicart did not show up user authorized">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.mini.TestHoverMinicartWithoutItemsDontShowsUserAuthorized"/>
+        </classes>
+    </test>
+
+    <test name="Test check empty minicart did not show up user unauthorized">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.mini.TestHoverMinicartWithoutItemsDontShowsUserUnauthorized"/>
+        </classes>
+    </test>
+
 </suite>

@@ -1,20 +1,21 @@
 package ru.vdudvdud.page.objects.vdudvdud.modals;
 
+import static com.codeborne.selenide.Selenide.$;
+
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import ru.vdudvdud.adaptors.selenide.base.PageObject;
 import ru.vdudvdud.adaptors.selenide.utils.SmartWait;
 
-import static com.codeborne.selenide.Selenide.$;
-
 public class AddProductToTheCartPopup extends PageObject {
+
     private static final String MAIN_ELEMENT_LOC = "div.cart-popup";
 
     private SelenideElement confirmBtn = getMainElement().$("button[type='submit']");
-    private SelenideElement countOfTheGood = getMainElement().$("input[name='quantity']");
+    private SelenideElement productQuantity = getMainElement().$("input[name='quantity']");
+
     private SelenideElement productSelectedSize = getMainElement()
-            .$x(".//input[@name='sku_id' and contains(@value, //div[@data-sku-id]/@data-sku-id)]" +
-                    "/following-sibling::span[@itemprop='name']");
+        .$x(".//input[@name='sku_id' and not(@disabled) and contains(@value, //div[@data-sku-id]/@data-sku-id)]/following-sibling::span[@itemprop='name']");
     private SelenideElement productSelectedModel = getMainElement().$("div.options__content ul");
 
     /**
@@ -25,9 +26,9 @@ public class AddProductToTheCartPopup extends PageObject {
     }
 
     /**
-     * Клик по кнопке подтверждения параметров и количества продукта.
-     * Так как форма может не появляться для некоторых групп товаров, то происходит проверка,
-     * появилась ли форма на страницы, и кликает только тогда, когда форма появляется.
+     * Клик по кнопке подтверждения параметров и количества продукта. Так как форма может не
+     * появляться для некоторых групп товаров, то происходит проверка, появилась ли форма на
+     * страницы, и кликает только тогда, когда форма появляется.
      */
     public void clickConfirmBtnIfAppeared() {
         if (SmartWait.isElementInState(confirmBtn, Condition.visible)) {
@@ -36,8 +37,8 @@ public class AddProductToTheCartPopup extends PageObject {
 
     }
 
-    public void fillCountOfTheGood(String value) {
-        countOfTheGood.setValue(value);
+    public void setProductQuantity(String value) {
+        productQuantity.setValue(value);
     }
 
     public String getProductSelectedSizeText() {
@@ -45,7 +46,7 @@ public class AddProductToTheCartPopup extends PageObject {
     }
 
     public boolean isProductSelectedSizeInState(Condition condition) {
-        return productSelectedSize.is(condition);
+        return SmartWait.isElementInState(productSelectedSize, condition);
     }
 
     public String getProductSelectedModelText() {
@@ -56,11 +57,12 @@ public class AddProductToTheCartPopup extends PageObject {
         return productSelectedModel.is(condition);
     }
 
-    public String getCountOfTheGoodText() {
-        return countOfTheGood.getValue();
+    public String getProductQuantityText() {
+        return productQuantity.getValue();
     }
 
-    public boolean isCountOfTheGoodInState(Condition condition) {
-        return countOfTheGood.is(condition);
+    public boolean isProductQuantityInState(Condition condition) {
+        return SmartWait.isElementInState(productQuantity, condition);
     }
+
 }
