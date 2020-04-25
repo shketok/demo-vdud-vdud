@@ -25,7 +25,7 @@ public class SmartWait {
      * Функция ожидания, что элемент не перейдет в указанное состояние.
      *
      * @param selenideElement Элемент для ожидания.
-     * @param condition       Состояние элеменита.
+     * @param condition       Состояние элемента.
      * @return True - элемент не перешел в указанное состояние. False - элемент перешел в указанное состояние.
      */
     public static boolean isElementNotInState(SelenideElement selenideElement, Condition condition) {
