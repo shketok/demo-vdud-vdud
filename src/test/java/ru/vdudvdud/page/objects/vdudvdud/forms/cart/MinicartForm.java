@@ -47,9 +47,7 @@ public class MinicartForm extends PageObject {
 
     public void checkThatMinicartDataIsCorrect() {
         SoftAssert softAssert = new SoftAssert();
-        getProducts().forEach(product -> {
-            softAssert.assertTrue(cart.hasMinicartProduct(product));
-        });
+        getProducts().forEach(product -> softAssert.assertTrue(cart.hasMinicartProduct(product)));
         softAssert.assertAll();
     }
 
