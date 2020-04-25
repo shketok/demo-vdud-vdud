@@ -26,7 +26,21 @@ public class ProductScenarios {
         LOG.info("Выполнение регистрации на сайте пользователем");
         registrationScenarios.registration(user);
 
-        return addProductToTheCart(() -> mainPageSteps.clickRandomProductAddToTheCartBtn());
+        return addProductToTheCart(mainPageSteps::clickRandomProductAddToTheCartBtn);
+    }
+
+    @Step("Сценарий добавления товара с выбором количества в корзину авторизованным пользователем")
+    public Product addQuantityOfSameProductToCartAfterRegistration(User user, int quantity) {
+        LOG.info("Выполнение регистрации на сайте пользователем");
+        registrationScenarios.registration(user);
+
+        return addProductToTheCart(() -> mainPageSteps.clickRandomProductAddToTheCartWithQuantitySelection(quantity));
+    }
+
+    @Step("Сценарий добавления товара с выбором количества в корзину без авторизованного пользователя")
+    public Product addQuantityOfSameProductToCart(int quantity) {
+        mainPageSteps.openMainPage();
+        return addProductToTheCart(() -> mainPageSteps.clickRandomProductAddToTheCartWithQuantitySelection(quantity));
     }
 
     @Step("Добавление товара в корзину")
@@ -34,9 +48,6 @@ public class ProductScenarios {
         LOG.info("Нажатие кнопки В корзину на случайном товаре с главной страницы");
         Product product = productAddFunction.get();
 
-        LOG.info("Подтверждение добавления товара в корзину");
-        mainPageSteps.updateProduct(product);
-        mainPageSteps.confirmAddProductToTheCart();
 
         LOG.info("Закрытие формы подтверждения того, что товар был добавлен в корзину");
         mainPageSteps.closeProductAddedPopup(product);
@@ -46,4 +57,6 @@ public class ProductScenarios {
 
         return product;
     }
+
+
 }
