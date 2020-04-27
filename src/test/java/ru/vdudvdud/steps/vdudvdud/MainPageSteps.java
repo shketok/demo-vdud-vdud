@@ -5,6 +5,7 @@ import io.qameta.allure.Step;
 import java.util.Arrays;
 import java.util.stream.IntStream;
 import org.testng.Assert;
+import ru.vdudvdud.page.objects.vdudvdud.forms.cart.MiniCartForm;
 import ru.vdudvdud.page.objects.vdudvdud.forms.main.ProductCardForm;
 import ru.vdudvdud.page.objects.vdudvdud.modals.AddProductToTheCartPopup;
 import ru.vdudvdud.page.objects.vdudvdud.modals.ProductAddedToTheCartPopup;
@@ -21,6 +22,7 @@ public class MainPageSteps extends BaseSteps {
     private VdudMainPage vdudMainPage = new VdudMainPage();
     private AddProductToTheCartPopup addProductToTheCartPopup = new AddProductToTheCartPopup();
     private ProductAddedToTheCartPopup productAddedToTheCartPopup = new ProductAddedToTheCartPopup();
+    private MiniCartForm miniCartForm = new MiniCartForm();
 
     @Override
     @Step("Проверка видимости основных элементов на странице")
@@ -58,6 +60,11 @@ public class MainPageSteps extends BaseSteps {
         return product;
     }
 
+    @Step("Проверить что мини-корзина соответствует корзине")
+    public void checkThatMiniCartDataIsCorrect() {
+        miniCartForm.checkThatMiniCartDataIsCorrect();
+    }
+
     @Step("Открытие главной страницы сайта и проверка корректного открытия страницы")
     public void openMainPage() {
         BaseUrls.BASE.navigate();
@@ -84,6 +91,16 @@ public class MainPageSteps extends BaseSteps {
         return product;
     }
 
+    @Step("Нажатие кнопки В корзину у случайного продукта, помещением в корзину и закрытием попапа")
+    public Product clickAndAddRandomProductAddToTheCartWithClosePopup() {
+        Product product = createProductFromProductCard(
+            vdudMainPage.getProductCardsForm().getRandomProductForm());
+        clickSpecificProductAddToTheCartBtn(product);
+        updateProduct(product);
+        confirmAddProductToTheCart();
+        closeProductAddedPopup(product);
+        return product;
+    }
 
     @Step("Нажатие кнопки В корзину у случайного продукта с выбором числа товаров")
     public Product clickRandomProductAddToTheCartWithQuantitySelection(int quantity) {
