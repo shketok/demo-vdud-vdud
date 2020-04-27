@@ -6,7 +6,8 @@ package ru.vdudvdud.testdata.enums;
 public enum RegexPatterns {
     DIGITS("\\d+"),
     NON_DIGITS("[^\\d]"),
-    SPACES("\\s+");
+    SPACES("\\s+"),
+    ITEM_PRICE("X\\s([\\d\\s]+)");
 
     private String regex;
 

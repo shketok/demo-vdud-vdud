@@ -11,49 +11,50 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.testng.asserts.SoftAssert;
 import ru.vdudvdud.adaptors.selenide.base.PageObject;
-import ru.vdudvdud.testdata.models.essences.MinicartProduct;
+import ru.vdudvdud.testdata.enums.RegexPatterns;
+import ru.vdudvdud.testdata.models.essences.MiniCartProduct;
 import ru.vdudvdud.testdata.objects.Cart;
 import ru.vdudvdud.testdata.utils.RegexMatcher;
 
-public class MinicartForm extends PageObject {
+public class MiniCartForm extends PageObject {
 
     private static final String MAIN_ELEMENT_LOC = "div[class='mini-cart']";
-    private static final String ITEM_PRICE_PATTERN = "X\\s([\\d\\s]+)";
-    public ElementsCollection MINI_CART_ITEMS = getMainElement().$$x(".//li[@class='mini-cart__item']");
     private final String ITEM_NAME = ".//a[@class='mini-cart__title']";
-    private final String ITEM_IMG_LINK = ".//a[@class='mini-cart__pic'] //img";
+    private final String ITEM_IMG_LINK = ".//a[@class='mini-cart__pic']//img";
     private final String ITEM_CURRENCY = ".//div[@class='mini-cart__price'] //span[@class='ruble']";
     private final String ITEM_COUNT = ".//span[@class='mini-cart__quantity']";
     private final String ITEM_PRICE = ".//div[@class='mini-cart__price']";
-
     private final Cart cart = Cart.getInstance();
 
-    public MinicartForm() {
+    public ElementsCollection miniCartItems = getMainElement().$$x(".//li[@class='mini-cart__item']");
+
+    public MiniCartForm() {
         super($(MAIN_ELEMENT_LOC));
     }
 
-    public List<MinicartProduct> getProducts() {
-        return MINI_CART_ITEMS.stream().map(item -> {
-            MinicartProduct minicartProduct = new MinicartProduct();
-            minicartProduct.setName(item.$x(ITEM_NAME).getText());
-            minicartProduct.setCost(getItemCost(item));
-            minicartProduct.setImgLink(item.$x(ITEM_IMG_LINK).getAttribute("src"));
-            minicartProduct.setCurrency(item.$x(ITEM_CURRENCY).getText());
-            minicartProduct.setCount(Integer.parseInt(item.$x(ITEM_COUNT).getText()));
-            return minicartProduct;
+    public List<MiniCartProduct> getProducts() {
+        return miniCartItems.stream().map(item -> {
+            MiniCartProduct miniCartProduct = new MiniCartProduct();
+            miniCartProduct.setName(item.$x(ITEM_NAME).getText());
+            miniCartProduct.setCost(getItemCost(item));
+            miniCartProduct.setImgLink(item.$x(ITEM_IMG_LINK).getAttribute("src"));
+            miniCartProduct.setCurrency(item.$x(ITEM_CURRENCY).getText());
+            miniCartProduct.setCount(Integer.parseInt(item.$x(ITEM_COUNT).getText()));
+            return miniCartProduct;
         }).collect(Collectors.toList());
     }
 
 
-    public void checkThatMinicartDataIsCorrect() {
+    public void checkThatMiniCartDataIsCorrect() {
         SoftAssert softAssert = new SoftAssert();
-        getProducts().forEach(product -> softAssert.assertTrue(cart.hasMinicartProduct(product)));
+        getProducts().forEach(product -> softAssert
+            .assertTrue(cart.hasMiniCartProduct(product), "Товары в мини-корзине не соответствуют товарам в корзине"));
         softAssert.assertAll();
     }
 
-    private int getItemCost(SelenideElement minicartItem) {
+    private int getItemCost(SelenideElement miniCartItem) {
         Matcher matcher = RegexMatcher
-            .getRegexMatcher(ITEM_PRICE_PATTERN, minicartItem.$x(ITEM_PRICE).getText());
+            .getRegexMatcher(RegexPatterns.ITEM_PRICE.toString(), miniCartItem.$x(ITEM_PRICE).getText());
         String formattedPrice = StringUtils
             .replace(matcher.group(NumberUtils.INTEGER_ONE), StringUtils.SPACE, StringUtils.EMPTY);
         return Integer.parseInt(formattedPrice);

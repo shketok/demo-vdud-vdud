@@ -13,7 +13,7 @@ import ru.vdudvdud.testdata.creators.UsersCreator;
 import ru.vdudvdud.testdata.models.essences.Product;
 import ru.vdudvdud.testdata.models.essences.User;
 
-public class AddTwoDifferentProductToMinicartUserAuthorized extends BaseTest {
+public class AddTwoDifferentProductToMiniCartUserAuthorized extends BaseTest {
 
     private MainPageSteps mainPageSteps = new MainPageSteps();
     private HeaderSteps headerSteps = new HeaderSteps();
@@ -40,21 +40,15 @@ public class AddTwoDifferentProductToMinicartUserAuthorized extends BaseTest {
         headerSteps.checkThatMainElementsOfThePageAreVisible();
 
         LOG.info("Выбрать первый случайный продукт");
-        Product firstRandomProduct = mainPageSteps.clickRandomProductAddToTheCartBtn();
-        mainPageSteps.updateProduct(firstRandomProduct);
-        mainPageSteps.confirmAddProductToTheCart();
-        mainPageSteps.closeProductAddedPopup(firstRandomProduct);
+        mainPageSteps.clickAndAddRandomProductAddToTheCartWithClosePopup();
 
         LOG.info("Выбрать второй случайный продукт");
-        Product secondRandomProduct = mainPageSteps.clickRandomProductAddToTheCartBtn();
-        mainPageSteps.updateProduct(secondRandomProduct);
-        mainPageSteps.confirmAddProductToTheCart();
-        mainPageSteps.closeProductAddedPopup(secondRandomProduct);
+        mainPageSteps.clickAndAddRandomProductAddToTheCartWithClosePopup();
 
         LOG.info("Проверка что в мини-корзине корректные товары");
-        headerSteps.hoverOverMinicart();
-        headerSteps.checkMinicartVisible();
-        mainPageSteps.checkThatMinicartDataIsCorrect();
+        headerSteps.hoverOverMiniCart();
+        headerSteps.checkMiniCartVisible();
+        mainPageSteps.checkThatMiniCartDataIsCorrect();
     }
 
 

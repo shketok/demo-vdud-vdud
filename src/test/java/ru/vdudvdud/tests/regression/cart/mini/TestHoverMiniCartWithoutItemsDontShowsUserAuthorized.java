@@ -9,7 +9,7 @@ import ru.vdudvdud.steps.vdudvdud.scenarios.RegistrationScenarios;
 import ru.vdudvdud.testdata.creators.UsersCreator;
 import ru.vdudvdud.testdata.models.essences.User;
 
-public class TestHoverMinicartWithoutItemsDontShowsUserAuthorized extends BaseTest {
+public class TestHoverMiniCartWithoutItemsDontShowsUserAuthorized extends BaseTest {
     private HeaderSteps headerSteps = new HeaderSteps();
     private RegistrationScenarios registrationScenarios = new RegistrationScenarios();
 
@@ -28,9 +28,9 @@ public class TestHoverMinicartWithoutItemsDontShowsUserAuthorized extends BaseTe
         registrationScenarios.registration(user);
 
         LOG.info("2. Навести на значок мини корзины");
-        headerSteps.hoverOverMinicart();
+        headerSteps.hoverOverMiniCart();
 
         LOG.info("3. Проверка, что мини корзина не появилась");
-        headerSteps.checkMinicartInvisible();
+        headerSteps.checkMiniCartInvisible();
     }
 }

@@ -6,7 +6,7 @@ import ru.vdudvdud.adaptors.selenide.base.BaseTest;
 import ru.vdudvdud.steps.vdudvdud.HeaderSteps;
 import ru.vdudvdud.steps.vdudvdud.MainPageSteps;
 
-public class TestHoverMinicartWithoutItemsDontShowsUserUnauthorized extends BaseTest {
+public class TestHoverMiniCartWithoutItemsDontShowsUserUnauthorized extends BaseTest {
     private MainPageSteps mainPageSteps = new MainPageSteps();
     private HeaderSteps headerSteps = new HeaderSteps();
 
@@ -18,9 +18,9 @@ public class TestHoverMinicartWithoutItemsDontShowsUserUnauthorized extends Base
         mainPageSteps.openMainPage();
 
         LOG.info("2. Навести на значок мини корзины");
-        headerSteps.hoverOverMinicart();
+        headerSteps.hoverOverMiniCart();
 
         LOG.info("3. Проверка, что мини корзина не появилась");
-        headerSteps.checkMinicartInvisible();
+        headerSteps.checkMiniCartInvisible();
     }
 }

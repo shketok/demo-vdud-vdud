@@ -103,13 +103,13 @@
 
     <test name="Test check empty minicart did not show up user authorized">
         <classes>
-            <class name="ru.vdudvdud.tests.regression.cart.mini.TestHoverMinicartWithoutItemsDontShowsUserAuthorized"/>
+            <class name="ru.vdudvdud.tests.regression.cart.mini.TestHoverMiniCartWithoutItemsDontShowsUserAuthorized"/>
         </classes>
     </test>
 
     <test name="Test check empty minicart did not show up user unauthorized">
         <classes>
-            <class name="ru.vdudvdud.tests.regression.cart.mini.TestHoverMinicartWithoutItemsDontShowsUserUnauthorized"/>
+            <class name="ru.vdudvdud.tests.regression.cart.mini.TestHoverMiniCartWithoutItemsDontShowsUserUnauthorized"/>
         </classes>
     </test>
 

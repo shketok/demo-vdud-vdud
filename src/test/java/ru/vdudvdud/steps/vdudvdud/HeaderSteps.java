@@ -65,17 +65,17 @@ public class HeaderSteps extends BaseSteps {
 
 
     @Step("Наведение курсора на миникорзину")
-    public void hoverOverMinicart(){
+    public void hoverOverMiniCart(){
         headerPage.hoverBasket();
     }
 
     @Step("Проверка, что не видна мини корзина при отсутствии товаров")
-    public void checkMinicartInvisible() {
+    public void checkMiniCartInvisible() {
         headerPage.checkThatMiniCartInState(Condition.disappear);
     }
 
     @Step("Проверка, что мини корзина видна")
-    public void checkMinicartVisible() {
+    public void checkMiniCartVisible() {
         headerPage.checkThatMiniCartInState(Condition.visible);
     }
 

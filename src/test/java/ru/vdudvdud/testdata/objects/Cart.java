@@ -1,7 +1,7 @@
 package ru.vdudvdud.testdata.objects;
 
 import lombok.Getter;
-import ru.vdudvdud.testdata.models.essences.MinicartProduct;
+import ru.vdudvdud.testdata.models.essences.MiniCartProduct;
 import ru.vdudvdud.testdata.models.essences.Product;
 
 import java.util.HashMap;
@@ -151,6 +151,7 @@ public class Cart {
         return products.values().stream().mapToInt(Product::getCount).sum();
     }
 
+
     /**
      * Получение текущей валюты, отображаемой в корзине.
      * @return Значение текущей валюты в корзине.
@@ -163,8 +164,13 @@ public class Cart {
      * Содержится ли продукт из мини-корзины в корзине
      *
      */
-    public boolean hasMinicartProduct(MinicartProduct minicartProduct) {
+    public boolean hasMiniCartProduct(MiniCartProduct miniCartProduct) {
         return getProducts().values().stream()
-            .anyMatch(product -> minicartProduct.getName().contains(product.getName()));
+            .anyMatch(
+                product ->
+                    miniCartProduct.getName().contains(product.getName())
+                        && miniCartProduct.getCost() == product.getCost()
+                        && miniCartProduct.getCount() == product.getCount()
+                        && miniCartProduct.getCurrency().equals(product.getCurrency()));
     }
 }

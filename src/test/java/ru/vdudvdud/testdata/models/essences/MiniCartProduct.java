@@ -3,7 +3,7 @@ package ru.vdudvdud.testdata.models.essences;
 import lombok.Data;
 
 @Data
-public class MinicartProduct {
+public class MiniCartProduct {
 
     private String name;
     private String currency;
