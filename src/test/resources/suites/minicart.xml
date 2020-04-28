@@ -90,7 +90,7 @@
         <parameter name="secondTab" value="PANTS"/>
         <classes>
             <class
-              name="ru.vdudvdud.tests.regression.cart.mini.AddProductsWithDifferentTypesThenRemoveOneFromMiniCartUserAuthorized"/>
+              name="ru.vdudvdud.tests.regression.cart.mini.AddProductsWithDifferentTypesThenRemoveOneFromMiniCartUserUnauthorized"/>
         </classes>
     </test>
 </suite>
