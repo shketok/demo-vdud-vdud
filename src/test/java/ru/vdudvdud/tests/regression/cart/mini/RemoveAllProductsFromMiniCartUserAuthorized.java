@@ -47,7 +47,7 @@ public class RemoveAllProductsFromMiniCartUserAuthorized extends BaseTest {
         LOG.info("Удаление всех продуктов из мини-корзины");
         headerSteps.hoverOverMiniCart();
         headerSteps.checkMiniCartVisible();
-        mainPageSteps.removeAllProductsFromMiniCart();
+        mainPageSteps.removeAllProductsFromAllCarts();
 
         LOG.info("Проверка что в мини-корзине корректные товары");
         mainPageSteps.checkThatMiniCartDataIsCorrect();

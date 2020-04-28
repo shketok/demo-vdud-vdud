@@ -85,7 +85,7 @@ public class MainPageSteps extends BaseSteps {
     }
 
     @Step("Удалить все товары из корзин")
-    public void removeAllProductsFromMiniCart() {
+    public void removeAllProductsFromAllCarts() {
         miniCartForm.removeAllProductsFromMiniCart();
         Cart.getInstance().clearProducts();
     }
