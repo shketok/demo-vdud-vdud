@@ -21,32 +21,29 @@ public class AddSameProductsWithDifferentOptionsToMiniCartUserAuthorized extends
     private AuthorizationScenarios authorizationScenarios = new AuthorizationScenarios();
     private RegistrationScenarios registrationScenarios = new RegistrationScenarios();
 
-    private User user;
-    private String tabName;
 
     @BeforeMethod
     @Parameters("tabName")
     public void readParams(NavigationLocalizationHolder tabName) {
-        this.tabName = tabName.i18n();
-        user = UsersCreator.createRandomUser();
+        User user = UsersCreator.createRandomUser();
 
         LOG.info("Произвести регистрацию пользователя");
         registrationScenarios.registration(user);
 
         BrowserUtils.restartBrowser();
+
+        LOG.info("Произвести авторизацию пользователем и открыть главную страницу");
+        authorizationScenarios.authorize(user);
+        mainPageSteps.openMainPage();
+        headerSteps.checkThatMainElementsOfThePageAreVisible();
+        LOG.info("Переход на переданную вкладку");
+        headerSteps.goToTheProductsTab(tabName.i18n());
     }
 
     @Override
     @Test
     @Link("https://outsourceofthebrain.myjetbrains.com/youtrack/issue/VDUDUD-47")
     public void runTest() {
-        LOG.info("Произвести авторизацию пользователем и открыть главную страницу");
-        authorizationScenarios.authorize(user);
-        mainPageSteps.openMainPage();
-        headerSteps.checkThatMainElementsOfThePageAreVisible();
-
-        LOG.info("Переход на переданную вкладку");
-        headerSteps.goToTheProductsTab(tabName);
 
         LOG.info("Добавить в корзину один и тот же продукт с разными характеристиками");
         mainPageSteps.clickRandomProductAddToTheCartAndThenAddItAgainWithDifferentSize();
