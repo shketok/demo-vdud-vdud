@@ -6,6 +6,7 @@ import static com.codeborne.selenide.Selenide.back;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import ru.vdudvdud.adaptors.selenide.base.BasePage;
+import ru.vdudvdud.page.objects.vdudvdud.forms.header.NavigationForm;
 import ru.vdudvdud.page.objects.vdudvdud.forms.header.PersonalAreaDropdownForm;
 import ru.vdudvdud.testdata.enums.RegexPatterns;
 import ru.vdudvdud.testdata.enums.urls.BaseUrls;
@@ -45,6 +46,10 @@ public class HeaderPage extends BasePage {
 
     public PersonalAreaDropdownForm getPersonalAreaDropDownForm() {
         return new PersonalAreaDropdownForm();
+    }
+
+    public NavigationForm getNavigationForm() {
+        return new NavigationForm();
     }
 
 

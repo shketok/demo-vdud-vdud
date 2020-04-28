@@ -3,9 +3,9 @@
 <suite name="debug" verbose="1">
 
     <test name="Test add two products from basket again test">
-        <parameter name="quantity" value="2"/>
+        <!--<parameter name="tabName" value="PANTS"/>-->
         <classes>
-            <class name="ru.vdudvdud.tests.regression.cart.AddQuantityOfSameProductsToEmptyBasketUserAuthorizedTest"/>
+            <class name="ru.vdudvdud.tests.regression.cart.add.ProductDataInCartTest"/>
         </classes>
     </test>
 

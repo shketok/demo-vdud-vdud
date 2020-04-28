@@ -2,6 +2,7 @@ package ru.vdudvdud.steps.vdudvdud;
 
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
+import ru.vdudvdud.page.objects.vdudvdud.forms.header.NavigationForm;
 import ru.vdudvdud.page.objects.vdudvdud.forms.header.PersonalAreaDropdownForm;
 import ru.vdudvdud.page.objects.vdudvdud.pages.HeaderPage;
 import ru.vdudvdud.testdata.objects.Cart;
@@ -9,6 +10,7 @@ import ru.vdudvdud.testdata.objects.Cart;
 public class HeaderSteps extends BaseSteps {
     private HeaderPage headerPage = new HeaderPage();
     private PersonalAreaDropdownForm personalAreaDropdownForm = headerPage.getPersonalAreaDropDownForm();
+    private NavigationForm navigationForm = headerPage.getNavigationForm();
 
     @Override
     @Step("Проверка видимости основных элементов на странице")
@@ -82,5 +84,10 @@ public class HeaderSteps extends BaseSteps {
     @Step("Переход на главную страницу")
     public void goToTheMainPage() {
         headerPage.clickMainLogo();
+    }
+
+    @Step("Переход на вкладку с товарами")
+    public void goToTheProductsTab(String tabName){
+        navigationForm.navigateToTabByName(tabName);
     }
 }

@@ -113,4 +113,18 @@
         </classes>
     </test>
 
+    <test name="Test add same products with different characteristics user authorized">
+        <parameter name="tabName" value="PANTS"/>
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.empty.EmptyCartAddSameProductWithDifferentCharacteristicsUserAuthorized"/>
+        </classes>
+    </test>
+
+    <test name="Test add same products with different characteristics user unauthorized">
+        <parameter name="tabName" value="PANTS"/>
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.empty.EmptyCartAddSameProductWithDifferentCharacteristicsUserAuthorized"/>
+        </classes>
+    </test>
+
 </suite>

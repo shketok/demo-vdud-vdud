@@ -81,6 +81,9 @@ public class MainPageSteps extends BaseSteps {
         Product product = createProductFromProductCard(
             vdudMainPage.getProductCardsForm().getRandomProductForm());
         clickSpecificProductAddToTheCartBtn(product);
+        //TODO в некоторых тестах закомменченные строчки вшиты в сценарий/а в некоторых нет, надо пофиксить
+//        addProductToTheCartPopup.clickConfirmBtnIfAppeared();
+//        updateProduct(product);
         return product;
     }
 
@@ -97,6 +100,41 @@ public class MainPageSteps extends BaseSteps {
             clickSpecificProductAddToTheCartQuantityTimes(product, quantity);
         }
         confirmAddProductToTheCart();
+        return product;
+    }
+
+    @Step("Нажатие кнопки В корзину у слуайного продукта с последующим добавление этого же товара другого размера")
+    public Product clickRandomProductAddToTheCartAndThenAddItAgainWithDifferentSize(){
+        Product firstProduct = createProductFromProductCard(
+            vdudMainPage.getProductCardsForm().getRandomProductForm());
+        clickSpecificProductAddToTheCartWithConfirmationAndContinue(firstProduct);
+
+        Product secondProduct = firstProduct.clone();
+        clickSpecificProductAddToTheCartWithSizeSelectionExceptCurrentSize(secondProduct);
+
+        return secondProduct;
+    }
+
+    @Step("Нажатие кнопки в Корзину с подтверждением покупки и нажатием кнопки продолжить")
+    public Product clickSpecificProductAddToTheCartWithConfirmationAndContinue(Product product){
+        clickSpecificProductAddToTheCartBtn(product);
+        updateProduct(product);
+        Cart.getInstance().putProduct(product);
+        addProductToTheCartPopup.clickConfirmBtnIfAppeared();
+        productAddedToTheCartPopup.clickContinue();
+
+        return product;
+    }
+
+    @Step("Нажатие кнопки в Корзину у конкретного выбранного товара с выбором другого размера, что не был выбран ранее")
+    public Product clickSpecificProductAddToTheCartWithSizeSelectionExceptCurrentSize(Product product){
+        clickSpecificProductAddToTheCartBtn(product);
+        addProductToTheCartPopup.setProductSelectedSizeExceptAlreadySelected();
+        updateProduct(product);
+        Cart.getInstance().putProduct(product);
+        addProductToTheCartPopup.clickConfirmBtnIfAppeared();
+        productAddedToTheCartPopup.clickContinue();
+
         return product;
     }
 

@@ -1,5 +1,7 @@
 package ru.vdudvdud.adaptors.selenide.conditions;
 
+import com.codeborne.selenide.CollectionCondition;
+import com.codeborne.selenide.collections.SizeGreaterThanOrEqual;
 import ru.vdudvdud.adaptors.selenide.conditions.collection.StopAppearNew;
 
 /**
@@ -10,4 +12,6 @@ public class CustomCollectionCondition {
     public static StopAppearNew stopAppearNew() {
         return new StopAppearNew();
     }
+
+    public static final CollectionCondition sizeGreaterThanOrEqualOne = new SizeGreaterThanOrEqual(1);
 }

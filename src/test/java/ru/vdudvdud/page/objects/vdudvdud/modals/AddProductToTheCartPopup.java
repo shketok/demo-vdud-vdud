@@ -1,9 +1,12 @@
 package ru.vdudvdud.page.objects.vdudvdud.modals;
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.$$x;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
+import java.util.List;
+import java.util.Random;
 import ru.vdudvdud.adaptors.selenide.base.PageObject;
 import ru.vdudvdud.adaptors.selenide.utils.SmartWait;
 
@@ -16,6 +19,8 @@ public class AddProductToTheCartPopup extends PageObject {
 
     private SelenideElement productSelectedSize = getMainElement()
         .$x(".//input[@name='sku_id' and not(@disabled) and contains(@value, //div[@data-sku-id]/@data-sku-id)]/following-sibling::span[@itemprop='name']");
+    private List<SelenideElement> allAvailableProductSizesExceptSelected = $$x(
+        "//input[@name='sku_id' and not(@disabled) and not(contains(@value, //div[@data-sku-id]/@data-sku-id))]/following-sibling::span[@itemprop='name']");
     private SelenideElement productSelectedModel = getMainElement().$("div.options__content ul");
 
     /**
@@ -26,9 +31,9 @@ public class AddProductToTheCartPopup extends PageObject {
     }
 
     /**
-     * Клик по кнопке подтверждения параметров и количества продукта. Так как форма может не
-     * появляться для некоторых групп товаров, то происходит проверка, появилась ли форма на
-     * страницы, и кликает только тогда, когда форма появляется.
+     * Клик по кнопке подтверждения параметров и количества продукта. Так как форма может не появляться для некоторых
+     * групп товаров, то происходит проверка, появилась ли форма на страницы, и кликает только тогда, когда форма
+     * появляется.
      */
     public void clickConfirmBtnIfAppeared() {
         if (SmartWait.isElementInState(confirmBtn, Condition.visible)) {
@@ -65,4 +70,18 @@ public class AddProductToTheCartPopup extends PageObject {
         return SmartWait.isElementInState(productQuantity, condition);
     }
 
+    public void checkThatProductSelectedSizeInState(Condition condition){
+        productSelectedSize.shouldBe(condition);
+    }
+
+    public void setProductSelectedSizeExceptAlreadySelected() {
+        SelenideElement randomSize = getRandomProductSizeFromList(allAvailableProductSizesExceptSelected);
+        productSelectedSize = randomSize;
+        checkThatProductSelectedSizeInState(Condition.visible);
+        randomSize.click();
+    }
+
+    private SelenideElement getRandomProductSizeFromList(List<SelenideElement> productSizes) {
+        return productSizes.get(new Random().nextInt(productSizes.size()));
+    }
 }
