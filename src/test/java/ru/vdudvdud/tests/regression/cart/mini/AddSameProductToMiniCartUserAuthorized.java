@@ -20,6 +20,7 @@ public class AddSameProductToMiniCartUserAuthorized extends BaseTest {
 
     @BeforeMethod
     public void readParams() {
+        LOG.info("Произвести регистрацию пользователем");
         user = UsersCreator.createRandomUser();
 
         registrationScenarios.registration(user);

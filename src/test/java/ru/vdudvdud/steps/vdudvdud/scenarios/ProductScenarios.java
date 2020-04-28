@@ -60,7 +60,7 @@ public class ProductScenarios {
 
     @Step("Добавление товара в корзину с повторным выбором этого же товара")
     public Product addProductToTheCartWithRepeat(){
-        return addProductToTheCart(() -> mainPageSteps.clickRandomProductAddToTheCartAndThenAddItAgain());
+        return addProductToTheCart(mainPageSteps::clickRandomProductAddToTheCartAndThenAddItAgain);
     }
 
 
