@@ -24,16 +24,16 @@ public class MiniCartForm extends PageObject {
     private final String ITEM_CURRENCY = ".//div[@class='mini-cart__price'] //span[@class='ruble']";
     private final String ITEM_COUNT = ".//span[@class='mini-cart__quantity']";
     private final String ITEM_PRICE = ".//div[@class='mini-cart__price']";
+    private final String ITEM_CLOSE = ".//div[@class='mini-cart__close']";
     private final Cart cart = Cart.getInstance();
 
-    public ElementsCollection miniCartItems = getMainElement().$$x(".//li[@class='mini-cart__item']");
 
     public MiniCartForm() {
         super($(MAIN_ELEMENT_LOC));
     }
 
     public List<MiniCartProduct> getProducts() {
-        return miniCartItems.stream().map(item -> {
+        return getProductElements().stream().map(item -> {
             MiniCartProduct miniCartProduct = new MiniCartProduct();
             miniCartProduct.setName(item.$x(ITEM_NAME).getText());
             miniCartProduct.setCost(getItemCost(item));
@@ -42,6 +42,16 @@ public class MiniCartForm extends PageObject {
             miniCartProduct.setCount(Integer.parseInt(item.$x(ITEM_COUNT).getText()));
             return miniCartProduct;
         }).collect(Collectors.toList());
+    }
+
+    public ElementsCollection getProductElements() {
+        return getMainElement().$$x(".//li[@class='mini-cart__item']");
+    }
+
+    public void removeProductFromMiniCart(MiniCartProduct miniCartProduct) {
+        getProductElements().stream()
+            .filter(product -> product.$x(ITEM_NAME).getText().equals(miniCartProduct.getName()))
+            .forEach(product -> product.$x(ITEM_CLOSE).click());
     }
 
 

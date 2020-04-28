@@ -19,4 +19,16 @@
             <class name="ru.vdudvdud.tests.regression.cart.mini.AddTwoDifferentProductToMiniCartUserUnauthorized"/>
         </classes>
     </test>
+
+    <test name="Test add different products to the miniCart then remove one, user authorized">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.mini.RemoveOneProductFromMiniCartUserAuthorized"/>
+        </classes>
+    </test>
+
+    <test name="Test add different products to the miniCart then remove one, user unauthorized">
+    <classes>
+        <class name="ru.vdudvdud.tests.regression.cart.mini.RemoveOneProductFromMiniCartUserUnauthorized"/>
+    </classes>
+</test>
 </suite>
