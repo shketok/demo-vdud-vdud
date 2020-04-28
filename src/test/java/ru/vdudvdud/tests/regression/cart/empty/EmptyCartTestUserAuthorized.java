@@ -13,7 +13,7 @@ public class EmptyCartTestUserAuthorized extends BaseTest {
     private CartSteps cartSteps = new CartSteps();
     private HeaderSteps headerSteps = new HeaderSteps();
 
-    private RegistrationScenarios registrationScenariosScenarios = new RegistrationScenarios();
+    private RegistrationScenarios registrationScenarios = new RegistrationScenarios();
 
     private User user;
 
@@ -21,7 +21,7 @@ public class EmptyCartTestUserAuthorized extends BaseTest {
     public void readParams() {
         user = UsersCreator.createRandomUser();
         LOG.info("1. Произвести регистрацию пользователя");
-        registrationScenariosScenarios.registration(user);
+        registrationScenarios.registration(user);
     }
 
     @Test

@@ -1,5 +1,6 @@
 package ru.vdudvdud.steps.vdudvdud.scenarios;
 
+import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 import ru.vdudvdud.adaptors.selenide.utils.Logger;
 import ru.vdudvdud.steps.vdudvdud.HeaderSteps;
@@ -29,8 +30,8 @@ public class RegistrationScenarios {
         registrationSteps.sendRegistrationData();
 
         LOG.info("Проверка успешности регистрации");
-        mainPageSteps.checkThatMainElementsOfThePageAreVisible();
         mainPageSteps.checkThatMainPageIsOpen();
+        mainPageSteps.checkThatMainElementsOfThePageAreVisible();
         headerSteps.checkLogoutVisible();
     }
 
