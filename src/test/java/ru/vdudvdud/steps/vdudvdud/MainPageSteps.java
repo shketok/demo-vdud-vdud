@@ -211,6 +211,7 @@ public class MainPageSteps extends BaseSteps {
 
         Product product = createProductFromProductCard(productCardForm);
         clickSpecificProductAddToTheCartBtn(product);
+        updateProduct(product);
         return product;
     }
 

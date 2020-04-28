@@ -139,4 +139,16 @@
         </classes>
     </test>
 
+    <test name="Test add two products to mini cart with repeat in same order, user unauthorized">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.mini.AddTwoProductsToMiniCartWithRepeatInSameOrderUserUnauthorized"/>
+        </classes>
+    </test>
+
+    <test name="Test add two products to mini cart with repeat in same order, user authorized">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.mini.AddTwoProductsToMiniCartWithRepeatInSameOrderUserAuthorized"/>
+        </classes>
+    </test>
+
 </suite>
