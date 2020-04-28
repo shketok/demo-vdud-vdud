@@ -75,4 +75,22 @@
               name="ru.vdudvdud.tests.regression.cart.mini.AddSameProductsToMiniCartUserUnauthorized"/>
         </classes>
     </test>
+
+    <test name="Test add products with different types then remove one, user authorized">
+        <parameter name="firstTab" value="T_SHIRTS"/>
+        <parameter name="secondTab" value="PANTS"/>
+        <classes>
+            <class
+              name="ru.vdudvdud.tests.regression.cart.mini.AddProductsWithDifferentTypesThenRemoveOneFromMiniCartUserAuthorized"/>
+        </classes>
+    </test>
+
+    <test name="Test add products with different types then remove one, user unauthorized">
+        <parameter name="firstTab" value="T_SHIRTS"/>
+        <parameter name="secondTab" value="PANTS"/>
+        <classes>
+            <class
+              name="ru.vdudvdud.tests.regression.cart.mini.AddProductsWithDifferentTypesThenRemoveOneFromMiniCartUserUnauthorized"/>
+        </classes>
+    </test>
 </suite>
