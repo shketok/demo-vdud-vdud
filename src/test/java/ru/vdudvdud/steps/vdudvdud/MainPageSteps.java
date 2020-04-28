@@ -138,7 +138,7 @@ public class MainPageSteps extends BaseSteps {
         return product;
     }
 
-    @Step("Нажатие кнопки В корзину у слуайного продукта с последующим добавление этого же товара другого размера")
+    @Step("Нажатие кнопки В корзину у случайного продукта с последующим добавлением этого же товара другого размера")
     public Product clickRandomProductAddToTheCartAndThenAddItAgainWithDifferentSize(){
         Product firstProduct = createProductFromProductCard(
             vdudMainPage.getProductCardsForm().getRandomProductForm());
@@ -148,6 +148,17 @@ public class MainPageSteps extends BaseSteps {
         clickSpecificProductAddToTheCartWithSizeSelectionExceptCurrentSize(secondProduct);
 
         return secondProduct;
+    }
+
+    @Step("Нажатие кнопки В корзину у случайного продукта с последующим добавлением этого же товара")
+    public Product clickRandomProductAddToTheCartAndThenAddItAgain(){
+        Product product = createProductFromProductCard(
+            vdudMainPage.getProductCardsForm().getRandomProductForm());
+        clickSpecificProductAddToTheCartWithConfirmationAndContinue(product);
+        clickSpecificProductAddToTheCartBtn(product);
+        addProductToTheCartPopup.clickConfirmBtnIfAppeared();
+
+        return product;
     }
 
     @Step("Нажатие кнопки в Корзину с подтверждением покупки и нажатием кнопки продолжить")
