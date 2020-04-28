@@ -5,11 +5,9 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 import ru.vdudvdud.adaptors.selenide.base.BaseTest;
-import ru.vdudvdud.adaptors.selenide.utils.BrowserUtils;
 import ru.vdudvdud.localization.NavigationLocalizationHolder;
 import ru.vdudvdud.steps.vdudvdud.HeaderSteps;
 import ru.vdudvdud.steps.vdudvdud.MainPageSteps;
-import ru.vdudvdud.steps.vdudvdud.scenarios.AuthorizationScenarios;
 import ru.vdudvdud.steps.vdudvdud.scenarios.RegistrationScenarios;
 import ru.vdudvdud.testdata.creators.UsersCreator;
 import ru.vdudvdud.testdata.models.essences.User;
@@ -18,7 +16,6 @@ public class AddSameProductsWithDifferentOptionsToMiniCartUserAuthorized extends
 
     private MainPageSteps mainPageSteps = new MainPageSteps();
     private HeaderSteps headerSteps = new HeaderSteps();
-    private AuthorizationScenarios authorizationScenarios = new AuthorizationScenarios();
     private RegistrationScenarios registrationScenarios = new RegistrationScenarios();
 
 
@@ -30,12 +27,6 @@ public class AddSameProductsWithDifferentOptionsToMiniCartUserAuthorized extends
         LOG.info("Произвести регистрацию пользователя");
         registrationScenarios.registration(user);
 
-        BrowserUtils.restartBrowser();
-
-        LOG.info("Произвести авторизацию пользователем и открыть главную страницу");
-        authorizationScenarios.authorize(user);
-        mainPageSteps.openMainPage();
-        headerSteps.checkThatMainElementsOfThePageAreVisible();
         LOG.info("Переход на переданную вкладку");
         headerSteps.goToTheProductsTab(tabName.i18n());
     }
