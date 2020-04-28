@@ -3,6 +3,7 @@ package ru.vdudvdud.steps.vdudvdud;
 import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.IntStream;
 import org.testng.Assert;
 import ru.vdudvdud.page.objects.vdudvdud.forms.cart.MiniCartForm;
@@ -13,6 +14,7 @@ import ru.vdudvdud.page.objects.vdudvdud.pages.VdudMainPage;
 import ru.vdudvdud.testdata.constants.CartConstants;
 import ru.vdudvdud.testdata.enums.RegexPatterns;
 import ru.vdudvdud.testdata.enums.urls.BaseUrls;
+import ru.vdudvdud.testdata.models.essences.MiniCartProduct;
 import ru.vdudvdud.testdata.models.essences.Product;
 import ru.vdudvdud.testdata.objects.Cart;
 import ru.vdudvdud.testdata.utils.RegexMatcher;
@@ -69,6 +71,17 @@ public class MainPageSteps extends BaseSteps {
     public void openMainPage() {
         BaseUrls.BASE.navigate();
         checkThatMainPageIsOpen();
+    }
+
+    @Step("Получить все товары мини-корзины")
+    public List<MiniCartProduct> getMiniCartProducts() {
+        return miniCartForm.getProducts();
+    }
+
+    @Step("Удалить товар из мини-корзины")
+    public void removeProductFromMiniCart(MiniCartProduct miniCartProduct) {
+        miniCartForm.removeProductFromMiniCart(miniCartProduct);
+        Cart.getInstance().removeMiniCartProduct(miniCartProduct);
     }
 
     @Step("Проверка корректного открытия главной страницы")

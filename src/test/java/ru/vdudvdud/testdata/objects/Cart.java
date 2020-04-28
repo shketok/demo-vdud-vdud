@@ -173,4 +173,19 @@ public class Cart {
                         && miniCartProduct.getCount() == product.getCount()
                         && miniCartProduct.getCurrency().equals(product.getCurrency()));
     }
+
+    /**
+     * Удалить продукт мини-корзины
+     *
+     */
+    public boolean removeMiniCartProduct(MiniCartProduct miniCartProduct) {
+        return getProducts().entrySet().removeIf(
+            entry -> {
+                Product product = entry.getValue();
+                return miniCartProduct.getName().contains(product.getName())
+                    && miniCartProduct.getCost() == product.getCost()
+                    && miniCartProduct.getCount() == product.getCount()
+                    && miniCartProduct.getCurrency().equals(product.getCurrency());
+            });
+    }
 }
