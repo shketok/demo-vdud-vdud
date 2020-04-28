@@ -175,7 +175,7 @@ public class Cart {
             .anyMatch(
                 product ->
                     miniCartProduct.getName().contains(product.getName())
-                        && miniCartProduct.getCost() == product.getCost()
+                        && (miniCartProduct.getCost() == (product.getCost() * product.getCount()))
                         && miniCartProduct.getCount() == product.getCount()
                         && miniCartProduct.getCurrency().equals(product.getCurrency()));
     }
@@ -189,7 +189,7 @@ public class Cart {
             entry -> {
                 Product product = entry.getValue();
                 return miniCartProduct.getName().contains(product.getName())
-                    && miniCartProduct.getCost() == product.getCost()
+                    && (miniCartProduct.getCost() == (product.getCost() * product.getCount()))
                     && miniCartProduct.getCount() == product.getCount()
                     && miniCartProduct.getCurrency().equals(product.getCurrency());
             });
