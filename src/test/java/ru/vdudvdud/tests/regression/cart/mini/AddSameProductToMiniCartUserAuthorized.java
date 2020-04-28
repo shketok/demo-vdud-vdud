@@ -36,7 +36,7 @@ public class AddSameProductToMiniCartUserAuthorized extends BaseTest {
         headerSteps.checkThatMainElementsOfThePageAreVisible();
 
         LOG.info("2. Добавление товара в корзину с повтором");
-        productScenarios.addProductToTheCartWithRepeat();
+        productScenarios.addRandomProductToTheCartWithRepeat();
 
         LOG.info("3. Проверка, что в мини корзине появилось указанное количество товара");
         headerSteps.checkMiniCart();
