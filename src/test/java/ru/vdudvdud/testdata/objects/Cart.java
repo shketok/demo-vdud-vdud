@@ -74,8 +74,14 @@ public class Cart {
         if (isCartEmpty() || !isProductInCart(product)) {
             return;
         }
-
         products.remove(product.getFullName());
+    }
+
+    /**
+     * Удалить все прдукты из корзины
+     */
+    public void clearProducts() {
+        products.clear();
     }
 
     /**

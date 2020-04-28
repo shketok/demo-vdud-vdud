@@ -25,6 +25,7 @@ public class MiniCartForm extends PageObject {
     private final String ITEM_COUNT = ".//span[@class='mini-cart__quantity']";
     private final String ITEM_PRICE = ".//div[@class='mini-cart__price']";
     private final String ITEM_CLOSE = ".//div[@class='mini-cart__close']";
+    private final String ITEM = ".//li[@class='mini-cart__item']";
     private final Cart cart = Cart.getInstance();
 
 
@@ -45,7 +46,7 @@ public class MiniCartForm extends PageObject {
     }
 
     public ElementsCollection getProductElements() {
-        return getMainElement().$$x(".//li[@class='mini-cart__item']");
+        return getMainElement().$$x(ITEM);
     }
 
     public void removeProductFromMiniCart(MiniCartProduct miniCartProduct) {
@@ -54,6 +55,9 @@ public class MiniCartForm extends PageObject {
             .forEach(product -> product.$x(ITEM_CLOSE).click());
     }
 
+    public void removeAllProductsFromMiniCart() {
+        getProductElements().forEach(product -> product.$x(ITEM_CLOSE).click());
+    }
 
     public void checkThatMiniCartDataIsCorrect() {
         SoftAssert softAssert = new SoftAssert();
