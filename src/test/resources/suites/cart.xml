@@ -127,4 +127,16 @@
         </classes>
     </test>
 
+    <test name="Test add same product to mini cart user unauthorized">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.mini.AddSameProductToMiniCartUserUnauthorized"/>
+        </classes>
+    </test>
+
+    <test name="Test add same product to mini cart user authorized">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.mini.AddSameProductToMiniCartUserAuthorized"/>
+        </classes>
+    </test>
+
 </suite>

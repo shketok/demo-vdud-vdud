@@ -58,5 +58,10 @@ public class ProductScenarios {
         return product;
     }
 
+    @Step("Добавление товара в корзину с повторным выбором этого же товара")
+    public Product addProductToTheCartWithRepeat(){
+        return addProductToTheCart(() -> mainPageSteps.clickRandomProductAddToTheCartAndThenAddItAgain());
+    }
+
 
 }
