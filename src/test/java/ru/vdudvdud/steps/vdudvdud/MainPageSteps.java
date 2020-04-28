@@ -84,11 +84,16 @@ public class MainPageSteps extends BaseSteps {
         Cart.getInstance().removeMiniCartProduct(miniCartProduct);
     }
 
+    @Step("Удалить все товары из корзин")
+    public void removeAllProductsFromMiniCart() {
+        miniCartForm.removeAllProductsFromMiniCart();
+        Cart.getInstance().clearProducts();
+    }
+
     @Step("Проверка корректного открытия главной страницы")
     public void checkThatMainPageIsOpen() {
         Assert.assertTrue(vdudMainPage.isMainElement(Condition.visible),
             "Проверка корректного открытия главной страницы");
-
     }
 
     @Step("Проверка, что главная страница не была открыта")

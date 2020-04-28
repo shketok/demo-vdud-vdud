@@ -54,6 +54,9 @@ public class MiniCartForm extends PageObject {
             .forEach(product -> product.$x(ITEM_CLOSE).click());
     }
 
+    public void removeAllProductsFromMiniCart() {
+        getProductElements().forEach(product -> product.$x(ITEM_CLOSE).click());
+    }
 
     public void checkThatMiniCartDataIsCorrect() {
         SoftAssert softAssert = new SoftAssert();

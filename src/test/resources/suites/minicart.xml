@@ -27,8 +27,20 @@
     </test>
 
     <test name="Test add different products to the miniCart then remove one, user unauthorized">
-    <classes>
-        <class name="ru.vdudvdud.tests.regression.cart.mini.RemoveOneProductFromMiniCartUserUnauthorized"/>
-    </classes>
-</test>
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.mini.RemoveOneProductFromMiniCartUserUnauthorized"/>
+        </classes>
+    </test>
+
+    <test name="Test add different products to the miniCart then remove all, user unauthorized">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.mini.RemoveOneProductFromMiniCartUserUnauthorized"/>
+        </classes>
+    </test>
+
+    <test name="Test add different products to the miniCart then remove all, user unauthorized">
+        <classes>
+            <class name="ru.vdudvdud.tests.regression.cart.mini.RemoveOneProductFromMiniCartUserUnauthorized"/>
+        </classes>
+    </test>
 </suite>
