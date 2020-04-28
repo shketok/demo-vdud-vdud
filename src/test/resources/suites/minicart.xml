@@ -51,11 +51,28 @@
               name="ru.vdudvdud.tests.regression.cart.mini.AddSameProductsWithDifferentOptionsToMiniCartUserAuthorized"/>
         </classes>
     </test>
+
     <test name="Test add same products with different options to miniCart, user unauthorized">
         <parameter name="tabName" value="T_SHIRTS"/>
         <classes>
             <class
               name="ru.vdudvdud.tests.regression.cart.mini.AddSameProductsWithDifferentOptionsToMiniCartUserUnauthorized"/>
+        </classes>
+    </test>
+
+    <test name="Test add same products to miniCart, user authorized">
+        <parameter name="tabName" value="T_SHIRTS"/>
+        <classes>
+            <class
+              name="ru.vdudvdud.tests.regression.cart.mini.AddSameProductsToMiniCartUserAuthorized"/>
+        </classes>
+    </test>
+
+    <test name="Test add same products to miniCart, user unauthorized">
+        <parameter name="tabName" value="T_SHIRTS"/>
+        <classes>
+            <class
+              name="ru.vdudvdud.tests.regression.cart.mini.AddSameProductsToMiniCartUserUnauthorized"/>
         </classes>
     </test>
 </suite>
